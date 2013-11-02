@@ -7,22 +7,23 @@
 //
 
 #import "EventDetailViewController.h"
-
+#import "EventDetailTableViewController.h"
+#import "EventFetchModel.h"
 @interface EventDetailViewController ()
-
+@property (strong,nonatomic) NSDictionary* event;
 @end
 
 @implementation EventDetailViewController
-@synthesize event,eventName;
+@synthesize eventID,event,eventDescription;
 
 
 - (id)init{
     self=[super init];
     if(self){
-        
     }
     return self;
 }
+
 
 - (void)viewDidLoad
 {
@@ -33,9 +34,30 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    eventName.text=event;
+    NSError* err;
+    
+    NSString *filepath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/EventDetails.json"];
+    
+    event=[NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:filepath] options:NSJSONReadingAllowFragments error:&err];
+    
+    if(err)
+        NSLog(@"%@",[err localizedDescription]);
+    
+    eventDescription.text=[event valueForKey:@"Description"];
+    
+//    UIScrollView* scrollView=(UIScrollView*)[self.view viewWithTag:777];
+//    scrollView.scrollEnabled=YES;
+//    [scrollView setContentSize:CGSizeMake(700,700)];
+    
     
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"tableDisplaySegue"])
+        ((EventDetailTableViewController*)[segue destinationViewController]).eventID=eventID;
+}
+
 
 - (void)didReceiveMemoryWarning
 {

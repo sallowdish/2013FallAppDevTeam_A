@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+@class SettingPageViewController;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>{
+    NSString *userToken;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 
-
+@property (strong,retain) NSString* userToken;
 
 
 - (NSURL *)applicationDocumentsDirectory;

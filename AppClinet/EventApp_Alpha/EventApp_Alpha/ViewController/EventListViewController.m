@@ -7,6 +7,7 @@
 //
 
 #import "EventListViewController.h"
+#import "EventListFetchModel.h"
 
 @interface EventListViewController ()
 
@@ -35,20 +36,24 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    
-    
     NSError *error=nil;
+    
+    //get the latest event list online
+    [EventListFetchModel fetchEventList:error];
+    
+    
     //Get the filepath for local json file
-    NSString* filepath = [[NSBundle mainBundle]pathForResource:@"Events" ofType:@"json"];
+    NSString *filepath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Events.json"];
     
 
     
     
     //Load json string from the local file
-    if(!error){
-        eventList=[NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:filepath] options:kNilOptions error:&error];
-        
-    }else{
+    if(error){
+        NSLog(@"Error loading json file:%@",[error localizedDescription]);
+    }
+    eventList=[NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:filepath] options:NSJSONReadingMutableContainers error:&error];
+    if(error){
         NSLog(@"Error loading json file:%@",[error localizedDescription]);
     }
     
@@ -93,7 +98,8 @@
     if ([[segue identifier] isEqualToString:@"selectedSegue"]) {
         UIViewController *destination=[segue destinationViewController];
         UITableViewCell* cell=sender;
-        [destination setValue:cell.textLabel.text forKey:@"event"];
+        id obj=[eventList objectAtIndex:[[self.tableView indexPathForCell:cell] row]];
+        [destination setValue:[obj valueForKey:@"id"] forKey:@"eventID"];
     }
 }
 /*

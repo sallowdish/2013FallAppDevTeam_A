@@ -7,21 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7104A7A01824D1B500EB3AD5 /* EventListFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */; };
 		7191C6371808024100E86482 /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7191C6361808024100E86482 /* EventDetailViewController.m */; };
 		7191C63D18080A4E00E86482 /* MainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7191C63C18080A4E00E86482 /* MainTabViewController.m */; };
+		71AF5EF9182503D70013ABB3 /* EventDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF5EF8182503D70013ABB3 /* EventDetailTableViewController.m */; };
+		71AF5EFC18250D660013ABB3 /* EventFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF5EFB18250D660013ABB3 /* EventFetchModel.m */; };
 		71B763C11807830A00717D67 /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B763C01807830A00717D67 /* EventListViewController.m */; };
-		71B763C51807840300717D67 /* EventData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71B763C31807840300717D67 /* EventData.xcdatamodeld */; };
-		71B7640B1807923A00717D67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B7640A1807923A00717D67 /* CoreData.framework */; };
-		71B7644E1807DED400717D67 /* Events.json in Resources */ = {isa = PBXBuildFile; fileRef = 71B7644D1807DED300717D67 /* Events.json */; };
+		71DFFA43182104C900269E3E /* SettingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DFFA42182104C900269E3E /* SettingPageViewController.m */; };
+		71DFFA4518210FAA00269E3E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4418210FAA00269E3E /* CFNetwork.framework */; };
+		71DFFA4718210FB200269E3E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4618210FB200269E3E /* Security.framework */; };
+		71DFFA48182115A900269E3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F3219C17F830D700FFFB95 /* Main.storyboard */; };
+		71DFFA4D1821245200269E3E /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4A1821245200269E3E /* libWeiboSDK.a */; };
+		71DFFA4E1821245200269E3E /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71DFFA4B1821245200269E3E /* WeiboSDK.bundle */; };
 		71F3218B17F830D700FFFB95 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F3218A17F830D700FFFB95 /* Foundation.framework */; };
 		71F3218D17F830D700FFFB95 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F3218C17F830D700FFFB95 /* CoreGraphics.framework */; };
 		71F3218F17F830D700FFFB95 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F3218E17F830D700FFFB95 /* UIKit.framework */; };
 		71F3219517F830D700FFFB95 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71F3219317F830D700FFFB95 /* InfoPlist.strings */; };
 		71F3219717F830D700FFFB95 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F3219617F830D700FFFB95 /* main.m */; };
 		71F3219B17F830D700FFFB95 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F3219A17F830D700FFFB95 /* AppDelegate.m */; };
-		71F3219E17F830D700FFFB95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F3219C17F830D700FFFB95 /* Main.storyboard */; };
 		71F321A617F830D700FFFB95 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71F321A517F830D700FFFB95 /* Images.xcassets */; };
-		71F321AD17F830D700FFFB95 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F321AC17F830D700FFFB95 /* XCTest.framework */; };
 		71F321AE17F830D700FFFB95 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F3218A17F830D700FFFB95 /* Foundation.framework */; };
 		71F321AF17F830D700FFFB95 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F3218E17F830D700FFFB95 /* UIKit.framework */; };
 		71F321B717F830D700FFFB95 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71F321B517F830D700FFFB95 /* InfoPlist.strings */; };
@@ -39,15 +43,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7104A79E1824D1B500EB3AD5 /* EventListFetchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventListFetchModel.h; path = Model/EventListFetchModel.h; sourceTree = "<group>"; };
+		7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventListFetchModel.m; path = Model/EventListFetchModel.m; sourceTree = "<group>"; };
 		7191C6351808024100E86482 /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventDetailViewController.h; path = ViewController/EventDetailViewController.h; sourceTree = "<group>"; };
 		7191C6361808024100E86482 /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventDetailViewController.m; path = ViewController/EventDetailViewController.m; sourceTree = "<group>"; };
 		7191C63B18080A4E00E86482 /* MainTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTabViewController.h; path = ViewController/MainTabViewController.h; sourceTree = "<group>"; };
 		7191C63C18080A4E00E86482 /* MainTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainTabViewController.m; path = ViewController/MainTabViewController.m; sourceTree = "<group>"; };
+		71AF5EF7182503D70013ABB3 /* EventDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventDetailTableViewController.h; path = ViewController/EventDetailTableViewController.h; sourceTree = "<group>"; };
+		71AF5EF8182503D70013ABB3 /* EventDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventDetailTableViewController.m; path = ViewController/EventDetailTableViewController.m; sourceTree = "<group>"; };
+		71AF5EFA18250D660013ABB3 /* EventFetchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventFetchModel.h; path = Model/EventFetchModel.h; sourceTree = "<group>"; };
+		71AF5EFB18250D660013ABB3 /* EventFetchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventFetchModel.m; path = Model/EventFetchModel.m; sourceTree = "<group>"; };
 		71B763BF1807830A00717D67 /* EventListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventListViewController.h; path = ViewController/EventListViewController.h; sourceTree = "<group>"; };
 		71B763C01807830A00717D67 /* EventListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventListViewController.m; path = ViewController/EventListViewController.m; sourceTree = "<group>"; };
-		71B763C41807840300717D67 /* EventData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventData.xcdatamodel; sourceTree = "<group>"; };
-		71B7640A1807923A00717D67 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		71B7644D1807DED300717D67 /* Events.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Events.json; sourceTree = "<group>"; };
+		71DFFA41182104C900269E3E /* SettingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingPageViewController.h; path = ViewController/SettingPageViewController.h; sourceTree = "<group>"; };
+		71DFFA42182104C900269E3E /* SettingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingPageViewController.m; path = ViewController/SettingPageViewController.m; sourceTree = "<group>"; };
+		71DFFA4418210FAA00269E3E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		71DFFA4618210FB200269E3E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		71DFFA4A1821245200269E3E /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
+		71DFFA4B1821245200269E3E /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
+		71DFFA4C1821245200269E3E /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
 		71F3218717F830D700FFFB95 /* EventApp_Alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventApp_Alpha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F3218A17F830D700FFFB95 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		71F3218C17F830D700FFFB95 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -61,7 +75,6 @@
 		71F3219D17F830D700FFFB95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		71F321A517F830D700FFFB95 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		71F321AB17F830D700FFFB95 /* EventApp_AlphaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventApp_AlphaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		71F321AC17F830D700FFFB95 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		71F321B417F830D700FFFB95 /* EventApp_AlphaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EventApp_AlphaTests-Info.plist"; sourceTree = "<group>"; };
 		71F321B617F830D700FFFB95 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		71F321B817F830D700FFFB95 /* EventApp_AlphaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventApp_AlphaTests.m; sourceTree = "<group>"; };
@@ -72,7 +85,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71B7640B1807923A00717D67 /* CoreData.framework in Frameworks */,
+				71DFFA4718210FB200269E3E /* Security.framework in Frameworks */,
+				71DFFA4D1821245200269E3E /* libWeiboSDK.a in Frameworks */,
+				71DFFA4518210FAA00269E3E /* CFNetwork.framework in Frameworks */,
 				71F3218D17F830D700FFFB95 /* CoreGraphics.framework in Frameworks */,
 				71F3218F17F830D700FFFB95 /* UIKit.framework in Frameworks */,
 				71F3218B17F830D700FFFB95 /* Foundation.framework in Frameworks */,
@@ -83,7 +98,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71F321AD17F830D700FFFB95 /* XCTest.framework in Frameworks */,
 				71F321AF17F830D700FFFB95 /* UIKit.framework in Frameworks */,
 				71F321AE17F830D700FFFB95 /* Foundation.framework in Frameworks */,
 			);
@@ -92,6 +106,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7104A7A11824D1BA00EB3AD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7104A79E1824D1B500EB3AD5 /* EventListFetchModel.h */,
+				7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */,
+				71AF5EFA18250D660013ABB3 /* EventFetchModel.h */,
+				71AF5EFB18250D660013ABB3 /* EventFetchModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		71B763C21807832100717D67 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,22 +126,28 @@
 				71B763C01807830A00717D67 /* EventListViewController.m */,
 				7191C63B18080A4E00E86482 /* MainTabViewController.h */,
 				7191C63C18080A4E00E86482 /* MainTabViewController.m */,
+				71DFFA41182104C900269E3E /* SettingPageViewController.h */,
+				71DFFA42182104C900269E3E /* SettingPageViewController.m */,
+				71AF5EF7182503D70013ABB3 /* EventDetailTableViewController.h */,
+				71AF5EF8182503D70013ABB3 /* EventDetailTableViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
 		};
-		71B763C61807840E00717D67 /* Data */ = {
+		71DFFA491821245200269E3E /* libWeiboSDK */ = {
 			isa = PBXGroup;
 			children = (
-				71B763C31807840300717D67 /* EventData.xcdatamodeld */,
-				71B7644D1807DED300717D67 /* Events.json */,
+				71DFFA4A1821245200269E3E /* libWeiboSDK.a */,
+				71DFFA4B1821245200269E3E /* WeiboSDK.bundle */,
+				71DFFA4C1821245200269E3E /* WeiboSDK.h */,
 			);
-			name = Data;
+			path = libWeiboSDK;
 			sourceTree = "<group>";
 		};
 		71F3217E17F830D700FFFB95 = {
 			isa = PBXGroup;
 			children = (
+				71DFFA491821245200269E3E /* libWeiboSDK */,
 				71F3219017F830D700FFFB95 /* EventApp_Alpha */,
 				71F321B217F830D700FFFB95 /* EventApp_AlphaTests */,
 				71F3218917F830D700FFFB95 /* Frameworks */,
@@ -136,11 +167,11 @@
 		71F3218917F830D700FFFB95 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				71B7640A1807923A00717D67 /* CoreData.framework */,
+				71DFFA4618210FB200269E3E /* Security.framework */,
+				71DFFA4418210FAA00269E3E /* CFNetwork.framework */,
 				71F3218A17F830D700FFFB95 /* Foundation.framework */,
 				71F3218C17F830D700FFFB95 /* CoreGraphics.framework */,
 				71F3218E17F830D700FFFB95 /* UIKit.framework */,
-				71F321AC17F830D700FFFB95 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -154,7 +185,7 @@
 				71B763C21807832100717D67 /* ViewController */,
 				71F321A517F830D700FFFB95 /* Images.xcassets */,
 				71F3219117F830D700FFFB95 /* Supporting Files */,
-				71B763C61807840E00717D67 /* Data */,
+				7104A7A11824D1BA00EB3AD5 /* Model */,
 			);
 			path = EventApp_Alpha;
 			sourceTree = "<group>";
@@ -264,10 +295,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71B7644E1807DED400717D67 /* Events.json in Resources */,
+				71DFFA48182115A900269E3E /* Main.storyboard in Resources */,
+				71DFFA4E1821245200269E3E /* WeiboSDK.bundle in Resources */,
 				71F321A617F830D700FFFB95 /* Images.xcassets in Resources */,
 				71F3219517F830D700FFFB95 /* InfoPlist.strings in Resources */,
-				71F3219E17F830D700FFFB95 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,11 +318,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				71B763C11807830A00717D67 /* EventListViewController.m in Sources */,
+				7104A7A01824D1B500EB3AD5 /* EventListFetchModel.m in Sources */,
 				7191C63D18080A4E00E86482 /* MainTabViewController.m in Sources */,
 				7191C6371808024100E86482 /* EventDetailViewController.m in Sources */,
 				71F3219B17F830D700FFFB95 /* AppDelegate.m in Sources */,
-				71B763C51807840300717D67 /* EventData.xcdatamodeld in Sources */,
 				71F3219717F830D700FFFB95 /* main.m in Sources */,
+				71AF5EFC18250D660013ABB3 /* EventFetchModel.m in Sources */,
+				71AF5EF9182503D70013ABB3 /* EventDetailTableViewController.m in Sources */,
+				71DFFA43182104C900269E3E /* SettingPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +410,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
+				"OTHER_LDFLAGS[arch=*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -408,6 +444,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				"OTHER_LDFLAGS[arch=*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -422,6 +460,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventApp_Alpha/EventApp_Alpha-Prefix.pch";
 				INFOPLIST_FILE = "EventApp_Alpha/EventApp_Alpha-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/ray/Documents/Development/2013FallAppDevTeam_A/AppClinet/EventApp_Alpha/EventApp_Alpha/libWeiboSDK,
+					/Users/ray/Documents/Development/2013FallAppDevTeam_A/AppClinet/EventApp_Alpha/libWeiboSDK,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -437,6 +480,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventApp_Alpha/EventApp_Alpha-Prefix.pch";
 				INFOPLIST_FILE = "EventApp_Alpha/EventApp_Alpha-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/ray/Documents/Development/2013FallAppDevTeam_A/AppClinet/EventApp_Alpha/EventApp_Alpha/libWeiboSDK,
+					/Users/ray/Documents/Development/2013FallAppDevTeam_A/AppClinet/EventApp_Alpha/libWeiboSDK,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -516,20 +564,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		71B763C31807840300717D67 /* EventData.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				71B763C41807840300717D67 /* EventData.xcdatamodel */,
-			);
-			currentVersion = 71B763C41807840300717D67 /* EventData.xcdatamodel */;
-			name = EventData.xcdatamodeld;
-			path = CoreData/EventData.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 71F3217F17F830D700FFFB95 /* Project object */;
 }
