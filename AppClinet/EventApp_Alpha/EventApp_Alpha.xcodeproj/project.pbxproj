@@ -10,6 +10,7 @@
 		7104A7A01824D1B500EB3AD5 /* EventListFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */; };
 		7191C6371808024100E86482 /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7191C6361808024100E86482 /* EventDetailViewController.m */; };
 		7191C63D18080A4E00E86482 /* MainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7191C63C18080A4E00E86482 /* MainTabViewController.m */; };
+		719E115B183C289C00D3CDF4 /* WebServiceCommunicationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 719E115A183C289C00D3CDF4 /* WebServiceCommunicationModel.m */; };
 		71AF5EF9182503D70013ABB3 /* EventDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF5EF8182503D70013ABB3 /* EventDetailTableViewController.m */; };
 		71AF5EFC18250D660013ABB3 /* EventFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF5EFB18250D660013ABB3 /* EventFetchModel.m */; };
 		71B763C11807830A00717D67 /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B763C01807830A00717D67 /* EventListViewController.m */; };
@@ -17,8 +18,6 @@
 		71DFFA4518210FAA00269E3E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4418210FAA00269E3E /* CFNetwork.framework */; };
 		71DFFA4718210FB200269E3E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4618210FB200269E3E /* Security.framework */; };
 		71DFFA48182115A900269E3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F3219C17F830D700FFFB95 /* Main.storyboard */; };
-		71DFFA4D1821245200269E3E /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4A1821245200269E3E /* libWeiboSDK.a */; };
-		71DFFA4E1821245200269E3E /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71DFFA4B1821245200269E3E /* WeiboSDK.bundle */; };
 		71F3218B17F830D700FFFB95 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F3218A17F830D700FFFB95 /* Foundation.framework */; };
 		71F3218D17F830D700FFFB95 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F3218C17F830D700FFFB95 /* CoreGraphics.framework */; };
 		71F3218F17F830D700FFFB95 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F3218E17F830D700FFFB95 /* UIKit.framework */; };
@@ -30,6 +29,7 @@
 		71F321AF17F830D700FFFB95 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F3218E17F830D700FFFB95 /* UIKit.framework */; };
 		71F321B717F830D700FFFB95 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71F321B517F830D700FFFB95 /* InfoPlist.strings */; };
 		71F321B917F830D700FFFB95 /* EventApp_AlphaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F321B817F830D700FFFB95 /* EventApp_AlphaTests.m */; };
+		71F8A913183C6138001AEF6A /* PostNewEventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F8A912183C6138001AEF6A /* PostNewEventModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +49,8 @@
 		7191C6361808024100E86482 /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventDetailViewController.m; path = ViewController/EventDetailViewController.m; sourceTree = "<group>"; };
 		7191C63B18080A4E00E86482 /* MainTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTabViewController.h; path = ViewController/MainTabViewController.h; sourceTree = "<group>"; };
 		7191C63C18080A4E00E86482 /* MainTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainTabViewController.m; path = ViewController/MainTabViewController.m; sourceTree = "<group>"; };
+		719E1159183C289C00D3CDF4 /* WebServiceCommunicationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebServiceCommunicationModel.h; path = Model/WebServiceCommunicationModel.h; sourceTree = "<group>"; };
+		719E115A183C289C00D3CDF4 /* WebServiceCommunicationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebServiceCommunicationModel.m; path = Model/WebServiceCommunicationModel.m; sourceTree = "<group>"; };
 		71AF5EF7182503D70013ABB3 /* EventDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventDetailTableViewController.h; path = ViewController/EventDetailTableViewController.h; sourceTree = "<group>"; };
 		71AF5EF8182503D70013ABB3 /* EventDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventDetailTableViewController.m; path = ViewController/EventDetailTableViewController.m; sourceTree = "<group>"; };
 		71AF5EFA18250D660013ABB3 /* EventFetchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventFetchModel.h; path = Model/EventFetchModel.h; sourceTree = "<group>"; };
@@ -59,9 +61,6 @@
 		71DFFA42182104C900269E3E /* SettingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingPageViewController.m; path = ViewController/SettingPageViewController.m; sourceTree = "<group>"; };
 		71DFFA4418210FAA00269E3E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		71DFFA4618210FB200269E3E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		71DFFA4A1821245200269E3E /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
-		71DFFA4B1821245200269E3E /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
-		71DFFA4C1821245200269E3E /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
 		71F3218717F830D700FFFB95 /* EventApp_Alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventApp_Alpha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F3218A17F830D700FFFB95 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		71F3218C17F830D700FFFB95 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -78,6 +77,8 @@
 		71F321B417F830D700FFFB95 /* EventApp_AlphaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EventApp_AlphaTests-Info.plist"; sourceTree = "<group>"; };
 		71F321B617F830D700FFFB95 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		71F321B817F830D700FFFB95 /* EventApp_AlphaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventApp_AlphaTests.m; sourceTree = "<group>"; };
+		71F8A911183C6138001AEF6A /* PostNewEventModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostNewEventModel.h; path = Model/PostNewEventModel.h; sourceTree = "<group>"; };
+		71F8A912183C6138001AEF6A /* PostNewEventModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostNewEventModel.m; path = Model/PostNewEventModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +87,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				71DFFA4718210FB200269E3E /* Security.framework in Frameworks */,
-				71DFFA4D1821245200269E3E /* libWeiboSDK.a in Frameworks */,
 				71DFFA4518210FAA00269E3E /* CFNetwork.framework in Frameworks */,
 				71F3218D17F830D700FFFB95 /* CoreGraphics.framework in Frameworks */,
 				71F3218F17F830D700FFFB95 /* UIKit.framework in Frameworks */,
@@ -113,6 +113,10 @@
 				7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */,
 				71AF5EFA18250D660013ABB3 /* EventFetchModel.h */,
 				71AF5EFB18250D660013ABB3 /* EventFetchModel.m */,
+				719E1159183C289C00D3CDF4 /* WebServiceCommunicationModel.h */,
+				719E115A183C289C00D3CDF4 /* WebServiceCommunicationModel.m */,
+				71F8A911183C6138001AEF6A /* PostNewEventModel.h */,
+				71F8A912183C6138001AEF6A /* PostNewEventModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -134,20 +138,9 @@
 			name = ViewController;
 			sourceTree = "<group>";
 		};
-		71DFFA491821245200269E3E /* libWeiboSDK */ = {
-			isa = PBXGroup;
-			children = (
-				71DFFA4A1821245200269E3E /* libWeiboSDK.a */,
-				71DFFA4B1821245200269E3E /* WeiboSDK.bundle */,
-				71DFFA4C1821245200269E3E /* WeiboSDK.h */,
-			);
-			path = libWeiboSDK;
-			sourceTree = "<group>";
-		};
 		71F3217E17F830D700FFFB95 = {
 			isa = PBXGroup;
 			children = (
-				71DFFA491821245200269E3E /* libWeiboSDK */,
 				71F3219017F830D700FFFB95 /* EventApp_Alpha */,
 				71F321B217F830D700FFFB95 /* EventApp_AlphaTests */,
 				71F3218917F830D700FFFB95 /* Frameworks */,
@@ -296,7 +289,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				71DFFA48182115A900269E3E /* Main.storyboard in Resources */,
-				71DFFA4E1821245200269E3E /* WeiboSDK.bundle in Resources */,
 				71F321A617F830D700FFFB95 /* Images.xcassets in Resources */,
 				71F3219517F830D700FFFB95 /* InfoPlist.strings in Resources */,
 			);
@@ -324,6 +316,8 @@
 				71F3219B17F830D700FFFB95 /* AppDelegate.m in Sources */,
 				71F3219717F830D700FFFB95 /* main.m in Sources */,
 				71AF5EFC18250D660013ABB3 /* EventFetchModel.m in Sources */,
+				71F8A913183C6138001AEF6A /* PostNewEventModel.m in Sources */,
+				719E115B183C289C00D3CDF4 /* WebServiceCommunicationModel.m in Sources */,
 				71AF5EF9182503D70013ABB3 /* EventDetailTableViewController.m in Sources */,
 				71DFFA43182104C900269E3E /* SettingPageViewController.m in Sources */,
 			);
@@ -460,11 +454,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventApp_Alpha/EventApp_Alpha-Prefix.pch";
 				INFOPLIST_FILE = "EventApp_Alpha/EventApp_Alpha-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/ray/Documents/Development/2013FallAppDevTeam_A/AppClinet/EventApp_Alpha/EventApp_Alpha/libWeiboSDK,
-					/Users/ray/Documents/Development/2013FallAppDevTeam_A/AppClinet/EventApp_Alpha/libWeiboSDK,
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -480,11 +470,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventApp_Alpha/EventApp_Alpha-Prefix.pch";
 				INFOPLIST_FILE = "EventApp_Alpha/EventApp_Alpha-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/ray/Documents/Development/2013FallAppDevTeam_A/AppClinet/EventApp_Alpha/EventApp_Alpha/libWeiboSDK,
-					/Users/ray/Documents/Development/2013FallAppDevTeam_A/AppClinet/EventApp_Alpha/libWeiboSDK,
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

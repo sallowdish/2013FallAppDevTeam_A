@@ -7,26 +7,18 @@
 //
 
 #import "AppDelegate.h"
-
-
-//@interface WBBaseRequest ()
-//- (void)debugPrint;
-//@end
-//
-//@interface WBBaseResponse ()
-//- (void)debugPrint;
-//@end
+#import "WebServiceCommunicationModel.h"
 
 
 @implementation AppDelegate
 
-@synthesize userToken;
 
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-        return YES;
+    [WebServiceCommunicationModel constructRequest];
+    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

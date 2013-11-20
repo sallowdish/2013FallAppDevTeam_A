@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface EventListFetchModel : NSObject
-+(void) fetchEventList :(NSError*)error;
+
++(NSArray*)eventsList;
+-(void) fetchEventList;
 @end

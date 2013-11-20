@@ -14,8 +14,7 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 
-
-
-#define appKey  @"2045436852"
-#define appRedirectURI  @"http://www.sina.com"
+#define WEBSERVICEDOMAIN  @"http://cmpt470.csil.sfu.ca:8013/app_project/"
+#define API @"api/v01/"
+#define FORMAT @"format=json"
 #endif

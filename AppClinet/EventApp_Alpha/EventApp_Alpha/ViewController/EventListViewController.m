@@ -36,26 +36,27 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    NSError *error=nil;
     
     //get the latest event list online
-    [EventListFetchModel fetchEventList:error];
+    EventListFetchModel* model=[[EventListFetchModel alloc] init];
+    [model fetchEventList];
     
     
-    //Get the filepath for local json file
-    NSString *filepath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Events.json"];
-    
-
-    
-    
-    //Load json string from the local file
-    if(error){
-        NSLog(@"Error loading json file:%@",[error localizedDescription]);
-    }
-    eventList=[NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:filepath] options:NSJSONReadingMutableContainers error:&error];
-    if(error){
-        NSLog(@"Error loading json file:%@",[error localizedDescription]);
-    }
+//    //Get the filepath for local json file
+//    NSString *filepath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Events.json"];
+//    
+//
+//    
+//    
+//    //Load json string from the local file
+//    if(error){
+//        NSLog(@"Error loading json file:%@",[error localizedDescription]);
+//    }
+//    eventList=[NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:filepath] options:NSJSONReadingMutableContainers error:&error];
+//    if(error){
+//        NSLog(@"Error loading json file:%@",[error localizedDescription]);
+//    }
+    eventList=[EventListFetchModel eventsList];
     
 }
 
@@ -88,8 +89,11 @@
     
     // Configure the cell...
     NSDictionary* event=[eventList objectAtIndex:indexPath.row];
-    [cell.textLabel setText:[event objectForKey:@"name"]];
-    cell.detailTextLabel.text=[NSString stringWithFormat:@"%@ -- %@",[event objectForKey:@"location"],[event objectForKey:@"time"]];
+    [cell.textLabel setText:[event objectForKey:@"event_name"]];
+    cell.detailTextLabel.text=[NSString stringWithFormat:@"%@|%@|%@",
+        [[event objectForKey:@"event_organizer_id"] objectForKey:@"account_user_name"],
+        [(NSString*)[event objectForKey:@"event_time"] componentsSeparatedByString:@"T"][0],
+        [event objectForKey:@"event_location"]];
     
     return cell;
 }
