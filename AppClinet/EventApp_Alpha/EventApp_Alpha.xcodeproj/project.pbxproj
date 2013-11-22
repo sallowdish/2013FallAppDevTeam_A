@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7104A7A01824D1B500EB3AD5 /* EventListFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */; };
+		718BAD46183E2B1800411B1E /* EventPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 718BAD45183E2B1800411B1E /* EventPostModel.m */; };
 		7191C6371808024100E86482 /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7191C6361808024100E86482 /* EventDetailViewController.m */; };
 		7191C63D18080A4E00E86482 /* MainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7191C63C18080A4E00E86482 /* MainTabViewController.m */; };
 		719E115B183C289C00D3CDF4 /* WebServiceCommunicationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 719E115A183C289C00D3CDF4 /* WebServiceCommunicationModel.m */; };
@@ -29,7 +30,7 @@
 		71F321AF17F830D700FFFB95 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F3218E17F830D700FFFB95 /* UIKit.framework */; };
 		71F321B717F830D700FFFB95 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71F321B517F830D700FFFB95 /* InfoPlist.strings */; };
 		71F321B917F830D700FFFB95 /* EventApp_AlphaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F321B817F830D700FFFB95 /* EventApp_AlphaTests.m */; };
-		71F8A913183C6138001AEF6A /* PostNewEventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F8A912183C6138001AEF6A /* PostNewEventModel.m */; };
+		71F8A91F183C7CAB001AEF6A /* EventEdittingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F8A91E183C7CAB001AEF6A /* EventEdittingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 /* Begin PBXFileReference section */
 		7104A79E1824D1B500EB3AD5 /* EventListFetchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventListFetchModel.h; path = Model/EventListFetchModel.h; sourceTree = "<group>"; };
 		7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventListFetchModel.m; path = Model/EventListFetchModel.m; sourceTree = "<group>"; };
+		718BAD44183E2B1800411B1E /* EventPostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventPostModel.h; path = Model/EventPostModel.h; sourceTree = "<group>"; };
+		718BAD45183E2B1800411B1E /* EventPostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventPostModel.m; path = Model/EventPostModel.m; sourceTree = "<group>"; };
 		7191C6351808024100E86482 /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventDetailViewController.h; path = ViewController/EventDetailViewController.h; sourceTree = "<group>"; };
 		7191C6361808024100E86482 /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventDetailViewController.m; path = ViewController/EventDetailViewController.m; sourceTree = "<group>"; };
 		7191C63B18080A4E00E86482 /* MainTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTabViewController.h; path = ViewController/MainTabViewController.h; sourceTree = "<group>"; };
@@ -77,8 +80,8 @@
 		71F321B417F830D700FFFB95 /* EventApp_AlphaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EventApp_AlphaTests-Info.plist"; sourceTree = "<group>"; };
 		71F321B617F830D700FFFB95 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		71F321B817F830D700FFFB95 /* EventApp_AlphaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventApp_AlphaTests.m; sourceTree = "<group>"; };
-		71F8A911183C6138001AEF6A /* PostNewEventModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostNewEventModel.h; path = Model/PostNewEventModel.h; sourceTree = "<group>"; };
-		71F8A912183C6138001AEF6A /* PostNewEventModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostNewEventModel.m; path = Model/PostNewEventModel.m; sourceTree = "<group>"; };
+		71F8A91D183C7CAB001AEF6A /* EventEdittingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventEdittingViewController.h; path = ViewController/EventEdittingViewController.h; sourceTree = "<group>"; };
+		71F8A91E183C7CAB001AEF6A /* EventEdittingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventEdittingViewController.m; path = ViewController/EventEdittingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,8 +118,8 @@
 				71AF5EFB18250D660013ABB3 /* EventFetchModel.m */,
 				719E1159183C289C00D3CDF4 /* WebServiceCommunicationModel.h */,
 				719E115A183C289C00D3CDF4 /* WebServiceCommunicationModel.m */,
-				71F8A911183C6138001AEF6A /* PostNewEventModel.h */,
-				71F8A912183C6138001AEF6A /* PostNewEventModel.m */,
+				718BAD44183E2B1800411B1E /* EventPostModel.h */,
+				718BAD45183E2B1800411B1E /* EventPostModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -124,16 +127,9 @@
 		71B763C21807832100717D67 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				7191C6351808024100E86482 /* EventDetailViewController.h */,
-				7191C6361808024100E86482 /* EventDetailViewController.m */,
-				71B763BF1807830A00717D67 /* EventListViewController.h */,
-				71B763C01807830A00717D67 /* EventListViewController.m */,
-				7191C63B18080A4E00E86482 /* MainTabViewController.h */,
-				7191C63C18080A4E00E86482 /* MainTabViewController.m */,
-				71DFFA41182104C900269E3E /* SettingPageViewController.h */,
-				71DFFA42182104C900269E3E /* SettingPageViewController.m */,
-				71AF5EF7182503D70013ABB3 /* EventDetailTableViewController.h */,
-				71AF5EF8182503D70013ABB3 /* EventDetailTableViewController.m */,
+				71F8A914183C7AB8001AEF6A /* Event */,
+				71F8A917183C7B19001AEF6A /* MainTabl */,
+				71F8A918183C7B23001AEF6A /* Setting */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -210,6 +206,63 @@
 				71F321B517F830D700FFFB95 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		71F8A914183C7AB8001AEF6A /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				71F8A919183C7BA5001AEF6A /* EventCreating */,
+				71F8A916183C7AEA001AEF6A /* EventDetail */,
+				71F8A915183C7AD5001AEF6A /* EventList */,
+			);
+			name = Event;
+			sourceTree = "<group>";
+		};
+		71F8A915183C7AD5001AEF6A /* EventList */ = {
+			isa = PBXGroup;
+			children = (
+				71B763BF1807830A00717D67 /* EventListViewController.h */,
+				71B763C01807830A00717D67 /* EventListViewController.m */,
+			);
+			name = EventList;
+			sourceTree = "<group>";
+		};
+		71F8A916183C7AEA001AEF6A /* EventDetail */ = {
+			isa = PBXGroup;
+			children = (
+				7191C6351808024100E86482 /* EventDetailViewController.h */,
+				7191C6361808024100E86482 /* EventDetailViewController.m */,
+				71AF5EF7182503D70013ABB3 /* EventDetailTableViewController.h */,
+				71AF5EF8182503D70013ABB3 /* EventDetailTableViewController.m */,
+			);
+			name = EventDetail;
+			sourceTree = "<group>";
+		};
+		71F8A917183C7B19001AEF6A /* MainTabl */ = {
+			isa = PBXGroup;
+			children = (
+				7191C63B18080A4E00E86482 /* MainTabViewController.h */,
+				7191C63C18080A4E00E86482 /* MainTabViewController.m */,
+			);
+			name = MainTabl;
+			sourceTree = "<group>";
+		};
+		71F8A918183C7B23001AEF6A /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				71DFFA41182104C900269E3E /* SettingPageViewController.h */,
+				71DFFA42182104C900269E3E /* SettingPageViewController.m */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
+		71F8A919183C7BA5001AEF6A /* EventCreating */ = {
+			isa = PBXGroup;
+			children = (
+				71F8A91D183C7CAB001AEF6A /* EventEdittingViewController.h */,
+				71F8A91E183C7CAB001AEF6A /* EventEdittingViewController.m */,
+			);
+			name = EventCreating;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,13 +363,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				71B763C11807830A00717D67 /* EventListViewController.m in Sources */,
+				71F8A91F183C7CAB001AEF6A /* EventEdittingViewController.m in Sources */,
 				7104A7A01824D1B500EB3AD5 /* EventListFetchModel.m in Sources */,
 				7191C63D18080A4E00E86482 /* MainTabViewController.m in Sources */,
 				7191C6371808024100E86482 /* EventDetailViewController.m in Sources */,
 				71F3219B17F830D700FFFB95 /* AppDelegate.m in Sources */,
 				71F3219717F830D700FFFB95 /* main.m in Sources */,
 				71AF5EFC18250D660013ABB3 /* EventFetchModel.m in Sources */,
-				71F8A913183C6138001AEF6A /* PostNewEventModel.m in Sources */,
+				718BAD46183E2B1800411B1E /* EventPostModel.m in Sources */,
 				719E115B183C289C00D3CDF4 /* WebServiceCommunicationModel.m in Sources */,
 				71AF5EF9182503D70013ABB3 /* EventDetailTableViewController.m in Sources */,
 				71DFFA43182104C900269E3E /* SettingPageViewController.m in Sources */,

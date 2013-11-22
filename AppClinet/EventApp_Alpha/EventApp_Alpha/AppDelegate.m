@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [WebServiceCommunicationModel constructRequest];
+    //[WebServiceCommunicationModel constructRequest];
     return YES;
 }
 
