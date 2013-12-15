@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7104A7A01824D1B500EB3AD5 /* EventListFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */; };
 		718BAD46183E2B1800411B1E /* EventPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 718BAD45183E2B1800411B1E /* EventPostModel.m */; };
+		718C9011185DA0A300D86EA1 /* TemplateTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 718C9010185DA0A300D86EA1 /* TemplateTableCell.m */; };
 		7191C6371808024100E86482 /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7191C6361808024100E86482 /* EventDetailViewController.m */; };
 		7191C63D18080A4E00E86482 /* MainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7191C63C18080A4E00E86482 /* MainTabViewController.m */; };
 		719E115B183C289C00D3CDF4 /* WebServiceCommunicationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 719E115A183C289C00D3CDF4 /* WebServiceCommunicationModel.m */; };
@@ -48,6 +49,8 @@
 		7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventListFetchModel.m; path = Model/EventListFetchModel.m; sourceTree = "<group>"; };
 		718BAD44183E2B1800411B1E /* EventPostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventPostModel.h; path = Model/EventPostModel.h; sourceTree = "<group>"; };
 		718BAD45183E2B1800411B1E /* EventPostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventPostModel.m; path = Model/EventPostModel.m; sourceTree = "<group>"; };
+		718C900F185DA0A300D86EA1 /* TemplateTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplateTableCell.h; path = ViewController/TemplateTableCell.h; sourceTree = "<group>"; };
+		718C9010185DA0A300D86EA1 /* TemplateTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemplateTableCell.m; path = ViewController/TemplateTableCell.m; sourceTree = "<group>"; };
 		7191C6351808024100E86482 /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventDetailViewController.h; path = ViewController/EventDetailViewController.h; sourceTree = "<group>"; };
 		7191C6361808024100E86482 /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventDetailViewController.m; path = ViewController/EventDetailViewController.m; sourceTree = "<group>"; };
 		7191C63B18080A4E00E86482 /* MainTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTabViewController.h; path = ViewController/MainTabViewController.h; sourceTree = "<group>"; };
@@ -122,6 +125,15 @@
 				718BAD45183E2B1800411B1E /* EventPostModel.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		718C900E185DA03E00D86EA1 /* CustomizeCell */ = {
+			isa = PBXGroup;
+			children = (
+				718C900F185DA0A300D86EA1 /* TemplateTableCell.h */,
+				718C9010185DA0A300D86EA1 /* TemplateTableCell.m */,
+			);
+			name = CustomizeCell;
 			sourceTree = "<group>";
 		};
 		71B763C21807832100717D67 /* ViewController */ = {
@@ -221,6 +233,7 @@
 		71F8A915183C7AD5001AEF6A /* EventList */ = {
 			isa = PBXGroup;
 			children = (
+				718C900E185DA03E00D86EA1 /* CustomizeCell */,
 				71B763BF1807830A00717D67 /* EventListViewController.h */,
 				71B763C01807830A00717D67 /* EventListViewController.m */,
 			);
@@ -364,6 +377,7 @@
 			files = (
 				71B763C11807830A00717D67 /* EventListViewController.m in Sources */,
 				71F8A91F183C7CAB001AEF6A /* EventEdittingViewController.m in Sources */,
+				718C9011185DA0A300D86EA1 /* TemplateTableCell.m in Sources */,
 				7104A7A01824D1B500EB3AD5 /* EventListFetchModel.m in Sources */,
 				7191C63D18080A4E00E86482 /* MainTabViewController.m in Sources */,
 				7191C6371808024100E86482 /* EventDetailViewController.m in Sources */,

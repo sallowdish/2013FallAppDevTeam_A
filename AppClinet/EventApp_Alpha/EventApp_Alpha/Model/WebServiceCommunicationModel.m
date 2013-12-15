@@ -30,7 +30,7 @@
     NSDictionary* dict=[[NSDictionary alloc]initWithObjects:@[@"",@"Washington",@"Event From IPhone",@"/app_project/api/v01/account/1/",@"2013-12-11",@"public"] forKeys:@[@"event_details",@"event_location",@"event_name",@"event_organizer_id",@"event_time",@"event_type"]];
     NSData* data=[NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
     
-    NSString* s=[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//    NSString* s=[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 //
 //    NSDictionary* d=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     

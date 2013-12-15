@@ -8,6 +8,7 @@
 
 #import "EventListViewController.h"
 #import "EventListFetchModel.h"
+#import "TemplateTableCell.h"
 
 @interface EventListViewController ()
 
@@ -85,15 +86,19 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"cellTemplate";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    TemplateTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     NSDictionary* event=[eventList objectAtIndex:indexPath.row];
-    [cell.textLabel setText:[event objectForKey:@"event_name"]];
-    cell.detailTextLabel.text=[NSString stringWithFormat:@"%@|%@|%@",
-        [[event objectForKey:@"event_organizer_id"] objectForKey:@"account_user_name"],
-        [(NSString*)[event objectForKey:@"event_time"] componentsSeparatedByString:@"T"][0],
-        [event objectForKey:@"event_location"]];
+    cell.eventNameLabel.text=[event objectForKey:@"event_name"];
+    cell.hosterLabel.text=[[event objectForKey:@"event_organizer_id"] objectForKey:@"account_user_name"];
+    NSArray* timeInfo=[[event objectForKey:@"event_time"] componentsSeparatedByString:@"T"];
+    cell.dataLabel.text=[NSString stringWithFormat:@"%@ | %@",timeInfo[0],timeInfo[1]];
+    cell.locationLabel.text=[event objectForKey:@"event_location"];
+//    cell.hosterLabel.text=[NSString stringWithFormat:@"%@|%@|%@",
+//        [[event objectForKey:@"event_organizer_id"] objectForKey:@"account_user_name"],
+//        [(NSString*)[event objectForKey:@"event_time"] componentsSeparatedByString:@"T"][0],
+//        [event objectForKey:@"event_location"]];
     
     return cell;
 }

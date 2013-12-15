@@ -29,7 +29,7 @@
     
     // receivedData is an instance variable declared elsewhere.
     NSURLResponse *res=response;
-    NSLog(@"%@",@"get a respond.");
+    NSLog(@"%@",res);
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
