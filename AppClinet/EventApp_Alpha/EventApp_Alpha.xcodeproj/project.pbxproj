@@ -10,8 +10,18 @@
 		7104A7A01824D1B500EB3AD5 /* EventListFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */; };
 		718BAD46183E2B1800411B1E /* EventPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 718BAD45183E2B1800411B1E /* EventPostModel.m */; };
 		718C9011185DA0A300D86EA1 /* TemplateTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 718C9010185DA0A300D86EA1 /* TemplateTableCell.m */; };
+		71910215185EC10E00B81F77 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71910214185EC10E00B81F77 /* LoginViewController.xib */; };
+		71910222185ECE7E00B81F77 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71910220185ECE7E00B81F77 /* LoginViewController.m */; };
+		71910225185EE0F300B81F77 /* Localrecord.json in Resources */ = {isa = PBXBuildFile; fileRef = 71910224185EE0F300B81F77 /* Localrecord.json */; };
 		7191C6371808024100E86482 /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7191C6361808024100E86482 /* EventDetailViewController.m */; };
 		7191C63D18080A4E00E86482 /* MainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7191C63C18080A4E00E86482 /* MainTabViewController.m */; };
+		71974BB41869A618004493DC /* CQMFloatingContentOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BA81869A618004493DC /* CQMFloatingContentOverlayView.m */; };
+		71974BB51869A618004493DC /* CQMFloatingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BAA1869A618004493DC /* CQMFloatingController.m */; };
+		71974BB61869A618004493DC /* CQMFloatingFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BAC1869A618004493DC /* CQMFloatingFrameView.m */; };
+		71974BB71869A618004493DC /* CQMFloatingMaskControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BAE1869A618004493DC /* CQMFloatingMaskControl.m */; };
+		71974BB81869A618004493DC /* CQMFloatingNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BB11869A618004493DC /* CQMFloatingNavigationBar.m */; };
+		71974BB91869A618004493DC /* CQMPathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BB31869A618004493DC /* CQMPathUtilities.m */; };
+		719CE1DA1874627500D2F058 /* FormatingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 719CE1D91874627500D2F058 /* FormatingModel.m */; };
 		719E115B183C289C00D3CDF4 /* WebServiceCommunicationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 719E115A183C289C00D3CDF4 /* WebServiceCommunicationModel.m */; };
 		71AF5EF9182503D70013ABB3 /* EventDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF5EF8182503D70013ABB3 /* EventDetailTableViewController.m */; };
 		71AF5EFC18250D660013ABB3 /* EventFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF5EFB18250D660013ABB3 /* EventFetchModel.m */; };
@@ -51,10 +61,29 @@
 		718BAD45183E2B1800411B1E /* EventPostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventPostModel.m; path = Model/EventPostModel.m; sourceTree = "<group>"; };
 		718C900F185DA0A300D86EA1 /* TemplateTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplateTableCell.h; path = ViewController/TemplateTableCell.h; sourceTree = "<group>"; };
 		718C9010185DA0A300D86EA1 /* TemplateTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemplateTableCell.m; path = ViewController/TemplateTableCell.m; sourceTree = "<group>"; };
+		71910214185EC10E00B81F77 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = UIResource/LoginViewController.xib; sourceTree = "<group>"; };
+		7191021F185ECE7E00B81F77 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = UIResource/LoginViewController.h; sourceTree = "<group>"; };
+		71910220185ECE7E00B81F77 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = UIResource/LoginViewController.m; sourceTree = "<group>"; };
+		71910224185EE0F300B81F77 /* Localrecord.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Localrecord.json; sourceTree = "<group>"; };
 		7191C6351808024100E86482 /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventDetailViewController.h; path = ViewController/EventDetailViewController.h; sourceTree = "<group>"; };
 		7191C6361808024100E86482 /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventDetailViewController.m; path = ViewController/EventDetailViewController.m; sourceTree = "<group>"; };
 		7191C63B18080A4E00E86482 /* MainTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTabViewController.h; path = ViewController/MainTabViewController.h; sourceTree = "<group>"; };
 		7191C63C18080A4E00E86482 /* MainTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainTabViewController.m; path = ViewController/MainTabViewController.m; sourceTree = "<group>"; };
+		71974BA71869A618004493DC /* CQMFloatingContentOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMFloatingContentOverlayView.h; sourceTree = "<group>"; };
+		71974BA81869A618004493DC /* CQMFloatingContentOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMFloatingContentOverlayView.m; sourceTree = "<group>"; };
+		71974BA91869A618004493DC /* CQMFloatingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMFloatingController.h; sourceTree = "<group>"; };
+		71974BAA1869A618004493DC /* CQMFloatingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMFloatingController.m; sourceTree = "<group>"; };
+		71974BAB1869A618004493DC /* CQMFloatingFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMFloatingFrameView.h; sourceTree = "<group>"; };
+		71974BAC1869A618004493DC /* CQMFloatingFrameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMFloatingFrameView.m; sourceTree = "<group>"; };
+		71974BAD1869A618004493DC /* CQMFloatingMaskControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMFloatingMaskControl.h; sourceTree = "<group>"; };
+		71974BAE1869A618004493DC /* CQMFloatingMaskControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMFloatingMaskControl.m; sourceTree = "<group>"; };
+		71974BAF1869A618004493DC /* CQMFloatingMaskControlDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMFloatingMaskControlDelegate.h; sourceTree = "<group>"; };
+		71974BB01869A618004493DC /* CQMFloatingNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMFloatingNavigationBar.h; sourceTree = "<group>"; };
+		71974BB11869A618004493DC /* CQMFloatingNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMFloatingNavigationBar.m; sourceTree = "<group>"; };
+		71974BB21869A618004493DC /* CQMPathUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMPathUtilities.h; sourceTree = "<group>"; };
+		71974BB31869A618004493DC /* CQMPathUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMPathUtilities.m; sourceTree = "<group>"; };
+		719CE1D81874627500D2F058 /* FormatingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormatingModel.h; path = Model/FormatingModel.h; sourceTree = "<group>"; };
+		719CE1D91874627500D2F058 /* FormatingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FormatingModel.m; path = Model/FormatingModel.m; sourceTree = "<group>"; };
 		719E1159183C289C00D3CDF4 /* WebServiceCommunicationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebServiceCommunicationModel.h; path = Model/WebServiceCommunicationModel.h; sourceTree = "<group>"; };
 		719E115A183C289C00D3CDF4 /* WebServiceCommunicationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebServiceCommunicationModel.m; path = Model/WebServiceCommunicationModel.m; sourceTree = "<group>"; };
 		71AF5EF7182503D70013ABB3 /* EventDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventDetailTableViewController.h; path = ViewController/EventDetailTableViewController.h; sourceTree = "<group>"; };
@@ -115,14 +144,8 @@
 		7104A7A11824D1BA00EB3AD5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7104A79E1824D1B500EB3AD5 /* EventListFetchModel.h */,
-				7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */,
-				71AF5EFA18250D660013ABB3 /* EventFetchModel.h */,
-				71AF5EFB18250D660013ABB3 /* EventFetchModel.m */,
-				719E1159183C289C00D3CDF4 /* WebServiceCommunicationModel.h */,
-				719E115A183C289C00D3CDF4 /* WebServiceCommunicationModel.m */,
-				718BAD44183E2B1800411B1E /* EventPostModel.h */,
-				718BAD45183E2B1800411B1E /* EventPostModel.m */,
+				719CE1D71874623800D2F058 /* FormatingModels */,
+				719CE1D61874621B00D2F058 /* DataCommunicationModels */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -136,11 +159,67 @@
 			name = CustomizeCell;
 			sourceTree = "<group>";
 		};
+		71910216185EC40200B81F77 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				71910214185EC10E00B81F77 /* LoginViewController.xib */,
+				7191021F185ECE7E00B81F77 /* LoginViewController.h */,
+				71910220185ECE7E00B81F77 /* LoginViewController.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		71974BA61869A618004493DC /* CQMFloatingView */ = {
+			isa = PBXGroup;
+			children = (
+				71974BA71869A618004493DC /* CQMFloatingContentOverlayView.h */,
+				71974BA81869A618004493DC /* CQMFloatingContentOverlayView.m */,
+				71974BA91869A618004493DC /* CQMFloatingController.h */,
+				71974BAA1869A618004493DC /* CQMFloatingController.m */,
+				71974BAB1869A618004493DC /* CQMFloatingFrameView.h */,
+				71974BAC1869A618004493DC /* CQMFloatingFrameView.m */,
+				71974BAD1869A618004493DC /* CQMFloatingMaskControl.h */,
+				71974BAE1869A618004493DC /* CQMFloatingMaskControl.m */,
+				71974BAF1869A618004493DC /* CQMFloatingMaskControlDelegate.h */,
+				71974BB01869A618004493DC /* CQMFloatingNavigationBar.h */,
+				71974BB11869A618004493DC /* CQMFloatingNavigationBar.m */,
+				71974BB21869A618004493DC /* CQMPathUtilities.h */,
+				71974BB31869A618004493DC /* CQMPathUtilities.m */,
+			);
+			name = CQMFloatingView;
+			path = ViewController/CQMFloatingView;
+			sourceTree = "<group>";
+		};
+		719CE1D61874621B00D2F058 /* DataCommunicationModels */ = {
+			isa = PBXGroup;
+			children = (
+				7104A79E1824D1B500EB3AD5 /* EventListFetchModel.h */,
+				7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */,
+				71AF5EFA18250D660013ABB3 /* EventFetchModel.h */,
+				71AF5EFB18250D660013ABB3 /* EventFetchModel.m */,
+				719E1159183C289C00D3CDF4 /* WebServiceCommunicationModel.h */,
+				719E115A183C289C00D3CDF4 /* WebServiceCommunicationModel.m */,
+				718BAD44183E2B1800411B1E /* EventPostModel.h */,
+				718BAD45183E2B1800411B1E /* EventPostModel.m */,
+			);
+			name = DataCommunicationModels;
+			sourceTree = "<group>";
+		};
+		719CE1D71874623800D2F058 /* FormatingModels */ = {
+			isa = PBXGroup;
+			children = (
+				719CE1D81874627500D2F058 /* FormatingModel.h */,
+				719CE1D91874627500D2F058 /* FormatingModel.m */,
+			);
+			name = FormatingModels;
+			sourceTree = "<group>";
+		};
 		71B763C21807832100717D67 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				71974BA61869A618004493DC /* CQMFloatingView */,
 				71F8A914183C7AB8001AEF6A /* Event */,
-				71F8A917183C7B19001AEF6A /* MainTabl */,
+				71F8A917183C7B19001AEF6A /* MainTab */,
 				71F8A918183C7B23001AEF6A /* Setting */,
 			);
 			name = ViewController;
@@ -185,8 +264,8 @@
 				71F3219C17F830D700FFFB95 /* Main.storyboard */,
 				71B763C21807832100717D67 /* ViewController */,
 				71F321A517F830D700FFFB95 /* Images.xcassets */,
-				71F3219117F830D700FFFB95 /* Supporting Files */,
 				7104A7A11824D1BA00EB3AD5 /* Model */,
+				71F3219117F830D700FFFB95 /* Supporting Files */,
 			);
 			path = EventApp_Alpha;
 			sourceTree = "<group>";
@@ -194,6 +273,8 @@
 		71F3219117F830D700FFFB95 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				71910224185EE0F300B81F77 /* Localrecord.json */,
+				71910216185EC40200B81F77 /* UI */,
 				71F3219217F830D700FFFB95 /* EventApp_Alpha-Info.plist */,
 				71F3219317F830D700FFFB95 /* InfoPlist.strings */,
 				71F3219617F830D700FFFB95 /* main.m */,
@@ -251,13 +332,13 @@
 			name = EventDetail;
 			sourceTree = "<group>";
 		};
-		71F8A917183C7B19001AEF6A /* MainTabl */ = {
+		71F8A917183C7B19001AEF6A /* MainTab */ = {
 			isa = PBXGroup;
 			children = (
 				7191C63B18080A4E00E86482 /* MainTabViewController.h */,
 				7191C63C18080A4E00E86482 /* MainTabViewController.m */,
 			);
-			name = MainTabl;
+			name = MainTab;
 			sourceTree = "<group>";
 		};
 		71F8A918183C7B23001AEF6A /* Setting */ = {
@@ -356,6 +437,8 @@
 			files = (
 				71DFFA48182115A900269E3E /* Main.storyboard in Resources */,
 				71F321A617F830D700FFFB95 /* Images.xcassets in Resources */,
+				71910225185EE0F300B81F77 /* Localrecord.json in Resources */,
+				71910215185EC10E00B81F77 /* LoginViewController.xib in Resources */,
 				71F3219517F830D700FFFB95 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,16 +458,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71974BB61869A618004493DC /* CQMFloatingFrameView.m in Sources */,
 				71B763C11807830A00717D67 /* EventListViewController.m in Sources */,
+				71974BB81869A618004493DC /* CQMFloatingNavigationBar.m in Sources */,
 				71F8A91F183C7CAB001AEF6A /* EventEdittingViewController.m in Sources */,
 				718C9011185DA0A300D86EA1 /* TemplateTableCell.m in Sources */,
 				7104A7A01824D1B500EB3AD5 /* EventListFetchModel.m in Sources */,
+				71910222185ECE7E00B81F77 /* LoginViewController.m in Sources */,
+				71974BB41869A618004493DC /* CQMFloatingContentOverlayView.m in Sources */,
+				71974BB71869A618004493DC /* CQMFloatingMaskControl.m in Sources */,
 				7191C63D18080A4E00E86482 /* MainTabViewController.m in Sources */,
 				7191C6371808024100E86482 /* EventDetailViewController.m in Sources */,
 				71F3219B17F830D700FFFB95 /* AppDelegate.m in Sources */,
 				71F3219717F830D700FFFB95 /* main.m in Sources */,
 				71AF5EFC18250D660013ABB3 /* EventFetchModel.m in Sources */,
+				71974BB51869A618004493DC /* CQMFloatingController.m in Sources */,
+				71974BB91869A618004493DC /* CQMPathUtilities.m in Sources */,
 				718BAD46183E2B1800411B1E /* EventPostModel.m in Sources */,
+				719CE1DA1874627500D2F058 /* FormatingModel.m in Sources */,
 				719E115B183C289C00D3CDF4 /* WebServiceCommunicationModel.m in Sources */,
 				71AF5EF9182503D70013ABB3 /* EventDetailTableViewController.m in Sources */,
 				71DFFA43182104C900269E3E /* SettingPageViewController.m in Sources */,

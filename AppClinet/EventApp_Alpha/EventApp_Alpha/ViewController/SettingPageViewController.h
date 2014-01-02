@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "CQMFloatingController.h"
 
 @interface SettingPageViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *usetTokenLabel;
-- (IBAction)onclickLoginViaWeibo:(id)sender;
+- (IBAction)loginClicked:(id)sender;
+
+@property (strong,nonatomic) CQMFloatingController *popController;
+
 
 @end

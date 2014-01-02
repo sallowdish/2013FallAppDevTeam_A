@@ -7,13 +7,15 @@
 //
 
 #import "SettingPageViewController.h"
+#import "LoginViewController.h"
+
 
 
 @interface SettingPageViewController ()
-
-@end
+@end	
 
 @implementation SettingPageViewController
+//@synthesize popController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,24 +32,33 @@
 	// Do any additional setup after loading the view.
 }
 
-- (IBAction)onclickLoginViaWeibo:(id)sender {
-//    [self loginViaWeibo];
+- (IBAction)loginClicked:(id)sender
+{
+    [self popOver:sender];
 }
 
-//- (void)loginViaWeibo
+//- (IBAction)onclickLoginViaWeibo:(id)sender {
+////    [self loadLoginView];
+//    [self popOver:sender];
+//}
+
+-(void)popOver:(id)sender
+{
+    LoginViewController* loginview=[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+//    UIViewController* loginview=[[UIViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    CQMFloatingController *floatingController = [CQMFloatingController sharedFloatingController];
+//    [floatingController setFrameColor:[UIColor orangeColor]];
+    [floatingController setLandscapeFrameSize:loginview.view.bounds.size];
+    [floatingController setPortraitFrameSize:loginview.view.bounds.size];
+    [floatingController showInView:self.view withContentViewController:loginview animated:YES];
+}
+
+//- (void)loadLoginView
 //{
-//    WBAuthorizeRequest *request = [WBAuthorizeRequest request];
-//    request.redirectURI = appRedirectURI;
-//    request.scope = @"all";
-//    request.userInfo = @{@"SSO_From": @"SettingPageViewController",
-//                         @"Other_Info_1": [NSNumber numberWithInt:123],
-//                         @"Other_Info_2": @[@"obj1", @"obj2"],
-//                         @"Other_Info_3": @{@"key1": @"obj1", @"key2": @"obj2"}};
-//    if (request) {
-//        [WeiboSDK sendRequest:request];
-//        NSLog(@"Request has been sent.");
-//    }
-//    NSLog([WeiboSDK isWeiboAppInstalled]?@"1":@"0");
+////    [[self view] addSubview:[[LoginViewController alloc] init]];
+//    LoginViewController* loginview=[[LoginViewController alloc] initWithNibName:@"LoginViewController.xib" bundle:self.nibBundle];
+//    UIPopoverController* pop=[[UIPopoverController alloc] initWithContentViewController:loginview];
+//    [pop presentPopoverFromRect:CGRectMake(0, 0, 640, 960) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 //}
 
 - (void)didReceiveMemoryWarning
@@ -55,6 +66,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 @end

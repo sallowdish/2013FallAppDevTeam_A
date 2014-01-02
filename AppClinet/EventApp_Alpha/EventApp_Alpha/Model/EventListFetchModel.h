@@ -12,4 +12,5 @@
 
 +(NSArray*)eventsList;
 -(void) fetchEventList;
+-(void) fetchEventListFromFile:(NSString*) filename;
 @end

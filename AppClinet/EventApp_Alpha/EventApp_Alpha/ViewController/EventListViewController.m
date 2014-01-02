@@ -9,6 +9,7 @@
 #import "EventListViewController.h"
 #import "EventListFetchModel.h"
 #import "TemplateTableCell.h"
+#import "FormatingModel.h"
 
 @interface EventListViewController ()
 
@@ -40,7 +41,9 @@
     
     //get the latest event list online
     EventListFetchModel* model=[[EventListFetchModel alloc] init];
+    
     [model fetchEventList];
+//    [model fetchEventListFromFile:@"/Users/ray/Documents/Development/2013FallAppDevTeam_A/AppClinet/EventApp_Alpha/EventApp_Alpha/Localrecord.json"];
     
     
 //    //Get the filepath for local json file
@@ -90,11 +93,8 @@
     
     // Configure the cell...
     NSDictionary* event=[eventList objectAtIndex:indexPath.row];
-    cell.eventNameLabel.text=[event objectForKey:@"event_name"];
-    cell.hosterLabel.text=[[event objectForKey:@"event_organizer_id"] objectForKey:@"account_user_name"];
-    NSArray* timeInfo=[[event objectForKey:@"event_time"] componentsSeparatedByString:@"T"];
-    cell.dataLabel.text=[NSString stringWithFormat:@"%@ | %@",timeInfo[0],timeInfo[1]];
-    cell.locationLabel.text=[event objectForKey:@"event_location"];
+    cell=[self modelToViewMatch:cell eventInstance:event];
+
 //    cell.hosterLabel.text=[NSString stringWithFormat:@"%@|%@|%@",
 //        [[event objectForKey:@"event_organizer_id"] objectForKey:@"account_user_name"],
 //        [(NSString*)[event objectForKey:@"event_time"] componentsSeparatedByString:@"T"][0],
@@ -103,12 +103,26 @@
     return cell;
 }
 
+-(TemplateTableCell*)modelToViewMatch:(id)sender eventInstance:(NSDictionary*)event
+{
+    
+    TemplateTableCell* cell=(TemplateTableCell*)sender;
+    event=[event objectForKey:@"fields"];
+    FormatingModel* model=[[FormatingModel alloc]init];
+    cell.eventNameLabel.text=[event objectForKey:@"Event_Title"];
+    cell.hosterLabel.text=[[event objectForKey:@"EventPoster_Account_ID"] objectForKey:@"username"];
+    NSArray* timeInfo=[model pythonDateTimeToStringArray:[event objectForKey:@"Event_Time"]];
+    cell.dataLabel.text=[NSString stringWithFormat:@"%@ | %@",timeInfo[0],timeInfo[1]];
+    cell.locationLabel.text=[[event objectForKey:@"Address_ID"] objectForKey:@"address"];
+    return cell;
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([[segue identifier] isEqualToString:@"selectedSegue"]) {
         UIViewController *destination=[segue destinationViewController];
         UITableViewCell* cell=sender;
         id obj=[eventList objectAtIndex:[[self.tableView indexPathForCell:cell] row]];
-        [destination setValue:[obj valueForKey:@"id"] forKey:@"eventID"];
+        [destination setValue:[obj valueForKey:@"pk"] forKey:@"eventID"];
     }
 }
 /*

@@ -22,6 +22,8 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+
+        
     }
     return self;
 }
@@ -35,19 +37,21 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     
-    [EventFetchModel fetchEventWithEventID:eventID Error:nil];
-    
-    NSString *filepath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/EventDetails.json"];
-    
+//    [EventFetchModel fetchEventWithEventID:eventID Error:nil];
+//    
+//    NSString *filepath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/EventDetails.json"];
+//    
+//    event=[NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:filepath] options:NSJSONReadingAllowFragments error:nil];
+    NSString* filepath=@"/Users/ray/Documents/Development/2013FallAppDevTeam_A/AppClinet/EventApp_Alpha/EventApp_Alpha/EventDetail.json";
     event=[NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:filepath] options:NSJSONReadingAllowFragments error:nil];
+    eventID=((NSString*)[event valueForKey:@"event_id"]).intValue;
     
     
-    
-    eventName.text=[event valueForKey:@"Name"];
-    eventHoster.text=[event valueForKey:@"Hoster"];
-    eventDate.text=[event valueForKey:@"Time"];
-    eventPlace.text=[event valueForKey:@"Location"];
-    eventCapcity.text=[NSString stringWithFormat:@"%@",(NSNumber*)[event valueForKey:@"Capcity"]];
+    eventName.text=[event valueForKey:@"event_name"];
+    eventHoster.text=[[event valueForKey:@"event_organizer_id"] valueForKey:@"account_user_name"];
+    eventDate.text=[event valueForKey:@"event_time"];
+    eventPlace.text=[event valueForKey:@"event_location"];
+    eventCapcity.text=[NSString stringWithFormat:@"%@",(NSNumber*)[event valueForKey:@"event_capcity"]];
 }
 
 - (void)didReceiveMemoryWarning
