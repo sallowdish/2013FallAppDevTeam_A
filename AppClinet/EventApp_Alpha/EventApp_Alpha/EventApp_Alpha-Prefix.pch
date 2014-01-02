@@ -14,9 +14,9 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 
-//#define WEBSERVICEDOMAIN  @"http://cmpt470.csil.sfu.ca:8013/app_project/"
+//#define WEBSERVICEDOMAIN  @"http://www.machoapes.com/app_project"
 #define WEBSERVICEDOMAIN  @"http://127.0.0.1:8000/eventApp"
 #define API @"/api/v01"
-//#define FORMAT @"format=json"
-#define FORMAT @"/"
+//#define JSONFORMAT @"format=json"
+#define JSONFORMAT @""
 #endif

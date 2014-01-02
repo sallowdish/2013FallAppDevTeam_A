@@ -1,0 +1,4 @@
+This folder is for Web Service files
+1. copy a local version of settings.py from _setting.py
+2. configure the gitignore to fliter all files that os dependent
+3. read the dependencies file for referring

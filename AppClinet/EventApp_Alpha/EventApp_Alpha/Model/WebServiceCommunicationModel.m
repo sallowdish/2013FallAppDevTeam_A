@@ -23,7 +23,7 @@
 }
 
 +(NSURL *)constructFetchRequest{
-    return [self constructFetchRequestWithResource:@"event/" WithConstrain:@"?" WithFormat:FORMAT];
+    return [self constructFetchRequestWithResource:@"event/" WithConstrain:@"?" WithFormat:JSONFORMAT];
 }
 
 +(NSMutableURLRequest*)constructPostRequestWithJsonData:(NSData*)postData{

@@ -1,0 +1,4 @@
+settings.py
+_static/
+sqlite3.db
+*.pyc

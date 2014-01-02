@@ -30,14 +30,14 @@ static NSArray* eventList;
     @try {
         NSError* error=nil;
         //get the json of eventlist from webservice
-        NSData* buffer=[NSData dataWithContentsOfURL:[WebServiceCommunicationModel constructRequestWithResource:@"/Event/"] options:NSDataReadingMappedIfSafe error:&error];
+        NSData* buffer=[NSData dataWithContentsOfURL:[WebServiceCommunicationModel constructFetchRequestWithResource:@"/event/" WithConstrain:@"" WithFormat:JSONFORMAT] options:NSDataReadingMappedIfSafe error:&error];
         if(error)
         {
             @throw [NSException exceptionWithName:@"Fetching Failed" reason:error.localizedDescription userInfo:nil];
         }
-        
+        NSString* temp=[[NSString alloc]initWithData:buffer encoding:NSUTF8StringEncoding];
         //Pharse the data
-        NSArray* rawData=[NSJSONSerialization JSONObjectWithData:buffer options:NSJSONReadingMutableContainers error:&error];
+        NSArray* rawData=[NSJSONSerialization JSONObjectWithData:buffer options:NSJSONReadingMutableContainers error:&error] ;
         if(error)
         {
             @throw [NSException exceptionWithName:@"Pharse Failed" reason:error.localizedDescription userInfo:nil];
