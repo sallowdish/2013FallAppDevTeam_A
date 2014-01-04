@@ -717,7 +717,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="em1-jA-DRJ">
-                                <rect key="frame" x="140" y="263" width="41" height="30"/>
+                                <rect key="frame" x="140" y="439" width="41" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cheat">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -765,13 +765,13 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redheart.png" id="F3c-BS-Lma">
-                                                <rect key="frame" x="270" y="8" width="40" height="40"/>
+                                                <rect key="frame" x="280" y="-6" width="40" height="55"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1024" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b3y-o1-K0u">
-                                                <rect key="frame" x="269" y="39" width="42" height="21"/>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1024" textAlignment="center" lineBreakMode="headTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b3y-o1-K0u">
+                                                <rect key="frame" x="280" y="42" width="42" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -849,19 +849,12 @@
     </scenes>
     <resources>
         <image name="Calender" width="204" height="204"/>
-        <image name="Calender" width="204" height="204"/>
-        <image name="Calender" width="204" height="204"/>
-        <image name="Photos" width="30" height="30"/>
-        <image name="Photos" width="30" height="30"/>
-        <image name="Photos" width="30" height="30"/>
-        <image name="Photos" width="30" height="30"/>
         <image name="Photos" width="30" height="30"/>
         <image name="Setting" width="30" height="30"/>
         <image name="backgroundImage.png" width="1280" height="800"/>
         <image name="first" width="30" height="30"/>
-        <image name="first" width="30" height="30"/>
         <image name="profileImage.png" width="300" height="300"/>
-        <image name="redheart.png" width="1600" height="1600"/>
+        <image name="redheart.png" width="570" height="713"/>
         <image name="shopping" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

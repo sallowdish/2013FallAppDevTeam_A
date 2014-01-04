@@ -8,7 +8,11 @@
 
 #import "LoginViewController.h"
 
+#define MAXTAG 100
+
 @interface LoginViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *forgetLabel;
+@property (weak, nonatomic) IBOutlet UIButton *forgetButton;
 
 @end
 
@@ -21,7 +25,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [self loadView];
-        self.view.layer.cornerRadius=6;
+        [self viewDidLoad];
+        
     }
     return self;
 }
@@ -30,10 +35,35 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-//    usernameField=(UITextField*)[self.view viewWithTag:100];
-//    passwordField =(UITextField*)[self.view viewWithTag:101];
-//    NSLog(self.view.subviews);
+    
+    NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
+    self.forgetLabel.attributedText = [[NSAttributedString alloc] initWithString:@"Forget your password?" attributes:underlineAttribute];
+    self.forgetButton.frame=self.forgetLabel.frame;
+    self.view.layer.cornerRadius=6;
+    for (int i=100; i<MAXTAG+1; i++) {
+        UIView* subview=[self.view viewWithTag:i];
+        subview.layer.cornerRadius=6;
+        subview.layer.masksToBounds=YES;
+    }
 }
+- (IBAction)cancelButtonPressed:(id)sende
+{
+    [self.shareController dismissAnimated:YES];
+}
+
+- (IBAction)touchOutside:(id)sender {
+    [self.view endEditing:YES];
+}
+
+- (IBAction)forgetPassword:(id)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Forget Your Password?"
+                                                    message:@"Baka!\nばか!!\n馬~鹿!!!"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
