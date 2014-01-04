@@ -10,6 +10,7 @@
 #import "EventDetailTableViewController.h"
 #import "EventFetchModel.h"
 #import "FormatingModel.h"
+#define MAXTAG 104
 @interface EventDetailViewController ()
 @property (strong,nonatomic) NSDictionary* event;
 @end
@@ -40,7 +41,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 //    set the view frame to round conner
-    for (int i=100; i<105; i++) {
+    for (int i=100; i<MAXTAG+1; i++) {
         UIView* subview=[self.view viewWithTag:i];
         subview.layer.cornerRadius=6;
         subview.layer.masksToBounds=YES;

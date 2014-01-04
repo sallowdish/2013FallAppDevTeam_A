@@ -691,9 +691,15 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="Fi8-rs-FVR" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" image="Setting" id="2sR-aW-4fR"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pQa-zw-QWV">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="pQa-zw-QWV">
+                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="nGs-ta-jGr">
+                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="fjy-3j-6tS" kind="relationship" relationship="rootViewController" id="bvb-fa-L6c"/>
                     </connections>
@@ -709,6 +715,18 @@
                     <view key="view" contentMode="scaleToFill" id="1Wk-qL-cvZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="em1-jA-DRJ">
+                                <rect key="frame" x="140" y="263" width="41" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cheat">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="i4G-Cf-69o" kind="push" id="tj3-G0-aGT"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Setting" id="yHa-vO-P3B">
@@ -718,10 +736,78 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="i4G-Cf-69o" kind="push" identifier="loginSucessed" id="Vt1-1z-3GY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EIy-rM-x8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="598" y="1939"/>
+        </scene>
+        <!--Profile Page View Controller - Profile-->
+        <scene sceneID="kaU-dT-CJh">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="i4G-Cf-69o" customClass="ProfilePageViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QZ0-lw-pef">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="FDX-s5-dgU">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="A6G-hi-2dY" userLabel="TopBackground">
+                                        <rect key="frame" x="0.0" y="63" width="320" height="250"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundImage.png" id="mZm-Li-3fs">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redheart.png" id="F3c-BS-Lma">
+                                                <rect key="frame" x="270" y="8" width="40" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1024" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b3y-o1-K0u">
+                                                <rect key="frame" x="269" y="39" width="42" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view alpha="0.29999999999999999" contentMode="scaleToFill" id="z3W-it-toE" userLabel="IntersectionMask">
+                                        <rect key="frame" x="0.0" y="306" width="320" height="15"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view tag="100" contentMode="scaleToFill" id="Swd-Lj-ggC" userLabel="ProfileImage">
+                                        <rect key="frame" x="105" y="256" width="110" height="110"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileImage.png" id="Pep-hQ-NZ2">
+                                                <rect key="frame" x="5" y="5" width="100" height="100"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.80000000000000004" alpha="1" colorSpace="calibratedWhite"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profile" id="Htp-jO-dtX"/>
+                    <connections>
+                        <outlet property="scrollView" destination="FDX-s5-dgU" id="D30-er-nld"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LqO-z8-I6E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1183" y="1939"/>
         </scene>
         <!--View Controller - My Tickets-->
         <scene sceneID="CfP-EL-xCs">
@@ -771,8 +857,11 @@
         <image name="Photos" width="30" height="30"/>
         <image name="Photos" width="30" height="30"/>
         <image name="Setting" width="30" height="30"/>
+        <image name="backgroundImage.png" width="1280" height="800"/>
         <image name="first" width="30" height="30"/>
         <image name="first" width="30" height="30"/>
+        <image name="profileImage.png" width="300" height="300"/>
+        <image name="redheart.png" width="1600" height="1600"/>
         <image name="shopping" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -780,4 +869,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="tj3-G0-aGT"/>
+    </inferredMetricsTieBreakers>
 </document>
