@@ -30,7 +30,7 @@
 - (void)viewDidLoad
 {
     [self.scrollView setScrollEnabled:YES];
-    [self.scrollView setContentSize:CGSizeMake(320,self.scrollView.frame.size.height*1.2)];
+    [self.scrollView setContentSize:CGSizeMake(320,self.scrollView.frame.size.height*1.1)];
     [super viewDidLoad];
     
 
@@ -74,7 +74,7 @@
     self.location.text=[[event objectForKey:@"Address_ID"] objectForKey:@"address"];
     self.like.text=[NSString stringWithFormat:@"%@",[event objectForKey:@"Event_Like"]];
     self.RSVP.text=[NSString stringWithFormat:@"%@/%@",[event objectForKey:@"Event_RSVP"],[event objectForKey:@"Event_Capacity"]];
-    self.images.image=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.nyewall.com/images/2013/07/penguins-wallpaper.jpg"]]];
+    self.images.image=[ UIImage imageNamed:@"Beach.png"];
 
 }
 
