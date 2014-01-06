@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "popoverAlterModel.h"
 
 #define MAXTAG 100
 
@@ -56,12 +57,13 @@
 }
 
 - (IBAction)forgetPassword:(id)sender {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Forget Your Password?"
-                                                    message:@"Baka!\nばか!!\n馬~鹿!!!"
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Forget Your Password?"
+//                                                    message:@"Baka!\nばか!!\n馬~鹿!!!"
+//                                                   delegate:nil
+//                                          cancelButtonTitle:@"OK"
+//                                          otherButtonTitles:nil];
+//    [alert show];
+    [popoverAlterModel alterWithTitle:@"""Forget Your Password?" Message:@"Baka!\nばか!!\n馬~鹿!!!"];
 }
 
 

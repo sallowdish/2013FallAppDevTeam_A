@@ -13,6 +13,7 @@
 		71910225185EE0F300B81F77 /* Localrecord.json in Resources */ = {isa = PBXBuildFile; fileRef = 71910224185EE0F300B81F77 /* Localrecord.json */; };
 		7191C6371808024100E86482 /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7191C6361808024100E86482 /* EventDetailViewController.m */; };
 		7191C63D18080A4E00E86482 /* MainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7191C63C18080A4E00E86482 /* MainTabViewController.m */; };
+		719664651879BB1900D8BC7B /* popoverAlterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 719664641879BB1900D8BC7B /* popoverAlterModel.m */; };
 		71974BB41869A618004493DC /* CQMFloatingContentOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BA81869A618004493DC /* CQMFloatingContentOverlayView.m */; };
 		71974BB51869A618004493DC /* CQMFloatingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BAA1869A618004493DC /* CQMFloatingController.m */; };
 		71974BB61869A618004493DC /* CQMFloatingFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BAC1869A618004493DC /* CQMFloatingFrameView.m */; };
@@ -70,6 +71,8 @@
 		7191C6361808024100E86482 /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventDetailViewController.m; path = ViewController/EventDetailViewController.m; sourceTree = "<group>"; };
 		7191C63B18080A4E00E86482 /* MainTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTabViewController.h; path = ViewController/MainTabViewController.h; sourceTree = "<group>"; };
 		7191C63C18080A4E00E86482 /* MainTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainTabViewController.m; path = ViewController/MainTabViewController.m; sourceTree = "<group>"; };
+		719664631879BB1900D8BC7B /* popoverAlterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = popoverAlterModel.h; path = Model/popoverAlterModel.h; sourceTree = "<group>"; };
+		719664641879BB1900D8BC7B /* popoverAlterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = popoverAlterModel.m; path = Model/popoverAlterModel.m; sourceTree = "<group>"; };
 		71974BA71869A618004493DC /* CQMFloatingContentOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMFloatingContentOverlayView.h; sourceTree = "<group>"; };
 		71974BA81869A618004493DC /* CQMFloatingContentOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMFloatingContentOverlayView.m; sourceTree = "<group>"; };
 		71974BA91869A618004493DC /* CQMFloatingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMFloatingController.h; sourceTree = "<group>"; };
@@ -153,6 +156,7 @@
 		7104A7A11824D1BA00EB3AD5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				719664621879BAE200D8BC7B /* HUD */,
 				719CE1D71874623800D2F058 /* FormatingModels */,
 				719CE1D61874621B00D2F058 /* DataCommunicationModels */,
 			);
@@ -176,6 +180,15 @@
 				71EE867C18784E04007FD900 /* LoginViewController.xib */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		719664621879BAE200D8BC7B /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				719664631879BB1900D8BC7B /* popoverAlterModel.h */,
+				719664641879BB1900D8BC7B /* popoverAlterModel.m */,
+			);
+			name = HUD;
 			sourceTree = "<group>";
 		};
 		71974BA61869A618004493DC /* CQMFloatingView */ = {
@@ -284,6 +297,7 @@
 				71B763C21807832100717D67 /* ViewController */,
 				71F321A517F830D700FFFB95 /* Images.xcassets */,
 				7104A7A11824D1BA00EB3AD5 /* Model */,
+				71910216185EC40200B81F77 /* UI */,
 				71F3219117F830D700FFFB95 /* Supporting Files */,
 			);
 			path = EventApp_Alpha;
@@ -294,7 +308,6 @@
 			children = (
 				71EE867518784D63007FD900 /* Images */,
 				71910224185EE0F300B81F77 /* Localrecord.json */,
-				71910216185EC40200B81F77 /* UI */,
 				71F3219217F830D700FFFB95 /* EventApp_Alpha-Info.plist */,
 				71F3219317F830D700FFFB95 /* InfoPlist.strings */,
 				71F3219617F830D700FFFB95 /* main.m */,
@@ -484,6 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71974BB61869A618004493DC /* CQMFloatingFrameView.m in Sources */,
+				719664651879BB1900D8BC7B /* popoverAlterModel.m in Sources */,
 				71B763C11807830A00717D67 /* EventListViewController.m in Sources */,
 				71974BB81869A618004493DC /* CQMFloatingNavigationBar.m in Sources */,
 				71EE8685187854B6007FD900 /* ProfilePageViewController.m in Sources */,
