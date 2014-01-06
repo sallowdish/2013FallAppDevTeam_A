@@ -490,6 +490,7 @@
                     <connections>
                         <outlet property="RSVP" destination="jZp-lN-PIT" id="hXB-Bt-zo0"/>
                         <outlet property="dateTime" destination="dXw-M4-vBq" id="7i1-Ey-qPG"/>
+                        <outlet property="description" destination="4cw-FZ-ilY" id="9XV-eF-IPn"/>
                         <outlet property="eventName" destination="mzh-6e-b07" id="FX9-6k-pdS"/>
                         <outlet property="hoster" destination="vi5-jL-Whu" id="Ijq-9u-Nmg"/>
                         <outlet property="images" destination="PpP-PB-3Ba" id="oyn-DK-6BP"/>
@@ -878,11 +879,21 @@
     </scenes>
     <resources>
         <image name="Calender" width="204" height="204"/>
+        <image name="Calender" width="204" height="204"/>
+        <image name="Calender" width="204" height="204"/>
+        <image name="Photos" width="30" height="30"/>
+        <image name="Photos" width="30" height="30"/>
+        <image name="Photos" width="30" height="30"/>
+        <image name="Photos" width="30" height="30"/>
         <image name="Photos" width="30" height="30"/>
         <image name="Setting" width="30" height="30"/>
         <image name="backgroundImage.png" width="1280" height="800"/>
+        <image name="backgroundImage.png" width="1280" height="800"/>
+        <image name="first" width="30" height="30"/>
+        <image name="first" width="30" height="30"/>
         <image name="first" width="30" height="30"/>
         <image name="profileImage.png" width="300" height="300"/>
+        <image name="redheart.png" width="570" height="713"/>
         <image name="redheart.png" width="570" height="713"/>
         <image name="shopping" width="30" height="30"/>
     </resources>

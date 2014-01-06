@@ -53,14 +53,15 @@ bool isJoined;
     NSError* err;
     
 //    NSString *filepath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/EventDetails.json"];
-    NSData* rawData=[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://127.0.0.1:8000/eventApp/api/v01/event/%ld/",(long)eventID]]];
+    NSData* rawData=[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://127.0.0.1:8000/api/v01/event/%ld/",(long)eventID]]];
     
-    NSArray* jsonData=[NSJSONSerialization JSONObjectWithData:rawData options:NSJSONReadingAllowFragments error:&err];
+    NSDictionary* jsonData=[NSJSONSerialization JSONObjectWithData:rawData options:NSJSONReadingAllowFragments error:&err];
     
     if(err)
         NSLog(@"%@",[err localizedDescription]);
     else{
-        event=[jsonData[0] objectForKey:@"fields"];
+        //event=[jsonData[0] objectForKey:@"fields"];
+        event=jsonData;
         [self modelToViewMatch];
         isJoined=NO;
     }
@@ -72,13 +73,22 @@ bool isJoined;
 
 -(void)modelToViewMatch
 {
-    self.eventName.text=[NSString stringWithFormat:@"- %@ -",[event objectForKey:@"Event_Title"]];
-    self.hoster.text=[[event objectForKey:@"EventPoster_Account_ID"] objectForKey:@"username"];
-    NSArray* timeInfo=[[[FormatingModel alloc]init]pythonDateTimeToStringArray:[event objectForKey:@"Event_Time"]];
+    self.eventName.text=[NSString stringWithFormat:@"- %@ -",[event objectForKey:@"event_title"]];
+    self.hoster.text=[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"username"];
+    NSArray* timeInfo=[[[FormatingModel alloc]init]pythonDateTimeToStringArray:[event objectForKey:@"event_time"]];
     self.dateTime.text=[NSString stringWithFormat:@"%@|%@",timeInfo[0],timeInfo[1]];
     self.location.text=[[event objectForKey:@"Address_ID"] objectForKey:@"address"];
-    self.like.text=[NSString stringWithFormat:@"%@",[event objectForKey:@"Event_Like"]];
-    self.RSVP.text=[NSString stringWithFormat:@"%@/%@",[event objectForKey:@"Event_RSVP"],[event objectForKey:@"Event_Capacity"]];
+    self.like.text=[NSString stringWithFormat:@"%@",[event objectForKey:@"event_like"]];
+    self.RSVP.text=[NSString stringWithFormat:@"%@/%@",[event objectForKey:@"event_rsvp"],[event objectForKey:@"event_capacity"]];
+    NSString *description=[event objectForKey:@"event_detail"];
+    if ([description isEqualToString:@""]) {
+        self.description.text=@"This guy is really lazy. He didn't write anything in detail.";
+        self.description.selectable=NO;
+    }
+    else{
+        self.description.text=description;
+        
+    }
     self.images.image=[ UIImage imageNamed:@"Beach.png"];
 
 }
@@ -92,8 +102,8 @@ bool isJoined;
 - (IBAction)joinButtonPressed:(id)sender {
     if(isJoined==NO)
     {
-        NSInteger currentNum=[(NSString*)[event objectForKey:@"Event_RSVP"] integerValue];
-        self.RSVP.text=[NSString stringWithFormat:@"%d/%@",currentNum+1,[event objectForKey:@"Event_Capacity"]];
+        NSInteger currentNum=[(NSString*)[event objectForKey:@"event_rsvp"] integerValue];
+        self.RSVP.text=[NSString stringWithFormat:@"%d/%@",currentNum+1,[event objectForKey:@"event_capacity"]];
         self.joinButton.enabled=NO;
         isJoined=!isJoined;
         [popoverAlterModel alterWithTitle:@"Congratulation" Message:@"You have joined the event successfully."];

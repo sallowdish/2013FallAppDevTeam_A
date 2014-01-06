@@ -15,7 +15,7 @@
     #import <Foundation/Foundation.h>
 
 //#define WEBSERVICEDOMAIN  @"http://www.machoapes.com/app_project"
-#define WEBSERVICEDOMAIN  @"http://127.0.0.1:8000/eventApp"
+#define WEBSERVICEDOMAIN  @"http://127.0.0.1:8000"
 #define API @"/api/v01"
 //#define JSONFORMAT @"format=json"
 #define JSONFORMAT @""

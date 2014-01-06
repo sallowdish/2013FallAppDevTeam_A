@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *images;
 @property (weak, nonatomic) IBOutlet UIButton *joinButton;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
+@property (weak, nonatomic) IBOutlet UITextView *description;
 
 
 @end
