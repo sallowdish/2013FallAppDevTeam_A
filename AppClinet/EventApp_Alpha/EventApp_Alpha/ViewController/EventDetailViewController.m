@@ -10,12 +10,16 @@
 #import "EventDetailTableViewController.h"
 #import "EventFetchModel.h"
 #import "FormatingModel.h"
+#import "popoverAlterModel.h"
+#define MAXTAG 104
 @interface EventDetailViewController ()
 @property (strong,nonatomic) NSDictionary* event;
 @end
 
 @implementation EventDetailViewController
 @synthesize eventID,event;
+
+bool isJoined;
 
 
 - (id)init{
@@ -40,7 +44,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 //    set the view frame to round conner
-    for (int i=100; i<105; i++) {
+    for (int i=100; i<MAXTAG+1; i++) {
         UIView* subview=[self.view viewWithTag:i];
         subview.layer.cornerRadius=6;
         subview.layer.masksToBounds=YES;
@@ -58,6 +62,7 @@
     else{
         event=[jsonData[0] objectForKey:@"fields"];
         [self modelToViewMatch];
+        isJoined=NO;
     }
     //matching
 //    event=(NSDictionary*)[event objectForKey:@"fields"];
@@ -84,6 +89,20 @@
 //        ((EventDetailTableViewController*)[segue destinationViewController]).eventID=eventID;
 }
 
+- (IBAction)joinButtonPressed:(id)sender {
+    if(isJoined==NO)
+    {
+        NSInteger currentNum=[(NSString*)[event objectForKey:@"Event_RSVP"] integerValue];
+        self.RSVP.text=[NSString stringWithFormat:@"%d/%@",currentNum+1,[event objectForKey:@"Event_Capacity"]];
+        self.joinButton.enabled=NO;
+        isJoined=!isJoined;
+        [popoverAlterModel alterWithTitle:@"Congratulation" Message:@"You have joined the event successfully."];
+    }else
+    {
+        self.joinButton.enabled=NO;
+        [popoverAlterModel alterWithTitle:@"Failed" Message:@"The event is full, sorry."];
+    }
+}
 
 - (void)didReceiveMemoryWarning
 {

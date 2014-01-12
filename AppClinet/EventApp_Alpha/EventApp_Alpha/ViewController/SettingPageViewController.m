@@ -47,7 +47,8 @@
     LoginViewController* loginview=[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
 //    UIViewController* loginview=[[UIViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     CQMFloatingController *floatingController = [CQMFloatingController sharedFloatingController];
-//    [floatingController setFrameColor:[UIColor orangeColor]];
+    loginview.shareController=floatingController;
+    [floatingController setFrameColor:[UIColor whiteColor]];
     [floatingController setLandscapeFrameSize:loginview.view.bounds.size];
     [floatingController setPortraitFrameSize:loginview.view.bounds.size];
     [floatingController showInView:self.view withContentViewController:loginview animated:YES];
