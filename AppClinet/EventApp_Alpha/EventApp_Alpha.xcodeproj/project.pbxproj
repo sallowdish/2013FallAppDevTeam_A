@@ -22,10 +22,11 @@
 		71974BB81869A618004493DC /* CQMFloatingNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BB11869A618004493DC /* CQMFloatingNavigationBar.m */; };
 		71974BB91869A618004493DC /* CQMPathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BB31869A618004493DC /* CQMPathUtilities.m */; };
 		719CE1DA1874627500D2F058 /* FormatingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 719CE1D91874627500D2F058 /* FormatingModel.m */; };
-		719E115B183C289C00D3CDF4 /* WebServiceCommunicationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 719E115A183C289C00D3CDF4 /* WebServiceCommunicationModel.m */; };
 		71AF5EF9182503D70013ABB3 /* EventDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF5EF8182503D70013ABB3 /* EventDetailTableViewController.m */; };
 		71AF5EFC18250D660013ABB3 /* EventFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF5EFB18250D660013ABB3 /* EventFetchModel.m */; };
 		71B763C11807830A00717D67 /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B763C01807830A00717D67 /* EventListViewController.m */; };
+		71C0C0A918815CA3008DB5D9 /* URLConstructModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C0C0A818815CA3008DB5D9 /* URLConstructModel.m */; };
+		71C0C0AC18815D55008DB5D9 /* DataTransferModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C0C0AB18815D55008DB5D9 /* DataTransferModel.m */; };
 		71DFFA43182104C900269E3E /* SettingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DFFA42182104C900269E3E /* SettingPageViewController.m */; };
 		71DFFA4518210FAA00269E3E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4418210FAA00269E3E /* CFNetwork.framework */; };
 		71DFFA4718210FB200269E3E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4618210FB200269E3E /* Security.framework */; };
@@ -84,14 +85,16 @@
 		71974BB31869A618004493DC /* CQMPathUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMPathUtilities.m; sourceTree = "<group>"; };
 		719CE1D81874627500D2F058 /* FormatingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormatingModel.h; path = Model/FormatingModel.h; sourceTree = "<group>"; };
 		719CE1D91874627500D2F058 /* FormatingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FormatingModel.m; path = Model/FormatingModel.m; sourceTree = "<group>"; };
-		719E1159183C289C00D3CDF4 /* WebServiceCommunicationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebServiceCommunicationModel.h; path = Model/WebServiceCommunicationModel.h; sourceTree = "<group>"; };
-		719E115A183C289C00D3CDF4 /* WebServiceCommunicationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebServiceCommunicationModel.m; path = Model/WebServiceCommunicationModel.m; sourceTree = "<group>"; };
 		71AF5EF7182503D70013ABB3 /* EventDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventDetailTableViewController.h; path = ViewController/EventDetailTableViewController.h; sourceTree = "<group>"; };
 		71AF5EF8182503D70013ABB3 /* EventDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventDetailTableViewController.m; path = ViewController/EventDetailTableViewController.m; sourceTree = "<group>"; };
 		71AF5EFA18250D660013ABB3 /* EventFetchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventFetchModel.h; path = Model/EventFetchModel.h; sourceTree = "<group>"; };
 		71AF5EFB18250D660013ABB3 /* EventFetchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventFetchModel.m; path = Model/EventFetchModel.m; sourceTree = "<group>"; };
 		71B763BF1807830A00717D67 /* EventListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventListViewController.h; path = ViewController/EventListViewController.h; sourceTree = "<group>"; };
 		71B763C01807830A00717D67 /* EventListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventListViewController.m; path = ViewController/EventListViewController.m; sourceTree = "<group>"; };
+		71C0C0A718815CA3008DB5D9 /* URLConstructModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLConstructModel.h; path = Model/URLConstructModel.h; sourceTree = "<group>"; };
+		71C0C0A818815CA3008DB5D9 /* URLConstructModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLConstructModel.m; path = Model/URLConstructModel.m; sourceTree = "<group>"; };
+		71C0C0AA18815D55008DB5D9 /* DataTransferModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataTransferModel.h; path = Model/DataTransferModel.h; sourceTree = "<group>"; };
+		71C0C0AB18815D55008DB5D9 /* DataTransferModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataTransferModel.m; path = Model/DataTransferModel.m; sourceTree = "<group>"; };
 		71DFFA41182104C900269E3E /* SettingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingPageViewController.h; path = ViewController/SettingPageViewController.h; sourceTree = "<group>"; };
 		71DFFA42182104C900269E3E /* SettingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingPageViewController.m; path = ViewController/SettingPageViewController.m; sourceTree = "<group>"; };
 		71DFFA4418210FAA00269E3E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -197,10 +200,12 @@
 				7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */,
 				71AF5EFA18250D660013ABB3 /* EventFetchModel.h */,
 				71AF5EFB18250D660013ABB3 /* EventFetchModel.m */,
-				719E1159183C289C00D3CDF4 /* WebServiceCommunicationModel.h */,
-				719E115A183C289C00D3CDF4 /* WebServiceCommunicationModel.m */,
 				718BAD44183E2B1800411B1E /* EventPostModel.h */,
 				718BAD45183E2B1800411B1E /* EventPostModel.m */,
+				71C0C0A718815CA3008DB5D9 /* URLConstructModel.h */,
+				71C0C0A818815CA3008DB5D9 /* URLConstructModel.m */,
+				71C0C0AA18815D55008DB5D9 /* DataTransferModel.h */,
+				71C0C0AB18815D55008DB5D9 /* DataTransferModel.m */,
 			);
 			name = DataCommunicationModels;
 			sourceTree = "<group>";
@@ -474,9 +479,10 @@
 				71AF5EFC18250D660013ABB3 /* EventFetchModel.m in Sources */,
 				71974BB51869A618004493DC /* CQMFloatingController.m in Sources */,
 				71974BB91869A618004493DC /* CQMPathUtilities.m in Sources */,
+				71C0C0AC18815D55008DB5D9 /* DataTransferModel.m in Sources */,
 				718BAD46183E2B1800411B1E /* EventPostModel.m in Sources */,
+				71C0C0A918815CA3008DB5D9 /* URLConstructModel.m in Sources */,
 				719CE1DA1874627500D2F058 /* FormatingModel.m in Sources */,
-				719E115B183C289C00D3CDF4 /* WebServiceCommunicationModel.m in Sources */,
 				71AF5EF9182503D70013ABB3 /* EventDetailTableViewController.m in Sources */,
 				71DFFA43182104C900269E3E /* SettingPageViewController.m in Sources */,
 			);

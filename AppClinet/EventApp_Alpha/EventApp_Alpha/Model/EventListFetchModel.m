@@ -7,7 +7,7 @@
 //
 
 #import "EventListFetchModel.h"
-#import "WebServiceCommunicationModel.h"
+#import "DataTransferModel.h"
 
 
 @implementation EventListFetchModel
@@ -29,13 +29,19 @@ static NSArray* eventList;
 {
     @try {
         NSError* error=nil;
+        NSData* buffer=nil;
+        DataTransferModel* transfer=[[DataTransferModel alloc]init];
         //get the json of eventlist from webservice
-        NSData* buffer=[NSData dataWithContentsOfURL:[WebServiceCommunicationModel constructFetchRequestWithResource:@"/event/" WithConstrain:@"" WithFormat:JSONFORMAT] options:NSDataReadingMappedIfSafe error:&error];
-        if(error)
+//        NSData* buffer=[NSData dataWithContentsOfURL:[URLConstructModel constructFetchRequestWithResource:@"/event/" WithConstrain:NOCONSTRAIN WithFormat:JSONFORMAT] options:NSDataReadingMappedIfSafe error:&error];
+        [transfer fetchDataWithUrl:[DataTransferModel constructFetchRequestWithResource:@"/event/" WithConstrain:NOCONSTRAIN WithFormat:JSONFORMAT]];
+        if(!transfer.data)
         {
             @throw [NSException exceptionWithName:@"Fetching Failed" reason:error.localizedDescription userInfo:nil];
+        }else
+        {
+            buffer=transfer.data;
         }
-        NSString* temp=[[NSString alloc]initWithData:buffer encoding:NSUTF8StringEncoding];
+        //NSString* temp=[[NSString alloc]initWithData:buffer encoding:NSUTF8StringEncoding];
         //Pharse the data
         NSArray* rawData=[NSJSONSerialization JSONObjectWithData:buffer options:NSJSONReadingMutableContainers error:&error] ;
         if(error)

@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 2013_Fall_Dev_Team_A. All rights reserved.
 //
 
-#import "WebServiceCommunicationModel.h"
+#import "URLConstructModel.h"
 
-@interface EventPostModel : WebServiceCommunicationModel <NSURLConnectionDataDelegate>
+@interface EventPostModel : URLConstructModel <NSURLConnectionDataDelegate>
 -(bool)postEventWithRequest:(NSMutableURLRequest*)request;
 
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
