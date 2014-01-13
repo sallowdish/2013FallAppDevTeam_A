@@ -622,6 +622,7 @@
                     <connections>
                         <outlet property="RSVP" destination="jZp-lN-PIT" id="hXB-Bt-zo0"/>
                         <outlet property="dateTime" destination="dXw-M4-vBq" id="7i1-Ey-qPG"/>
+                        <outlet property="description" destination="4cw-FZ-ilY" id="9XV-eF-IPn"/>
                         <outlet property="eventName" destination="mzh-6e-b07" id="FX9-6k-pdS"/>
                         <outlet property="hoster" destination="vi5-jL-Whu" id="Ijq-9u-Nmg"/>
                         <outlet property="images" destination="PpP-PB-3Ba" id="oyn-DK-6BP"/>

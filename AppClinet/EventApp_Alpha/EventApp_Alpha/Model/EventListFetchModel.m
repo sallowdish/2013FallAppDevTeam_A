@@ -43,12 +43,12 @@ static NSArray* eventList;
         }
         //NSString* temp=[[NSString alloc]initWithData:buffer encoding:NSUTF8StringEncoding];
         //Pharse the data
-        NSArray* rawData=[NSJSONSerialization JSONObjectWithData:buffer options:NSJSONReadingMutableContainers error:&error] ;
+        NSDictionary* rawData=[NSJSONSerialization JSONObjectWithData:buffer options:NSJSONReadingMutableContainers error:&error] ;
         if(error)
         {
             @throw [NSException exceptionWithName:@"Pharse Failed" reason:error.localizedDescription userInfo:nil];
         }
-        eventList=[NSArray arrayWithArray:rawData];
+        eventList=[rawData objectForKey:@"objects"];
         // TODO: write into local file
         if ([NSJSONSerialization isValidJSONObject:eventList]) {
             NSString *jsonContent=[[NSString alloc]initWithData:[NSJSONSerialization dataWithJSONObject:eventList options:NSJSONWritingPrettyPrinted error:&error] encoding:NSUTF8StringEncoding];

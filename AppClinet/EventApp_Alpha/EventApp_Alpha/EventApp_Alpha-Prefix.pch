@@ -13,9 +13,15 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+<<<<<<< HEAD
 //for web service
 #define WEBSERVICEDOMAIN  @"http://www.machoapes.com/app_project"
 //#define WEBSERVICEDOMAIN  @"http://127.0.0.1:8000/eventApp"
+=======
+
+//#define WEBSERVICEDOMAIN  @"http://www.machoapes.com/app_project"
+#define WEBSERVICEDOMAIN  @"http://127.0.0.1:8000"
+>>>>>>> Developing-Base-on-WS
 #define API @"/api/v01"
 //for web service
 #define JSONFORMAT @"format=json"

@@ -18,6 +18,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *RSVP;
 @property (weak, nonatomic) IBOutlet UILabel *like;
 @property (weak, nonatomic) IBOutlet UIImageView *images;
+<<<<<<< HEAD
+=======
+@property (weak, nonatomic) IBOutlet UIButton *joinButton;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+@property (weak, nonatomic) IBOutlet UITextView *description;
+>>>>>>> Developing-Base-on-WS
 
 
 @end
