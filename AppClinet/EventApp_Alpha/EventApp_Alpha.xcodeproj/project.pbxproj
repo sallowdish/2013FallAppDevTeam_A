@@ -10,10 +10,11 @@
 		7104A7A01824D1B500EB3AD5 /* EventListFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */; };
 		718BAD46183E2B1800411B1E /* EventPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 718BAD45183E2B1800411B1E /* EventPostModel.m */; };
 		718C9011185DA0A300D86EA1 /* TemplateTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 718C9010185DA0A300D86EA1 /* TemplateTableCell.m */; };
+		71910215185EC10E00B81F77 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71910214185EC10E00B81F77 /* LoginViewController.xib */; };
+		71910222185ECE7E00B81F77 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71910220185ECE7E00B81F77 /* LoginViewController.m */; };
 		71910225185EE0F300B81F77 /* Localrecord.json in Resources */ = {isa = PBXBuildFile; fileRef = 71910224185EE0F300B81F77 /* Localrecord.json */; };
 		7191C6371808024100E86482 /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7191C6361808024100E86482 /* EventDetailViewController.m */; };
 		7191C63D18080A4E00E86482 /* MainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7191C63C18080A4E00E86482 /* MainTabViewController.m */; };
-		719664651879BB1900D8BC7B /* popoverAlterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 719664641879BB1900D8BC7B /* popoverAlterModel.m */; };
 		71974BB41869A618004493DC /* CQMFloatingContentOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BA81869A618004493DC /* CQMFloatingContentOverlayView.m */; };
 		71974BB51869A618004493DC /* CQMFloatingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BAA1869A618004493DC /* CQMFloatingController.m */; };
 		71974BB61869A618004493DC /* CQMFloatingFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BAC1869A618004493DC /* CQMFloatingFrameView.m */; };
@@ -30,12 +31,6 @@
 		71DFFA4518210FAA00269E3E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4418210FAA00269E3E /* CFNetwork.framework */; };
 		71DFFA4718210FB200269E3E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4618210FB200269E3E /* Security.framework */; };
 		71DFFA48182115A900269E3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F3219C17F830D700FFFB95 /* Main.storyboard */; };
-		71EE867818784D63007FD900 /* backgroundImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 71EE867618784D63007FD900 /* backgroundImage.png */; };
-		71EE867918784D63007FD900 /* profileImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 71EE867718784D63007FD900 /* profileImage.png */; };
-		71EE867D18784E04007FD900 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EE867B18784E04007FD900 /* LoginViewController.m */; };
-		71EE867E18784E04007FD900 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71EE867C18784E04007FD900 /* LoginViewController.xib */; };
-		71EE8682187851D6007FD900 /* redheart.png in Resources */ = {isa = PBXBuildFile; fileRef = 71EE8681187851D6007FD900 /* redheart.png */; };
-		71EE8685187854B6007FD900 /* ProfilePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EE8684187854B6007FD900 /* ProfilePageViewController.m */; };
 		71F3218B17F830D700FFFB95 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F3218A17F830D700FFFB95 /* Foundation.framework */; };
 		71F3218D17F830D700FFFB95 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F3218C17F830D700FFFB95 /* CoreGraphics.framework */; };
 		71F3218F17F830D700FFFB95 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F3218E17F830D700FFFB95 /* UIKit.framework */; };
@@ -67,13 +62,14 @@
 		718BAD45183E2B1800411B1E /* EventPostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventPostModel.m; path = Model/EventPostModel.m; sourceTree = "<group>"; };
 		718C900F185DA0A300D86EA1 /* TemplateTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplateTableCell.h; path = ViewController/TemplateTableCell.h; sourceTree = "<group>"; };
 		718C9010185DA0A300D86EA1 /* TemplateTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemplateTableCell.m; path = ViewController/TemplateTableCell.m; sourceTree = "<group>"; };
+		71910214185EC10E00B81F77 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = UIResource/LoginViewController.xib; sourceTree = "<group>"; };
+		7191021F185ECE7E00B81F77 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = UIResource/LoginViewController.h; sourceTree = "<group>"; };
+		71910220185ECE7E00B81F77 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = UIResource/LoginViewController.m; sourceTree = "<group>"; };
 		71910224185EE0F300B81F77 /* Localrecord.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Localrecord.json; sourceTree = "<group>"; };
 		7191C6351808024100E86482 /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventDetailViewController.h; path = ViewController/EventDetailViewController.h; sourceTree = "<group>"; };
 		7191C6361808024100E86482 /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventDetailViewController.m; path = ViewController/EventDetailViewController.m; sourceTree = "<group>"; };
 		7191C63B18080A4E00E86482 /* MainTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTabViewController.h; path = ViewController/MainTabViewController.h; sourceTree = "<group>"; };
 		7191C63C18080A4E00E86482 /* MainTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainTabViewController.m; path = ViewController/MainTabViewController.m; sourceTree = "<group>"; };
-		719664631879BB1900D8BC7B /* popoverAlterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = popoverAlterModel.h; path = Model/popoverAlterModel.h; sourceTree = "<group>"; };
-		719664641879BB1900D8BC7B /* popoverAlterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = popoverAlterModel.m; path = Model/popoverAlterModel.m; sourceTree = "<group>"; };
 		71974BA71869A618004493DC /* CQMFloatingContentOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMFloatingContentOverlayView.h; sourceTree = "<group>"; };
 		71974BA81869A618004493DC /* CQMFloatingContentOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMFloatingContentOverlayView.m; sourceTree = "<group>"; };
 		71974BA91869A618004493DC /* CQMFloatingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMFloatingController.h; sourceTree = "<group>"; };
@@ -103,14 +99,6 @@
 		71DFFA42182104C900269E3E /* SettingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingPageViewController.m; path = ViewController/SettingPageViewController.m; sourceTree = "<group>"; };
 		71DFFA4418210FAA00269E3E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		71DFFA4618210FB200269E3E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		71EE867618784D63007FD900 /* backgroundImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundImage.png; sourceTree = "<group>"; };
-		71EE867718784D63007FD900 /* profileImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileImage.png; sourceTree = "<group>"; };
-		71EE867A18784E04007FD900 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = UIXIB/LoginViewController.h; sourceTree = "<group>"; };
-		71EE867B18784E04007FD900 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = UIXIB/LoginViewController.m; sourceTree = "<group>"; };
-		71EE867C18784E04007FD900 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = UIXIB/LoginViewController.xib; sourceTree = "<group>"; };
-		71EE8681187851D6007FD900 /* redheart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redheart.png; sourceTree = "<group>"; };
-		71EE8683187854B6007FD900 /* ProfilePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfilePageViewController.h; path = ViewController/ProfilePageViewController.h; sourceTree = "<group>"; };
-		71EE8684187854B6007FD900 /* ProfilePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfilePageViewController.m; path = ViewController/ProfilePageViewController.m; sourceTree = "<group>"; };
 		71F3218717F830D700FFFB95 /* EventApp_Alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventApp_Alpha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F3218A17F830D700FFFB95 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		71F3218C17F830D700FFFB95 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -159,7 +147,6 @@
 		7104A7A11824D1BA00EB3AD5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				719664621879BAE200D8BC7B /* HUD */,
 				719CE1D71874623800D2F058 /* FormatingModels */,
 				719CE1D61874621B00D2F058 /* DataCommunicationModels */,
 			);
@@ -178,20 +165,11 @@
 		71910216185EC40200B81F77 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				71EE867A18784E04007FD900 /* LoginViewController.h */,
-				71EE867B18784E04007FD900 /* LoginViewController.m */,
-				71EE867C18784E04007FD900 /* LoginViewController.xib */,
+				71910214185EC10E00B81F77 /* LoginViewController.xib */,
+				7191021F185ECE7E00B81F77 /* LoginViewController.h */,
+				71910220185ECE7E00B81F77 /* LoginViewController.m */,
 			);
 			name = UI;
-			sourceTree = "<group>";
-		};
-		719664621879BAE200D8BC7B /* HUD */ = {
-			isa = PBXGroup;
-			children = (
-				719664631879BB1900D8BC7B /* popoverAlterModel.h */,
-				719664641879BB1900D8BC7B /* popoverAlterModel.m */,
-			);
-			name = HUD;
 			sourceTree = "<group>";
 		};
 		71974BA61869A618004493DC /* CQMFloatingView */ = {
@@ -252,16 +230,6 @@
 			name = ViewController;
 			sourceTree = "<group>";
 		};
-		71EE867518784D63007FD900 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				71EE8681187851D6007FD900 /* redheart.png */,
-				71EE867618784D63007FD900 /* backgroundImage.png */,
-				71EE867718784D63007FD900 /* profileImage.png */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
 		71F3217E17F830D700FFFB95 = {
 			isa = PBXGroup;
 			children = (
@@ -302,7 +270,6 @@
 				71B763C21807832100717D67 /* ViewController */,
 				71F321A517F830D700FFFB95 /* Images.xcassets */,
 				7104A7A11824D1BA00EB3AD5 /* Model */,
-				71910216185EC40200B81F77 /* UI */,
 				71F3219117F830D700FFFB95 /* Supporting Files */,
 			);
 			path = EventApp_Alpha;
@@ -311,8 +278,8 @@
 		71F3219117F830D700FFFB95 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				71EE867518784D63007FD900 /* Images */,
 				71910224185EE0F300B81F77 /* Localrecord.json */,
+				71910216185EC40200B81F77 /* UI */,
 				71F3219217F830D700FFFB95 /* EventApp_Alpha-Info.plist */,
 				71F3219317F830D700FFFB95 /* InfoPlist.strings */,
 				71F3219617F830D700FFFB95 /* main.m */,
@@ -384,8 +351,6 @@
 			children = (
 				71DFFA41182104C900269E3E /* SettingPageViewController.h */,
 				71DFFA42182104C900269E3E /* SettingPageViewController.m */,
-				71EE8683187854B6007FD900 /* ProfilePageViewController.h */,
-				71EE8684187854B6007FD900 /* ProfilePageViewController.m */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -475,13 +440,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71EE867E18784E04007FD900 /* LoginViewController.xib in Resources */,
 				71DFFA48182115A900269E3E /* Main.storyboard in Resources */,
 				71F321A617F830D700FFFB95 /* Images.xcassets in Resources */,
-				71EE867918784D63007FD900 /* profileImage.png in Resources */,
 				71910225185EE0F300B81F77 /* Localrecord.json in Resources */,
-				71EE867818784D63007FD900 /* backgroundImage.png in Resources */,
-				71EE8682187851D6007FD900 /* redheart.png in Resources */,
+				71910215185EC10E00B81F77 /* LoginViewController.xib in Resources */,
 				71F3219517F830D700FFFB95 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,13 +464,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				71974BB61869A618004493DC /* CQMFloatingFrameView.m in Sources */,
-				719664651879BB1900D8BC7B /* popoverAlterModel.m in Sources */,
 				71B763C11807830A00717D67 /* EventListViewController.m in Sources */,
 				71974BB81869A618004493DC /* CQMFloatingNavigationBar.m in Sources */,
-				71EE8685187854B6007FD900 /* ProfilePageViewController.m in Sources */,
 				71F8A91F183C7CAB001AEF6A /* EventEdittingViewController.m in Sources */,
 				718C9011185DA0A300D86EA1 /* TemplateTableCell.m in Sources */,
 				7104A7A01824D1B500EB3AD5 /* EventListFetchModel.m in Sources */,
+				71910222185ECE7E00B81F77 /* LoginViewController.m in Sources */,
 				71974BB41869A618004493DC /* CQMFloatingContentOverlayView.m in Sources */,
 				71974BB71869A618004493DC /* CQMFloatingMaskControl.m in Sources */,
 				7191C63D18080A4E00E86482 /* MainTabViewController.m in Sources */,
@@ -523,7 +484,6 @@
 				71C0C0A918815CA3008DB5D9 /* URLConstructModel.m in Sources */,
 				719CE1DA1874627500D2F058 /* FormatingModel.m in Sources */,
 				71AF5EF9182503D70013ABB3 /* EventDetailTableViewController.m in Sources */,
-				71EE867D18784E04007FD900 /* LoginViewController.m in Sources */,
 				71DFFA43182104C900269E3E /* SettingPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

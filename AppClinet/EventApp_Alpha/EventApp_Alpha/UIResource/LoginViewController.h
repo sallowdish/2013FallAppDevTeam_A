@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CQMFloatingController.h"
 
 @interface LoginViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
-@property (weak, nonatomic) CQMFloatingController *shareController;
 @end

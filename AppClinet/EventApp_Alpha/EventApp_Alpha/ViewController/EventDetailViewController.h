@@ -18,8 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *RSVP;
 @property (weak, nonatomic) IBOutlet UILabel *like;
 @property (weak, nonatomic) IBOutlet UIImageView *images;
-@property (weak, nonatomic) IBOutlet UIButton *joinButton;
-@property (weak, nonatomic) IBOutlet UIButton *likeButton;
 
 
 @end
