@@ -11,13 +11,16 @@
 #endif
 
 #ifdef __OBJC__
-    #import <UIKit/UIKit.h>
-    #import <Foundation/Foundation.h>
-
-//#define WEBSERVICEDOMAIN  @"http://www.machoapes.com/app_project"
-#define WEBSERVICEDOMAIN  @"http://127.0.0.1:8000"
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+//for web service
+#define WEBSERVICEDOMAIN  @"http://machoapes.no-ip.org:81/app_project"
+//#define WEBSERVICEDOMAIN  @"http://127.0.0.1:8000/eventApp"
 #define API @"/api/v01"
-//#define JSONFORMAT @"format=json"
-#define JSONFORMAT @""
-
+//for web service
+#define JSONFORMAT @"format=json"
+//#define JSONFORMAT @""
+//for webservice
+#define NOCONSTRAIN @"?"
+//#define NOCONSTRAIN @""
 #endif

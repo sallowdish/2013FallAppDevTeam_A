@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "WebServiceCommunicationModel.h"
+//#import "WebServiceCommunicationModel.h"
 
 
 @implementation AppDelegate

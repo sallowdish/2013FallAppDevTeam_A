@@ -9,23 +9,28 @@
 #import "EventFetchModel.h"
 
 @implementation EventFetchModel
-+(void) fetchEventWithEventID:(NSInteger)eventID Error: (NSError*)error
+-(void) fetchEventWithEventID:(NSInteger)eventID
 {
-    
-    NSString* buffer=[NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.sfu.ca/~rza31/%ld.json",(long)eventID]] encoding:NSUTF8StringEncoding error:&error];
-    if(error)
-    {
-        NSLog(@"%@",[error localizedDescription]);
-        exit(0);
+    NSError* error;
+    NSURL* url=[[self class] constructFetchRequestWithResource:[NSString stringWithFormat:@"%@%d/",@"/events/",eventID] WithConstrain:NOCONSTRAIN WithFormat:JSONFORMAT];
+    [self fetchDataWithUrl:url];
+    if (!self.data) {
+        @throw [NSException exceptionWithName:@"Failed" reason:@"Fetching the event detail failed." userInfo:nil];
     }
-    NSString *filepath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/EventDetails.json"];
-    
-    [buffer writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:&error];
-    if(error)
+    NSDictionary *rawData=[NSJSONSerialization JSONObjectWithData:self.data options:NSJSONReadingMutableContainers error:&error];
+    if(error||[NSJSONSerialization isValidJSONObject:rawData]==NO)
     {
-        NSLog(@"%@",[error localizedDescription]);
-        exit(0);
+        @throw [NSException exceptionWithName:@"Failed" reason:@"Serializtion failed!" userInfo:nil];
     }
-    else
-        NSLog(@"%@",buffer);
-}@end
+    self.event=rawData;
+//    NSString *filepath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/EventDetails.json"];
+//    
+//    [buffer writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+//    if(error)
+//    {
+//        NSLog(@"%@",[error localizedDescription]);
+//        exit(0);
+//    }
+}
+
+@end

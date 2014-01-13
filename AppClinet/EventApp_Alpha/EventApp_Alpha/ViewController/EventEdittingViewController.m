@@ -7,7 +7,7 @@
 //
 
 #import "EventEdittingViewController.h"
-#import "EventPostModel.h"
+//#import "EventPostModel.h"
 
 @interface EventEdittingViewController ()
 
@@ -42,17 +42,17 @@
 }
 
 - (IBAction)donePressed:(id)sender{
-    [self constructRequest];
+//    [self constructRequest];
 }
 
 - (IBAction)cancelPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)constructRequest{
-    EventPostModel* model=[[EventPostModel alloc] init];
-    [model postEventWithRequest:[EventPostModel constructPostRequestWithJsonData:[[NSData alloc] init]]];
-}
+//- (void)constructRequest{
+//    EventPostModel* model=[[EventPostModel alloc] init];
+//    [model postEventWithRequest:[EventPostModel constructPostRequestWithJsonData:[[NSData alloc] init]]];
+//}
 
 //#pragma mark - Table view data source
 //

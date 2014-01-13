@@ -7,6 +7,7 @@
 //
 
 #import "DataTransferModel.h"
+#import "popoverAlterModel.h"
 
 @implementation DataTransferModel
 -(void)fetchDataWithUrl:(NSURL*)url{
@@ -19,11 +20,17 @@
     if (error) {
         @throw [NSException exceptionWithName:@"Connection set up failed." reason:nil userInfo:nil];
     }
-    else
+    else if ([response.MIMEType isEqualToString:@"application/json"])
     {
-        NSLog(@"%@",response);
-        NSLog(@"%@",[[NSString alloc]initWithData:incomingBuffer encoding:NSUTF8StringEncoding]);
+//        NSLog(@"%@",response);
+//        NSLog(@"%@",[[NSString alloc]initWithData:incomingBuffer encoding:NSUTF8StringEncoding]);
+        self.data=incomingBuffer;
+    }else
+    {
+        [popoverAlterModel alterWithTitle:@"Error" Message:@"Fetching new data failed. Going to diaplay old info."];
+        //incomingBuffer=nil;
     }
+    
 }
 
 -(void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{

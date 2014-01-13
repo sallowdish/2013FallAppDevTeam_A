@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface EventFetchModel : NSObject
-+(void) fetchEventWithEventID:(NSInteger)EventID Error: (NSError*)error;
+#import "DataTransferModel.h"
+@interface EventFetchModel : DataTransferModel
+@property NSDictionary* event;
+-(void) fetchEventWithEventID:(NSInteger)EventID;
 @end

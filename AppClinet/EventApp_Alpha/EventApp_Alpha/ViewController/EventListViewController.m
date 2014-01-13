@@ -113,7 +113,7 @@
     cell.hosterLabel.text=[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"username"];
     NSArray* timeInfo=[model pythonDateTimeToStringArray:[event objectForKey:@"event_time"]];
     cell.dataLabel.text=[NSString stringWithFormat:@"%@ | %@",timeInfo[0],timeInfo[1]];
-    cell.locationLabel.text=[[event objectForKey:@"Address_ID"] objectForKey:@"address"];
+    cell.locationLabel.text=[[event objectForKey:@"fk_address"] objectForKey:@"address_city"];
     return cell;
 }
 

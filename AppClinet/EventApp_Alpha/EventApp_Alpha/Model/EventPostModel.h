@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 2013_Fall_Dev_Team_A. All rights reserved.
 //
 
-#import "WebServiceCommunicationModel.h"
+//#import "WebServiceCommunicationModel.h"
 
 @interface EventPostModel : WebServiceCommunicationModel <NSURLConnectionDataDelegate>
 -(bool)postEventWithRequest:(NSMutableURLRequest*)request;

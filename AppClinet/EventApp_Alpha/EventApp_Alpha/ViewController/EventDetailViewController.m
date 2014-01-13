@@ -7,7 +7,7 @@
 //
 
 #import "EventDetailViewController.h"
-#import "EventDetailTableViewController.h"
+//#import "EventDetailTableViewController.h"
 #import "EventFetchModel.h"
 #import "FormatingModel.h"
 #import "popoverAlterModel.h"
@@ -50,21 +50,24 @@ bool isJoined;
         subview.layer.masksToBounds=YES;
     }
 
-    NSError* err;
-    
+//    NSError* err;
+    EventFetchModel* model=[[EventFetchModel alloc]init];
 //    NSString *filepath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/EventDetails.json"];
-    NSData* rawData=[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://127.0.0.1:8000/api/v01/event/%ld/",(long)eventID]]];
-    
-    NSDictionary* jsonData=[NSJSONSerialization JSONObjectWithData:rawData options:NSJSONReadingAllowFragments error:&err];
-    
-    if(err)
-        NSLog(@"%@",[err localizedDescription]);
-    else{
-        //event=[jsonData[0] objectForKey:@"fields"];
-        event=jsonData;
+//    NSData* rawData=[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://127.0.0.1:8000/api/v01/event/%ld/",(long)eventID]]];
+//    
+//    NSDictionary* jsonData=[NSJSONSerialization JSONObjectWithData:rawData options:NSJSONReadingAllowFragments error:&err];
+    @try {
+        [model fetchEventWithEventID:eventID];
+    }
+    @catch (NSException *exception) {
+        [popoverAlterModel alterWithTitle:@"Failed" Message:@"Fetching event detail failed."];
+    }
+    @finally {
+        event=model.event;
         [self modelToViewMatch];
         isJoined=NO;
     }
+    
     //matching
 //    event=(NSDictionary*)[event objectForKey:@"fields"];
     
