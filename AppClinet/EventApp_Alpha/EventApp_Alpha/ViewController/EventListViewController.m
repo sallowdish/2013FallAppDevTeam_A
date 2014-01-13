@@ -107,11 +107,11 @@
 {
     
     TemplateTableCell* cell=(TemplateTableCell*)sender;
-    //event=[event objectForKey:@"fields"];
+    event=[event objectForKey:@"fields"];
     FormatingModel* model=[[FormatingModel alloc]init];
-    cell.eventNameLabel.text=[event objectForKey:@"event_title"];
-    cell.hosterLabel.text=[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"username"];
-    NSArray* timeInfo=[model pythonDateTimeToStringArray:[event objectForKey:@"event_time"]];
+    cell.eventNameLabel.text=[event objectForKey:@"Event_Title"];
+    cell.hosterLabel.text=[[event objectForKey:@"EventPoster_Account_ID"] objectForKey:@"username"];
+    NSArray* timeInfo=[model pythonDateTimeToStringArray:[event objectForKey:@"Event_Time"]];
     cell.dataLabel.text=[NSString stringWithFormat:@"%@ | %@",timeInfo[0],timeInfo[1]];
     cell.locationLabel.text=[[event objectForKey:@"Address_ID"] objectForKey:@"address"];
     return cell;
@@ -122,7 +122,7 @@
         UIViewController *destination=[segue destinationViewController];
         UITableViewCell* cell=sender;
         id obj=[eventList objectAtIndex:[[self.tableView indexPathForCell:cell] row]];
-        [destination setValue:[obj valueForKey:@"id"] forKey:@"eventID"];
+        [destination setValue:[obj valueForKey:@"pk"] forKey:@"eventID"];
     }
 }
 /*
