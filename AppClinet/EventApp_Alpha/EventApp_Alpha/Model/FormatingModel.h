@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface FormatingModel : NSObject
--(NSArray*)pythonDateTimeToStringArray:(NSString*)pythonDateTimeInfo;
++(NSArray*)pythonDateTimeToStringArray:(NSString*)pythonDateTimeInfo;
++(NSString*)addressDictionaryToStringL:(NSDictionary*)address;
 @end

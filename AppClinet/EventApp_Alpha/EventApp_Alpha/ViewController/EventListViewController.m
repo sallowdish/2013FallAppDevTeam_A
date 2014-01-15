@@ -108,10 +108,10 @@
     
     TemplateTableCell* cell=(TemplateTableCell*)sender;
     //event=[event objectForKey:@"fields"];
-    FormatingModel* model=[[FormatingModel alloc]init];
+    //FormatingModel* model=[[FormatingModel alloc]init];
     cell.eventNameLabel.text=[event objectForKey:@"event_title"];
     cell.hosterLabel.text=[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"username"];
-    NSArray* timeInfo=[model pythonDateTimeToStringArray:[event objectForKey:@"event_time"]];
+    NSArray* timeInfo=[FormatingModel pythonDateTimeToStringArray:[event objectForKey:@"event_time"]];
     cell.dataLabel.text=[NSString stringWithFormat:@"%@ | %@",timeInfo[0],timeInfo[1]];
     cell.locationLabel.text=[[event objectForKey:@"fk_address"] objectForKey:@"address_city"];
     return cell;

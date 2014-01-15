@@ -10,11 +10,17 @@
 
 @implementation FormatingModel
 
--(NSArray*)pythonDateTimeToStringArray:(NSString*)pythonDateTimeInfo
++(NSArray*)pythonDateTimeToStringArray:(NSString*)pythonDateTimeInfo
 {
     NSMutableArray* datetimeInfo=[[NSMutableArray alloc] initWithArray:[pythonDateTimeInfo componentsSeparatedByString:@"T"]];
     datetimeInfo[1]=[datetimeInfo[1] substringToIndex:5];
     return datetimeInfo;
+}
+
++(NSString*)addressDictionaryToStringL:(NSDictionary*)address
+{
+    return [NSString stringWithFormat:@"%@,%@,%@,%@",[address objectForKey:@"address_detail"],[address objectForKey:@"address_city"],[address objectForKey:@"address_region"],[address objectForKey:@"address_country"]];
+    
 }
 
 @end

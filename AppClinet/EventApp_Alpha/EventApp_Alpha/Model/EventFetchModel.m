@@ -12,7 +12,7 @@
 -(void) fetchEventWithEventID:(NSInteger)eventID
 {
     NSError* error;
-    NSURL* url=[[self class] constructFetchRequestWithResource:[NSString stringWithFormat:@"%@%d/",@"/events/",eventID] WithConstrain:NOCONSTRAIN WithFormat:JSONFORMAT];
+    NSURL* url=[[self class] constructFetchRequestWithResource:[NSString stringWithFormat:@"%@%d/",@"/event/",eventID] WithConstrain:NOCONSTRAIN WithFormat:JSONFORMAT];
     [self fetchDataWithUrl:url];
     if (!self.data) {
         @throw [NSException exceptionWithName:@"Failed" reason:@"Fetching the event detail failed." userInfo:nil];

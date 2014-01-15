@@ -58,14 +58,14 @@ bool isJoined;
 //    NSDictionary* jsonData=[NSJSONSerialization JSONObjectWithData:rawData options:NSJSONReadingAllowFragments error:&err];
     @try {
         [model fetchEventWithEventID:eventID];
-    }
-    @catch (NSException *exception) {
-        [popoverAlterModel alterWithTitle:@"Failed" Message:@"Fetching event detail failed."];
-    }
-    @finally {
         event=model.event;
         [self modelToViewMatch];
         isJoined=NO;
+
+    }
+    @catch (NSException *exception) {
+        [popoverAlterModel alterWithTitle:@"Failed" Message:@"Fetching event detail failed."];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
     
     //matching
@@ -78,9 +78,9 @@ bool isJoined;
 {
     self.eventName.text=[NSString stringWithFormat:@"- %@ -",[event objectForKey:@"event_title"]];
     self.hoster.text=[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"username"];
-    NSArray* timeInfo=[[[FormatingModel alloc]init]pythonDateTimeToStringArray:[event objectForKey:@"event_time"]];
+    NSArray* timeInfo=[FormatingModel pythonDateTimeToStringArray:[event objectForKey:@"event_time"]];
     self.dateTime.text=[NSString stringWithFormat:@"%@|%@",timeInfo[0],timeInfo[1]];
-    self.location.text=[[event objectForKey:@"Address_ID"] objectForKey:@"address"];
+    self.location.text=[FormatingModel addressDictionaryToStringL:[event objectForKey:@"fk_address"]];
     self.like.text=[NSString stringWithFormat:@"%@",[event objectForKey:@"event_like"]];
     self.RSVP.text=[NSString stringWithFormat:@"%@/%@",[event objectForKey:@"event_rsvp"],[event objectForKey:@"event_capacity"]];
     NSString *description=[event objectForKey:@"event_detail"];

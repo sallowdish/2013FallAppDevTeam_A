@@ -12,6 +12,5 @@
 +(void)alterWithTitle:(NSString*)title Message:(NSString*)msg{
     UIAlertView* alter=[[UIAlertView alloc]initWithTitle:title message:msg delegate:nil cancelButtonTitle:@"OK!" otherButtonTitles:nil];
     [alter show];
-    
 }
 @end

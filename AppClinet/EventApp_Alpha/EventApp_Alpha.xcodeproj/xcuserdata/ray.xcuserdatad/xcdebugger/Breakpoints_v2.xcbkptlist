@@ -239,7 +239,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
             endingLineNumber = "17"
-            landmarkName = "-pythonDateTimeToStringArray:"
+            landmarkName = "+pythonDateTimeToStringArray:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -401,6 +401,98 @@
             endingLineNumber = "16"
             landmarkName = "-fetchEventWithEventID:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EventApp_Alpha/ViewController/EventDetailViewController.m"
+            timestampString = "411341534.986995"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[EventDetailViewController viewDidLoad]"
+                  moduleName = "EventApp_Alpha"
+                  urlString = "file:///Users/Ray/Development/2013FallAppDevTeam_A/AppClinet/EventApp_Alpha/EventApp_Alpha/ViewController/EventDetailViewController.m"
+                  timestampString = "411341262.211259"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "885">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[EventDetailViewController viewDidLoad]"
+                  moduleName = "EventApp_Alpha"
+                  urlString = "file:///Users/Ray/Development/2013FallAppDevTeam_A/AppClinet/EventApp_Alpha/EventApp_Alpha/ViewController/EventDetailViewController.m"
+                  timestampString = "411341262.211557"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "1352">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EventApp_Alpha/ViewController/EventDetailViewController.m"
+            timestampString = "411341534.986995"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[EventDetailViewController viewDidLoad]"
+                  moduleName = "EventApp_Alpha"
+                  urlString = "file:///Users/Ray/Development/2013FallAppDevTeam_A/AppClinet/EventApp_Alpha/EventApp_Alpha/ViewController/EventDetailViewController.m"
+                  timestampString = "411341262.211863"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "831">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[EventDetailViewController viewDidLoad]"
+                  moduleName = "EventApp_Alpha"
+                  urlString = "file:///Users/Ray/Development/2013FallAppDevTeam_A/AppClinet/EventApp_Alpha/EventApp_Alpha/ViewController/EventDetailViewController.m"
+                  timestampString = "411341262.212286"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "1165">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

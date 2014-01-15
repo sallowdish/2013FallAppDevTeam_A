@@ -27,8 +27,7 @@
         self.data=incomingBuffer;
     }else
     {
-        [popoverAlterModel alterWithTitle:@"Error" Message:@"Fetching new data failed. Going to diaplay old info."];
-        //incomingBuffer=nil;
+        @throw [NSException exceptionWithName:@"Connection set up failed." reason:nil userInfo:nil];
     }
     
 }
