@@ -14,7 +14,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 //for web service
-#define WEBSERVICEDOMAIN  @"http://machoapes.no-ip.org:81/app_project"
+#define WEBSERVICEDOMAIN  @"http://machoapes.no-ip.org/app_project"
 //#define WEBSERVICEDOMAIN  @"http://127.0.0.1:8000/eventApp"
 #define API @"/api/v01"
 //for web service

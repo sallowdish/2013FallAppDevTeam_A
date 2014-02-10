@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7103FE9118A1ED6A0047EFAD /* locationIcon_done.png in Resources */ = {isa = PBXBuildFile; fileRef = 7103FE8E18A1ED6A0047EFAD /* locationIcon_done.png */; };
+		7103FE9218A1ED6A0047EFAD /* peopleIcon_done.png in Resources */ = {isa = PBXBuildFile; fileRef = 7103FE8F18A1ED6A0047EFAD /* peopleIcon_done.png */; };
+		7103FE9318A1ED6A0047EFAD /* TimeIcon_done.png in Resources */ = {isa = PBXBuildFile; fileRef = 7103FE9018A1ED6A0047EFAD /* TimeIcon_done.png */; };
 		7104A7A01824D1B500EB3AD5 /* EventListFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */; };
 		712A2C5B1883A4EA00BF3AC6 /* DataTransferModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C581883A4EA00BF3AC6 /* DataTransferModel.m */; };
 		712A2C5C1883A4EA00BF3AC6 /* URLConstructModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C5A1883A4EA00BF3AC6 /* URLConstructModel.m */; };
@@ -28,6 +31,10 @@
 		71AF5EF9182503D70013ABB3 /* EventDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF5EF8182503D70013ABB3 /* EventDetailTableViewController.m */; };
 		71AF5EFC18250D660013ABB3 /* EventFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF5EFB18250D660013ABB3 /* EventFetchModel.m */; };
 		71B763C11807830A00717D67 /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B763C01807830A00717D67 /* EventListViewController.m */; };
+		71D7AF50189DF3E70082A6AA /* event1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71D7AF4C189DF3E70082A6AA /* event1.jpg */; };
+		71D7AF51189DF3E70082A6AA /* event2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71D7AF4D189DF3E70082A6AA /* event2.jpg */; };
+		71D7AF52189DF3E70082A6AA /* event3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71D7AF4E189DF3E70082A6AA /* event3.jpg */; };
+		71D7AF53189DF3E70082A6AA /* event4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71D7AF4F189DF3E70082A6AA /* event4.jpg */; };
 		71DFFA43182104C900269E3E /* SettingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DFFA42182104C900269E3E /* SettingPageViewController.m */; };
 		71DFFA4518210FAA00269E3E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4418210FAA00269E3E /* CFNetwork.framework */; };
 		71DFFA4718210FB200269E3E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4618210FB200269E3E /* Security.framework */; };
@@ -63,6 +70,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7103FE8E18A1ED6A0047EFAD /* locationIcon_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = locationIcon_done.png; path = Images/locationIcon_done.png; sourceTree = "<group>"; };
+		7103FE8F18A1ED6A0047EFAD /* peopleIcon_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = peopleIcon_done.png; path = Images/peopleIcon_done.png; sourceTree = "<group>"; };
+		7103FE9018A1ED6A0047EFAD /* TimeIcon_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TimeIcon_done.png; path = Images/TimeIcon_done.png; sourceTree = "<group>"; };
 		7104A79E1824D1B500EB3AD5 /* EventListFetchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventListFetchModel.h; path = Model/EventListFetchModel.h; sourceTree = "<group>"; };
 		7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventListFetchModel.m; path = Model/EventListFetchModel.m; sourceTree = "<group>"; };
 		712A2C571883A4EA00BF3AC6 /* DataTransferModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataTransferModel.h; path = Model/DataTransferModel.h; sourceTree = "<group>"; };
@@ -105,6 +115,10 @@
 		71AF5EFB18250D660013ABB3 /* EventFetchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventFetchModel.m; path = Model/EventFetchModel.m; sourceTree = "<group>"; };
 		71B763BF1807830A00717D67 /* EventListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventListViewController.h; path = ViewController/EventListViewController.h; sourceTree = "<group>"; };
 		71B763C01807830A00717D67 /* EventListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventListViewController.m; path = ViewController/EventListViewController.m; sourceTree = "<group>"; };
+		71D7AF4C189DF3E70082A6AA /* event1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = event1.jpg; sourceTree = "<group>"; };
+		71D7AF4D189DF3E70082A6AA /* event2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = event2.jpg; sourceTree = "<group>"; };
+		71D7AF4E189DF3E70082A6AA /* event3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = event3.jpg; sourceTree = "<group>"; };
+		71D7AF4F189DF3E70082A6AA /* event4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = event4.jpg; sourceTree = "<group>"; };
 		71DFFA41182104C900269E3E /* SettingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingPageViewController.h; path = ViewController/SettingPageViewController.h; sourceTree = "<group>"; };
 		71DFFA42182104C900269E3E /* SettingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingPageViewController.m; path = ViewController/SettingPageViewController.m; sourceTree = "<group>"; };
 		71DFFA4418210FAA00269E3E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -279,9 +293,23 @@
 			name = ViewController;
 			sourceTree = "<group>";
 		};
+		71D7AF5418A1D0CA0082A6AA /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				7103FE8E18A1ED6A0047EFAD /* locationIcon_done.png */,
+				7103FE8F18A1ED6A0047EFAD /* peopleIcon_done.png */,
+				7103FE9018A1ED6A0047EFAD /* TimeIcon_done.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
 		71EE867518784D63007FD900 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				71D7AF4C189DF3E70082A6AA /* event1.jpg */,
+				71D7AF4D189DF3E70082A6AA /* event2.jpg */,
+				71D7AF4E189DF3E70082A6AA /* event3.jpg */,
+				71D7AF4F189DF3E70082A6AA /* event4.jpg */,
 				71EE8681187851D6007FD900 /* redheart.png */,
 				71EE867618784D63007FD900 /* backgroundImage.png */,
 				71EE867718784D63007FD900 /* profileImage.png */,
@@ -326,8 +354,8 @@
 				71F3219917F830D700FFFB95 /* AppDelegate.h */,
 				71F3219A17F830D700FFFB95 /* AppDelegate.m */,
 				71F3219C17F830D700FFFB95 /* Main.storyboard */,
-				71B763C21807832100717D67 /* ViewController */,
 				71F321A517F830D700FFFB95 /* Images.xcassets */,
+				71B763C21807832100717D67 /* ViewController */,
 				7104A7A11824D1BA00EB3AD5 /* Model */,
 				71910216185EC40200B81F77 /* UI */,
 				71F3219117F830D700FFFB95 /* Supporting Files */,
@@ -338,6 +366,7 @@
 		71F3219117F830D700FFFB95 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				71D7AF5418A1D0CA0082A6AA /* Icons */,
 				71EE867518784D63007FD900 /* Images */,
 				71910224185EE0F300B81F77 /* Localrecord.json */,
 				71F3219217F830D700FFFB95 /* EventApp_Alpha-Info.plist */,
@@ -502,10 +531,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7103FE9118A1ED6A0047EFAD /* locationIcon_done.png in Resources */,
 				71EE867E18784E04007FD900 /* LoginViewController.xib in Resources */,
 				71DFFA48182115A900269E3E /* Main.storyboard in Resources */,
+				7103FE9218A1ED6A0047EFAD /* peopleIcon_done.png in Resources */,
+				71D7AF50189DF3E70082A6AA /* event1.jpg in Resources */,
+				71D7AF52189DF3E70082A6AA /* event3.jpg in Resources */,
 				71F321A617F830D700FFFB95 /* Images.xcassets in Resources */,
 				71EE867918784D63007FD900 /* profileImage.png in Resources */,
+				7103FE9318A1ED6A0047EFAD /* TimeIcon_done.png in Resources */,
+				71D7AF51189DF3E70082A6AA /* event2.jpg in Resources */,
+				71D7AF53189DF3E70082A6AA /* event4.jpg in Resources */,
 				71910225185EE0F300B81F77 /* Localrecord.json in Resources */,
 				71EE867818784D63007FD900 /* backgroundImage.png in Resources */,
 				71EE8682187851D6007FD900 /* redheart.png in Resources */,

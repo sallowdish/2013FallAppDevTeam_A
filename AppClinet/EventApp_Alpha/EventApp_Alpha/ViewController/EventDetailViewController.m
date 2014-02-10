@@ -58,14 +58,19 @@ bool isJoined;
 //    NSDictionary* jsonData=[NSJSONSerialization JSONObjectWithData:rawData options:NSJSONReadingAllowFragments error:&err];
     @try {
         [model fetchEventWithEventID:eventID];
-        event=model.event;
-        [self modelToViewMatch];
-        isJoined=NO;
-
     }
     @catch (NSException *exception) {
         [popoverAlterModel alterWithTitle:@"Failed" Message:@"Fetching event detail failed."];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    @try{
+        event=model.event;
+        [self modelToViewMatch];
+        isJoined=NO;
+    }
+    @catch (NSException *exception) {
+        [popoverAlterModel alterWithTitle:@"Failed" Message:@"Display event detail failed."];
+        [self.navigationController popViewControllerAnimated:YES];
     }
     
     //matching
@@ -78,11 +83,17 @@ bool isJoined;
 {
     self.eventName.text=[NSString stringWithFormat:@"- %@ -",[event objectForKey:@"event_title"]];
     self.hoster.text=[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"username"];
-    NSArray* timeInfo=[FormatingModel pythonDateTimeToStringArray:[event objectForKey:@"event_time"]];
-    self.dateTime.text=[NSString stringWithFormat:@"%@|%@",timeInfo[0],timeInfo[1]];
+//    NSArray* timeInfo=[FormatingModel pythonDateTimeToStringArray:[event objectForKey:@"event_time"]];
+    self.dateTime.text=[NSString stringWithFormat:@"%@|%@",[event objectForKey:@"event_date"],[event objectForKey:@"event_time"]];
     self.location.text=[FormatingModel addressDictionaryToStringL:[event objectForKey:@"fk_address"]];
     self.like.text=[NSString stringWithFormat:@"%@",[event objectForKey:@"event_like"]];
-    self.RSVP.text=[NSString stringWithFormat:@"%@/%@",[event objectForKey:@"event_rsvp"],[event objectForKey:@"event_capacity"]];
+    id capacity=[event objectForKey:@"event_capacity"];
+    if (capacity!=[NSNull null]) {
+        self.RSVP.text=[NSString stringWithFormat:@"%@/%d",[event objectForKey:@"event_rsvp"],[capacity integerValue]];
+    }else{
+        self.RSVP.text=@"Free to go;";
+        [self.joinButton removeFromSuperview];
+    }
     NSString *description=[event objectForKey:@"event_detail"];
     if ([description isEqualToString:@""]) {
         self.description.text=@"This guy is really lazy. He didn't write anything in detail.";

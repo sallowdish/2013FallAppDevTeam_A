@@ -32,6 +32,26 @@
     
 }
 
+-(void)postDataWithUrl:(NSURL *)url{
+    NSMutableURLRequest* request=[NSMutableURLRequest requestWithURL:url];
+    NSURLResponse* response;
+    NSError* error;
+    //NSURLConnection* conn=[[NSURLConnection alloc] init];
+    NSData* incomingBuffer=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    if (error) {
+        @throw [NSException exceptionWithName:@"Connection set up failed." reason:nil userInfo:nil];
+    }
+    else if ([response.MIMEType isEqualToString:@"application/json"])
+    {
+        //        NSLog(@"%@",response);
+        //        NSLog(@"%@",[[NSString alloc]initWithData:incomingBuffer encoding:NSUTF8StringEncoding]);
+        self.data=incomingBuffer;
+    }else
+    {
+        @throw [NSException exceptionWithName:@"Connection set up failed." reason:nil userInfo:nil];
+    }
+    
+}
 -(void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
     if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
         NSLog(@"%@",response);

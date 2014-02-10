@@ -10,16 +10,19 @@
 //#import "EventPostModel.h"
 
 @interface EventEdittingViewController ()
-
+@property NSDate *time,*date;
 @end
 
 @implementation EventEdittingViewController
+
+@synthesize time,date;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
@@ -33,6 +36,41 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIDatePicker *datePicker=[[UIDatePicker alloc]init]
+        ,*timePicker=[[UIDatePicker alloc]init];
+    [datePicker setDatePickerMode:UIDatePickerModeDate];
+    [timePicker setDatePickerMode:UIDatePickerModeTime];
+    [datePicker addTarget:self action:@selector(datePickerDidChanged:) forControlEvents:UIControlEventValueChanged];
+    [timePicker addTarget:self action:@selector(timePickerDidChanged:) forControlEvents:UIControlEventValueChanged];
+    self.dateInputTextField.inputView=datePicker;
+    self.timeFromInputTextField.inputView=timePicker;
+    self.timeToInputTextField.inputView=timePicker;
+    [self.timeFromInputTextField addTarget:self action:@selector(didFinishTimeEditting:) forControlEvents:UIControlEventEditingDidEnd];
+    [self.timeToInputTextField addTarget:self action:@selector(didFinishTimeEditting:) forControlEvents:UIControlEventEditingDidEnd];
+    [self.dateInputTextField addTarget:self action:@selector(didFinishDateEditting:) forControlEvents:UIControlEventEditingDidEnd];
+}
+
+
+-(IBAction)datePickerDidChanged:(id)sender{
+    date=[sender date];
+}
+
+-(IBAction)timePickerDidChanged:(id)sender{
+    time=[sender date];
+}
+
+-(IBAction)didFinishTimeEditting:(id)sender{
+    NSDateFormatter* formatter=[[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm"];
+//    UITextField* tf=(UITextField*)sender;
+//    sender.text=[formatter stringFromDate:time];
+    [(UITextField*)sender setText:[formatter stringFromDate:time]];
+}
+
+-(IBAction)didFinishDateEditting:(id)sender{
+    NSDateFormatter* formatter=[[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-mm-dd"];
+    [(UITextField*)sender setText: [formatter stringFromDate:date]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,6 +85,15 @@
 
 - (IBAction)cancelPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (NSDictionary*)packUpInfo{
+    NSDictionary* info=[[NSDictionary alloc]init];
+    [info setValue:self.titleInputTextField.text forKey:@"event_title"];
+    [info setValue:self.dateInputTextField.text forKey:@"event_date"];
+    [info setValue:self.timeFromInputTextField.text forKey:@"event_time"];
+    [info setValue:self.detailInputTextField.text forKey:@"event_detail"];
+    return info;
 }
 
 //- (void)constructRequest{

@@ -73,6 +73,7 @@
         [_viewScroller setPagingEnabled:YES];
         [_viewScroller setDelegate:self];
         [_viewScroller setShowsHorizontalScrollIndicator:NO];
+//        [_viewScroller ]
         [self.view addSubview:_viewScroller];
         
         //Instantialize the elemental views

@@ -94,6 +94,7 @@
     // Configure the cell...
     NSDictionary* event=[eventList objectAtIndex:indexPath.row];
     cell=[self modelToViewMatch:cell eventInstance:event];
+    cell.profileImage.image=[UIImage imageNamed:[NSString stringWithFormat:@"event%d.jpg",(indexPath.row)%4+1]];
 
 //    cell.hosterLabel.text=[NSString stringWithFormat:@"%@|%@|%@",
 //        [[event objectForKey:@"event_organizer_id"] objectForKey:@"account_user_name"],
@@ -103,17 +104,22 @@
     return cell;
 }
 
+
 -(TemplateTableCell*)modelToViewMatch:(id)sender eventInstance:(NSDictionary*)event
 {
     
     TemplateTableCell* cell=(TemplateTableCell*)sender;
-    //event=[event objectForKey:@"fields"];
-    //FormatingModel* model=[[FormatingModel alloc]init];
+    for (int i=100; i<MAXTAG+1; i++) {
+        UIView* subview=[cell viewWithTag:i];
+        subview.layer.cornerRadius=6;
+        subview.layer.masksToBounds=YES;
+    }
+    [cell.profileImage.layer setBorderColor: [[UIColor grayColor] CGColor]];
+    [cell.profileImage.layer setBorderWidth: 2.0];
     cell.eventNameLabel.text=[event objectForKey:@"event_title"];
     cell.hosterLabel.text=[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"username"];
-    NSArray* timeInfo=[FormatingModel pythonDateTimeToStringArray:[event objectForKey:@"event_time"]];
-    cell.dataLabel.text=[NSString stringWithFormat:@"%@ | %@",timeInfo[0],timeInfo[1]];
-    cell.locationLabel.text=[[event objectForKey:@"fk_address"] objectForKey:@"address_city"];
+    cell.dataLabel.text=[NSString stringWithFormat:@"%@ | %@",[event objectForKey:@"event_date"],[event objectForKey:@"event_time"]];
+    cell.locationLabel.text=[FormatingModel addressDictionaryToStringL:[event objectForKey:@"fk_address"]];
     return cell;
 }
 

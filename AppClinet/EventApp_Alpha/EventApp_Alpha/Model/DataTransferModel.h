@@ -12,4 +12,5 @@
 @property NSData* data;
 
 -(void)fetchDataWithUrl:(NSURL*)url;
+-(void)postDataWithUrl:(NSURL*)url;
 @end

@@ -19,7 +19,8 @@
 
 +(NSString*)addressDictionaryToStringL:(NSDictionary*)address
 {
-    return [NSString stringWithFormat:@"%@,%@,%@,%@",[address objectForKey:@"address_detail"],[address objectForKey:@"address_city"],[address objectForKey:@"address_region"],[address objectForKey:@"address_country"]];
+//    return [NSString stringWithFormat:@"%@,%@,%@,%@",[address objectForKey:@"address_detail"],[address objectForKey:@"address_city"],[address objectForKey:@"address_region"],[address objectForKey:@"address_country"]];
+    return [address objectForKey:@"address_title"];
     
 }
 
