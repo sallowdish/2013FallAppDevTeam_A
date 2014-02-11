@@ -12,6 +12,9 @@
 }
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) NSString* username;
+@property (strong, nonatomic) NSString* userUrl;
+@property (strong, nonatomic) NSString* userApiKey;
 
 - (NSURL *)applicationDocumentsDirectory;
 

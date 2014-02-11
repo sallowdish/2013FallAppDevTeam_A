@@ -23,6 +23,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *capacityInputTextField;
 @property (weak, nonatomic) IBOutlet UITextField *titleInputTextField;
 @property (weak, nonatomic) IBOutlet UITextField *detailInputTextField;
-@property (weak, nonatomic) IBOutlet UITextField *capacityInputTextField;
 
 @end

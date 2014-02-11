@@ -109,7 +109,7 @@
 {
     
     TemplateTableCell* cell=(TemplateTableCell*)sender;
-    for (int i=100; i<MAXTAG+1; i++) {
+    for (int i=101; i<MAXTAG+1; i++) {
         UIView* subview=[cell viewWithTag:i];
         subview.layer.cornerRadius=6;
         subview.layer.masksToBounds=YES;

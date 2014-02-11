@@ -17,7 +17,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //[WebServiceCommunicationModel constructRequest];
+    self.username=@"ray";
+    self.userUrl=@"/app_project/api/v01/user/2/";
+    self.userApiKey=@"2ef301df5eb04674f53473949deba52ddb2c3650";
     return YES;
 }
 
