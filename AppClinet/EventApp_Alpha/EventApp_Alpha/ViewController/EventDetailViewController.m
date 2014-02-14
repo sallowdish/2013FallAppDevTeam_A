@@ -11,6 +11,7 @@
 #import "EventFetchModel.h"
 #import "FormatingModel.h"
 #import "popoverAlterModel.h"
+#import "FullScreenImageController.h"
 #define MAXTAG 104
 @interface EventDetailViewController ()
 @property (strong,nonatomic) NSDictionary* event;
@@ -34,7 +35,7 @@ bool isJoined;
 - (void)viewDidLoad
 {
     [self.scrollView setScrollEnabled:YES];
-    [self.scrollView setContentSize:CGSizeMake(320,self.scrollView.frame.size.height*1.1)];
+    [self.scrollView setContentSize:CGSizeMake(320,self.scrollView.frame.size.height*1.2)];
     [super viewDidLoad];
     
 
@@ -91,7 +92,7 @@ bool isJoined;
     if (capacity!=[NSNull null]) {
         self.RSVP.text=[NSString stringWithFormat:@"%@/%d",[event objectForKey:@"event_rsvp"],[capacity integerValue]];
     }else{
-        self.RSVP.text=@"Free to go;";
+        self.RSVP.text=@"Free to go";
         [self.joinButton removeFromSuperview];
     }
     NSString *description=[event objectForKey:@"event_detail"];
@@ -107,11 +108,6 @@ bool isJoined;
 
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-//    if([segue.identifier isEqualToString:@"tableDisplaySegue"])
-//        ((EventDetailTableViewController*)[segue destinationViewController]).eventID=eventID;
-}
 
 - (IBAction)joinButtonPressed:(id)sender {
     if(isJoined==NO)
@@ -128,6 +124,13 @@ bool isJoined;
     }
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sende
+{
+    if ([segue.identifier isEqualToString:@"toFullScreen"]) {
+        FullScreenImageController* des=(FullScreenImageController*)segue.destinationViewController;
+        des.image=self.images.image;
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

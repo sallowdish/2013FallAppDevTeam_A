@@ -14,6 +14,8 @@
 		7103FE9A18A9C2820047EFAD /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7103FE9918A9C2820047EFAD /* PageContentViewController.m */; };
 		7103FE9D18AA0BE70047EFAD /* redheart_done.png in Resources */ = {isa = PBXBuildFile; fileRef = 7103FE9B18AA0BE70047EFAD /* redheart_done.png */; };
 		7103FE9E18AA0BE70047EFAD /* tick_done.png in Resources */ = {isa = PBXBuildFile; fileRef = 7103FE9C18AA0BE70047EFAD /* tick_done.png */; };
+		7103FEA118AA1A220047EFAD /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7103FEA018AA1A220047EFAD /* CommentViewController.m */; };
+		7103FEA418AAE99E0047EFAD /* FullScreenImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7103FEA318AAE99E0047EFAD /* FullScreenImageController.m */; };
 		7104A7A01824D1B500EB3AD5 /* EventListFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */; };
 		712A2C5B1883A4EA00BF3AC6 /* DataTransferModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C581883A4EA00BF3AC6 /* DataTransferModel.m */; };
 		712A2C5C1883A4EA00BF3AC6 /* URLConstructModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C5A1883A4EA00BF3AC6 /* URLConstructModel.m */; };
@@ -32,7 +34,6 @@
 		71974BB81869A618004493DC /* CQMFloatingNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BB11869A618004493DC /* CQMFloatingNavigationBar.m */; };
 		71974BB91869A618004493DC /* CQMPathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BB31869A618004493DC /* CQMPathUtilities.m */; };
 		719CE1DA1874627500D2F058 /* FormatingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 719CE1D91874627500D2F058 /* FormatingModel.m */; };
-		71AF5EF9182503D70013ABB3 /* EventDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF5EF8182503D70013ABB3 /* EventDetailTableViewController.m */; };
 		71AF5EFC18250D660013ABB3 /* EventFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF5EFB18250D660013ABB3 /* EventFetchModel.m */; };
 		71B763C11807830A00717D67 /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B763C01807830A00717D67 /* EventListViewController.m */; };
 		71D7AF50189DF3E70082A6AA /* event1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71D7AF4C189DF3E70082A6AA /* event1.jpg */; };
@@ -82,6 +83,10 @@
 		7103FE9918A9C2820047EFAD /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageContentViewController.m; path = ViewController/PageContentViewController.m; sourceTree = "<group>"; };
 		7103FE9B18AA0BE70047EFAD /* redheart_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redheart_done.png; sourceTree = "<group>"; };
 		7103FE9C18AA0BE70047EFAD /* tick_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tick_done.png; sourceTree = "<group>"; };
+		7103FE9F18AA1A220047EFAD /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentViewController.h; path = ViewController/CommentViewController.h; sourceTree = "<group>"; };
+		7103FEA018AA1A220047EFAD /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentViewController.m; path = ViewController/CommentViewController.m; sourceTree = "<group>"; };
+		7103FEA218AAE99E0047EFAD /* FullScreenImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FullScreenImageController.h; path = ViewController/FullScreenImageController.h; sourceTree = "<group>"; };
+		7103FEA318AAE99E0047EFAD /* FullScreenImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FullScreenImageController.m; path = ViewController/FullScreenImageController.m; sourceTree = "<group>"; };
 		7104A79E1824D1B500EB3AD5 /* EventListFetchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventListFetchModel.h; path = Model/EventListFetchModel.h; sourceTree = "<group>"; };
 		7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventListFetchModel.m; path = Model/EventListFetchModel.m; sourceTree = "<group>"; };
 		712A2C571883A4EA00BF3AC6 /* DataTransferModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataTransferModel.h; path = Model/DataTransferModel.h; sourceTree = "<group>"; };
@@ -118,8 +123,6 @@
 		71974BB31869A618004493DC /* CQMPathUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMPathUtilities.m; sourceTree = "<group>"; };
 		719CE1D81874627500D2F058 /* FormatingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormatingModel.h; path = Model/FormatingModel.h; sourceTree = "<group>"; };
 		719CE1D91874627500D2F058 /* FormatingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FormatingModel.m; path = Model/FormatingModel.m; sourceTree = "<group>"; };
-		71AF5EF7182503D70013ABB3 /* EventDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventDetailTableViewController.h; path = ViewController/EventDetailTableViewController.h; sourceTree = "<group>"; };
-		71AF5EF8182503D70013ABB3 /* EventDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventDetailTableViewController.m; path = ViewController/EventDetailTableViewController.m; sourceTree = "<group>"; };
 		71AF5EFA18250D660013ABB3 /* EventFetchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventFetchModel.h; path = Model/EventFetchModel.h; sourceTree = "<group>"; };
 		71AF5EFB18250D660013ABB3 /* EventFetchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventFetchModel.m; path = Model/EventFetchModel.m; sourceTree = "<group>"; };
 		71B763BF1807830A00717D67 /* EventListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventListViewController.h; path = ViewController/EventListViewController.h; sourceTree = "<group>"; };
@@ -441,8 +444,10 @@
 			children = (
 				7191C6351808024100E86482 /* EventDetailViewController.h */,
 				7191C6361808024100E86482 /* EventDetailViewController.m */,
-				71AF5EF7182503D70013ABB3 /* EventDetailTableViewController.h */,
-				71AF5EF8182503D70013ABB3 /* EventDetailTableViewController.m */,
+				7103FE9F18AA1A220047EFAD /* CommentViewController.h */,
+				7103FEA018AA1A220047EFAD /* CommentViewController.m */,
+				7103FEA218AAE99E0047EFAD /* FullScreenImageController.h */,
+				7103FEA318AAE99E0047EFAD /* FullScreenImageController.m */,
 			);
 			name = EventDetail;
 			sourceTree = "<group>";
@@ -523,6 +528,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = 2013_Fall_Dev_Team_A;
 				TargetAttributes = {
+					71F3218617F830D700FFFB95 = {
+						DevelopmentTeam = RN98FM5S9N;
+					};
 					71F321AA17F830D700FFFB95 = {
 						TestTargetID = 71F3218617F830D700FFFB95;
 					};
@@ -608,10 +616,11 @@
 				712A2C661884F78900BF3AC6 /* BTGlassScrollView.m in Sources */,
 				71974BB51869A618004493DC /* CQMFloatingController.m in Sources */,
 				712A2C6B1884FBBF00BF3AC6 /* RecommandViewController.m in Sources */,
+				7103FEA118AA1A220047EFAD /* CommentViewController.m in Sources */,
 				71974BB91869A618004493DC /* CQMPathUtilities.m in Sources */,
 				719CE1DA1874627500D2F058 /* FormatingModel.m in Sources */,
 				712A2C5C1883A4EA00BF3AC6 /* URLConstructModel.m in Sources */,
-				71AF5EF9182503D70013ABB3 /* EventDetailTableViewController.m in Sources */,
+				7103FEA418AAE99E0047EFAD /* FullScreenImageController.m in Sources */,
 				71EE867D18784E04007FD900 /* LoginViewController.m in Sources */,
 				71DFFA43182104C900269E3E /* SettingPageViewController.m in Sources */,
 			);
@@ -745,11 +754,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventApp_Alpha/EventApp_Alpha-Prefix.pch";
 				INFOPLIST_FILE = "EventApp_Alpha/EventApp_Alpha-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -761,11 +772,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventApp_Alpha/EventApp_Alpha-Prefix.pch";
 				INFOPLIST_FILE = "EventApp_Alpha/EventApp_Alpha-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
