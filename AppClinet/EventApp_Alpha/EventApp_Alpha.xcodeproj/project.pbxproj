@@ -190,6 +190,8 @@
 		7103FE9418A9C16B0047EFAD /* EventRecommend */ = {
 			isa = PBXGroup;
 			children = (
+				712A2C691884FBBF00BF3AC6 /* RecommandViewController.h */,
+				712A2C6A1884FBBF00BF3AC6 /* RecommandViewController.m */,
 				7103FE9518A9C1A30047EFAD /* PageViewController.h */,
 				7103FE9618A9C1A30047EFAD /* PageViewController.m */,
 				7103FE9818A9C2820047EFAD /* PageContentViewController.h */,
@@ -223,8 +225,6 @@
 		712A2C681884FBAA00BF3AC6 /* Recommand */ = {
 			isa = PBXGroup;
 			children = (
-				712A2C691884FBBF00BF3AC6 /* RecommandViewController.h */,
-				712A2C6A1884FBBF00BF3AC6 /* RecommandViewController.m */,
 			);
 			name = Recommand;
 			sourceTree = "<group>";

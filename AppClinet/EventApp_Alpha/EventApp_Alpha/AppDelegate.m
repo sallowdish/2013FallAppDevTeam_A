@@ -17,9 +17,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //setup tokens
     self.username=@"ray";
     self.userUrl=@"/app_project/api/v01/user/2/";
     self.userApiKey=@"2ef301df5eb04674f53473949deba52ddb2c3650";
+    //setup options
+    UIPageControl *pageControl = [UIPageControl appearance];
+    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+    pageControl.backgroundColor = [UIColor whiteColor];
     return YES;
 }
 

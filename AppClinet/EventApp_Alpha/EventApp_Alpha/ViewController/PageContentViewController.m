@@ -8,6 +8,8 @@
 
 #import "PageContentViewController.h"
 
+#define MAXTAG 100
+
 @interface PageContentViewController ()
 
 @end
@@ -27,12 +29,33 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self.scrollView setScrollEnabled:YES];
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height*1.1)];
+    //model to view matching
+    self.eventTitleLabel.text=self.eventTitle;
+    self.eventDateLabel.text=self.eventDate;
+    self.eventLocationLabel.text=self.eventLocation;
+    self.eventLikeLabel.text=[NSString stringWithFormat:@"%d",self.eventLike];
+    self.eventRSVPLabel.text=[NSString stringWithFormat:@"%d",self.eventRSVP];
+    self.eventHosterLabel.text=[NSString stringWithFormat:@"Hosted by %@",self.eventHoster];
+    self.eventImageView.image=self.eventImage;
+    //polish
+    [self setRoundConnerForViewWithMaxTag:MAXTAG];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)setRoundConnerForViewWithMaxTag:(NSInteger)maxtag{
+    for (int i=100; i<maxtag+1; i++) {
+        UIView* subview=[self.view viewWithTag:i];
+        subview.layer.cornerRadius=6;
+        subview.layer.masksToBounds=YES;
+    }
+    
 }
 
 @end

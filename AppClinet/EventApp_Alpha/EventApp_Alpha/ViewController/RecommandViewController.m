@@ -10,6 +10,9 @@
 
 
 #import "RecommandViewController.h"
+#import "EventListFetchModel.h"
+#import "PageContentViewController.h"
+#import "PageViewController.h"
 
 @interface RecommandViewController ()
 
@@ -17,13 +20,7 @@
 
 @implementation RecommandViewController
 {
-    BTGlassScrollView *_glassScrollView;
     
-    UIScrollView *_viewScroller;
-    BTGlassScrollView *_glassScrollView1;
-    BTGlassScrollView *_glassScrollView2;
-    BTGlassScrollView *_glassScrollView3;
-    int _page;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -31,179 +28,109 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        _page = 0;
     }
     return self;
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //showing white status
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    //TODO
+    //Initial model
+    EventListFetchModel* model=[[EventListFetchModel alloc] init];
+    [model fetchEventList];
+    self.eventList=[EventListFetchModel eventsList];
     
-    //preventing weird inset
-    [self setAutomaticallyAdjustsScrollViewInsets: NO];
+    NSMutableArray *temp=[[NSMutableArray alloc]init];
+    for (int i=1;i<5; i++) {
+        [temp addObject:[UIImage imageNamed:[NSString stringWithFormat:@"event%d.jpg",i]]];
+    }
+    self.eventImages=[[NSArray alloc] initWithArray:temp];
     
-    //navigation bar work
-    NSShadow *shadow = [[NSShadow alloc] init];
-    [shadow setShadowOffset:CGSizeMake(1, 1)];
-    [shadow setShadowColor:[UIColor blackColor]];
-    [shadow setShadowBlurRadius:1];
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSShadowAttributeName: shadow};
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.title = @"Awesome App";
+    //Initial view
+    self.pageViewController=[self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
+    self.pageViewController.dataSource=self;
+    [self.pageViewController setViewControllers:@[[self viewControllerAtIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
-    //background
-    self.view.backgroundColor = [UIColor blackColor];
+    //add page view controller to main page
+    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-45);
     
-#warning Toggle this to see the more complex build of this version
-    if (SIMPLE_SAMPLE) {
-        //create your custom info views
-        UIView *view = [self customView];
-        
-        _glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:[UIImage imageNamed:@"background3"] blurredImage:nil viewDistanceFromBottom:120 foregroundView:view];
-        
-        [self.view addSubview:_glassScrollView];
-    }else{
-        CGFloat blackSideBarWidth = 2;
-        
-        //Congigure the scrollview
-        _viewScroller = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width + 2*blackSideBarWidth, self.view.frame.size.height)];
-        [_viewScroller setPagingEnabled:YES];
-        [_viewScroller setDelegate:self];
-        [_viewScroller setShowsHorizontalScrollIndicator:NO];
-//        [_viewScroller ]
-        [self.view addSubview:_viewScroller];
-        
-        //Instantialize the elemental views
-        _glassScrollView1 = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:[UIImage imageNamed:@"background3"] blurredImage:nil viewDistanceFromBottom:120 foregroundView:[self customView]];
-        _glassScrollView2 = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:[UIImage imageNamed:@"background2"] blurredImage:nil viewDistanceFromBottom:120 foregroundView:[self customView]];
-        _glassScrollView3 = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:[UIImage imageNamed:@"background"] blurredImage:nil viewDistanceFromBottom:120 foregroundView:[self customView]];
-        
-        [_viewScroller addSubview:_glassScrollView1];
-        [_viewScroller addSubview:_glassScrollView2];
-        [_viewScroller addSubview:_glassScrollView3];
-        
-    }
-}
-- (void)viewWillAppear:(BOOL)animated
-{
-    if (!SIMPLE_SAMPLE) {
-        int page = _page; // resize scrollview can cause setContentOffset off for no reason and screw things up
-        
-        CGFloat blackSideBarWidth = 2;
-        [_viewScroller setFrame:CGRectMake(0, 0, self.view.frame.size.width + 2*blackSideBarWidth, self.view.frame.size.height)];
-        [_viewScroller setContentSize:CGSizeMake(3*_viewScroller.frame.size.width, self.view.frame.size.height)];
-        
-        [_glassScrollView1 setFrame:self.view.frame];
-        [_glassScrollView2 setFrame:self.view.frame];
-        [_glassScrollView3 setFrame:self.view.frame];
-        
-        [_glassScrollView2 setFrame:CGRectOffset(_glassScrollView2.bounds, _viewScroller.frame.size.width, 0)];
-        [_glassScrollView3 setFrame:CGRectOffset(_glassScrollView3.bounds, 2*_viewScroller.frame.size.width, 0)];
-        
-        [_viewScroller setContentOffset:CGPointMake(page * _viewScroller.frame.size.width, _viewScroller.contentOffset.y)];
-        _page = page;
-    }
+    [self addChildViewController:_pageViewController];
+    [self.view addSubview:_pageViewController.view];
+    [self.pageViewController didMoveToParentViewController:self];
 }
 
-- (void)viewWillLayoutSubviews
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    // if the view has navigation bar, this is a great place to realign the top part to allow navigation controller
-    // or even the status bar
-    if (SIMPLE_SAMPLE) {
-        [_glassScrollView setTopLayoutGuideLength:[self.topLayoutGuide length]];
-    }else{
-        [_glassScrollView1 setTopLayoutGuideLength:[self.topLayoutGuide length]];
-        [_glassScrollView2 setTopLayoutGuideLength:[self.topLayoutGuide length]];
-        [_glassScrollView3 setTopLayoutGuideLength:[self.topLayoutGuide length]];
-    }
-}
-
-- (UIView *)customView
-{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 705)];
-//
-//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 310, 120)];
-//    [label setText:[NSString stringWithFormat:@"%i℉",arc4random_uniform(20) + 60]];
-//    [label setTextColor:[UIColor whiteColor]];
-//    [label setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:120]];
-//    [label setShadowColor:[UIColor blackColor]];
-//    [label setShadowOffset:CGSizeMake(1, 1)];
-//    [view addSubview:label];
-//    
-//    UIView *box1 = [[UIView alloc] initWithFrame:CGRectMake(5, 140, 310, 125)];
-//    box1.layer.cornerRadius = 3;
-//    box1.backgroundColor = [UIColor colorWithWhite:0 alpha:.15];
-//    [view addSubview:box1];
-//    
-//    UIView *box2 = [[UIView alloc] initWithFrame:CGRectMake(5, 270, 310, 300)];
-//    box2.layer.cornerRadius = 3;
-//    box2.backgroundColor = [UIColor colorWithWhite:0 alpha:.15];
-//    [view addSubview:box2];
-//    
-//    UIView *box3 = [[UIView alloc] initWithFrame:CGRectMake(5, 575, 310, 125)];
-//    box3.layer.cornerRadius = 3;
-//    box3.backgroundColor = [UIColor colorWithWhite:0 alpha:.15];
-//    [view addSubview:box3];
-//    
-    return view;
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    CGFloat ratio = scrollView.contentOffset.x/scrollView.frame.size.width;
-    _page = (int)floor(ratio);
-    NSLog(@"%i",_page);
-    if (ratio > -1 && ratio < 1) {
-        [_glassScrollView1 scrollHorizontalRatio:-ratio];
-    }
-    if (ratio > 0 && ratio < 2) {
-        [_glassScrollView2 scrollHorizontalRatio:-ratio + 1];
-    }
-    if (ratio > 1 && ratio < 3) {
-        [_glassScrollView3 scrollHorizontalRatio:-ratio + 2];
-    }
-}
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    BTGlassScrollView *glass = [self currentGlass];
+    NSUInteger index = ((PageContentViewController*) viewController).pageIndex;
     
-    //can probably be optimized better than this
-    //this is just a demonstration without optimization
-    [_glassScrollView1 scrollVerticallyToOffset:glass.foregroundScrollView.contentOffset.y];
-    [_glassScrollView2 scrollVerticallyToOffset:glass.foregroundScrollView.contentOffset.y];
-    [_glassScrollView3 scrollVerticallyToOffset:glass.foregroundScrollView.contentOffset.y];
-}
-
-- (BTGlassScrollView *)currentGlass
-{
-    BTGlassScrollView *glass;
-    switch (_page) {
-        case 0:
-            glass = _glassScrollView1;
-            break;
-        case 1:
-            glass = _glassScrollView2;
-            break;
-        case 2:
-            glass = _glassScrollView3;
-        default:
-            break;
+    if ((index == 0) || (index == NSNotFound)) {
+        return nil;
     }
-    return glass;
+    index--;
+    return [self viewControllerAtIndex:index];
 }
 
-- (BOOL)shouldAutorotate
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-    return YES;
+    NSUInteger index = ((PageContentViewController*) viewController).pageIndex;
+    
+    if (index == NSNotFound) {
+        return nil;
+    }
+    
+    index++;
+    if (index == [self.eventList count]) {
+        return nil;
+    }
+    return [self viewControllerAtIndex:index];
 }
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+- (PageContentViewController *)viewControllerAtIndex:(NSUInteger)index
 {
-    [self viewWillAppear:YES];
+    if (([self.eventList count] == 0) || (index >= [self.eventList count])) {
+        return nil;
+    }
+    
+    // Create a new view controller and pass suitable data.
+//    PageContentViewController *pageContentViewController = [[PageContentViewController alloc] init];
+    PageContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
+    NSDictionary* event=(NSDictionary*)[self.eventList objectAtIndex:index];
+    //TODO
+    //match model to view
+    pageContentViewController.eventTitle=[event objectForKey:@"event_title"];
+    pageContentViewController.eventDate=[event objectForKey:@"event_date"];
+    pageContentViewController.eventLocation=[[event objectForKey:@"fk_address"] objectForKey:@"address_title"];
+    pageContentViewController.eventHoster=[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"username"];
+    pageContentViewController.eventLike=[[event objectForKey:@"event_like"] integerValue];
+    pageContentViewController.eventRSVP=[[event objectForKey:@"event_rsvp"] integerValue];
+    pageContentViewController.eventImage=self.eventImages[index%4];
+    pageContentViewController.pageIndex = index;
+    
+    return pageContentViewController;
 }
+
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
+{
+    return [self.eventList count];
+}
+
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
+{
+    return 0;
+}
+
+-(IBAction)segementeationPressed:(id)sender{
+    UISegmentedControl* seg=(UISegmentedControl*)sender;
+    if ([seg selectedSegmentIndex]==0) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 
 @end

@@ -9,5 +9,17 @@
 #import <UIKit/UIKit.h>
 
 @interface PageContentViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIImageView *eventImageView;
+@property (weak, nonatomic) IBOutlet UILabel *eventTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *eventDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *eventLocationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *eventHosterLabel;
+@property (weak, nonatomic) IBOutlet UILabel *eventRSVPLabel;
+@property (weak, nonatomic) IBOutlet UILabel *eventLikeLabel;
+@property NSUInteger pageIndex,eventLike,eventRSVP;
+
+@property NSString *eventTitle,*eventDate,*eventLocation,*eventHoster;
+@property UIImage *eventImage;
 
 @end

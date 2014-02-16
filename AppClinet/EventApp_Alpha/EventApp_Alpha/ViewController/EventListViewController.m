@@ -104,6 +104,13 @@
     return cell;
 }
 
+-(IBAction)segementationButtonPressed:(id)sender{
+    UISegmentedControl* seg=(UISegmentedControl*)sender;
+    if ([seg selectedSegmentIndex]==2) {
+        seg.selectedSegmentIndex=0;
+        [self performSegueWithIdentifier:@"eventListToEventRecommend" sender:nil];
+    }
+}
 
 -(TemplateTableCell*)modelToViewMatch:(id)sender eventInstance:(NSDictionary*)event
 {
@@ -114,8 +121,8 @@
         subview.layer.cornerRadius=6;
         subview.layer.masksToBounds=YES;
     }
-    [cell.profileImage.layer setBorderColor: [[UIColor grayColor] CGColor]];
-    [cell.profileImage.layer setBorderWidth: 2.0];
+//    [cell.profileImage.layer setBorderColor: [[UIColor grayColor] CGColor]];
+//    [cell.profileImage.layer setBorderWidth: 2.0];
     cell.eventNameLabel.text=[event objectForKey:@"event_title"];
     cell.hosterLabel.text=[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"username"];
     cell.dataLabel.text=[NSString stringWithFormat:@"%@ | %@",[event objectForKey:@"event_date"],[event objectForKey:@"event_time"]];
