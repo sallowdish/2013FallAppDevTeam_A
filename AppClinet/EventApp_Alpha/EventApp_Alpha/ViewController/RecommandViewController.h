@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BTGlassScrollView.h"
 
 @interface RecommandViewController : UIViewController <UIPageViewControllerDataSource>
 @property (strong, nonatomic) UIPageViewController *pageViewController;

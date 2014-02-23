@@ -11,4 +11,5 @@
 @interface EventListViewController : UITableViewController
 @property (nonatomic,strong) NSArray* eventList;
 -(IBAction)segementationButtonPressed:(id)sender;
+- (IBAction)refreshEventList:(id)sender;
 @end

@@ -2,56 +2,38 @@
 //  EventPostModel.m
 //  EventApp_Alpha
 //
-//  Created by Rui Zheng on 2013-11-21.
-//  Copyright (c) 2013 2013_Fall_Dev_Team_A. All rights reserved.
+//  Created by Rui Zheng on 2/22/2014.
+//  Copyright (c) 2014 2013_Fall_Dev_Team_A. All rights reserved.
 //
 
 #import "EventPostModel.h"
+#import "AppDelegate.h"
+
+#define REFERR "http://www.machoapes.com/app_project/api/v01/event/?"
+
 
 @implementation EventPostModel
--(bool)postEventWithRequest:(NSMutableURLRequest*)request{
-    NSURLConnection* conn=[[NSURLConnection alloc] initWithRequest:request delegate:self];
-    if(conn)
-        NSLog(@"conn set up successfully.");
-    else
-        NSLog(@"failed to set up.");
-    //[conn start];
-    return YES;
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    // This method is called when the server has determined that it
-    // has enough information to create the NSURLResponse object.
+-(void)postEventwithInfo:(NSMutableDictionary*)info{
+    [info setValue:[AppDelegate userUrl] forKey:@"fk_event_poster_user"];
+    [info setValue:@"/app_project/api/v01/address/2/" forKey:@"fk_address"];
+    NSURL* targetURL=[[self class] constructEventPostURLwithUsername:[AppDelegate username] andKey:[AppDelegate userApikey]];
+    @try {
+        NSError* err;
+        NSData* data=[NSJSONSerialization dataWithJSONObject:info options:nil error:&err];
+        NSString *jsonString=[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",jsonString);
+//        data=[jsonString dataUsingEncoding:NSUTF8StringEncoding];
+        if (err) {
+            @throw [NSException exceptionWithName:@"Failed" reason:@"Serialization Failed" userInfo:nil];
+        }
+        [self postData:data WithUrl:targetURL];
+    }
+    @catch (NSException *exception) {
+        [[[UIAlertView alloc]initWithTitle:@"Failed" message:exception.reason delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+    }
+    @finally {
+        
+    }
     
-    // It can be called multiple times, for example in the case of a
-    // redirect, so each time we reset the data.
-    
-    // receivedData is an instance variable declared elsewhere.
-    NSURLResponse *res=response;
-    NSLog(@"%@",res);
 }
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
-    NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-}
-
-- (void)connection:(NSURLConnection *)connection
-  didFailWithError:(NSError *)error
-{
-    // Release the connection and the data object
-    // by setting the properties (declared elsewhere)
-    // to nil.  Note that a real-world app usually
-    // requires the delegate to manage more than one
-    // connection at a time, so these lines would
-    // typically be replaced by code to iterate through
-    // whatever data structures you are using.
-    
-    // inform the user
-    NSLog(@"Connection failed! Error - %@ %@",
-          [error localizedDescription],
-          [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
-}
-
-
 @end

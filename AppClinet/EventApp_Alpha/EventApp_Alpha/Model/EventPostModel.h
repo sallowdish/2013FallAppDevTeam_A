@@ -2,17 +2,12 @@
 //  EventPostModel.h
 //  EventApp_Alpha
 //
-//  Created by Rui Zheng on 2013-11-21.
-//  Copyright (c) 2013 2013_Fall_Dev_Team_A. All rights reserved.
+//  Created by Rui Zheng on 2/22/2014.
+//  Copyright (c) 2014 2013_Fall_Dev_Team_A. All rights reserved.
 //
 
-//#import "WebServiceCommunicationModel.h"
+#import "DataTransferModel.h"
 
-@interface EventPostModel : WebServiceCommunicationModel <NSURLConnectionDataDelegate>
--(bool)postEventWithRequest:(NSMutableURLRequest*)request;
-
--(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
--(void)connection:(NSURLConnection *)connection
-didFailWithError:(NSError *)error;
--(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
+@interface EventPostModel : DataTransferModel
+-(void)postEventwithInfo:(NSMutableDictionary*)info;
 @end

@@ -10,6 +10,7 @@
 #import "EventListFetchModel.h"
 #import "TemplateTableCell.h"
 #import "FormatingModel.h"
+#import "ProgressHUD.h"
 
 @interface EventListViewController ()
 
@@ -28,10 +29,12 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    [ProgressHUD show:@"Loading new events list..."];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -40,28 +43,53 @@
     
     
     //get the latest event list online
+    
     EventListFetchModel* model=[[EventListFetchModel alloc] init];
-    
     [model fetchEventList];
-//    [model fetchEventListFromFile:@"/Users/ray/Documents/Development/2013FallAppDevTeam_A/AppClinet/EventApp_Alpha/EventApp_Alpha/Localrecord.json"];
-    
-    
-//    //Get the filepath for local json file
-//    NSString *filepath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Events.json"];
-//    
-//
-//    
-//    
-//    //Load json string from the local file
-//    if(error){
-//        NSLog(@"Error loading json file:%@",[error localizedDescription]);
-//    }
-//    eventList=[NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:filepath] options:NSJSONReadingMutableContainers error:&error];
-//    if(error){
-//        NSLog(@"Error loading json file:%@",[error localizedDescription]);
-//    }
     eventList=[EventListFetchModel eventsList];
     
+    UIRefreshControl* f5=[[UIRefreshControl alloc] init];
+    [f5 addTarget:self action:@selector(refreshEventList:) forControlEvents:UIControlEventValueChanged];
+    f5.attributedTitle=[[NSAttributedString alloc]initWithString:@"再多一點點...(灬ºωº灬)"];
+    
+    self.refreshControl=f5;
+    
+}
+
+-(void) viewDidAppear:(BOOL)animated{
+    [[ProgressHUD class] performSelector:@selector(dismiss) withObject:nil afterDelay:0.8];
+}
+
+//-(void) dismissHub{
+//    [ProgressHUD dismiss];
+//}
+
+//-(void)showHubwithMessage:(NSString*)msg{
+//    [ProgressHUD show:msg];
+//}
+//
+//-(void)showSucceedHUB{
+//    [ProgressHUD showSuccess:@"Succeed."];
+//}
+
+
+
+- (IBAction)refreshEventList:(id)sender{
+    //top indication
+    self.refreshControl.attributedTitle=[[NSAttributedString alloc]initWithString:@"努力從四次元搬運中...才怪_(:з」∠)_"];
+    
+    //HUD indication
+    //Functionality
+    EventListFetchModel* model=[[EventListFetchModel alloc] init];
+    [model fetchEventList];
+    eventList=[EventListFetchModel eventsList];
+    [self.tableView reloadData];
+    [self.refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:2];
+    //HUD dismiss
+    [self.refreshControl performSelector:@selector(setAttributedTitle:) withObject:[[NSAttributedString alloc]initWithString:@"再多一點點...(灬ºωº灬)"] afterDelay:2.2];
+    [[ProgressHUD class] performSelector:@selector(showSuccess:) withObject:@"Loading Finish" afterDelay:2];
+    //    [self performSelector:@selector(showHubwithMessage:) withObject:@"Loading Finsih" afterDelay:2];
+//    [self performSelector:@selector(dismissHub) withObject:nil afterDelay:3];
 }
 
 - (void)didReceiveMemoryWarning

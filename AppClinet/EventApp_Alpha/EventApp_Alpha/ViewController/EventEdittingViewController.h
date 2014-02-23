@@ -14,12 +14,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EventEdittingViewController : UITableViewController
+@interface EventEdittingViewController : UITableViewController <NSURLConnectionDelegate,UITextFieldDelegate>
 - (IBAction)donePressed:(id)sender;
 - (IBAction)cancelPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *dateInputTextField;
 @property (weak, nonatomic) IBOutlet UITextField *timeFromInputTextField;
-@property (weak, nonatomic) IBOutlet UITextField *timeToInputTextField;
 @property (weak, nonatomic) IBOutlet UITextField *capacityInputTextField;
 @property (weak, nonatomic) IBOutlet UITextField *titleInputTextField;
 @property (weak, nonatomic) IBOutlet UITextField *detailInputTextField;

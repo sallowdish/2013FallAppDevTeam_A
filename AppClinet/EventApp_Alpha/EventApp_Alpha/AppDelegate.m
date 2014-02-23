@@ -12,15 +12,35 @@
 
 @implementation AppDelegate
 
+static NSString* username,* userUrl,* userApiKey;
 
++(NSString*)username{
+    if (username==nil) {
+        username=[[NSString alloc] init];
+    }
+    return username;
+}
 
++(NSString*)userUrl{
+    if (userUrl==nil) {
+        userUrl=[[NSString alloc] init];
+    }
+    return userUrl;
+}
+
++ (NSString*)userApikey{
+    if (userApiKey==nil) {
+        userApiKey=[[NSString alloc] init];
+    }
+    return userApiKey;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //setup tokens
-    self.username=@"ray";
-    self.userUrl=@"/app_project/api/v01/user/2/";
-    self.userApiKey=@"2ef301df5eb04674f53473949deba52ddb2c3650";
+    username=@"ray";
+    userUrl=@"/app_project/api/v01/user/2/";
+    userApiKey=@"2ef301df5eb04674f53473949deba52ddb2c3650";
     //setup options
     UIPageControl *pageControl = [UIPageControl appearance];
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];

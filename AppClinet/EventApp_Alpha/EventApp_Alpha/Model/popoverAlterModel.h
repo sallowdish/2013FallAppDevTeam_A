@@ -10,4 +10,6 @@
 
 @interface popoverAlterModel : NSObject
 +(void)alterWithTitle:(NSString*)title Message:(NSString*)msg;
+-(void) showWaitingHub;
+-(void)dismissWaitingHub;
 @end

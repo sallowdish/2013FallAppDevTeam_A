@@ -8,9 +8,10 @@
 
 #import "URLConstructModel.h"
 
-@interface DataTransferModel : URLConstructModel <NSURLConnectionDataDelegate>
+@interface DataTransferModel : URLConstructModel
 @property NSData* data;
+@property id externalDelegate;
 
 -(void)fetchDataWithUrl:(NSURL*)url;
--(void)postDataWithUrl:(NSURL*)url;
+-(void)postData:(NSData*)data WithUrl:(NSURL *)url;
 @end

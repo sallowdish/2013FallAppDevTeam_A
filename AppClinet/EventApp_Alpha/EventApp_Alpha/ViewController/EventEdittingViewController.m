@@ -7,15 +7,16 @@
 //
 
 #import "EventEdittingViewController.h"
-//#import "EventPostModel.h"
-
+#import "EventPostModel.h"
+#import "popoverAlterModel.h"
+#import "ProgressHUD.h"
 @interface EventEdittingViewController ()
-@property NSDate *time,*date;
 @end
 
 @implementation EventEdittingViewController
 
-@synthesize time,date;
+static NSMutableData* responseData;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -40,37 +41,40 @@
         ,*timePicker=[[UIDatePicker alloc]init];
     [datePicker setDatePickerMode:UIDatePickerModeDate];
     [timePicker setDatePickerMode:UIDatePickerModeTime];
-    [datePicker addTarget:self action:@selector(datePickerDidChanged:) forControlEvents:UIControlEventValueChanged];
-    [timePicker addTarget:self action:@selector(timePickerDidChanged:) forControlEvents:UIControlEventValueChanged];
+//    [datePicker addTarget:self action:@selector(datePickerDidChanged:) forControlEvents:UIControlEventValueChanged];
+//    [timePicker addTarget:self action:@selector(timePickerDidChanged:) forControlEvents:UIControlEventValueChanged];
     self.dateInputTextField.inputView=datePicker;
     self.timeFromInputTextField.inputView=timePicker;
-    self.timeToInputTextField.inputView=timePicker;
+//    self.timeToInputTextField.inputView=timePicker;
     [self.timeFromInputTextField addTarget:self action:@selector(didFinishTimeEditting:) forControlEvents:UIControlEventEditingDidEnd];
-    [self.timeToInputTextField addTarget:self action:@selector(didFinishTimeEditting:) forControlEvents:UIControlEventEditingDidEnd];
+//    [self.timeToInputTextField addTarget:self action:@selector(didFinishTimeEditting:) forControlEvents:UIControlEventEditingDidEnd];
     [self.dateInputTextField addTarget:self action:@selector(didFinishDateEditting:) forControlEvents:UIControlEventEditingDidEnd];
 }
 
 
--(IBAction)datePickerDidChanged:(id)sender{
-    date=[sender date];
-}
-
--(IBAction)timePickerDidChanged:(id)sender{
-    time=[sender date];
-}
+//-(IBAction)datePickerDidChanged:(id)sender{
+//    date=[sender date];
+//}
+//
+//-(IBAction)timePickerDidChanged:(id)sender{
+//    time=[sender date];
+//}
 
 -(IBAction)didFinishTimeEditting:(id)sender{
     NSDateFormatter* formatter=[[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH:mm"];
-//    UITextField* tf=(UITextField*)sender;
+    UITextField* tf=(UITextField*)sender;
+    UIDatePicker* picker=(UIDatePicker*)tf.inputView;
 //    sender.text=[formatter stringFromDate:time];
-    [(UITextField*)sender setText:[formatter stringFromDate:time]];
+    [(UITextField*)sender setText:[formatter stringFromDate:[picker date]]];
 }
 
 -(IBAction)didFinishDateEditting:(id)sender{
     NSDateFormatter* formatter=[[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-mm-dd"];
-    [(UITextField*)sender setText: [formatter stringFromDate:date]];
+    UITextField* tf=(UITextField*)sender;
+    UIDatePicker* picker=(UIDatePicker*)tf.inputView;
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    [(UITextField*)sender setText: [formatter stringFromDate:[picker date]]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -80,102 +84,78 @@
 }
 
 - (IBAction)donePressed:(id)sender{
-//    [self constructRequest];
+    EventPostModel* model=[[EventPostModel alloc] init];
+    model.externalDelegate=self;
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [ProgressHUD show:@"Submitting new event..."];
+    [model postEventwithInfo:[self packUpInfo]];
+    
 }
 
 - (IBAction)cancelPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (NSDictionary*)packUpInfo{
-    NSDictionary* info=[[NSDictionary alloc]init];
+- (NSMutableDictionary*)packUpInfo{
+    NSMutableDictionary* info=[[NSMutableDictionary alloc]init];
     [info setValue:self.titleInputTextField.text forKey:@"event_title"];
     [info setValue:self.dateInputTextField.text forKey:@"event_date"];
     [info setValue:self.timeFromInputTextField.text forKey:@"event_time"];
     [info setValue:self.detailInputTextField.text forKey:@"event_detail"];
+    [info setValue:self.capacityInputTextField.text forKey:@"event_capacity"];
     return info;
 }
 
-//- (void)constructRequest{
-//    EventPostModel* model=[[EventPostModel alloc] init];
-//    [model postEventWithRequest:[EventPostModel constructPostRequestWithJsonData:[[NSData alloc] init]]];
-//}
 
-//#pragma mark - Table view data source
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 0;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//#warning Incomplete method implementation.
-//    // Return the number of rows in the section.
-//    return 0;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    static NSString *CellIdentifier = @"Cell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//    
-//    // Configure the cell...
-//    
-//    return cell;
-//}
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+-(void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+//        NSLog(@"%@",response);
+        NSHTTPURLResponse* resp=(NSHTTPURLResponse*)response;
+        if ([resp statusCode]!=201) {
+            //something wrong
+            [[[popoverAlterModel alloc]init]dismissWaitingHub];
+            [[[UIAlertView alloc] initWithTitle:@"Failed" message:@"Failed to pose the event, sorry." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+            NSLog(@"%@",response);
+        }
+        else{
+            [ProgressHUD dismiss];
+            [self performSelector:@selector(showSucceedHUD) withObject:nil afterDelay:0.5];
+//            [[[UIAlertView alloc] initWithTitle:@"Succeed" message:@"Your event has been posted. We will jump back to event list page." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+            responseData=[[NSMutableData alloc] init];
+        }
+        
+    }
+}
+
+-(void) showSucceedHUD{
+    [ProgressHUD showSuccess:@"Your event has been posted. We will jump back to event list page."];
+}
+
+-(void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
+    [responseData appendData:data];
+    
+}
+
+-(void) connectionDidFinishLoading:(NSURLConnection *)connection{
+    NSString* responseString=[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",responseString);
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self performSelector:@selector(dismissViewControllerAnimated:completion:) withObject:@YES afterDelay:3];
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+// It is important for you to hide kwyboard
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
+    [textField resignFirstResponder];
     return YES;
 }
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end

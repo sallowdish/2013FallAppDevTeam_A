@@ -16,5 +16,5 @@
 //Return the URL to fetch the event list w/o any condition
 +(NSURL *)constructFetchRequest;
 //Construct the post request using the data from view
-+(NSMutableURLRequest*)constructPostRequestWithJsonData:(NSData*)postData;
++(NSURL*)constructEventPostURLwithUsername:(NSString*)username andKey:(NSString*) APIkey;
 @end
