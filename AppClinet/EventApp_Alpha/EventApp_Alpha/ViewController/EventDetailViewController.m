@@ -90,7 +90,7 @@ bool isJoined;
     self.like.text=[NSString stringWithFormat:@"%@",[event objectForKey:@"event_like"]];
     id capacity=[event objectForKey:@"event_capacity"];
     if (capacity!=[NSNull null]) {
-        self.RSVP.text=[NSString stringWithFormat:@"%@/%d",[event objectForKey:@"event_rsvp"],[capacity integerValue]];
+        self.RSVP.text=[NSString stringWithFormat:@"%@/%ld",[event objectForKey:@"event_rsvp"],(long)[capacity integerValue]];
     }else{
         self.RSVP.text=@"Free to go";
         [self.joinButton removeFromSuperview];
@@ -113,7 +113,7 @@ bool isJoined;
     if(isJoined==NO)
     {
         NSInteger currentNum=[(NSString*)[event objectForKey:@"event_rsvp"] integerValue];
-        self.RSVP.text=[NSString stringWithFormat:@"%d/%@",currentNum+1,[event objectForKey:@"event_capacity"]];
+        self.RSVP.text=[NSString stringWithFormat:@"%ld/%@",currentNum+1,[event objectForKey:@"event_capacity"]];
         self.joinButton.enabled=NO;
         isJoined=!isJoined;
         [popoverAlterModel alterWithTitle:@"Congratulation" Message:@"You have joined the event successfully."];

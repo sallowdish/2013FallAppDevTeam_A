@@ -122,7 +122,7 @@
     // Configure the cell...
     NSDictionary* event=[eventList objectAtIndex:indexPath.row];
     cell=[self modelToViewMatch:cell eventInstance:event];
-    cell.profileImage.image=[UIImage imageNamed:[NSString stringWithFormat:@"event%d.jpg",(indexPath.row)%4+1]];
+    cell.profileImage.image=[UIImage imageNamed:[NSString stringWithFormat:@"event%ld.jpg",(indexPath.row)%4+1]];
 
 //    cell.hosterLabel.text=[NSString stringWithFormat:@"%@|%@|%@",
 //        [[event objectForKey:@"event_organizer_id"] objectForKey:@"account_user_name"],

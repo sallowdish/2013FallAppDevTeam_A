@@ -35,8 +35,8 @@
     self.eventTitleLabel.text=self.eventTitle;
     self.eventDateLabel.text=self.eventDate;
     self.eventLocationLabel.text=self.eventLocation;
-    self.eventLikeLabel.text=[NSString stringWithFormat:@"%d",self.eventLike];
-    self.eventRSVPLabel.text=[NSString stringWithFormat:@"%d",self.eventRSVP];
+    self.eventLikeLabel.text=[NSString stringWithFormat:@"%lu",(unsigned long)self.eventLike];
+    self.eventRSVPLabel.text=[NSString stringWithFormat:@"%lu",(unsigned long)self.eventRSVP];
     self.eventHosterLabel.text=[NSString stringWithFormat:@"Hosted by %@",self.eventHoster];
     self.eventImageView.image=self.eventImage;
     //polish
