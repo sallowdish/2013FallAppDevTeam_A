@@ -7,10 +7,14 @@
 //
 
 #import "ProfilePageViewController.h"
-#define MAXTAG 100
+#define MAXTAG 103
 
 @interface ProfilePageViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *needBorder;
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray * needTransparent;
+
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *needRoundCorner;
 
 @end
 
@@ -25,17 +29,48 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
 
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height*2)];
-    for (int i=100; i<MAXTAG+1; i++) {
-        UIView* subview=[self.view viewWithTag:i];
-        subview.layer.cornerRadius=6;
-        subview.layer.masksToBounds=YES;
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height*1.4)];
+    
+    //Set transparent background
+    for (UIView *view in self.needTransparent) {
+        [view setBackgroundColor:[UIColor clearColor]];
     }
+    
+    
+    
+    //Set border
+    for (UIView *view in self.needBorder) {
+        view.layer.borderWidth=4;
+        view.layer.borderColor=[UIColor whiteColor].CGColor;
+    }
+    //Set round corner
+    for (UIView *view in self.needRoundCorner) {
+        view.layer.cornerRadius=6;
+    }
+    //set up log view individually
+    [self.view viewWithTag:999].layer.borderWidth=2;
+    [self drawShadowForView:[self.view viewWithTag:998]];
+    
+    //set up container for redheart image
+    [self.view viewWithTag:997].layer.borderWidth=3;
+    [self.view viewWithTag:997].layer.borderColor=[UIColor grayColor].CGColor;
+    [self.view viewWithTag:997].layer.cornerRadius=15;
+    [self.view viewWithTag:996].layer.cornerRadius=15;
+}
+
+-(void)drawShadowForView:(UIView*)view{
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:view.bounds];
+    view.layer.masksToBounds = NO;
+    view.layer.shadowColor = [UIColor blackColor].CGColor;
+    view.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
+    view.layer.shadowOpacity = 0.5f;
+    view.layer.shadowPath = shadowPath.CGPath;
 }
 
 - (void)didReceiveMemoryWarning

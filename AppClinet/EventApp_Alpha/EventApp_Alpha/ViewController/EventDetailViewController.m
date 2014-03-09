@@ -113,7 +113,7 @@ bool isJoined;
     if(isJoined==NO)
     {
         NSInteger currentNum=[(NSString*)[event objectForKey:@"event_rsvp"] integerValue];
-        self.RSVP.text=[NSString stringWithFormat:@"%ld/%@",currentNum+1,[event objectForKey:@"event_capacity"]];
+        self.RSVP.text=[NSString stringWithFormat:@"%d/%@",currentNum+1,[event objectForKey:@"event_capacity"]];
         self.joinButton.enabled=NO;
         isJoined=!isJoined;
         [popoverAlterModel alterWithTitle:@"Congratulation" Message:@"You have joined the event successfully."];
