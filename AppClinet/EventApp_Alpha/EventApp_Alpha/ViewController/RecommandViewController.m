@@ -37,7 +37,7 @@
     //TODO
     //Initial model
     EventListFetchModel* model=[[EventListFetchModel alloc] init];
-    [model fetchEventList];
+    [model fetchEventListWithMode:@"hot"];
     self.eventList=[EventListFetchModel eventsList];
     
     NSMutableArray *temp=[[NSMutableArray alloc]init];

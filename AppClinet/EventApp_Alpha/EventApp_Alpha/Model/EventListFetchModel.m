@@ -25,7 +25,7 @@ static NSArray* eventList;
     eventList=[value copy];
 }
 
--(void) fetchEventList
+-(void) fetchEventListWithMode:(NSString *)mode
 {
     @try {
         NSError* error=nil;
@@ -33,7 +33,15 @@ static NSArray* eventList;
         DataTransferModel* transfer=[[DataTransferModel alloc]init];
         //get the json of eventlist from webservice
 //        NSData* buffer=[NSData dataWithContentsOfURL:[URLConstructModel constructFetchRequestWithResource:@"/event/" WithConstrain:NOCONSTRAIN WithFormat:JSONFORMAT] options:NSDataReadingMappedIfSafe error:&error];
-        [transfer fetchDataWithUrl:[DataTransferModel constructFetchRequestWithResource:@"/event/" WithConstrain:NOCONSTRAIN WithFormat:JSONFORMAT]];
+        NSURL* targeturl=[DataTransferModel constructFetchRequestWithResource:@"/event/" WithConstrain:NOCONSTRAIN WithFormat:JSONFORMAT];
+        if ([mode isEqualToString:@"time"]) {
+            targeturl=[NSURL URLWithString:[[targeturl absoluteString] stringByAppendingString:@"&order_by=-event_create_time"]];
+        }
+        else if ([mode isEqualToString:@"hot"]){
+            targeturl=[NSURL URLWithString:[[targeturl absoluteString] stringByAppendingString:@"&order_by=-event_rsvp"]];
+        }
+//        NSLog(@"%@",[targeturl absoluteString]);
+        [transfer fetchDataWithUrl:targeturl];
         if(!transfer.data)
         {
             @throw [NSException exceptionWithName:@"Fetching Failed" reason:error.localizedDescription userInfo:nil];

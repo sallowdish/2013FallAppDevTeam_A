@@ -11,6 +11,6 @@
 @interface EventListFetchModel : NSObject
 
 +(NSArray*)eventsList;
--(void) fetchEventList;
+-(void) fetchEventListWithMode:(NSString*) mode;
 -(void) fetchEventListFromFile:(NSString*) filename;
 @end

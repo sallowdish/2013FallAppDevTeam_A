@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B3116" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8YX-ce-x5E">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Event List View Controller - Event List-->
@@ -530,7 +530,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="406"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="pXL-20-qbC">
+                                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="pXL-20-qbC" userLabel="Top">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -652,12 +652,12 @@
                                                     </button>
                                                 </subviews>
                                             </view>
-                                            <view tag="103" contentMode="scaleToFill" id="Afz-yz-1my">
-                                                <rect key="frame" x="10" y="168" width="300" height="227"/>
+                                            <view tag="103" contentMode="scaleToFill" id="Afz-yz-1my" userLabel="Detail">
+                                                <rect key="frame" x="10" y="168" width="300" height="309"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" id="4cw-FZ-ilY">
-                                                        <rect key="frame" x="0.0" y="3" width="300" height="219"/>
+                                                        <rect key="frame" x="0.0" y="79" width="300" height="225"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -667,11 +667,41 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             </view>
+                                            <view contentMode="scaleToFill" id="VBs-Uo-q3v" userLabel="Viewed People">
+                                                <rect key="frame" x="0.0" y="175" width="320" height="65"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event1.jpg" id="Jba-u4-UG9">
+                                                        <rect key="frame" x="11" y="8" width="50" height="50"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event2.jpg" id="CaV-Zj-blP">
+                                                        <rect key="frame" x="69" y="8" width="50" height="50"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event3.jpg" id="29Y-qn-7UJ">
+                                                        <rect key="frame" x="127" y="8" width="50" height="50"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event4.jpg" id="0va-QK-ePm">
+                                                        <rect key="frame" x="185" y="8" width="50" height="50"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    </imageView>
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="...已參與 》" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dkr-SX-85n">
+                                                        <rect key="frame" x="243" y="37" width="85" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.80000000000000004" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <containerView contentMode="scaleToFill" id="pB5-5B-nWR">
-                                        <rect key="frame" x="10" y="414" width="300" height="226"/>
+                                        <rect key="frame" x="10" y="426" width="300" height="226"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <connections>
@@ -700,6 +730,10 @@
                         <outlet property="likeButton" destination="yX7-4V-JzY" id="e2N-LJ-yRg"/>
                         <outlet property="location" destination="O0n-VW-VFH" id="JXB-u5-Pzf"/>
                         <outlet property="scrollView" destination="3hS-ke-OIA" id="r2q-V4-jhQ"/>
+                        <outletCollection property="ViewedPeopleIcons" destination="CaV-Zj-blP" id="lrM-h6-uNi"/>
+                        <outletCollection property="ViewedPeopleIcons" destination="0va-QK-ePm" id="ZCZ-4R-bYu"/>
+                        <outletCollection property="ViewedPeopleIcons" destination="Jba-u4-UG9" id="6KE-3Z-Grk"/>
+                        <outletCollection property="ViewedPeopleIcons" destination="29Y-qn-7UJ" id="dbS-jw-WHZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hD-ke-25h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -789,7 +823,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qq-4t-Ow8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="119" y="177"/>
+            <point key="canvasLocation" x="487" y="393"/>
         </scene>
         <!--Page View Controller - Item-->
         <scene sceneID="twN-PD-XBZ">
@@ -1373,19 +1407,6 @@ XX日發佈了XXXX活動 .
             </objects>
             <point key="canvasLocation" x="1614" y="29"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="x6r-cf-h1k">
-            <objects>
-                <viewController id="gQ1-04-4FE" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="jRA-IH-SQV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7ys-i2-4OB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="Calender" width="204" height="204"/>
@@ -1393,6 +1414,9 @@ XX日發佈了XXXX活動 .
         <image name="Setting" width="30" height="30"/>
         <image name="TimeIcon_done.png" width="50" height="50"/>
         <image name="backgroundImage.png" width="1280" height="800"/>
+        <image name="event1.jpg" width="225" height="225"/>
+        <image name="event2.jpg" width="259" height="194"/>
+        <image name="event3.jpg" width="280" height="180"/>
         <image name="event4.jpg" width="252" height="200"/>
         <image name="first" width="30" height="30"/>
         <image name="greyheart_done.png" width="69" height="65"/>

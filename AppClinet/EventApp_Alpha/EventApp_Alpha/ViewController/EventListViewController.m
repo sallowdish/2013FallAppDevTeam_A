@@ -45,7 +45,7 @@
     //get the latest event list online
     
     EventListFetchModel* model=[[EventListFetchModel alloc] init];
-    [model fetchEventList];
+    [model fetchEventListWithMode:@"time"];
     eventList=[EventListFetchModel eventsList];
     
     UIRefreshControl* f5=[[UIRefreshControl alloc] init];
@@ -81,7 +81,7 @@
     //HUD indication
     //Functionality
     EventListFetchModel* model=[[EventListFetchModel alloc] init];
-    [model fetchEventList];
+    [model fetchEventListWithMode:@"time"];
     eventList=[EventListFetchModel eventsList];
     [self.tableView reloadData];
     [self.refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:2];

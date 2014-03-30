@@ -15,6 +15,7 @@
 #define MAXTAG 104
 @interface EventDetailViewController ()
 @property (strong,nonatomic) NSDictionary* event;
+@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *ViewedPeopleIcons;
 @end
 
 @implementation EventDetailViewController
@@ -74,10 +75,21 @@ bool isJoined;
         [self.navigationController popViewControllerAnimated:YES];
     }
     
+    [self viewedPeopleInitialize];
+    
     //matching
 //    event=(NSDictionary*)[event objectForKey:@"fields"];
-    
-    
+}
+
+-(void)viewedPeopleInitialize{
+    for (int i = 0; i<[self.ViewedPeopleIcons count]; i++) {
+        UIImageView* view=self.ViewedPeopleIcons[i];
+        view.layer.borderWidth=2;
+        view.layer.borderColor=[UIColor whiteColor].CGColor;
+        view.layer.cornerRadius=25;
+        view.layer.masksToBounds = NO;
+        view.clipsToBounds = YES;
+    }
 }
 
 -(void)modelToViewMatch
