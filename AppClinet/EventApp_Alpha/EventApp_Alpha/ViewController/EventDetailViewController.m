@@ -82,14 +82,27 @@ bool isJoined;
 }
 
 -(void)viewedPeopleInitialize{
+    
     for (int i = 0; i<[self.ViewedPeopleIcons count]; i++) {
+        //UI initialization
         UIImageView* view=self.ViewedPeopleIcons[i];
         view.layer.borderWidth=2;
         view.layer.borderColor=[UIColor whiteColor].CGColor;
         view.layer.cornerRadius=25;
         view.layer.masksToBounds = NO;
         view.clipsToBounds = YES;
+        //functionality initialization
+        UITapGestureRecognizer* singleTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(viewedPeopleTapped:)];
+        singleTap.numberOfTapsRequired=1;
+        view.userInteractionEnabled=YES;
+        [view addGestureRecognizer:singleTap];
     }
+}
+
+-(IBAction)viewedPeopleTapped:(id)sender{
+    UITapGestureRecognizer* tap=(UITapGestureRecognizer*)sender;
+    NSUInteger i=[self.ViewedPeopleIcons indexOfObject:tap.view];
+    NSLog(@"%ld Tapped!",(long)i);
 }
 
 -(void)modelToViewMatch

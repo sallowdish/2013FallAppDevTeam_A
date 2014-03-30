@@ -14,7 +14,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EventEdittingViewController : UITableViewController <NSURLConnectionDelegate,UITextFieldDelegate>
+@interface EventEdittingViewController : UITableViewController <NSURLConnectionDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate>
 - (IBAction)donePressed:(id)sender;
 - (IBAction)cancelPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *dateInputTextField;

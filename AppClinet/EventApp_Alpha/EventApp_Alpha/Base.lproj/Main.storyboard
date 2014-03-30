@@ -463,6 +463,9 @@
                                                     <state key="normal">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="imagePickerPopup:" destination="Ijd-Nk-bWE" eventType="touchUpInside" id="NU0-Oj-HuV"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
@@ -506,6 +509,9 @@
                         <outlet property="capacityInputTextField" destination="hOf-Se-Atz" id="nVz-uf-QOg"/>
                         <outlet property="dateInputTextField" destination="uEy-op-XTW" id="snr-El-Eer"/>
                         <outlet property="detailInputTextField" destination="zlO-S0-ihy" id="HMQ-aH-L9a"/>
+                        <outlet property="photoAddButton" destination="cO2-qU-nU7" id="277-HO-UJE"/>
+                        <outlet property="photoCell" destination="Fss-Br-d86" id="k3p-qS-nkO"/>
+                        <outlet property="photoSpanView" destination="4Xf-gR-uWm" id="4sq-N7-7fG"/>
                         <outlet property="timeFromInputTextField" destination="rnU-z3-cbm" id="Syv-uy-bMj"/>
                         <outlet property="titleInputTextField" destination="UnW-CX-EPm" id="c3j-W3-9lB"/>
                     </connections>

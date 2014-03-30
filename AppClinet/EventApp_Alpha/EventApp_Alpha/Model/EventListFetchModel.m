@@ -68,8 +68,9 @@ static NSArray* eventList;
                 @throw [NSException exceptionWithName:@"Write into file Failed" reason:error.localizedDescription userInfo:nil];
             }
             else
-                NSLog(@"%@",jsonContent);
-
+            {
+//                NSLog(@"%@",jsonContent);
+            }
         }
         
     }
