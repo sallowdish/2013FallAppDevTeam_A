@@ -20,6 +20,9 @@
 
 @synthesize eventList;
 
+bool isUpdated;
+EventListFetchModel* model;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -33,8 +36,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    isUpdated=false;
+    eventList=nil;
     
-    [ProgressHUD show:@"Loading new events list..."];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -44,9 +48,15 @@
     
     //get the latest event list online
     
-    EventListFetchModel* model=[[EventListFetchModel alloc] init];
-    [model fetchEventListWithMode:@"time"];
+    model=[[EventListFetchModel alloc] init];
+    [model fetchEventListFromFile];
     eventList=[EventListFetchModel eventsList];
+//    //no network or connection fails
+//    if (eventList.count==0) {
+//        
+//        eventList=[EventListFetchModel eventsList];
+//        NSLog(@"%@",@"No Internet now.");
+//    }
     
     UIRefreshControl* f5=[[UIRefreshControl alloc] init];
     [f5 addTarget:self action:@selector(refreshEventList:) forControlEvents:UIControlEventValueChanged];
@@ -54,10 +64,37 @@
     
     self.refreshControl=f5;
     
+    
+    //start appearing
+}
+
+
+-(void)fetchNewDataFromServer{
+    [ProgressHUD show:@"Loading new events list..."];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchNewDataFromServer:) name:@"didFetchEventListWithMode" object:nil];
+    [model fetchEventListWithMode:@"time"];
+    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(removeFromNSNotificationCenter) userInfo:nil repeats:NO];
+    //    [self fetchNewDataFromServer];
+    [[ProgressHUD class] performSelector:@selector(dismiss) withObject:nil afterDelay:0.8];
+}
+
+-(void)didFetchNewDataFromServer:(NSNotification*) notif{
+    if ([notif object]) {
+        eventList=(NSArray*)[notif object];
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
+        isUpdated=true;
+    }
 }
 
 -(void) viewDidAppear:(BOOL)animated{
-    [[ProgressHUD class] performSelector:@selector(dismiss) withObject:nil afterDelay:0.8];
+    [self fetchNewDataFromServer];
+}
+
+-(void) removeFromNSNotificationCenter{
+    if (isUpdated==false) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
+    }
 }
 
 //-(void) dismissHub{
@@ -80,9 +117,7 @@
     
     //HUD indication
     //Functionality
-    EventListFetchModel* model=[[EventListFetchModel alloc] init];
-    [model fetchEventListWithMode:@"time"];
-    eventList=[EventListFetchModel eventsList];
+    [self fetchNewDataFromServer];
     [self.tableView reloadData];
     [self.refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:2];
     //HUD dismiss

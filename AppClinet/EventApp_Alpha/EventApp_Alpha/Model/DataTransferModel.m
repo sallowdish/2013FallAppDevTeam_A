@@ -9,29 +9,23 @@
 #import "DataTransferModel.h"
 #import "popoverAlterModel.h"
 
-static NSMutableData* responseData;
+static NSMutableData* receivedData;
+NSError* error;
+
 
 @implementation DataTransferModel
 -(void)fetchDataWithUrl:(NSURL*)url{
     //NSData* result;
-    NSMutableURLRequest* request=[NSMutableURLRequest requestWithURL:url];
-    NSURLResponse* response;
-    NSError* error;
-    //NSURLConnection* conn=[[NSURLConnection alloc] init];
-    NSData* incomingBuffer=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    if (error) {
-        @throw [NSException exceptionWithName:@"Connection set up failed." reason:nil userInfo:nil];
+    NSMutableURLRequest* request=[NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
+    receivedData=[NSMutableData dataWithCapacity:0];
+//    NSURLResponse* response;
+    NSURLConnection* conn=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+    if (!conn) {
+        receivedData=nil;
     }
-    else if ([response.MIMEType isEqualToString:@"application/json"])
-    {
-        //        NSLog(@"%@",response);
-        //        NSLog(@"%@",[[NSString alloc]initWithData:incomingBuffer encoding:NSUTF8StringEncoding]);
-        self.data=incomingBuffer;
-    }else
-    {
-        @throw [NSException exceptionWithName:@"Connection set up failed." reason:nil userInfo:nil];
+    else{
+        [conn start];
     }
-    
 }
 
 -(void)postData:(NSData*)data WithUrl:(NSURL *)url{
@@ -73,16 +67,35 @@ static NSMutableData* responseData;
     return request;
 }
 
-//-(void) connectionDidFinishLoading:(NSURLConnection *)connection{
-//    if ()
-//    {
-//        NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-//
-//        //You've got all the data now
-//        //Do something with your response string
-//
-//
-//        //[responseString release];
-//    }
-//}
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    if ([response.MIMEType isEqualToString:@"application/json"])
+    {
+        [receivedData setLength:0];
+    }else{
+        receivedData=nil;
+        @throw [NSException exceptionWithName:@"Fetch Json data Failed" reason:error.localizedDescription userInfo:nil];
+    }
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    // Append the new data to receivedData.
+    // receivedData is an instance variable declared elsewhere.
+    [receivedData appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    // do something with the data
+    
+    // release the connection, and the data object
+    self.data=receivedData;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"didFinishLoadingData" object:self.data];
+}
+
+-(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge{
+    NSURLCredential* cre=[NSURLCredential credentialWithUser:@"sean" password:@"1" persistence:NSURLCredentialPersistenceForSession];
+    [[challenge sender] useCredential:cre forAuthenticationChallenge:challenge];
+}
 @end

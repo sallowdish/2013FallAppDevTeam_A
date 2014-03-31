@@ -8,7 +8,7 @@
 
 #import "URLConstructModel.h"
 
-@interface DataTransferModel : URLConstructModel
+@interface DataTransferModel : URLConstructModel<NSURLConnectionDataDelegate>
 @property NSData* data;
 @property id externalDelegate;
 

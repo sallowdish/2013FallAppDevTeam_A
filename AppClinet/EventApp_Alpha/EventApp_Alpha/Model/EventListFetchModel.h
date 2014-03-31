@@ -12,5 +12,5 @@
 
 +(NSArray*)eventsList;
 -(void) fetchEventListWithMode:(NSString*) mode;
--(void) fetchEventListFromFile:(NSString*) filename;
+-(void) fetchEventListFromFile;
 @end

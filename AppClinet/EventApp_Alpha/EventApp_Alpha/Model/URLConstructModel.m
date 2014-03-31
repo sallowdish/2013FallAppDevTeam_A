@@ -18,7 +18,7 @@
 
 +(NSURL *)constructFetchRequestWithResource:(NSString*)resource WithConstrain:(NSString*)constrain WithFormat:(NSString*)format{
     NSString* rawURL=[NSString stringWithFormat:@"%@%@%@%@%@",WEBSERVICEDOMAIN,API,resource,constrain,format];
-    NSLog(@"%@",rawURL);
+//    NSLog(@"%@",rawURL);
     return [NSURL URLWithString:rawURL];
 }
 

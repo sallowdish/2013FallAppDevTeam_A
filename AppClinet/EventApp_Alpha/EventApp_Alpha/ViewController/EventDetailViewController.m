@@ -103,6 +103,7 @@ bool isJoined;
     UITapGestureRecognizer* tap=(UITapGestureRecognizer*)sender;
     NSUInteger i=[self.ViewedPeopleIcons indexOfObject:tap.view];
     NSLog(@"%ld Tapped!",(long)i);
+    [self performSegueWithIdentifier:@"seeUsersDetail" sender:self];
 }
 
 -(void)modelToViewMatch
