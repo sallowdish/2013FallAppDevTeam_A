@@ -615,11 +615,14 @@
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yX7-4V-JzY">
-                                                                        <rect key="frame" x="118" y="1" width="41" height="30"/>
+                                                                        <rect key="frame" x="118" y="1" width="47" height="30"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <state key="normal" title="Like">
                                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="likeButtonPressed:" destination="Fec-tY-Qmi" eventType="touchUpInside" id="01n-tt-wLY"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -785,7 +788,9 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="aVg-TB-R8J" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Events" image="first" id="9a2-VO-zL6"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="t4X-k0-Eng">
+                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -796,41 +801,44 @@
             </objects>
             <point key="canvasLocation" x="388" y="-674"/>
         </scene>
-        <!--View Controller - Second-->
-        <scene sceneID="ot8-2e-RuS">
+        <!--Navigation Controller - shopping-->
+        <scene sceneID="r3f-5Q-9jp">
             <objects>
-                <viewController title="Second" id="QUy-BD-bpt" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gMD-aP-Fq6">
+                <navigationController definesPresentationContext="YES" id="93Q-yd-GsA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="shopping" image="shopping" id="30I-1N-fc2"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="5e0-PH-c1v">
+                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="1At-Ri-dZK" kind="relationship" relationship="rootViewController" id="mtf-g9-chA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3TA-8B-ktS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-10" y="455"/>
+        </scene>
+        <!--View Controller - Unavailable-->
+        <scene sceneID="MIp-nj-FSn">
+            <objects>
+                <viewController id="1At-Ri-dZK" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n9p-e3-1dK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="29h-N2-YGT">
-                                <rect key="frame" x="20" y="158" width="280" height="42"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" editable="NO" text="Loaded by the second view controller — an instance of SecondViewController — specified in the app delegate." textAlignment="center" id="DcM-Fx-MKR">
-                                <rect key="frame" x="20" y="240" width="280" height="88"/>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Event app" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WYd-80-upn">
-                                <rect key="frame" x="80" y="371" width="173" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="underconstruction.jpg" id="LWq-MM-UEb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Shopping" image="shopping" id="Z7h-1E-pvt"/>
+                    <navigationItem key="navigationItem" title="Unavailable" id="OZv-G7-M1l"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3qq-4t-Ow8" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i1G-SQ-JyR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="487" y="393"/>
+            <point key="canvasLocation" x="417" y="455"/>
         </scene>
         <!--Page View Controller - Item-->
         <scene sceneID="twN-PD-XBZ">
@@ -1499,15 +1507,39 @@ XX日發佈了XXXX活動 .
             <objects>
                 <navigationController definesPresentationContext="YES" id="trd-gV-meZ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Recommand" image="Photos" id="hec-fq-2vq"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="4Ix-VY-jau">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="4Ix-VY-jau">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="pPU-SE-UNu" kind="relationship" relationship="rootViewController" id="GS0-zC-9xx"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p8b-2w-F9n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="964"/>
+            <point key="canvasLocation" x="75" y="1168"/>
+        </scene>
+        <!--View Controller - Unavailable-->
+        <scene sceneID="Xrr-AR-ShN">
+            <objects>
+                <viewController id="pPU-SE-UNu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sbi-zz-8iU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="underconstruction.jpg" id="BRf-tN-6YZ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Unavailable" id="NWz-Z0-wRe"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="420-Lr-vqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="607" y="1162"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
@@ -1521,7 +1553,7 @@ XX日發佈了XXXX活動 .
                     </tabBar>
                     <connections>
                         <segue destination="aVg-TB-R8J" kind="relationship" relationship="viewControllers" id="uh7-OQ-9BM"/>
-                        <segue destination="QUy-BD-bpt" kind="relationship" relationship="viewControllers" id="M8t-EP-wfW"/>
+                        <segue destination="93Q-yd-GsA" kind="relationship" relationship="viewControllers" id="DgI-gu-ATK"/>
                         <segue destination="trd-gV-meZ" kind="relationship" relationship="viewControllers" id="Bg8-31-sWD"/>
                         <segue destination="Fi8-rs-FVR" kind="relationship" relationship="viewControllers" id="GK1-Fl-1vX"/>
                     </connections>
@@ -1594,6 +1626,7 @@ XX日發佈了XXXX活動 .
         <image name="profileImage.png" width="300" height="300"/>
         <image name="redheart.png" width="64" height="64"/>
         <image name="shopping" width="30" height="30"/>
+        <image name="underconstruction.jpg" width="407" height="572"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -1601,6 +1634,6 @@ XX日發佈了XXXX活動 .
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="3Vg-Ma-kqQ"/>
+        <segue reference="6KJ-SQ-dCR"/>
     </inferredMetricsTieBreakers>
 </document>

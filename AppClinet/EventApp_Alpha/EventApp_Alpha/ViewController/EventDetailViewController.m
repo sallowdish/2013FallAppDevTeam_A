@@ -21,7 +21,7 @@
 @implementation EventDetailViewController
 @synthesize eventID,event;
 
-bool isJoined;
+bool isJoined,isLiked;
 EventFetchModel* model;
 
 - (id)init{
@@ -39,6 +39,8 @@ EventFetchModel* model;
     [self.scrollView setContentSize:CGSizeMake(320,self.scrollView.frame.size.height*1.2)];
     [super viewDidLoad];
     
+    isJoined=NO;
+    isLiked=NO;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -79,7 +81,6 @@ EventFetchModel* model;
     @try{
         event=model.event;
         [self modelToViewMatch];
-        isJoined=NO;
     }
     @catch (NSException *exception) {
         [popoverAlterModel alterWithTitle:@"Failed" Message:@"Display event detail failed."];
@@ -149,15 +150,43 @@ EventFetchModel* model;
     {
         NSInteger currentNum=[(NSString*)[event objectForKey:@"event_rsvp"] integerValue];
         self.RSVP.text=[NSString stringWithFormat:@"%d/%@",currentNum+1,[event objectForKey:@"event_capacity"]];
-        self.joinButton.enabled=NO;
+//        self.joinButton.enabled=NO;
         isJoined=!isJoined;
+        [self.joinButton setTitle:@"Quit" forState:UIControlStateNormal];
         [popoverAlterModel alterWithTitle:@"Congratulation" Message:@"You have joined the event successfully."];
     }else
     {
-        self.joinButton.enabled=NO;
-        [popoverAlterModel alterWithTitle:@"Failed" Message:@"The event is full, sorry."];
+//        self.joinButton.enabled=NO;
+        NSInteger currentNum=[(NSString*)[event objectForKey:@"event_rsvp"] integerValue];
+        self.RSVP.text=[NSString stringWithFormat:@"%d/%@",currentNum,[event objectForKey:@"event_capacity"]];
+        isJoined=!isJoined;
+        [self.joinButton setTitle:@"Join" forState:UIControlStateNormal];
+        [popoverAlterModel alterWithTitle:@"Done" Message:@"You are not going to this event."];
     }
 }
+
+
+- (IBAction)likeButtonPressed:(id)sender {
+    if(isLiked==NO)
+    {
+        NSInteger currentNum=[(NSString*)[event objectForKey:@"event_like"] integerValue];
+        self.like.text=[NSString stringWithFormat:@"%d",currentNum+1];
+//        self.joinButton.enabled=NO;
+        isLiked=!isLiked;
+        [self.likeButton setTitle:@"Unlike" forState:UIControlStateNormal];
+        [popoverAlterModel alterWithTitle:@"Congratulation" Message:@"You have liked the event successfully."];
+    }else
+    {
+//        self.joinButton.enabled=NO;
+        NSInteger currentNum=[(NSString*)[event objectForKey:@"event_like"] integerValue];
+        self.like.text=[NSString stringWithFormat:@"%d",currentNum];
+        isLiked=!isLiked;
+        [self.likeButton setTitle:@"Like" forState:UIControlStateNormal];
+        [popoverAlterModel alterWithTitle:@"Done" Message:@"You have disliked this event."];
+    }
+}
+
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sende
 {
