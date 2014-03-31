@@ -91,7 +91,7 @@ NSError* error;
     
     // release the connection, and the data object
     self.data=receivedData;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"didFinishLoadingData" object:self.data];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"didFinishLoadingData" object:self.data];
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge{

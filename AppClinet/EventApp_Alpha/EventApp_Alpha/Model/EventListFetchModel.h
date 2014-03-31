@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DataTransferModel.h"
 
-@interface EventListFetchModel : NSObject
+@interface EventListFetchModel : DataTransferModel
 
 +(NSArray*)eventsList;
 -(void) fetchEventListWithMode:(NSString*) mode;

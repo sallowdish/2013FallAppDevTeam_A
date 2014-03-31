@@ -13,15 +13,15 @@
 #import "ProgressHUD.h"
 
 @interface EventListViewController ()
-
+@property (strong,nonatomic)EventListFetchModel* model;
 @end
 
 @implementation EventListViewController
 
-@synthesize eventList;
+@synthesize eventList,model;
 
 bool isUpdated;
-EventListFetchModel* model;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -64,17 +64,17 @@ EventListFetchModel* model;
     
     self.refreshControl=f5;
     
-    
+    [self fetchNewDataFromServer];
     //start appearing
 }
 
 
 -(void)fetchNewDataFromServer{
     [ProgressHUD show:@"Loading new events list..."];
-
+    isUpdated=false;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchNewDataFromServer:) name:@"didFetchEventListWithMode" object:nil];
     [model fetchEventListWithMode:@"time"];
-    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(removeFromNSNotificationCenter) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(removeFromNSNotificationCenter) userInfo:nil repeats:NO];
     //    [self fetchNewDataFromServer];
     [[ProgressHUD class] performSelector:@selector(dismiss) withObject:nil afterDelay:0.8];
 }
@@ -84,11 +84,12 @@ EventListFetchModel* model;
         eventList=(NSArray*)[notif object];
         [[NSNotificationCenter defaultCenter] removeObserver:self];
         isUpdated=true;
+        NSLog(@"%@",@"UPDATED");
     }
 }
 
--(void) viewDidAppear:(BOOL)animated{
-    [self fetchNewDataFromServer];
+-(void) viewWillAppear:(BOOL)animated{
+    
 }
 
 -(void) removeFromNSNotificationCenter{

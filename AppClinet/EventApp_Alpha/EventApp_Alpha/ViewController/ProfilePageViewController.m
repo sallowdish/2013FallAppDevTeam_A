@@ -35,6 +35,7 @@
 
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self navigationController].automaticallyAdjustsScrollViewInsets=YES;
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height*1.4)];
     
     //Set transparent background

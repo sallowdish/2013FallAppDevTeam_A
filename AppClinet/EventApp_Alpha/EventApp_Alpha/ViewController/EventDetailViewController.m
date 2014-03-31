@@ -7,7 +7,7 @@
 //
 
 #import "EventDetailViewController.h"
-//#import "EventDetailTableViewController.h"
+#import "ProgressHUD.h"
 #import "EventFetchModel.h"
 #import "FormatingModel.h"
 #import "popoverAlterModel.h"
@@ -22,7 +22,7 @@
 @synthesize eventID,event;
 
 bool isJoined;
-
+EventFetchModel* model;
 
 - (id)init{
     self=[super init];
@@ -53,11 +53,10 @@ bool isJoined;
     }
 
 //    NSError* err;
-    EventFetchModel* model=[[EventFetchModel alloc]init];
-//    NSString *filepath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/EventDetails.json"];
-//    NSData* rawData=[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://127.0.0.1:8000/api/v01/event/%ld/",(long)eventID]]];
-//    
-//    NSDictionary* jsonData=[NSJSONSerialization JSONObjectWithData:rawData options:NSJSONReadingAllowFragments error:&err];
+     model=[[EventFetchModel alloc]init];
+    [ProgressHUD show:@"Loading event info..."];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchEvent) name:@"didFetchEventWithID" object:nil];
+    
     @try {
         [model fetchEventWithEventID:eventID];
     }
@@ -65,6 +64,18 @@ bool isJoined;
         [popoverAlterModel alterWithTitle:@"Failed" Message:@"Fetching event detail failed."];
         [self.navigationController popViewControllerAnimated:YES];
     }
+    
+    
+    //matching
+//    event=(NSDictionary*)[event objectForKey:@"fields"];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    
+}
+
+
+-(void)didFetchEvent{
     @try{
         event=model.event;
         [self modelToViewMatch];
@@ -76,9 +87,7 @@ bool isJoined;
     }
     
     [self viewedPeopleInitialize];
-    
-    //matching
-//    event=(NSDictionary*)[event objectForKey:@"fields"];
+    [[ProgressHUD class] dismiss];
 }
 
 -(void)viewedPeopleInitialize{
