@@ -14,19 +14,8 @@
 //    NSError* error;
     NSURL* url=[[self class] constructFetchRequestWithResource:[NSString stringWithFormat:@"%@%ld/",@"/event/",(long)eventID] WithConstrain:NOCONSTRAIN WithFormat:JSONFORMAT];
     [self fetchDataWithUrl:url];
-//    if (!self.data) {
-//        @throw [NSException exceptionWithName:@"Failed" reason:@"Fetching the event detail failed." userInfo:nil];
-//    }
-    
-//    NSString *filepath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/EventDetails.json"];
-//    
-//    [buffer writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:&error];
-//    if(error)
-//    {
-//        NSLog(@"%@",[error localizedDescription]);
-//        exit(0);
-//    }
 }
+
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection{
     NSError* error;
@@ -39,6 +28,11 @@
     self.event=rawData;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"didFetchEventWithID" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge{
+    NSURLCredential* cre=[NSURLCredential credentialWithUser:PUBLICAUTHENUSER password:PUBLICAUTHENPASSWORD persistence:NSURLCredentialPersistenceForSession];
+    [[challenge sender] useCredential:cre forAuthenticationChallenge:challenge];
 }
 
 @end

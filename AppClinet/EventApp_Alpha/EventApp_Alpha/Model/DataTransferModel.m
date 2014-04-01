@@ -94,8 +94,4 @@ NSError* error;
 //    [[NSNotificationCenter defaultCenter] postNotificationName:@"didFinishLoadingData" object:self.data];
 }
 
--(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge{
-    NSURLCredential* cre=[NSURLCredential credentialWithUser:@"sean" password:@"1" persistence:NSURLCredentialPersistenceForSession];
-    [[challenge sender] useCredential:cre forAuthenticationChallenge:challenge];
-}
 @end

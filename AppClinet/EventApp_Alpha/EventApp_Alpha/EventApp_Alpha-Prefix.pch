@@ -14,7 +14,8 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 //for web service
-#define WEBSERVICEDOMAIN  @"http://machoapes.no-ip.org/app_project"
+#define HTTPPREFIX @"http://"
+#define WEBSERVICEDOMAIN  @"machoapes.no-ip.org/app_project"
 //#define WEBSERVICEDOMAIN  @"http://127.0.0.1:8000/eventApp"
 #define API @"/api/v01"
 //for web service
@@ -22,5 +23,6 @@
 //#define JSONFORMAT @""
 //for webservice
 #define NOCONSTRAIN @"?"
-//#define NOCONSTRAIN @""
+#define PUBLICAUTHENUSER @"tester"
+#define PUBLICAUTHENPASSWORD @"1"
 #endif

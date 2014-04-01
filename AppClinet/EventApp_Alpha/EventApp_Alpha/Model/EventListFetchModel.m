@@ -86,19 +86,10 @@ static NSArray* eventList;
     
 }
 
-
-//-(void) writeIntoCache:(NSData* )data
-//{
-//    NSString *filename = @"EventCache";
-//    NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask,YES);
-//    NSString *documentsDirectory = [pathArray objectAtIndex:0];
-//    NSString *filepath = [documentsDirectory stringByAppendingPathComponent:filename];
-//    
-////    if ([[NSFileManager defaultManager] ])
-////    {
-////        NSURL *soundURL = [NSURL fileURLWithPath:soundPath isDirectory:NO];
-////    }
-//}
+-(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge{
+    NSURLCredential* cre=[NSURLCredential credentialWithUser:PUBLICAUTHENUSER password:PUBLICAUTHENPASSWORD persistence:NSURLCredentialPersistenceForSession];
+    [[challenge sender] useCredential:cre forAuthenticationChallenge:challenge];
+}
 
 -(void)readFromCache{
     NSString *filepath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Events.json"];
@@ -123,5 +114,7 @@ static NSArray* eventList;
         NSLog(@"%@:%@",exception.name,exception.reason);
     }
 }
+
+
 
 @end
