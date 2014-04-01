@@ -15,7 +15,10 @@
 #define MAXTAG 104
 @interface EventDetailViewController ()
 @property (strong,nonatomic) NSDictionary* event;
+@property (strong,nonatomic) NSMutableArray* RSVPList;
 @property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *ViewedPeopleIcons;
+@property (weak, nonatomic) IBOutlet UIView *joinedPeopleSpanArea;
+@property (weak, nonatomic) IBOutlet UILabel *joinedPeopleLabel;
 @end
 
 @implementation EventDetailViewController
@@ -41,6 +44,7 @@ EventFetchModel* model;
     
     isJoined=NO;
     isLiked=NO;
+    self.RSVPList=[NSMutableArray arrayWithCapacity:0];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -57,7 +61,7 @@ EventFetchModel* model;
 //    NSError* err;
      model=[[EventFetchModel alloc]init];
     [ProgressHUD show:@"Loading event info..."];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchEvent) name:@"didFetchEventWithID" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchEvent) name:@"didFetchDataWithEventID" object:nil];
     
     @try {
         [model fetchEventWithEventID:eventID];
@@ -87,15 +91,44 @@ EventFetchModel* model;
         [self.navigationController popViewControllerAnimated:YES];
     }
     
-    [self viewedPeopleInitialize];
+    
     [[ProgressHUD class] dismiss];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self joinedPeopleInitialize];
 }
 
--(void)viewedPeopleInitialize{
+
+-(void) joinedPeopleInitialize{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didJoinedPeopleInitialize) name:@"didFetchDataWithEventID" object:nil];
+    [model fetchRSVPWithEventID:eventID];
+}
+
+-(void)didJoinedPeopleInitialize{
+    NSLog(@"");
+    @try {
+        NSArray* RSVP=[model.event objectForKey:@"objects"];
+        for (int i = 0; i<RSVP.count; i++) {
+            [self.RSVPList addObject:[(NSDictionary*)RSVP[i] objectForKey:@"fk_user"]];
+        }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@",exception.reason);
+    }
     
-    for (int i = 0; i<[self.ViewedPeopleIcons count]; i++) {
+    [[self.joinedPeopleSpanArea subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
+    int basex=10;
+    int basey=(self.joinedPeopleSpanArea.frame.size.height-50)/2;
+    for (int i = 0; i<(self.RSVPList.count>5?5:self.RSVPList.count); i++) {
         //UI initialization
-        UIImageView* view=self.ViewedPeopleIcons[i];
+        //Get uiimage content
+        NSDictionary* user=self.RSVPList[i];
+        UIImage* img=[model fetchProfileImageForUser:user];
+        
+        //prepare the frame
+        
+        UIImageView* view=[[UIImageView alloc]initWithFrame:CGRectMake(basex, basey, 50, 50)];
+        view.image=img;
         view.layer.borderWidth=2;
         view.layer.borderColor=[UIColor whiteColor].CGColor;
         view.layer.cornerRadius=25;
@@ -106,8 +139,18 @@ EventFetchModel* model;
         singleTap.numberOfTapsRequired=1;
         view.userInteractionEnabled=YES;
         [view addGestureRecognizer:singleTap];
+        [self.joinedPeopleSpanArea addSubview:view];
+        basex+=55;
     }
+    if (self.RSVPList.count<=5) {
+        self.joinedPeopleLabel.text=@"已參與";
+    }
+    self.joinedPeopleLabel.frame=CGRectMake(basex, self.joinedPeopleLabel.frame.origin.y, self.joinedPeopleLabel.frame.size.width, self.joinedPeopleLabel.frame.size.height);
+    [self.joinedPeopleSpanArea addSubview:self.joinedPeopleLabel];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+
 
 -(IBAction)viewedPeopleTapped:(id)sender{
     UITapGestureRecognizer* tap=(UITapGestureRecognizer*)sender;

@@ -16,6 +16,10 @@
     [self fetchDataWithUrl:url];
 }
 
+-(void) fetchRSVPWithEventID:(NSInteger)eventID{
+    NSURL* url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@%ld",HTTPPREFIX,WEBSERVICEDOMAIN,API,@"/eventrsvp",@"/?format=json&fk_event=",(long)eventID]];
+    [self fetchDataWithUrl:url];
+}
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection{
     NSError* error;
@@ -26,8 +30,17 @@
         @throw [NSException exceptionWithName:@"Failed" reason:@"Serializtion failed!" userInfo:nil];
     }
     self.event=rawData;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"didFetchEventWithID" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"didFetchDataWithEventID" object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(UIImage*)fetchProfileImageForUser:(NSDictionary*) user{
+    if (![[user objectForKey:@"fk_user_image"] isEqual:[NSNull null]]) {
+        NSURL* url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,[[user objectForKey:@"fk_user_image"] objectForKey:@"path"]]];
+        return [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+    }else{
+        return [UIImage imageNamed:@"152_152icon.png"];
+    }
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge{

@@ -14,4 +14,5 @@
 +(NSArray*)eventsList;
 -(void) fetchEventListWithMode:(NSString*) mode;
 -(void) fetchEventListFromFile;
+-(UIImage*)fetchProfileImageForUser:(NSDictionary*) user;
 @end

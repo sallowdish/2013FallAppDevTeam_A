@@ -745,6 +745,8 @@
                         <outlet property="hoster" destination="vi5-jL-Whu" id="Ijq-9u-Nmg"/>
                         <outlet property="images" destination="PpP-PB-3Ba" id="oyn-DK-6BP"/>
                         <outlet property="joinButton" destination="rmS-Tp-eAj" id="i3b-PO-pK3"/>
+                        <outlet property="joinedPeopleLabel" destination="dkr-SX-85n" id="caL-MR-j3h"/>
+                        <outlet property="joinedPeopleSpanArea" destination="VBs-Uo-q3v" id="Kfh-BW-6Tq"/>
                         <outlet property="like" destination="myK-V1-9wo" id="reF-bh-16V"/>
                         <outlet property="likeButton" destination="yX7-4V-JzY" id="e2N-LJ-yRg"/>
                         <outlet property="location" destination="O0n-VW-VFH" id="JXB-u5-Pzf"/>
