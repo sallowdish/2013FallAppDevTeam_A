@@ -17,15 +17,13 @@ bool isSendingAddress,isSendingEvent;
 
 -(void)postEventwithInfo:(NSMutableDictionary*)info{
     [info setValue:[UserModel userResourceURL] forKey:@"fk_event_poster_user"];
-    [info setValue:@"/app_project/api/v01/address/2/" forKey:@"fk_address"];
     NSURL* targetURL=[[self class] constructEventPostURLwithUsername:[UserModel username] andKey:[UserModel userAPIKey]];
     isSendingEvent=true;
     @try {
         NSError* err;
         NSData* data=[NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:&err];
-        NSString *jsonString=[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",jsonString);
-//        data=[jsonString dataUsingEncoding:NSUTF8StringEncoding];
+//        NSString *jsonString=[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//        NSLog(@"%@",jsonString);
         if (err) {
             @throw [NSException exceptionWithName:@"Failed" reason:@"Serialization Failed" userInfo:nil];
         }
@@ -33,9 +31,6 @@ bool isSendingAddress,isSendingEvent;
     }
     @catch (NSException *exception) {
         [[[UIAlertView alloc]initWithTitle:@"Failed" message:exception.reason delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
-    }
-    @finally {
-        
     }
 }
 
@@ -68,13 +63,28 @@ bool isSendingAddress,isSendingEvent;
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
-    if ([(NSHTTPURLResponse*)response statusCode]!=201) {
-        self.receivedData=nil;
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"didPostNewAddressFailed" object:nil];
+    if (isSendingAddress) {
+        if ([(NSHTTPURLResponse*)response statusCode]!=201) {
+            self.receivedData=nil;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"didPostNewAddressFailed" object:nil];
+        }
+        else{
+            NSString* resourceURL;
+            NSString* location=[[(NSHTTPURLResponse*)response allHeaderFields] objectForKey:@"Location"];
+            resourceURL=[location substringFromIndex:[[NSString stringWithFormat:@"%@%@",HTTPPREFIX,WEBSERVICEDOMAIN] length]];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"didPostNewAddress" object:resourceURL];
+        }
     }
-    else{
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"didPostNewAddress" object:[[(NSHTTPURLResponse*)response allHeaderFields] objectForKey:@"Location"]];
-         }
+    else if(isSendingEvent){
+        if ([(NSHTTPURLResponse*)response statusCode]!=201) {
+            self.receivedData=nil;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"didCreateNewEventFailed" object:nil];
+        }
+        else{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"didCreateNewEvent" object:[[(NSHTTPURLResponse*)response allHeaderFields] objectForKey:@"Location"]];
+        }
+    }
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{

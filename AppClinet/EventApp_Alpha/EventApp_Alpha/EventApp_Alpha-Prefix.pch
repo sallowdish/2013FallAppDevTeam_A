@@ -15,7 +15,8 @@
 #import <Foundation/Foundation.h>
 //for web service
 #define HTTPPREFIX @"http://"
-#define WEBSERVICEDOMAIN  @"machoapes.no-ip.org/app_project"
+#define WEBSERVICEDOMAIN  @"machoapes.no-ip.org"
+#define WEBSERVICENAME @"/app_project"
 //#define WEBSERVICEDOMAIN  @"http://127.0.0.1:8000/eventApp"
 #define API @"/api/v01"
 //for web service

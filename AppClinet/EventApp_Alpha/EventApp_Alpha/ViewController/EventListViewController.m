@@ -197,7 +197,7 @@ bool isUpdated;
     UIImage* img=nil;
     if (![[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"fk_user_image"] isEqual:[NSNull null]]) {
         NSString* path=[[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"fk_user_image"] objectForKey:@"path"];
-        NSURL* targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@:%@@%@%@", HTTPPREFIX,PUBLICAUTHENUSER,PUBLICAUTHENPASSWORD,WEBSERVICEDOMAIN,path]];
+        NSURL* targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@", HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,path]];
         NSData* data=[NSData dataWithContentsOfURL:targetURL];
         img=[UIImage imageWithData:data];
     }

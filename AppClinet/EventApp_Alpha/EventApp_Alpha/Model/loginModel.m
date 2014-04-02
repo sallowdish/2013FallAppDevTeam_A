@@ -11,7 +11,7 @@
 @implementation LoginModel
 
 -(void)loginWithUsername:(NSString*)username AndPassword:(NSString*) password{
-    NSURL* url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@:%@@%@%@%@", HTTPPREFIX, username,password,WEBSERVICEDOMAIN,API,@"/token/1/"]];
+    NSURL* url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@:%@@%@%@%@%@", HTTPPREFIX, username,password,WEBSERVICEDOMAIN,WEBSERVICENAME,API,@"/token/1/"]];
     NSMutableURLRequest* request=[NSMutableURLRequest requestWithURL:url];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     NSURLConnection* conn=[NSURLConnection connectionWithRequest:request delegate:self];

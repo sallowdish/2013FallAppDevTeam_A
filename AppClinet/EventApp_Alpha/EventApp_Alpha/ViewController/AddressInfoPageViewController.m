@@ -87,9 +87,7 @@ EventPostModel* model;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostNewAddress:) name:@"didPostNewAddress" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostNewAddressFailed) name:@"didPostNewAddressFailed" object:nil];
     [ProgressHUD show:@"POSTing new Address"];
-    if (!model) {
-        model=[[EventPostModel alloc] init];
-    }
+    model=[[EventPostModel alloc] init];
     [model postAddresswithInfo:[self collectInfo]];
 }
 

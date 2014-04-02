@@ -31,7 +31,8 @@ NSError* error;
     NSMutableURLRequest* request=[NSMutableURLRequest requestWithURL:url];
     @try {
         request=[self configPostRequest:request withData:data];
-        NSURLConnection* conn=[[NSURLConnection alloc] initWithRequest:request delegate:self.externalDelegate];
+        NSURLConnection* conn=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+        [self prepareForConnection];
         [conn start];
 
         

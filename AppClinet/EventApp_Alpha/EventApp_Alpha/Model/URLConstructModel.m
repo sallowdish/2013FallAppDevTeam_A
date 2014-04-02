@@ -11,13 +11,13 @@
 @implementation URLConstructModel
 
 +(NSURL *)constructRequestWithResource: (NSString*)resource{
-    NSString* rawURL=[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,API,resource];
+    NSString* rawURL=[NSString stringWithFormat:@"%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,API,resource];
 //    NSLog(@"%@",rawURL);
     return [NSURL URLWithString:rawURL];
 }
 
 +(NSURL *)constructFetchRequestWithResource:(NSString*)resource WithConstrain:(NSString*)constrain WithFormat:(NSString*)format{
-    NSString* rawURL=[NSString stringWithFormat:@"%@%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,API,resource,constrain,format];
+    NSString* rawURL=[NSString stringWithFormat:@"%@%@%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,API,resource,constrain,format];
 //    NSLog(@"%@",rawURL);
     return [NSURL URLWithString:rawURL];
 }
@@ -27,7 +27,7 @@
 }
 
 +(NSURL *)constructEventPostURLwithUsername:(NSString*)username andKey:(NSString*) APIkey{
-    NSString* rawURL=[NSString stringWithFormat:@"%@%@%@%@", HTTPPREFIX,WEBSERVICEDOMAIN,API,@"/event/?"];
+    NSString* rawURL=[NSString stringWithFormat:@"%@%@%@%@%@", HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,API,@"/event/?"];
     rawURL=[rawURL stringByAppendingFormat:@"username=%@&api_key=%@",username,APIkey];
     NSLog(@"%@",rawURL);
     return [NSURL URLWithString:rawURL];

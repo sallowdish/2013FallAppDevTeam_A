@@ -48,7 +48,7 @@ static bool isLogin,isDevelopment;
 }
 +(UIImage*)getProfileImageWithUser:(NSDictionary*)user{
     if (![[user objectForKey:@"fk_user_image"] isEqual:[NSNull null]]) {
-        NSURL* url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,[[user objectForKey:@"fk_user_image"] objectForKey:@"path"]]];
+        NSURL* url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,[[user objectForKey:@"fk_user_image"] objectForKey:@"path"]]];
         return [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
     }else{
         return [UIImage imageNamed:@"152_152icon.png"];

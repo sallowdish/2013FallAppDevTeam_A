@@ -17,7 +17,7 @@
 }
 
 -(void) fetchRSVPWithEventID:(NSInteger)eventID{
-    NSURL* url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@%ld",HTTPPREFIX,WEBSERVICEDOMAIN,API,@"/eventrsvp",@"/?format=json&fk_event=",(long)eventID]];
+    NSURL* url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@%@%ld",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,API,@"/eventrsvp",@"/?format=json&fk_event=",(long)eventID]];
     [self fetchDataWithUrl:url];
 }
 

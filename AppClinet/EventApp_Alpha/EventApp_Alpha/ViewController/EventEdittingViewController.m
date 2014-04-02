@@ -57,6 +57,10 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    //initialize class variable
+    selectedPhoto=[[NSMutableArray alloc] init];
+    selectedPhotoView=[[NSMutableArray alloc] init];
+    
     
     //Functionality setup
     UIDatePicker *datePicker=[[UIDatePicker alloc]init]
@@ -72,13 +76,10 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
 
     [self.dateInputTextField addTarget:self action:@selector(didFinishDateEditting:) forControlEvents:UIControlEventEditingDidEnd];
     
-    //initialize class variable
-    selectedPhoto=[[NSMutableArray alloc] init];
-    selectedPhotoView=[[NSMutableArray alloc] init];
+    UITapGestureRecognizer* editLocationTap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(editLocation:)];
+    editLocationTap.numberOfTapsRequired=1;
+    [self.locationTextField addGestureRecognizer:editLocationTap];
     
-    UITapGestureRecognizer* dismissKeyBoardTap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyBoard)];
-    dismissKeyBoardTap.numberOfTapsRequired=1;
-    [self.view addGestureRecognizer:dismissKeyBoardTap];
 }
 
 
@@ -223,9 +224,10 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
     [info setValue:self.dateInputTextField.text forKey:@"event_date"];
     [info setValue:self.timeFromInputTextField.text forKey:@"event_time"];
     [info setValue:self.detailInputTextField.text forKey:@"event_detail"];
-    [info setValue:self.capacityInputTextField.text forKey:@"event_capacity"];
+    [info setValue:@([self.capacityInputTextField.text integerValue]) forKey:@"event_capacity"] ;
     [info setValue:self.locationResourceURL forKey:@"fk_address"];
     return info;
+
 }
 
 
