@@ -12,7 +12,6 @@
 
 @property (strong,nonatomic) NSDictionary* current_user;
 @property BOOL isLogin;
--(void)logoutCurrentUser;
 +(NSString*)username;
 +(NSString*)userAPIKey;
 +(NSString*)userResourceURL;

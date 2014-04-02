@@ -24,6 +24,7 @@
 @synthesize usernameField,passwordField;
 
 UserModel* model;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -50,9 +51,8 @@ UserModel* model;
     // Do any additional setup after loading the view from its nib.
     
     //initialize local var
-    model=[[UserModel alloc] init];
     
-    //
+    //Visual Setup
     NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
     self.forgetLabel.attributedText = [[NSAttributedString alloc] initWithString:@"Forget your password?" attributes:underlineAttribute];
     self.forgetButton.frame=self.forgetLabel.frame;
@@ -61,6 +61,14 @@ UserModel* model;
         UIView* subview=[self.view viewWithTag:i];
         subview.layer.cornerRadius=6;
         subview.layer.masksToBounds=YES;
+    }
+    
+    //Dynamic makeup
+    if ([UserModel isLogin]) {
+        self.loginButton.enabled=NO;
+        self.user_profile_image.image=[UserModel getProfileImage];
+    }else{
+        model=[[UserModel alloc] init];
     }
 }
 - (IBAction)cancelButtonPressed:(id)sende

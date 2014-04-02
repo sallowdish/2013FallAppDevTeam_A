@@ -20,6 +20,9 @@ static bool isLogin;
 -(id)init{
     self=[super init];
     if (self) {
+        if (isLogin) {
+            return self;
+        }
         [self cleanUpUserInfo];
         isLogin=false;
     }
@@ -45,6 +48,13 @@ static bool isLogin;
 }
 
 
+
++(void)cleanUpUserInfo{
+    username=nil;
+    userResourceURL=nil;
+    userAPIKey=nil;
+    current_user=nil;
+}
 
 -(void)cleanUpUserInfo{
     username=nil;
