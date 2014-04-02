@@ -39,8 +39,8 @@
     //Data Setup
     if ([UserModel isLogin]) {
         
-        self.userProfileImage.image=[UserModel getProfileImage];
-        self.username.text=[UserModel username];
+        self.userProfileImage.image=[UserModel getProfileImageWithUser:self.targetUser];
+        self.username.text=[self.targetUser objectForKey:@"username"];
         self.userLocation.text=@"Unknown";
         self.userLike.text=@"N/A";
         self.userTag.text=@"";
