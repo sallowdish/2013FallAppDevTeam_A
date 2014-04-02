@@ -80,6 +80,12 @@ NSError* error;
     return request;
 }
 
+-(NSMutableURLRequest*)configGetRequest:(NSMutableURLRequest*)request{
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPMethod:@"GET"];
+    return request;
+}
+
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     if ([response.MIMEType isEqualToString:@"application/json"])

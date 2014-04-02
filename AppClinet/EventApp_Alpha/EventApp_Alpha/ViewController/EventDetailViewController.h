@@ -21,6 +21,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *joinButton;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UITextView *description;
+@end
 
 
+
+@interface myConnect: NSURLConnection
+@property BOOL isRSVP,isLike,isCountingRSVP,isCountingLike;
 @end
