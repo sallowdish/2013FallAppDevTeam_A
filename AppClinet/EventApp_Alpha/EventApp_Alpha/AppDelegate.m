@@ -12,48 +12,10 @@
 
 @implementation AppDelegate
 
-static NSString* username,* userUrl,* userApiKey;
 
-+(NSString*)username{
-    if (username==nil) {
-        username=[[NSString alloc] init];
-    }
-    return username;
-}
-
-+(void)updateUserInfoWithUsername:(NSString*) newusername API_KEY:(NSString*)apikey Resource:(NSString*) resource{
-    username=newusername;
-    userUrl=resource;
-    userApiKey=apikey;
-}
-
-+(void)cleanUpUserInfo{
-    username=nil;
-    userUrl=nil;
-    userApiKey=nil;
-}
-
-
-+(NSString*)userUrl{
-    if (userUrl==nil) {
-        userUrl=[[NSString alloc] init];
-    }
-    return userUrl;
-}
-
-+ (NSString*)userApikey{
-    if (userApiKey==nil) {
-        userApiKey=[[NSString alloc] init];
-    }
-    return userApiKey;
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //setup tokens
-    username=@"ray";
-    userUrl=@"/app_project/api/v01/user/2/";
-    userApiKey=@"8ee80b95ffc0e982e1450ca365d051ed8f7e5656";
     //setup options
     UIPageControl *pageControl = [UIPageControl appearance];
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];

@@ -9,7 +9,8 @@
 #import "URLConstructModel.h"
 
 @interface DataTransferModel : URLConstructModel<NSURLConnectionDataDelegate>
-@property NSData* data;
+@property (strong, nonatomic) NSData* data;
+@property (strong, nonatomic) NSMutableData* receivedData;
 @property id externalDelegate;
 
 -(void)fetchDataWithUrl:(NSURL*)url;

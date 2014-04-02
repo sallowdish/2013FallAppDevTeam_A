@@ -7,16 +7,16 @@
 //
 
 #import "EventPostModel.h"
-#import "AppDelegate.h"
+#import "UserModel.h"
 
 #define REFERR "http://www.machoapes.com/app_project/api/v01/event/?"
 
 
 @implementation EventPostModel
 -(void)postEventwithInfo:(NSMutableDictionary*)info{
-    [info setValue:[AppDelegate userUrl] forKey:@"fk_event_poster_user"];
+    [info setValue:[[UserModel defaultModel] userResourceURL] forKey:@"fk_event_poster_user"];
     [info setValue:@"/app_project/api/v01/address/2/" forKey:@"fk_address"];
-    NSURL* targetURL=[[self class] constructEventPostURLwithUsername:[AppDelegate username] andKey:[AppDelegate userApikey]];
+    NSURL* targetURL=[[self class] constructEventPostURLwithUsername:[[UserModel defaultModel] username] andKey:[[UserModel defaultModel] userAPIKey]];
     @try {
         NSError* err;
         NSData* data=[NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:&err];

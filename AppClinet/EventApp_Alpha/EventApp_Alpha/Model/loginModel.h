@@ -11,4 +11,5 @@
 @interface LoginModel : DataTransferModel
 -(void)loginWithUsername:(NSString*)username AndPassword:(NSString*) password;
 -(void)logoutCurrentUser;
+@property (strong,nonatomic) NSMutableDictionary* jsonInfo;
 @end

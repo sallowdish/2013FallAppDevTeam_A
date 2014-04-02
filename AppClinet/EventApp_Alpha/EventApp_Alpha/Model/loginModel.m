@@ -10,10 +10,7 @@
 #import "AppDelegate.h"
 @implementation LoginModel
 
-NSString* current_username;
-
 -(void)loginWithUsername:(NSString*)username AndPassword:(NSString*) password{
-    current_username=username;
     NSURL* url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@:%@@%@%@%@", HTTPPREFIX, username,password,WEBSERVICEDOMAIN,API,@"/token/1/"]];
     NSMutableURLRequest* request=[NSMutableURLRequest requestWithURL:url];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -23,11 +20,16 @@ NSString* current_username;
     }
 }
 
+-(void)logoutCurrentUser{
+    
+}
+
+
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
     if([(NSHTTPURLResponse*)response statusCode]!=200)
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"failToLogin" object:nil];
-        self.data=nil;
+        self.=nil;
     }
 }
 
@@ -35,16 +37,10 @@ NSString* current_username;
     [super connectionDidFinishLoading:connection];
     
     if (self.data) {
-        NSDictionary* json=[NSJSONSerialization JSONObjectWithData:self.data options:NSJSONReadingMutableContainers error:nil];
-        NSString* apikey=[json objectForKey:@"key"];
-        [AppDelegate updateUserInfoWithUsername:current_username API_KEY:apikey Resource:nil];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"didLogin" object:nil];
+        self.jsonInfo=[NSJSONSerialization JSONObjectWithData:self.data options:NSJSONReadingMutableContainers error:nil];
     }
-   
-    
 }
--(void)logoutCurrentUser{
-    [AppDelegate cleanUpUserInfo];
-    current_username=nil;
-}
+
+
+
 @end

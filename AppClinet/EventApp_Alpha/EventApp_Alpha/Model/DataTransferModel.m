@@ -8,12 +8,11 @@
 
 #import "DataTransferModel.h"
 #import "popoverAlterModel.h"
-
-static NSMutableData* receivedData;
 NSError* error;
 
 
 @implementation DataTransferModel
+@synthesize receivedData;
 -(void)fetchDataWithUrl:(NSURL*)url{
     //NSData* result;
     NSMutableURLRequest* request=[NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
@@ -95,7 +94,9 @@ NSError* error;
 {
     // Append the new data to receivedData.
     // receivedData is an instance variable declared elsewhere.
-    [receivedData appendData:data];
+    if (receivedData) {
+        [receivedData appendData:data];
+    }
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection

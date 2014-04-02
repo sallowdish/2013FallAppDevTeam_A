@@ -34,14 +34,7 @@
 //    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
--(UIImage*)fetchProfileImageForUser:(NSDictionary*) user{
-    if (![[user objectForKey:@"fk_user_image"] isEqual:[NSNull null]]) {
-        NSURL* url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,[[user objectForKey:@"fk_user_image"] objectForKey:@"path"]]];
-        return [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
-    }else{
-        return [UIImage imageNamed:@"152_152icon.png"];
-    }
-}
+
 
 -(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge{
     NSURLCredential* cre=[NSURLCredential credentialWithUser:PUBLICAUTHENUSER password:PUBLICAUTHENPASSWORD persistence:NSURLCredentialPersistenceForSession];

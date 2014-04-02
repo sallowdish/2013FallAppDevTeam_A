@@ -8,8 +8,7 @@
 
 #import "LoginViewController.h"
 #import "popoverAlterModel.h"
-#import "LoginModel.h"
-#import "AppDelegate.h"
+#import "UserModel.h"
 #import "ProgressHUD.h"
 
 #define MAXTAG 100
@@ -23,7 +22,7 @@
 @implementation LoginViewController
 @synthesize usernameField,passwordField;
 
-LoginModel* model;
+UserModel* model;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -50,7 +49,7 @@ LoginModel* model;
     // Do any additional setup after loading the view from its nib.
     
     //initialize local var
-    model=[[LoginModel alloc] init];
+    model=[[UserModel alloc] init];
     
     //
     NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
@@ -84,7 +83,9 @@ LoginModel* model;
 -(void) didLogin{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[ProgressHUD class] dismiss];
-    [popoverAlterModel alterWithTitle:@"Login Finished" Message:[NSString stringWithFormat:@"%@\n%@",[AppDelegate username],[AppDelegate userApikey]]];
+    
+    
+    [popoverAlterModel alterWithTitle:@"Login Finished" Message:[NSString stringWithFormat:@"%@\n%@",[[UserModel defaultModel] username],[[UserModel defaultModel] userAPIKey]]];
     
 }
 

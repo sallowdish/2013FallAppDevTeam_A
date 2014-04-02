@@ -12,6 +12,7 @@
 #import "EventFetchModel.h"
 #import "FormatingModel.h"
 #import "popoverAlterModel.h"
+#import "UserModel.h"
 #import "FullScreenImageController.h"
 #define MAXTAG 104
 @interface EventDetailViewController ()
@@ -132,7 +133,7 @@ EventJoinAndLikeModel* jlmodel;
         //UI initialization
         //Get uiimage content
         NSDictionary* user=self.RSVPList[i];
-        UIImage* img=[model fetchProfileImageForUser:user];
+        UIImage* img=[[UserModel defaultModel] getProfileImageWithUser:user];
         
         //prepare the frame
         
