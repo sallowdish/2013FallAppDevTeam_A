@@ -35,8 +35,16 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
 }
 
 -(IBAction)editLocation:(id)sender{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreateNewAddress:) name:@"didCreateNewAddress" object:nil];
     id vc=[self.storyboard instantiateViewControllerWithIdentifier:@"AddressInfoPage"];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)didCreateNewAddress:(NSNotification*) notif{
+    NSDictionary* dic=(NSDictionary*)[notif object];
+    self.locationTextField.text=[dic objectForKey:@"event_title"];
+    self.locationResourceURL=[dic objectForKey:@"event_resourceurl"];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad
@@ -176,12 +184,33 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
 }
 
 - (IBAction)donePressed:(id)sender{
-    EventPostModel* model=[[EventPostModel alloc] init];
-    model.externalDelegate=self;
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    [ProgressHUD show:@"Submitting new event..."];
-    [model postEventwithInfo:[self packUpInfo]];
-    
+    if ([self isAllRequiredFilled]) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreateNewEvent) name:@"didCreateNewEvent" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreateNewEventFailed) name:@"didCreateNewEventFailed" object:nil];
+        EventPostModel* model=[[EventPostModel alloc] init];
+        [ProgressHUD show:@"Submitting new event..."];
+        [model postEventwithInfo:[self packUpInfo]];
+    }else
+    {
+        [popoverAlterModel alterWithTitle:@"Failed" Message:@"Please fill up all required field"];
+    }
+}
+
+-(BOOL)isAllRequiredFilled{
+    return !([self.titleInputTextField.text isEqualToString:@""]||[self.dateInputTextField.text isEqualToString:@""]||[self.timeFromInputTextField.text isEqualToString:@""]||[self.locationResourceURL isEqual:[NSNull null]]);
+}
+
+-(void)didCreateNewEvent{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [ProgressHUD dismiss];
+    [popoverAlterModel alterWithTitle:@"Succeed" Message:@"You have created a new event, please reload the event list page."];
+}
+
+-(void)didCreateNewEventFailed{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [ProgressHUD dismiss];
+    [self.navigationController popViewControllerAnimated:YES];
+    [popoverAlterModel alterWithTitle:@"Failed" Message:@"Failed to create new event, please try again."];
 }
 
 - (IBAction)cancelPressed:(id)sender {
@@ -195,47 +224,10 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
     [info setValue:self.timeFromInputTextField.text forKey:@"event_time"];
     [info setValue:self.detailInputTextField.text forKey:@"event_detail"];
     [info setValue:self.capacityInputTextField.text forKey:@"event_capacity"];
+    [info setValue:self.locationResourceURL forKey:@"fk_address"];
     return info;
 }
 
-
-
--(void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
-    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-//        NSLog(@"%@",response);
-        NSHTTPURLResponse* resp=(NSHTTPURLResponse*)response;
-        if ([resp statusCode]!=201) {
-            //something wrong
-            [[[popoverAlterModel alloc]init]dismissWaitingHub];
-            [[[UIAlertView alloc] initWithTitle:@"Failed" message:@"Failed to pose the event, sorry." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
-            NSLog(@"%@",response);
-        }
-        else{
-            [ProgressHUD dismiss];
-            [self performSelector:@selector(showSucceedHUD) withObject:nil afterDelay:0.5];
-//            [[[UIAlertView alloc] initWithTitle:@"Succeed" message:@"Your event has been posted. We will jump back to event list page." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
-            responseData=[[NSMutableData alloc] init];
-        }
-        
-    }
-}
-
--(void) showSucceedHUD{
-    [ProgressHUD showSuccess:@"Your event has been posted. We will jump back to event list page."];
-}
-
--(void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
-    [responseData appendData:data];
-    
-}
-
--(void) connectionDidFinishLoading:(NSURLConnection *)connection{
-    NSString* responseString=[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",responseString);
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    [self dismissViewControllerAnimated:YES completion:nil];
-//    [self performSelector:@selector(dismissViewControllerAnimated:completion:) withObject:@YES afterDelay:3];
-}
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {

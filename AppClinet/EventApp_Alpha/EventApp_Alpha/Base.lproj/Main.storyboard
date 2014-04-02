@@ -511,6 +511,7 @@
                         <outlet property="capacityInputTextField" destination="hOf-Se-Atz" id="nVz-uf-QOg"/>
                         <outlet property="dateInputTextField" destination="uEy-op-XTW" id="snr-El-Eer"/>
                         <outlet property="detailInputTextField" destination="zlO-S0-ihy" id="HMQ-aH-L9a"/>
+                        <outlet property="locationTextField" destination="3rr-px-2Xr" id="V79-CL-ehp"/>
                         <outlet property="photoAddButton" destination="cO2-qU-nU7" id="277-HO-UJE"/>
                         <outlet property="photoCell" destination="Fss-Br-d86" id="k3p-qS-nkO"/>
                         <outlet property="photoSpanView" destination="4Xf-gR-uWm" id="4sq-N7-7fG"/>

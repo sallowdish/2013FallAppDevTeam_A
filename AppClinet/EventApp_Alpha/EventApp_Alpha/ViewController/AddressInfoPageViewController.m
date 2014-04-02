@@ -99,6 +99,7 @@ EventPostModel* model;
     [ProgressHUD dismiss];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"didCreateNewAddress" object:dic];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)didPostNewAddressFailed{
