@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface ProfilePageViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
+@property (weak, nonatomic) IBOutlet UILabel *username;
+@property (weak, nonatomic) IBOutlet UILabel *userLocation;
+@property (weak, nonatomic) IBOutlet UILabel *userLike;
+@property (weak, nonatomic) IBOutlet UILabel *userTag;
+@property (weak, nonatomic) IBOutlet UITextView *userDescription;
+@property (weak, nonatomic) IBOutlet UITextView *userRecentActivity;
 
 @end

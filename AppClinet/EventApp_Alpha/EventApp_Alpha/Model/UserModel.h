@@ -11,10 +11,15 @@
 @interface UserModel : LoginModel
 
 @property (strong,nonatomic) NSDictionary* current_user;
-@property (strong,nonatomic) NSString *username,*userAPIKey,*userResourceURL;
 @property BOOL isLogin;
 -(void)logoutCurrentUser;
-+(UserModel*)defaultModel;
--(UIImage*)getProfileImage;
--(UIImage*)getProfileImageWithUser:(NSDictionary*)user;
++(NSString*)username;
++(NSString*)userAPIKey;
++(NSString*)userResourceURL;
++(NSDictionary*)current_user;
++(BOOL)isLogin;
+
++(UIImage*)getProfileImage;
++(UIImage*)getProfileImageWithUser:(NSDictionary*)user;
++(void)popupLoginViewToViewController:(UIViewController*) viewController;
 @end

@@ -8,7 +8,7 @@
 
 #import "SettingPageViewController.h"
 #import "LoginViewController.h"
-#import "LoginModel.h"
+#import "UserModel.h"
 
 
 
@@ -45,14 +45,7 @@
 
 -(void)popOver:(id)sender
 {
-    LoginViewController* loginview=[self.storyboard instantiateViewControllerWithIdentifier:@"loginview"];
-//    UIViewController* loginview=[[UIViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-    CQMFloatingController *floatingController = [CQMFloatingController sharedFloatingController];
-    loginview.shareController=floatingController;
-    [floatingController setFrameColor:[UIColor whiteColor]];
-    [floatingController setLandscapeFrameSize:loginview.view.bounds.size];
-    [floatingController setPortraitFrameSize:loginview.view.bounds.size];
-    [floatingController showInView:self.view withContentViewController:loginview animated:YES];
+    [UserModel popupLoginViewToViewController:self];
 }
 
 //- (void)loadLoginView

@@ -14,9 +14,9 @@
 
 @implementation EventPostModel
 -(void)postEventwithInfo:(NSMutableDictionary*)info{
-    [info setValue:[[UserModel defaultModel] userResourceURL] forKey:@"fk_event_poster_user"];
+    [info setValue:[UserModel userResourceURL] forKey:@"fk_event_poster_user"];
     [info setValue:@"/app_project/api/v01/address/2/" forKey:@"fk_address"];
-    NSURL* targetURL=[[self class] constructEventPostURLwithUsername:[[UserModel defaultModel] username] andKey:[[UserModel defaultModel] userAPIKey]];
+    NSURL* targetURL=[[self class] constructEventPostURLwithUsername:[UserModel username] andKey:[UserModel userAPIKey]];
     @try {
         NSError* err;
         NSData* data=[NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:&err];

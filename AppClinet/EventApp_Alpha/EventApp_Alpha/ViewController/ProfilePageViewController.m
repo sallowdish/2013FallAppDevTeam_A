@@ -7,13 +7,13 @@
 //
 
 #import "ProfilePageViewController.h"
+#import "UserModel.h"
 #define MAXTAG 103
 
 @interface ProfilePageViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *needBorder;
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray * needTransparent;
-
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *needRoundCorner;
 
 @end
@@ -34,7 +34,21 @@
 {
 
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    
+    //Data Setup
+    if ([UserModel isLogin]) {
+        
+        self.userProfileImage.image=[UserModel getProfileImage];
+        self.username.text=[UserModel username];
+        self.userLocation.text=@"Unknown";
+        self.userLike.text=@"N/A";
+        self.userTag.text=@"";
+        self.userDescription.text=@"Top Secret";
+        self.userRecentActivity.text=@"Top Secret";
+    }
+    
+	// Visual Setup
     [self navigationController].automaticallyAdjustsScrollViewInsets=YES;
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height*1.4)];
     

@@ -133,7 +133,7 @@ EventJoinAndLikeModel* jlmodel;
         //UI initialization
         //Get uiimage content
         NSDictionary* user=self.RSVPList[i];
-        UIImage* img=[[UserModel defaultModel] getProfileImageWithUser:user];
+        UIImage* img=[UserModel getProfileImageWithUser:[UserModel current_user]];
         
         //prepare the frame
         

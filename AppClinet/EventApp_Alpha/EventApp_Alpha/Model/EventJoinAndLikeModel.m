@@ -27,7 +27,7 @@
 }
 
 -(void)patchDate:(NSDictionary*)dic toEvent:(NSDictionary*)event{
-    NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,API,@"/event/",[event objectForKey:@"id"],@"/?username=",[[UserModel defaultModel] username],@"&api_key=",[[UserModel defaultModel] userAPIKey]]];
+    NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,API,@"/event/",[event objectForKey:@"id"],@"/?username=",[UserModel username],@"&api_key=",[UserModel userAPIKey]]];
     NSData* json=[self jsonFromDictionary:dic];
     [super patchData:json WithURL:url];
 }

@@ -14,7 +14,7 @@
 
 - (IBAction)loginClicked:(id)sender;
 
-@property (strong,nonatomic) CQMFloatingController *popController;
+//@property (strong,nonatomic) CQMFloatingController *popController;
 
 
 @end

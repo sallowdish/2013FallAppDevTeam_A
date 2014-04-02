@@ -12,5 +12,5 @@
 @property NSDictionary* event;
 -(void) fetchEventWithEventID:(NSInteger)EventID;
 -(void) fetchRSVPWithEventID:(NSInteger)eventID;
--(UIImage*)fetchProfileImageForUser:(NSDictionary*) user;
+//-(UIImage*)fetchProfileImageForUser:(NSDictionary*) user;
 @end

@@ -16,6 +16,7 @@
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *forgetLabel;
 @property (weak, nonatomic) IBOutlet UIButton *forgetButton;
+@property (weak, nonatomic) IBOutlet UIImageView *user_profile_image;
 
 @end
 
@@ -84,8 +85,9 @@ UserModel* model;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[ProgressHUD class] dismiss];
     
-    
-    [popoverAlterModel alterWithTitle:@"Login Finished" Message:[NSString stringWithFormat:@"%@\n%@",[[UserModel defaultModel] username],[[UserModel defaultModel] userAPIKey]]];
+    self.user_profile_image.image=[UserModel getProfileImage];
+    self.loginButton.enabled=NO;
+    [popoverAlterModel alterWithTitle:@"Login Succeed" Message:[NSString stringWithFormat:@"Hi,%@",[UserModel username]]];
     
 }
 

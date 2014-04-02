@@ -15,6 +15,7 @@
     NSMutableURLRequest* request=[NSMutableURLRequest requestWithURL:url];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     NSURLConnection* conn=[NSURLConnection connectionWithRequest:request delegate:self];
+    self.receivedData=[NSMutableData dataWithCapacity:0];
     if (conn) {
         [conn start];
     }
@@ -28,8 +29,8 @@
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
     if([(NSHTTPURLResponse*)response statusCode]!=200)
     {
+        self.receivedData=nil;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"failToLogin" object:nil];
-        self.=nil;
     }
 }
 

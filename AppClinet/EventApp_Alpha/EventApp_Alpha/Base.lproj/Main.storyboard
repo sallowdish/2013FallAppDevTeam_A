@@ -1096,7 +1096,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="forgetButton" destination="D4m-bR-VaM" id="jqJ-Nt-0w3"/>
+                        <outlet property="forgetLabel" destination="FDy-aH-X1T" id="4JM-OB-xk3"/>
+                        <outlet property="loginButton" destination="Wpg-jx-4ID" id="Agv-RI-UO7"/>
                         <outlet property="passwordField" destination="93D-aL-Vez" id="qvt-rw-26q"/>
+                        <outlet property="user_profile_image" destination="150-iQ-KRZ" id="Jac-Nb-F4K"/>
                         <outlet property="usernameField" destination="7yp-GH-jpW" id="SEx-Yd-4Rn"/>
                     </connections>
                 </viewController>
@@ -1555,6 +1559,13 @@ XX日發佈了XXXX活動 .
                     <navigationItem key="navigationItem" title="Profile" id="Htp-jO-dtX"/>
                     <connections>
                         <outlet property="scrollView" destination="FDX-s5-dgU" id="D30-er-nld"/>
+                        <outlet property="userDescription" destination="7Za-C6-oq2" id="ePn-MW-ccr"/>
+                        <outlet property="userLike" destination="b3y-o1-K0u" id="aTv-JT-wqx"/>
+                        <outlet property="userLocation" destination="CwI-6s-GxG" id="Yo3-dr-qww"/>
+                        <outlet property="userProfileImage" destination="Pep-hQ-NZ2" id="C8d-nd-uvs"/>
+                        <outlet property="userRecentActivity" destination="vtC-Ab-0LZ" id="EJ6-rK-37R"/>
+                        <outlet property="userTag" destination="HpV-fX-RcC" id="qoh-PU-7zr"/>
+                        <outlet property="username" destination="pdT-nU-9AG" id="JHc-Zi-lCw"/>
                         <outletCollection property="needRoundCorner" destination="MBT-9w-NJg" id="QRC-s6-V6z"/>
                         <outletCollection property="needRoundCorner" destination="ISt-ZD-eAW" id="cvc-CR-YkF"/>
                         <outletCollection property="needBorder" destination="heX-Yz-uCy" id="qQB-wD-Emq"/>
