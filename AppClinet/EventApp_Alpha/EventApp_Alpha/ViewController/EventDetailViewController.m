@@ -218,9 +218,9 @@ EventJoinAndLikeModel* jlmodel;
     self.dateTime.text=[NSString stringWithFormat:@"%@|%@",[event objectForKey:@"event_date"],[event objectForKey:@"event_time"]];
     self.location.text=[FormatingModel addressDictionaryToStringL:[event objectForKey:@"fk_address"]];
     self.like.text=[NSString stringWithFormat:@"%@",[event objectForKey:@"event_like"]];
-    NSInteger capacity=[[event objectForKey:@"event_capacity"] integerValue];
-    if (capacity==0) {
-        self.RSVP.text=@"Free to go";
+    id capacity=[event objectForKey:@"event_capacity"];
+    if ([capacity isEqual:[NSNull null]]) {
+        self.RSVP.text=@" ∞/∞";
 //        [self.joinButton removeFromSuperview];
     }
     NSString *description=[event objectForKey:@"event_detail"];
@@ -252,17 +252,29 @@ EventJoinAndLikeModel* jlmodel;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (IBAction)joinButtonPressed:(id)sender {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRSVPEvent) name:@"didRSVPEvent" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRSVPEventFailed) name:@"didRSVPEventFailed" object:nil];
-    [ProgressHUD show:@"trying RSVP the event..."];
-    [jlmodel rsvpEvent:event];
+- (IBAction)RSVPButtonTapped:(id)sender {
+    if (![UserModel isLogin]) {
+        [UserModel popupLoginViewToViewController:self];
+    }else{
+        if (![self hasRSVP]) {
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRSVPEvent) name:@"didRSVPEvent" object:nil];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRSVPEventFailed) name:@"didRSVPEventFailed" object:nil];
+            [ProgressHUD show:@"trying to RSVP the event..."];
+            [jlmodel rsvpEvent:event];
+        }
+        else{
+            self.joinButton.enabled=NO;
+            [popoverAlterModel alterWithTitle:@"Warning" Message:@"You have RSVPed this event already."];
+        }
+    }
 }
 
 
 -(void)didRSVPEvent{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [ProgressHUD dismiss];
+//    [self.view setNeedsDisplay];
+    [self getRSVPInfo];
     [popoverAlterModel alterWithTitle:@"Succeed" Message:@"You have RSVP this event."];
 }
 
@@ -272,34 +284,72 @@ EventJoinAndLikeModel* jlmodel;
     [popoverAlterModel alterWithTitle:@"Failed" Message:@"Please try again later."];
 }
 
-- (IBAction)likeButtonPressed:(id)sender {
-    if (isLiked) {
-        [self unLikeEvent];
+- (IBAction)likeButtonTapped:(id)sender {
+    if (![UserModel isLogin]) {
+        [UserModel popupLoginViewToViewController:self];
     }else{
-        [self likeEvent];
+        if (![self hasLiked]) {
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLikeEvent) name:@"didLikeEvent" object:nil];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLikeEventFailed) name:@"didLikeEventFailed" object:nil];
+            [ProgressHUD show:@"trying to like the event..."];
+            [jlmodel likeEvent:event];
+        }
+        else{
+            self.likeButton.enabled=NO;
+            [popoverAlterModel alterWithTitle:@"Warning" Message:@"You have liked this event already."];
+        }
     }
 }
 
+
+-(void)didLikeEvent{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [ProgressHUD dismiss];
+    //    [self.view setNeedsDisplay];
+    [self getRSVPInfo];
+    [popoverAlterModel alterWithTitle:@"Succeed" Message:@"You have liked this event."];
+}
+
+-(void)didLikeEventFailed{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [ProgressHUD dismiss];
+    [popoverAlterModel alterWithTitle:@"Failed" Message:@"Please try again later."];
+}
+
 -(BOOL)hasRSVP{
-    return false;
+    NSInteger current_id=[[[UserModel current_user] objectForKey:@"id"] integerValue];
+    for (NSDictionary* user in self.RSVPList) {
+        NSInteger RSVP_id=[[user objectForKey:@"id"] integerValue];
+        if (RSVP_id == current_id) {
+            return YES;
+        };
+    }
+    return  false;
 }
 
 -(BOOL)hasLiked{
-    return false;
+    NSInteger current_id=[[[UserModel current_user] objectForKey:@"id"] integerValue];
+    for (NSDictionary* user in self.likeList) {
+        NSInteger RSVP_id=[[user objectForKey:@"id"] integerValue];
+        if (RSVP_id == current_id) {
+            return YES;
+        };
+    }
+    return  false;
 }
--(void)likeEvent{
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLikeEvent) name:@"didPatchDataWithEventID" object:nil];
-//    [jlmodel likeEvent:event];
+//-(void)likeEvent{
+////    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLikeEvent) name:@"didPatchDataWithEventID" object:nil];
+////    [jlmodel likeEvent:event];
+//
+//}
+//
+//-(void)unLikeEvent{
+////    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLikeEvent) name:@"didPatchDataWithEventID" object:nil];
+////    [jlmodel dislikeEvent:event];
+//    
+//}
 
-}
-
--(void)unLikeEvent{
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLikeEvent) name:@"didPatchDataWithEventID" object:nil];
-//    [jlmodel dislikeEvent:event];
-    
-}
-
--(void)didLikeEvent{
+//-(void)didLikeEvent{
     //save staue
 //    BOOL originalStatue=isLiked;
     //reload whole page
@@ -326,7 +376,7 @@ EventJoinAndLikeModel* jlmodel;
 //        [self.navigationController popViewControllerAnimated:YES];
 //    }
 
-}
+//}
 
 
 
