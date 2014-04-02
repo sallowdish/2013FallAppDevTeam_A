@@ -953,9 +953,6 @@
                                                                         <state key="normal" title="Join">
                                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                         </state>
-                                                                        <connections>
-                                                                            <action selector="joinButtonPressed:" destination="Fec-tY-Qmi" eventType="touchUpInside" id="zvj-6i-oiI"/>
-                                                                        </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yX7-4V-JzY">
                                                                         <rect key="frame" x="118" y="1" width="47" height="30"/>
@@ -963,9 +960,6 @@
                                                                         <state key="normal" title="Like">
                                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                         </state>
-                                                                        <connections>
-                                                                            <action selector="likeButtonPressed:" destination="Fec-tY-Qmi" eventType="touchUpInside" id="01n-tt-wLY"/>
-                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -982,7 +976,17 @@
                                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <segue destination="i4G-Cf-69o" kind="push" id="BES-eU-ed4"/>
+                                                                    <action selector="hostInfoTapped" destination="Fec-tY-Qmi" eventType="touchUpInside" id="6PO-CD-Fig"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ldH-5e-gGm" userLabel="LocationInfo">
+                                                                <rect key="frame" x="20" y="94" width="130" height="21"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <state key="normal">
+                                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="locationInfoTapped" destination="Fec-tY-Qmi" eventType="touchUpInside" id="PAQ-fX-Iqk"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -2050,7 +2054,4 @@ XX日發佈了XXXX活動 .
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="BES-eU-ed4"/>
-    </inferredMetricsTieBreakers>
 </document>

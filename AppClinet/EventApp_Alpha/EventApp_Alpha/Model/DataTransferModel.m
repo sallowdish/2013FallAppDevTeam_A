@@ -16,13 +16,13 @@ NSError* error;
 -(void)fetchDataWithUrl:(NSURL*)url{
     //NSData* result;
     NSMutableURLRequest* request=[NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
-    receivedData=[NSMutableData dataWithCapacity:0];
 //    NSURLResponse* response;
     NSURLConnection* conn=[[NSURLConnection alloc] initWithRequest:request delegate:self];
     if (!conn) {
         receivedData=nil;
     }
     else{
+        [self prepareForConnection];
         [conn start];
     }
 }

@@ -15,10 +15,12 @@
 #import "UserModel.h"
 #import "FullScreenImageController.h"
 #import "ProfilePageViewController.h"
+#import "AddressInfoPageViewController.h"
 #define MAXTAG 104
 @interface EventDetailViewController ()
 @property (strong,nonatomic) NSDictionary* event;
 @property (strong,nonatomic) NSMutableArray* RSVPList;
+@property (strong,nonatomic) NSMutableArray* likeList;
 @property (strong, nonatomic) NSMutableArray *joinedPeopleIcons;
 @property (weak, nonatomic) IBOutlet UIView *joinedPeopleSpanArea;
 @property (weak, nonatomic) IBOutlet UILabel *joinedPeopleLabel;
@@ -49,6 +51,7 @@ EventJoinAndLikeModel* jlmodel;
     isJoined=NO;
     isLiked=NO;
     self.RSVPList=[NSMutableArray arrayWithCapacity:0];
+    self.likeList=[NSMutableArray arrayWithCapacity:0];
     self.joinedPeopleIcons=[NSMutableArray arrayWithCapacity:0];
     model=[[EventFetchModel alloc]init];
     jlmodel=[[EventJoinAndLikeModel alloc]init];
@@ -70,6 +73,7 @@ EventJoinAndLikeModel* jlmodel;
     [ProgressHUD show:@"Loading event info..."];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchEvent) name:@"didFetchDataWithEventID" object:nil];
     @try {
+        
         [model fetchEventWithEventID:eventID];
     }
     @catch (NSException *exception) {
@@ -98,26 +102,51 @@ EventJoinAndLikeModel* jlmodel;
     }
     
     
-    [[ProgressHUD class] dismiss];
+//    [[ProgressHUD class] dismiss];
     //stop listen to fetching event data
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFetchDataWithEventID" object:nil];
     
-    [self joinedPeopleInitialize];
+
+    [self getRSVPInfo];
     //post didLoadPage;
 
 }
 
 
--(void) joinedPeopleInitialize{
+-(void) getRSVPInfo{
     //start listen to fetching joined people
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didJoinedPeopleInitialize) name:@"didFetchDataWithEventID" object:nil];
-    [model fetchRSVPWithEventID:eventID];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetRSVPInfo) name:@"didFinishCountingRSVP" object:nil];
+    [jlmodel countRSVP:event];
 }
 
--(void)didJoinedPeopleInitialize{
-    NSLog(@"");
+-(void) getLikeInfo{
+    //start listen to fetching joined people
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetLikeInfo) name:@"didFinishCountingLike" object:nil];
+    [jlmodel countLike:event];
+}
+
+-(void) didGetLikeInfo{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFinishCountingLike" object:nil];
     @try {
-        NSArray* RSVP=[model.event objectForKey:@"objects"];
+        NSArray* like=[jlmodel.json objectForKey:@"objects"];
+        [self.likeList removeAllObjects];
+        for (int i = 0; i<like.count; i++) {
+            [self.likeList addObject:[(NSDictionary*)like[i] objectForKey:@"fk_user"]];
+        }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@",exception.reason);
+    }
+    //visual setup
+    self.like.text=[NSString stringWithFormat:@"%d",[self.likeList count]];
+    [ProgressHUD dismiss];
+}
+
+-(void)didGetRSVPInfo{
+//    NSLog(@"");
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFinishCountingRSVP" object:nil];
+    @try {
+        NSArray* RSVP=[jlmodel.json objectForKey:@"objects"];
         [self.RSVPList removeAllObjects];
         for (int i = 0; i<RSVP.count; i++) {
             [self.RSVPList addObject:[(NSDictionary*)RSVP[i] objectForKey:@"fk_user"]];
@@ -127,6 +156,11 @@ EventJoinAndLikeModel* jlmodel;
         NSLog(@"%@",exception.reason);
     }
     
+    //visual setup
+    if (![[event objectForKey:@"event_capacity"] isEqual:[NSNull null]]) {
+        self.RSVP.text=[NSString stringWithFormat:@"%d/%@",[self.RSVPList count],[event objectForKey:@"event_capacity"]];
+    }
+    //Visual setup
     [[self.joinedPeopleSpanArea subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     int basex=10;
@@ -161,7 +195,8 @@ EventJoinAndLikeModel* jlmodel;
     self.joinedPeopleLabel.frame=CGRectMake(basex, self.joinedPeopleLabel.frame.origin.y, self.joinedPeopleLabel.frame.size.width, self.joinedPeopleLabel.frame.size.height);
     [self.joinedPeopleSpanArea addSubview:self.joinedPeopleLabel];
     //stop listening to fetching joined people
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFetchDataWithEventID" object:nil];
+
+    [self getLikeInfo];
 }
 
 
@@ -183,12 +218,10 @@ EventJoinAndLikeModel* jlmodel;
     self.dateTime.text=[NSString stringWithFormat:@"%@|%@",[event objectForKey:@"event_date"],[event objectForKey:@"event_time"]];
     self.location.text=[FormatingModel addressDictionaryToStringL:[event objectForKey:@"fk_address"]];
     self.like.text=[NSString stringWithFormat:@"%@",[event objectForKey:@"event_like"]];
-    id capacity=[event objectForKey:@"event_capacity"];
-    if (capacity!=[NSNull null]) {
-        self.RSVP.text=[NSString stringWithFormat:@"%@/%ld",[event objectForKey:@"event_rsvp"],(long)[capacity integerValue]];
-    }else{
+    NSInteger capacity=[[event objectForKey:@"event_capacity"] integerValue];
+    if (capacity==0) {
         self.RSVP.text=@"Free to go";
-        [self.joinButton removeFromSuperview];
+//        [self.joinButton removeFromSuperview];
     }
     NSString *description=[event objectForKey:@"event_detail"];
     if ([description isEqualToString:@""]) {
@@ -207,26 +240,37 @@ EventJoinAndLikeModel* jlmodel;
 }
 
 
-- (IBAction)joinButtonPressed:(id)sender {
-    if(isJoined==NO)
-    {
-        NSInteger currentNum=[(NSString*)[event objectForKey:@"event_rsvp"] integerValue];
-        self.RSVP.text=[NSString stringWithFormat:@"%ld/%@",currentNum+1,[event objectForKey:@"event_capacity"]];
-//        self.joinButton.enabled=NO;
-        isJoined=!isJoined;
-        [self.joinButton setTitle:@"Quit" forState:UIControlStateNormal];
-        [popoverAlterModel alterWithTitle:@"Congratulation" Message:@"You have joined the event successfully."];
-    }else
-    {
-//        self.joinButton.enabled=NO;
-        NSInteger currentNum=[(NSString*)[event objectForKey:@"event_rsvp"] integerValue];
-        self.RSVP.text=[NSString stringWithFormat:@"%ld/%@",(long)currentNum,[event objectForKey:@"event_capacity"]];
-        isJoined=!isJoined;
-        [self.joinButton setTitle:@"Join" forState:UIControlStateNormal];
-        [popoverAlterModel alterWithTitle:@"Done" Message:@"You are not going to this event."];
-    }
+-(IBAction)hostInfoTapped{
+    ProfilePageViewController* vc= [self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
+    vc.targetUser=[event objectForKey:@"fk_event_poster_user"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
+-(IBAction)locationInfoTapped{
+    AddressInfoPageViewController* vc= [self.storyboard instantiateViewControllerWithIdentifier:@"AddressInfoPage"];
+    vc.address=[event objectForKey:@"fk_address"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (IBAction)joinButtonPressed:(id)sender {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRSVPEvent) name:@"didRSVPEvent" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRSVPEventFailed) name:@"didRSVPEventFailed" object:nil];
+    [ProgressHUD show:@"trying RSVP the event..."];
+    [jlmodel rsvpEvent:event];
+}
+
+
+-(void)didRSVPEvent{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [ProgressHUD dismiss];
+    [popoverAlterModel alterWithTitle:@"Succeed" Message:@"You have RSVP this event."];
+}
+
+-(void)didRSVPEventFailed{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [ProgressHUD dismiss];
+    [popoverAlterModel alterWithTitle:@"Failed" Message:@"Please try again later."];
+}
 
 - (IBAction)likeButtonPressed:(id)sender {
     if (isLiked) {
@@ -236,16 +280,22 @@ EventJoinAndLikeModel* jlmodel;
     }
 }
 
+-(BOOL)hasRSVP{
+    return false;
+}
 
+-(BOOL)hasLiked{
+    return false;
+}
 -(void)likeEvent{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLikeEvent) name:@"didPatchDataWithEventID" object:nil];
-    [jlmodel likeEvent:event];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLikeEvent) name:@"didPatchDataWithEventID" object:nil];
+//    [jlmodel likeEvent:event];
 
 }
 
 -(void)unLikeEvent{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLikeEvent) name:@"didPatchDataWithEventID" object:nil];
-    [jlmodel dislikeEvent:event];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLikeEvent) name:@"didPatchDataWithEventID" object:nil];
+//    [jlmodel dislikeEvent:event];
     
 }
 
@@ -253,28 +303,28 @@ EventJoinAndLikeModel* jlmodel;
     //save staue
 //    BOOL originalStatue=isLiked;
     //reload whole page
-    if(isLiked==NO)
-    {
-        [popoverAlterModel alterWithTitle:@"Congratulation" Message:@"You have liked the event successfully."];
-        
-    }else
-    {
-        [popoverAlterModel alterWithTitle:@"Done" Message:@"You have disliked this event."];
-    }
-    isLiked=!isLiked;
-    //Stop listening to the patch
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didPatchDataWithEventID" object:nil];
-    
-    //reload the page
-    [ProgressHUD show:@"Loading event info..."];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchEvent) name:@"didFetchDataWithEventID" object:nil];
-    @try {
-        [model fetchEventWithEventID:eventID];
-    }
-    @catch (NSException *exception) {
-        [popoverAlterModel alterWithTitle:@"Failed" Message:@"Fetching event detail failed."];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+//    if(isLiked==NO)
+//    {
+//        [popoverAlterModel alterWithTitle:@"Congratulation" Message:@"You have liked the event successfully."];
+//        
+//    }else
+//    {
+//        [popoverAlterModel alterWithTitle:@"Done" Message:@"You have disliked this event."];
+//    }
+//    isLiked=!isLiked;
+//    //Stop listening to the patch
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didPatchDataWithEventID" object:nil];
+//    
+//    //reload the page
+//    [ProgressHUD show:@"Loading event info..."];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchEvent) name:@"didFetchDataWithEventID" object:nil];
+//    @try {
+//        [model fetchEventWithEventID:eventID];
+//    }
+//    @catch (NSException *exception) {
+//        [popoverAlterModel alterWithTitle:@"Failed" Message:@"Fetching event detail failed."];
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }
 
 }
 

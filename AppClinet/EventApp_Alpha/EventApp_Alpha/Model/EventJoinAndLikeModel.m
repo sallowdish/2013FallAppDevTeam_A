@@ -10,28 +10,77 @@
 #import "UserModel.h"
 
 @implementation EventJoinAndLikeModel
--(void)joinEvent:(NSDictionary*)event{}
--(void)quitEvent:(NSDictionary*)event{}
--(void)likeEvent:(NSDictionary*)event{
-    NSInteger currentlike=[[event objectForKey:@"event_like"] integerValue];
-    currentlike+=1;
-    NSDictionary* dic=[NSDictionary dictionaryWithObjects:@[@(currentlike)] forKeys:@[@"event_like"]];
-    [self patchDate:dic toEvent:event];
-}
--(void)dislikeEvent:(NSDictionary*)event{
-    NSInteger currentlike=[[event objectForKey:@"event_like"] integerValue];
-    currentlike-=1;
-    NSDictionary* dic=[NSDictionary dictionaryWithObjects:@[@(currentlike)] forKeys:@[@"event_like"]];
-    [self patchDate:dic toEvent:event];
+
+bool isRSVP,isLike,isCountingRSVP,isCountingLike;
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection{
+    [super connectionDidFinishLoading:connection];
+    if (self.data) {
+        self.json=[NSJSONSerialization JSONObjectWithData:self.data options:NSJSONReadingMutableContainers error:nil];
+    }
+    if (isCountingLike) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"didFinishCountingLike" object:nil];
+        isCountingLike=false;
+    }
+    else if(isCountingRSVP){
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"didFinishCountingRSVP" object:nil];
+        isCountingRSVP=false;
+    }
+//    else if (isLike) {
+//        isLike=false;
+//    }else if (isRSVP){
+//        isRSVP=false;
+//    }
+//    isRSVP=isLike=isCountingLike=isCountingRSVP=false;
     
 }
 
--(void)patchDate:(NSDictionary*)dic toEvent:(NSDictionary*)event{
-    NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,API,@"/event/",[event objectForKey:@"id"],@"/?username=",[UserModel username],@"&api_key=",[UserModel userAPIKey]]];
-    NSData* json=[self jsonFromDictionary:dic];
-    [super patchData:json WithURL:url];
+
+-(void)countRSVP:(NSDictionary*)event{
+    isCountingRSVP=true;
+    NSURL* url=[[self class] constructRequestWithResource:@"/eventrsvp"];
+    url=[NSURL URLWithString:[[url absoluteString ] stringByAppendingString:[NSString stringWithFormat:@"/?%@&fk_event=%@",JSONFORMAT,[event objectForKey:@"id"]]]];
+    [self fetchDataWithUrl:url];
 }
-     
+
+-(void)countLike:(NSDictionary*)event{
+    isCountingLike=true;
+    NSURL* url=[[self class] constructRequestWithResource:@"/eventlike"];
+    url=[NSURL URLWithString:[[url absoluteString ] stringByAppendingString:[NSString stringWithFormat:@"/?%@&fk_event=%@",JSONFORMAT,[event objectForKey:@"id"]]]];
+    [self fetchDataWithUrl:url];
+}
+
+-(void)rsvpEvent:(NSDictionary*)event{
+    isRSVP=true;
+    NSDictionary *dic=[NSDictionary dictionaryWithObjects:@[[event objectForKey:@"resource_uri"],[UserModel userResourceURL]] forKeys:@[@"fk_event",@"fk_user"]];
+    NSURL* url=[[self class] constructRequestWithResource:@"/eventrsvp"];
+    url=[NSURL URLWithString:[[url absoluteString] stringByAppendingString:[NSString stringWithFormat:@"/?username=%@&api_key=%@",[UserModel username],[UserModel userAPIKey]]]];
+    
+    [self postData:[self jsonFromDictionary:dic] WithUrl:url];
+
+}
+-(void)quitEvent:(NSDictionary*)event{}
+-(void)likeEvent:(NSDictionary*)event{
+    isLike=true;
+    NSDictionary *dic=[NSDictionary dictionaryWithObjects:@[[event objectForKey:@"resource_uri"],[UserModel userResourceURL]] forKeys:@[@"fk_event",@"fk_user"]];
+    NSURL* url=[[self class] constructRequestWithResource:@"/eventlike"];
+    url=[NSURL URLWithString:[[url absoluteString] stringByAppendingString:[NSString stringWithFormat:@"/?username=%@&api_key=%@",[UserModel username],[UserModel userAPIKey]]]];
+    
+    [self postData:[self jsonFromDictionary:dic] WithUrl:url];
+}
+-(void)dislikeEvent:(NSDictionary*)event{
+//    NSInteger currentlike=[[event objectForKey:@"event_like"] integerValue];
+//    currentlike-=1;
+//    NSDictionary* dic=[NSDictionary dictionaryWithObjects:@[@(currentlike)] forKeys:@[@"event_like"]];
+//    [self patchDate:dic toEvent:event];
+}
+
+//-(void)patchDate:(NSDictionary*)dic toEvent:(NSDictionary*)event{
+//    NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,API,@"/event/",[event objectForKey:@"id"],@"/?username=",[UserModel username],@"&api_key=",[UserModel userAPIKey]]];
+//    NSData* json=[self jsonFromDictionary:dic];
+//    [super patchData:json WithURL:url];
+//}
+
 -(NSData*)jsonFromDictionary:(NSDictionary*)dic{
     NSData* json=nil;
     NSError* error=nil;
@@ -52,14 +101,46 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-    if ( [(NSHTTPURLResponse*)response statusCode]!= 202) {
-        @throw [NSException exceptionWithName:@"Fail" reason:@"Fail to patch data" userInfo:nil];
+    if (isRSVP) {
+        if ( [(NSHTTPURLResponse*)response statusCode]!= 201) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"didRSVPEventFailed" object:nil];
+            self.receivedData=nil;
+        }
+        else{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"didRSVPEvent" object:nil];
+        
+        }
+        isRSVP=false;
+
     }
+    else if (isLike)
+    {
+        if ( [(NSHTTPURLResponse*)response statusCode]!= 201) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"didLikeEventFailed" object:nil];
+            self.receivedData=nil;
+        }
+        else{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"didLikeEvent" object:nil];
+            
+        }
+        isLike=false;
+    }
+    else if (isCountingLike)
+    {
+        if ( [(NSHTTPURLResponse*)response statusCode]!= 200) {
+            self.receivedData=nil;
+        }
+    }
+    else if (isCountingRSVP)
+    {
+        if ( [(NSHTTPURLResponse*)response statusCode]!= 200) {
+            self.receivedData=nil;
+        }
+    }
+    
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"didPatchDataWithEventID" object:nil];
-    //    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
+
+
 
 @end

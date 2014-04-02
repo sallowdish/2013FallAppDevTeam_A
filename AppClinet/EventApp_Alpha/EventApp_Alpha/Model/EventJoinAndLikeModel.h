@@ -9,8 +9,11 @@
 #import "DataTransferModel.h"
 
 @interface EventJoinAndLikeModel : DataTransferModel
--(void)joinEvent:(NSDictionary*)event;
+@property NSDictionary* json; //RSVPCount,likeCount;
+-(void)rsvpEvent:(NSDictionary*)event;
 -(void)quitEvent:(NSDictionary*)event;
 -(void)likeEvent:(NSDictionary*)event;
 -(void)dislikeEvent:(NSDictionary*)event;
+-(void)countRSVP:(NSDictionary*)event;
+-(void)countLike:(NSDictionary*)event;
 @end
