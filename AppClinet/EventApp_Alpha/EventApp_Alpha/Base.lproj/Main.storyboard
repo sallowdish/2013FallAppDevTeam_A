@@ -1003,12 +1003,12 @@
         <scene sceneID="ZQs-W9-3sD">
             <objects>
                 <viewController storyboardIdentifier="loginview" id="KHM-qi-rDt" customClass="LoginViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="GHG-cY-SzU" customClass="login">
+                    <view key="view" contentMode="scaleToFill" id="GHG-cY-SzU" userLabel="VIew">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="E9O-fe-utC">
-                                <rect key="frame" x="10" y="89" width="300" height="367"/>
+                                <rect key="frame" x="10" y="101" width="300" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-- Login --" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UTS-Uh-fZX">
@@ -1034,18 +1034,12 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="KHM-qi-rDt" id="3ch-cq-nPh"/>
-                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Password" minimumFontSize="17" clearButtonMode="unlessEditing" id="93D-aL-Vez">
                                         <rect key="frame" x="20" y="226" width="250" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="GHG-cY-SzU" id="60O-g4-MFN"/>
-                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Wpg-jx-4ID">
                                         <rect key="frame" x="20" y="282" width="90" height="34"/>
@@ -1322,6 +1316,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="NA2-Jl-9hQ"/>
+                    <connections>
+                        <outlet property="logoutCell" destination="45h-0f-Wmt" id="0mL-ds-Hl4"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCQ-2i-nEU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

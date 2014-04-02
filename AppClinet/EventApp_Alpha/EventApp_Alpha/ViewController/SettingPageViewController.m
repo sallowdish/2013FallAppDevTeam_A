@@ -9,10 +9,14 @@
 #import "SettingPageViewController.h"
 #import "LoginViewController.h"
 #import "UserModel.h"
+#import "popoverAlterModel.h"
 
 
 
 @interface SettingPageViewController ()
+@property (weak, nonatomic) IBOutlet UIView *logoutCell;
+
+
 @end	
 
 @implementation SettingPageViewController
@@ -31,6 +35,20 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    //Makeup
+    UITapGestureRecognizer* tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(logoutTapped)];
+    tap.numberOfTapsRequired=1;
+    [self.logoutCell addGestureRecognizer:tap];
+}
+
+-(void)logoutTapped{
+    if ([UserModel isLogin]) {
+        UserModel* model=[[UserModel alloc] init];
+        [model logoutCurrentUser];
+        [popoverAlterModel alterWithTitle:@"Logout" Message:@"Logout Succeed"];
+        [self.view setNeedsDisplay];
+    }
 }
 
 - (IBAction)loginClicked:(id)sender
@@ -46,6 +64,7 @@
 -(void)popOver:(id)sender
 {
     [UserModel popupLoginViewToViewController:self];
+    [self.view setNeedsDisplay];
 }
 
 //- (void)loadLoginView
