@@ -18,4 +18,6 @@
 + (NSString*)username;
 + (NSString*)userUrl;
 + (NSString*)userApikey;
++(void)updateUserInfoWithUsername:(NSString*) newusername API_KEY:(NSString*)apikey Resource:(NSString*) resource;
++(void)cleanUpUserInfo;
 @end

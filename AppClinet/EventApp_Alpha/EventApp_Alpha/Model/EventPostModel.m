@@ -19,7 +19,7 @@
     NSURL* targetURL=[[self class] constructEventPostURLwithUsername:[AppDelegate username] andKey:[AppDelegate userApikey]];
     @try {
         NSError* err;
-        NSData* data=[NSJSONSerialization dataWithJSONObject:info options:nil error:&err];
+        NSData* data=[NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:&err];
         NSString *jsonString=[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@",jsonString);
 //        data=[jsonString dataUsingEncoding:NSUTF8StringEncoding];

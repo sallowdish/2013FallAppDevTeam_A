@@ -45,14 +45,15 @@
 		71D830AE18E7D0D200485B1B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71D830AD18E7D0D200485B1B /* MobileCoreServices.framework */; };
 		71D830B018E9927300485B1B /* 152_152icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 71D830AF18E9927300485B1B /* 152_152icon.png */; };
 		71D830B218E9AB9E00485B1B /* underconstruction.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71D830B118E9AB9E00485B1B /* underconstruction.jpg */; };
+		71D830B718EAAE6D00485B1B /* EventJoinAndLikeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D830B618EAAE6D00485B1B /* EventJoinAndLikeModel.m */; };
+		71D830BB18EB959300485B1B /* loginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D830BA18EB959300485B1B /* loginModel.m */; };
+		71D830BE18EBA3EE00485B1B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D830BD18EBA3EE00485B1B /* LoginViewController.m */; };
 		71DFFA43182104C900269E3E /* SettingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DFFA42182104C900269E3E /* SettingPageViewController.m */; };
 		71DFFA4518210FAA00269E3E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4418210FAA00269E3E /* CFNetwork.framework */; };
 		71DFFA4718210FB200269E3E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4618210FB200269E3E /* Security.framework */; };
 		71DFFA48182115A900269E3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F3219C17F830D700FFFB95 /* Main.storyboard */; };
 		71EE867818784D63007FD900 /* backgroundImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 71EE867618784D63007FD900 /* backgroundImage.png */; };
 		71EE867918784D63007FD900 /* profileImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 71EE867718784D63007FD900 /* profileImage.png */; };
-		71EE867D18784E04007FD900 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EE867B18784E04007FD900 /* LoginViewController.m */; };
-		71EE867E18784E04007FD900 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71EE867C18784E04007FD900 /* LoginViewController.xib */; };
 		71EE8685187854B6007FD900 /* ProfilePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EE8684187854B6007FD900 /* ProfilePageViewController.m */; };
 		71F3218B17F830D700FFFB95 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F3218A17F830D700FFFB95 /* Foundation.framework */; };
 		71F3218D17F830D700FFFB95 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F3218C17F830D700FFFB95 /* CoreGraphics.framework */; };
@@ -141,15 +142,18 @@
 		71D830AD18E7D0D200485B1B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		71D830AF18E9927300485B1B /* 152_152icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 152_152icon.png; path = Images.xcassets/152_152icon.png; sourceTree = "<group>"; };
 		71D830B118E9AB9E00485B1B /* underconstruction.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = underconstruction.jpg; sourceTree = "<group>"; };
+		71D830B518EAAE6D00485B1B /* EventJoinAndLikeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventJoinAndLikeModel.h; path = Model/EventJoinAndLikeModel.h; sourceTree = "<group>"; };
+		71D830B618EAAE6D00485B1B /* EventJoinAndLikeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventJoinAndLikeModel.m; path = Model/EventJoinAndLikeModel.m; sourceTree = "<group>"; };
+		71D830B918EB959300485B1B /* loginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = loginModel.h; path = Model/loginModel.h; sourceTree = "<group>"; };
+		71D830BA18EB959300485B1B /* loginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = loginModel.m; path = Model/loginModel.m; sourceTree = "<group>"; };
+		71D830BC18EBA3EE00485B1B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Model/LoginViewController.h; sourceTree = "<group>"; };
+		71D830BD18EBA3EE00485B1B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Model/LoginViewController.m; sourceTree = "<group>"; };
 		71DFFA41182104C900269E3E /* SettingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingPageViewController.h; path = ViewController/SettingPageViewController.h; sourceTree = "<group>"; };
 		71DFFA42182104C900269E3E /* SettingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingPageViewController.m; path = ViewController/SettingPageViewController.m; sourceTree = "<group>"; };
 		71DFFA4418210FAA00269E3E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		71DFFA4618210FB200269E3E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		71EE867618784D63007FD900 /* backgroundImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundImage.png; sourceTree = "<group>"; };
 		71EE867718784D63007FD900 /* profileImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileImage.png; sourceTree = "<group>"; };
-		71EE867A18784E04007FD900 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = UIXIB/LoginViewController.h; sourceTree = "<group>"; };
-		71EE867B18784E04007FD900 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = UIXIB/LoginViewController.m; sourceTree = "<group>"; };
-		71EE867C18784E04007FD900 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = UIXIB/LoginViewController.xib; sourceTree = "<group>"; };
 		71EE8683187854B6007FD900 /* ProfilePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfilePageViewController.h; path = ViewController/ProfilePageViewController.h; sourceTree = "<group>"; };
 		71EE8684187854B6007FD900 /* ProfilePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfilePageViewController.m; path = ViewController/ProfilePageViewController.m; sourceTree = "<group>"; };
 		71F3218717F830D700FFFB95 /* EventApp_Alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventApp_Alpha.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -248,16 +252,6 @@
 			name = CustomizeCell;
 			sourceTree = "<group>";
 		};
-		71910216185EC40200B81F77 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				71EE867A18784E04007FD900 /* LoginViewController.h */,
-				71EE867B18784E04007FD900 /* LoginViewController.m */,
-				71EE867C18784E04007FD900 /* LoginViewController.xib */,
-			);
-			name = UI;
-			sourceTree = "<group>";
-		};
 		719664621879BAE200D8BC7B /* HUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,16 +286,9 @@
 		719CE1D61874621B00D2F058 /* DataCommunicationModels */ = {
 			isa = PBXGroup;
 			children = (
-				712A2C571883A4EA00BF3AC6 /* DataTransferModel.h */,
-				712A2C581883A4EA00BF3AC6 /* DataTransferModel.m */,
-				712A2C591883A4EA00BF3AC6 /* URLConstructModel.h */,
-				712A2C5A1883A4EA00BF3AC6 /* URLConstructModel.m */,
-				7104A79E1824D1B500EB3AD5 /* EventListFetchModel.h */,
-				7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */,
-				71AF5EFA18250D660013ABB3 /* EventFetchModel.h */,
-				71AF5EFB18250D660013ABB3 /* EventFetchModel.m */,
-				7185DF9418B9609A00C3DE90 /* EventPostModel.h */,
-				7185DF9518B9609A00C3DE90 /* EventPostModel.m */,
+				71D830B818EB957800485B1B /* User */,
+				71D830B418EAAE4600485B1B /* Base */,
+				71D830B318EAAE3C00485B1B /* Event */,
 			);
 			name = DataCommunicationModels;
 			sourceTree = "<group>";
@@ -339,6 +326,43 @@
 				7103FE9C18AA0BE70047EFAD /* greytick_done.png */,
 			);
 			name = Icons;
+			sourceTree = "<group>";
+		};
+		71D830B318EAAE3C00485B1B /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				7104A79E1824D1B500EB3AD5 /* EventListFetchModel.h */,
+				7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */,
+				71AF5EFA18250D660013ABB3 /* EventFetchModel.h */,
+				71AF5EFB18250D660013ABB3 /* EventFetchModel.m */,
+				7185DF9418B9609A00C3DE90 /* EventPostModel.h */,
+				7185DF9518B9609A00C3DE90 /* EventPostModel.m */,
+				71D830B518EAAE6D00485B1B /* EventJoinAndLikeModel.h */,
+				71D830B618EAAE6D00485B1B /* EventJoinAndLikeModel.m */,
+			);
+			name = Event;
+			sourceTree = "<group>";
+		};
+		71D830B418EAAE4600485B1B /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				712A2C571883A4EA00BF3AC6 /* DataTransferModel.h */,
+				712A2C581883A4EA00BF3AC6 /* DataTransferModel.m */,
+				712A2C591883A4EA00BF3AC6 /* URLConstructModel.h */,
+				712A2C5A1883A4EA00BF3AC6 /* URLConstructModel.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		71D830B818EB957800485B1B /* User */ = {
+			isa = PBXGroup;
+			children = (
+				71D830BC18EBA3EE00485B1B /* LoginViewController.h */,
+				71D830BD18EBA3EE00485B1B /* LoginViewController.m */,
+				71D830B918EB959300485B1B /* loginModel.h */,
+				71D830BA18EB959300485B1B /* loginModel.m */,
+			);
+			name = User;
 			sourceTree = "<group>";
 		};
 		71EE867518784D63007FD900 /* Images */ = {
@@ -396,7 +420,6 @@
 				71F321A517F830D700FFFB95 /* Images.xcassets */,
 				71B763C21807832100717D67 /* ViewController */,
 				7104A7A11824D1BA00EB3AD5 /* Model */,
-				71910216185EC40200B81F77 /* UI */,
 				71F3219117F830D700FFFB95 /* Supporting Files */,
 			);
 			path = EventApp_Alpha;
@@ -578,7 +601,6 @@
 			files = (
 				7103FE9E18AA0BE70047EFAD /* greytick_done.png in Resources */,
 				7103FE9118A1ED6A0047EFAD /* locationIcon_done.png in Resources */,
-				71EE867E18784E04007FD900 /* LoginViewController.xib in Resources */,
 				71DFFA48182115A900269E3E /* Main.storyboard in Resources */,
 				7103FE9218A1ED6A0047EFAD /* peopleIcon_done.png in Resources */,
 				71D7AF50189DF3E70082A6AA /* event1.jpg in Resources */,
@@ -617,6 +639,7 @@
 				71974BB61869A618004493DC /* CQMFloatingFrameView.m in Sources */,
 				719664651879BB1900D8BC7B /* popoverAlterModel.m in Sources */,
 				71B763C11807830A00717D67 /* EventListViewController.m in Sources */,
+				71D830B718EAAE6D00485B1B /* EventJoinAndLikeModel.m in Sources */,
 				71974BB81869A618004493DC /* CQMFloatingNavigationBar.m in Sources */,
 				71EE8685187854B6007FD900 /* ProfilePageViewController.m in Sources */,
 				71F8A91F183C7CAB001AEF6A /* EventEdittingViewController.m in Sources */,
@@ -631,6 +654,7 @@
 				7191C6371808024100E86482 /* EventDetailViewController.m in Sources */,
 				71F3219B17F830D700FFFB95 /* AppDelegate.m in Sources */,
 				71F3219717F830D700FFFB95 /* main.m in Sources */,
+				71D830BB18EB959300485B1B /* loginModel.m in Sources */,
 				712A2C5B1883A4EA00BF3AC6 /* DataTransferModel.m in Sources */,
 				71AF5EFC18250D660013ABB3 /* EventFetchModel.m in Sources */,
 				71974BB51869A618004493DC /* CQMFloatingController.m in Sources */,
@@ -641,8 +665,8 @@
 				719CE1DA1874627500D2F058 /* FormatingModel.m in Sources */,
 				712A2C5C1883A4EA00BF3AC6 /* URLConstructModel.m in Sources */,
 				7103FEA418AAE99E0047EFAD /* FullScreenImageController.m in Sources */,
-				71EE867D18784E04007FD900 /* LoginViewController.m in Sources */,
 				71DFFA43182104C900269E3E /* SettingPageViewController.m in Sources */,
+				71D830BE18EBA3EE00485B1B /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

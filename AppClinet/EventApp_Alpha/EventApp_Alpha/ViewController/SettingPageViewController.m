@@ -8,6 +8,7 @@
 
 #import "SettingPageViewController.h"
 #import "LoginViewController.h"
+#import "LoginModel.h"
 
 
 
@@ -44,7 +45,7 @@
 
 -(void)popOver:(id)sender
 {
-    LoginViewController* loginview=[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    LoginViewController* loginview=[self.storyboard instantiateViewControllerWithIdentifier:@"loginview"];
 //    UIViewController* loginview=[[UIViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     CQMFloatingController *floatingController = [CQMFloatingController sharedFloatingController];
     loginview.shareController=floatingController;

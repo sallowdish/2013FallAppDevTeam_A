@@ -30,26 +30,11 @@ NSError* error;
 
 -(void)postData:(NSData*)data WithUrl:(NSURL *)url{
     NSMutableURLRequest* request=[NSMutableURLRequest requestWithURL:url];
-//    NSError* error=nil;
-    //NSURLConnection* conn=[[NSURLConnection alloc] init];
     @try {
         request=[self configPostRequest:request withData:data];
         NSURLConnection* conn=[[NSURLConnection alloc] initWithRequest:request delegate:self.externalDelegate];
         [conn start];
-//        NSData* incomingBuffer=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-//        if (error) {
-//            @throw [NSException exceptionWithName:@"Connection set up failed." reason:nil userInfo:nil];
-//        }
-//        else if ([response.MIMEType isEqualToString:@"application/json"])
-//        {
-//            //        NSLog(@"%@",response);
-//            //        NSLog(@"%@",[[NSString alloc]initWithData:incomingBuffer encoding:NSUTF8StringEncoding]);
-////            self.data=incomingBuffer;
-//        }
-//        else
-//        {
-//            @throw [NSException exceptionWithName:@"Connection set up failed." reason:nil userInfo:nil];
-//        }
+
         
     }
     @catch (NSException *exception) {
@@ -59,6 +44,34 @@ NSError* error;
         
     }
 }
+
+-(void)patchData:(NSData*)data WithURL:(NSURL*)url{
+    NSMutableURLRequest* request=[NSMutableURLRequest requestWithURL:url];
+    @try {
+        request=[self configPatchRequest:request withData:data];
+        NSURLConnection* conn=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+        if (!conn) {
+            receivedData=nil;
+        }
+        else{
+            [conn start];
+        }
+    }
+    @catch (NSException *exception) {
+        [[[UIAlertView alloc]initWithTitle:@"Fail" message:exception.name delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+    }
+    @finally {
+        
+    }
+}
+
+-(NSMutableURLRequest*)configPatchRequest:(NSMutableURLRequest*)request withData:(NSData*)data{
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPMethod:@"PATCH"];
+    [request setHTTPBody:data];
+    return request;
+}
+
 
 -(NSMutableURLRequest*)configPostRequest:(NSMutableURLRequest*)request withData:(NSData*)data{
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];

@@ -8,6 +8,9 @@
 
 #import "LoginViewController.h"
 #import "popoverAlterModel.h"
+#import "LoginModel.h"
+#import "AppDelegate.h"
+#import "ProgressHUD.h"
 
 #define MAXTAG 100
 
@@ -20,7 +23,7 @@
 @implementation LoginViewController
 @synthesize usernameField,passwordField;
 
-
+LoginModel* model;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -32,11 +35,24 @@
     return self;
 }
 
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//{
+//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//    if (self) {
+//        // Custom initialization
+//    }
+//    return self;
+//}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    //initialize local var
+    model=[[LoginModel alloc] init];
+    
+    //
     NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
     self.forgetLabel.attributedText = [[NSAttributedString alloc] initWithString:@"Forget your password?" attributes:underlineAttribute];
     self.forgetButton.frame=self.forgetLabel.frame;
@@ -56,6 +72,29 @@
     [self.view endEditing:YES];
 }
 
+-(IBAction)loginButtonPressed:(id)sende{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogin) name:@"didLogin" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailToLogin) name:@"failToLogin" object:nil];
+    
+    [ProgressHUD show:@"Login..."];
+    [model logoutCurrentUser];
+    [model loginWithUsername:self.usernameField.text AndPassword:self.passwordField.text];
+}
+
+-(void) didLogin{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[ProgressHUD class] dismiss];
+    [popoverAlterModel alterWithTitle:@"Login Finished" Message:[NSString stringWithFormat:@"%@\n%@",[AppDelegate username],[AppDelegate userApikey]]];
+    
+}
+
+-(void) didFailToLogin{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[ProgressHUD class] dismiss];
+    [popoverAlterModel alterWithTitle:@"Fail to login" Message:@"Please double check your username and password"];
+}
+
+
 - (IBAction)forgetPassword:(id)sender {
 //    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Forget Your Password?"
 //                                                    message:@"Baka!\nばか!!\n馬~鹿!!!"
@@ -63,7 +102,7 @@
 //                                          cancelButtonTitle:@"OK"
 //                                          otherButtonTitles:nil];
 //    [alert show];
-    [popoverAlterModel alterWithTitle:@"""Forget Your Password?" Message:@"Baka!\nばか!!\n馬~鹿!!!"];
+    [popoverAlterModel alterWithTitle:@"Forget Your Password?" Message:@"Baka!\nばか!!\n馬~鹿!!!"];
 }
 
 
