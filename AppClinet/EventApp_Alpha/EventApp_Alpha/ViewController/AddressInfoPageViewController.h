@@ -19,4 +19,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *addressPC;
 @property (weak, nonatomic) IBOutlet UIButton *comfirmButton;
 
+@property (strong, nonatomic) IBOutletCollection(UITextField) NSArray *allAddressInfoField;
 @end

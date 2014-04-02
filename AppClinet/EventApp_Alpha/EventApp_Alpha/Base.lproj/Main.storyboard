@@ -848,6 +848,12 @@
                         <outlet property="addressRegion" destination="xGN-i3-mC7" id="M9F-E0-9Jm"/>
                         <outlet property="addressTitle" destination="icd-VY-kZU" id="FKO-DF-zz8"/>
                         <outlet property="comfirmButton" destination="ZnX-ky-EwA" id="bGb-fr-s2X"/>
+                        <outletCollection property="allAddressInfoField" destination="icd-VY-kZU" id="Auf-Rg-XII"/>
+                        <outletCollection property="allAddressInfoField" destination="QJG-7K-vE3" id="Yph-ya-d6u"/>
+                        <outletCollection property="allAddressInfoField" destination="TWV-M0-L1Z" id="uwK-Mc-AmG"/>
+                        <outletCollection property="allAddressInfoField" destination="xGN-i3-mC7" id="vlo-rI-2CG"/>
+                        <outletCollection property="allAddressInfoField" destination="qCr-KH-jpE" id="cHJ-ek-5Cq"/>
+                        <outletCollection property="allAddressInfoField" destination="NO1-H4-SD0" id="4gv-4u-PjB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QxB-zM-qGR" userLabel="First Responder" sceneMemberID="firstResponder"/>

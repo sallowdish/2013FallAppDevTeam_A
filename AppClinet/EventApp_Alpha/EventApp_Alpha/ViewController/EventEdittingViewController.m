@@ -48,24 +48,35 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    
+    //Functionality setup
     UIDatePicker *datePicker=[[UIDatePicker alloc]init]
         ,*timePicker=[[UIDatePicker alloc]init];
     [datePicker setDatePickerMode:UIDatePickerModeDate];
     [timePicker setDatePickerMode:UIDatePickerModeTime];
-//    [datePicker addTarget:self action:@selector(datePickerDidChanged:) forControlEvents:UIControlEventValueChanged];
-//    [timePicker addTarget:self action:@selector(timePickerDidChanged:) forControlEvents:UIControlEventValueChanged];
+
+    
     self.dateInputTextField.inputView=datePicker;
     self.timeFromInputTextField.inputView=timePicker;
-//    self.timeToInputTextField.inputView=timePicker;
+
     [self.timeFromInputTextField addTarget:self action:@selector(didFinishTimeEditting:) forControlEvents:UIControlEventEditingDidEnd];
-//    [self.timeToInputTextField addTarget:self action:@selector(didFinishTimeEditting:) forControlEvents:UIControlEventEditingDidEnd];
+
     [self.dateInputTextField addTarget:self action:@selector(didFinishDateEditting:) forControlEvents:UIControlEventEditingDidEnd];
     
     //initialize class variable
     selectedPhoto=[[NSMutableArray alloc] init];
     selectedPhotoView=[[NSMutableArray alloc] init];
+    
+    UITapGestureRecognizer* dismissKeyBoardTap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyBoard)];
+    dismissKeyBoardTap.numberOfTapsRequired=1;
+    [self.view addGestureRecognizer:dismissKeyBoardTap];
 }
 
+
+-(void)dismissKeyBoard{
+    [self.view endEditing:YES];
+}
 
 -(IBAction)imagePickerPopup:(id)sender{
     UIImagePickerController *mediaUI = [[UIImagePickerController alloc] init];

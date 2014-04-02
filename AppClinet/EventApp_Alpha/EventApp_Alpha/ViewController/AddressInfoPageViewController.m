@@ -31,13 +31,28 @@ EventPostModel* model;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
+    //Fucntionality setup
+    UITapGestureRecognizer* dismissKeyBoardTap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyBoard)];
+    dismissKeyBoardTap.numberOfTapsRequired=1;
+    [self.view addGestureRecognizer:dismissKeyBoardTap];
+
+    
     //Visual Setup
     if (self.address) {
         [self displayInfo];
         self.comfirmButton.enabled=NO;
+        for (UITextField* field in self.allAddressInfoField) {
+            field.enabled=NO;
+        }
     }
     
 }
+
+-(void)dismissKeyBoard{
+    [self.view endEditing:YES];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

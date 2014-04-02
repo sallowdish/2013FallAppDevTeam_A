@@ -52,6 +52,11 @@ UserModel* model;
     
     //initialize local var
     
+    //Functionality Setup
+    UITapGestureRecognizer* dismissKeyBoardTap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyBoard)];
+    dismissKeyBoardTap.numberOfTapsRequired=1;
+    [self.view addGestureRecognizer:dismissKeyBoardTap];
+    
     //Visual Setup
     NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
     self.forgetLabel.attributedText = [[NSAttributedString alloc] initWithString:@"Forget your password?" attributes:underlineAttribute];
@@ -71,6 +76,11 @@ UserModel* model;
         model=[[UserModel alloc] init];
     }
 }
+
+-(void)dismissKeyBoard{
+    [self.view endEditing:YES];
+}
+
 - (IBAction)cancelButtonPressed:(id)sende
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"loginProcessFinish" object:nil];
