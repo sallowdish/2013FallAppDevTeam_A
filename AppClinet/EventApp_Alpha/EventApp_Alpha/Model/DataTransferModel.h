@@ -13,6 +13,7 @@
 @property (strong, nonatomic) NSMutableData* receivedData;
 @property id externalDelegate;
 
+-(void)prepareForConnection;
 -(void)fetchDataWithUrl:(NSURL*)url;
 -(void)postData:(NSData*)data WithUrl:(NSURL *)url;
 -(void)patchData:(NSData*)data WithURL:(NSURL*)url;

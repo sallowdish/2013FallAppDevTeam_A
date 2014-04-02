@@ -95,6 +95,8 @@ UserModel* model;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogin) name:@"didLogin" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailToLogin) name:@"failToLogin" object:nil];
     
+    
+    [UserModel turnOffDevelopmentMode];
     [ProgressHUD show:@"Login..."];
     [model logoutCurrentUser];
     [model loginWithUsername:self.usernameField.text AndPassword:self.passwordField.text];

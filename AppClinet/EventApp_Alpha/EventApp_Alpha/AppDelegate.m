@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "UserModel.h"
 //#import "WebServiceCommunicationModel.h"
 
 
@@ -16,6 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    [self quickLogin];
     //setup options
     UIPageControl *pageControl = [UIPageControl appearance];
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
@@ -64,6 +67,12 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+#pragma mark - Development use only
+-(void)quickLogin{
+    UserModel* model=[[UserModel alloc] init];
+    [UserModel turnOnDevelopmentMode];
+    [model loginWithUsername:@"tester" AndPassword:@"1"];
+}
 
 
 @end

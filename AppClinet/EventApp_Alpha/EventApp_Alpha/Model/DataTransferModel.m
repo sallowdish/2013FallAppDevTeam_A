@@ -108,4 +108,8 @@ NSError* error;
 //    [[NSNotificationCenter defaultCenter] postNotificationName:@"didFinishLoadingData" object:self.data];
 }
 
+-(void)prepareForConnection{
+    self.receivedData=[NSMutableData dataWithCapacity:0];
+}
+
 @end

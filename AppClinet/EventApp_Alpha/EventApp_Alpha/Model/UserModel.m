@@ -16,7 +16,7 @@
 
 static NSString *username,*userAPIKey,*userResourceURL;
 static NSDictionary* current_user;
-static bool isLogin;
+static bool isLogin,isDevelopment;
 //static UIViewController* hostViewController;
 -(id)init{
     self=[super init];
@@ -28,6 +28,14 @@ static bool isLogin;
         isLogin=false;
     }
     return self;
+}
+
++(void)turnOnDevelopmentMode{
+    isDevelopment=true;
+}
+
++(void)turnOffDevelopmentMode{
+    isDevelopment=false;
 }
 
 +(UIImage*)getProfileImage{
@@ -74,7 +82,9 @@ static bool isLogin;
         username=[current_user objectForKey:@"username"];
         userResourceURL=[current_user objectForKey:@"resource_uri"];
         isLogin=true;
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"didLogin" object:nil];
+        if (!isDevelopment) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"didLogin" object:nil];
+        }
     }
 }
 

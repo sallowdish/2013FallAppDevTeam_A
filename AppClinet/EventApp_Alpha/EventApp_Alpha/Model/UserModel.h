@@ -18,7 +18,14 @@
 +(NSDictionary*)current_user;
 +(BOOL)isLogin;
 
+
+
 +(UIImage*)getProfileImage;
 +(UIImage*)getProfileImageWithUser:(NSDictionary*)user;
 +(void)popupLoginViewToViewController:(UIViewController*) viewController;
+
+
+
++(void)turnOnDevelopmentMode;
++(void)turnOffDevelopmentMode;
 @end

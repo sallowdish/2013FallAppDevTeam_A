@@ -8,6 +8,8 @@
 
 #import "AddressInfoPageViewController.h"
 #import "EventPostModel.h"
+#import "popoverAlterModel.h"
+#import "ProgressHUD.h"
 
 @interface AddressInfoPageViewController ()
 
@@ -78,19 +80,31 @@ EventPostModel* model;
     [dic setObject:self.addressCountry.text forKey:@"address_country"];
     [dic setObject:self.addressPC.text forKey:@"address_postal_code"];
     [dic setObject:self.addressTitle.text forKey:@"address_title"];
-    return dic;
+    return (NSDictionary*)dic;
 }
 
 -(IBAction)comfirmTapped:(id)sender{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostNewAddress) name:@"didPostNewAddress" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostNewAddress:) name:@"didPostNewAddress" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostNewAddressFailed) name:@"didPostNewAddressFailed" object:nil];
+    [ProgressHUD show:@"POSTing new Address"];
     if (!model) {
         model=[[EventPostModel alloc] init];
     }
     [model postAddresswithInfo:[self collectInfo]];
 }
 
--(void)didPostNewAddress{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didPostNewAddress" object:nil];
+-(void)didPostNewAddress:(NSNotification*) notif{
+    NSString* location=(NSString*)[notif object];
+    NSDictionary* dic=[NSDictionary dictionaryWithObjects:@[self.addressTitle.text,location] forKeys:@[@"event_title",@"event_resourceurl"]];
+    [ProgressHUD dismiss];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"didCreateNewAddress" object:dic];
+}
+
+-(void)didPostNewAddressFailed{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [ProgressHUD dismiss];
+    [popoverAlterModel alterWithTitle:@"Failed" Message:@"Failed to POST new address."];
 }
 /*
 #pragma mark - Navigation
