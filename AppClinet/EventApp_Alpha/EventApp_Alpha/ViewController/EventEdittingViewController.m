@@ -35,7 +35,8 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
 }
 
 -(IBAction)editLocation:(id)sender{
-    [self performSegueWithIdentifier:@"editLocation" sender:self];
+    id vc=[self.storyboard instantiateViewControllerWithIdentifier:@"AddressInfoPage"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)viewDidLoad

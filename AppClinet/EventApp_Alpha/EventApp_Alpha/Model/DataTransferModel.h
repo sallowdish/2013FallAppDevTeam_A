@@ -16,4 +16,6 @@
 -(void)fetchDataWithUrl:(NSURL*)url;
 -(void)postData:(NSData*)data WithUrl:(NSURL *)url;
 -(void)patchData:(NSData*)data WithURL:(NSURL*)url;
+-(NSMutableURLRequest*)configPostRequest:(NSMutableURLRequest*)request withData:(NSData*)data;
+-(NSMutableURLRequest*)configPatchRequest:(NSMutableURLRequest*)request withData:(NSData*)data;
 @end

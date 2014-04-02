@@ -10,4 +10,5 @@
 
 @interface EventPostModel : DataTransferModel
 -(void)postEventwithInfo:(NSMutableDictionary*)info;
+-(void)postAddresswithInfo:(NSDictionary*)info;
 @end

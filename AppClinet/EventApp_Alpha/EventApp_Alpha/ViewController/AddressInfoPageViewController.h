@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *addressRegion;
 @property (weak, nonatomic) IBOutlet UITextField *addressCountry;
 @property (weak, nonatomic) IBOutlet UITextField *addressPC;
+@property (weak, nonatomic) IBOutlet UIButton *comfirmButton;
 
 @end

@@ -11,6 +11,7 @@
 #import "TemplateTableCell.h"
 #import "FormatingModel.h"
 #import "ProgressHUD.h"
+#import "UserModel.h"
 
 @interface EventListViewController ()
 @property (strong,nonatomic)EventListFetchModel* model;
@@ -216,6 +217,19 @@ bool isUpdated;
         id obj=[eventList objectAtIndex:[[self.tableView indexPathForCell:cell] row]];
         [destination setValue:[obj valueForKey:@"id"] forKey:@"eventID"];
     }
+}
+
+
+
+-(IBAction)createButtonTapped:(id)sender{
+    if ([UserModel isLogin]) {
+        id vc=[self.storyboard instantiateViewControllerWithIdentifier:@"CreateEventPage"];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else{
+        [UserModel popupLoginViewToViewController:self];
+    }
+    
 }
 /*
 // Override to support conditional editing of the table view.

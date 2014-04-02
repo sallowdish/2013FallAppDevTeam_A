@@ -7,12 +7,15 @@
 //
 
 #import "AddressInfoPageViewController.h"
+#import "EventPostModel.h"
 
 @interface AddressInfoPageViewController ()
 
 @end
 
 @implementation AddressInfoPageViewController
+
+EventPostModel* model;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,6 +34,7 @@
     //Visual Setup
     if (self.address) {
         [self displayInfo];
+        self.comfirmButton.enabled=NO;
     }
     
 }
@@ -64,10 +68,15 @@
 
 -(IBAction)comfirmTapped:(id)sender{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostNewAddress) name:@"didPostNewAddress" object:nil];
-    
+    if (!model) {
+        model=[[EventPostModel alloc] init];
+    }
+    [model postAddresswithInfo:[self collectInfo]];
 }
 
--(void)didPostNewAddress{}
+-(void)didPostNewAddress{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didPostNewAddress" object:nil];
+}
 /*
 #pragma mark - Navigation
 
