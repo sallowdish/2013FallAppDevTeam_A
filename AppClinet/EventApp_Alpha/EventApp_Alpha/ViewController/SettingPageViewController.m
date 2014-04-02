@@ -10,11 +10,15 @@
 #import "LoginViewController.h"
 #import "UserModel.h"
 #import "popoverAlterModel.h"
+#import "ProfilePageViewController.h"
 
 
 
 @interface SettingPageViewController ()
 @property (weak, nonatomic) IBOutlet UIView *logoutCell;
+@property (weak, nonatomic) IBOutlet UIView *loginCell;
+@property (weak, nonatomic) IBOutlet UILabel *prompt;
+@property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
 
 
 @end	
@@ -36,24 +40,60 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    //Makeup
+    
+    //Functionanity Setup
+    self.prompt.lineBreakMode=NSLineBreakByWordWrapping;
+    self.prompt.numberOfLines=0;
+    
+    //Visual
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTopCell) name:@"loginProcessFinish" object:nil];
     UITapGestureRecognizer* tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(logoutTapped)];
     tap.numberOfTapsRequired=1;
     [self.logoutCell addGestureRecognizer:tap];
+    [self reloadTopCell];
+
+}
+
+-(void)reloadTopCell{
+    UITapGestureRecognizer* tap;
+    if ([UserModel isLogin]) {
+        tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileTapped)];
+        tap.numberOfTapsRequired=1;
+        [self.loginCell addGestureRecognizer:tap];
+        self.userProfileImage.image=[UserModel getProfileImage];
+        self.prompt.text=[NSString stringWithFormat:@"Hi, %@.\nTap to see your profile.",[UserModel username]];
+    }
+    else{
+        tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(loginTapped)];
+        tap.numberOfTapsRequired=1;
+        [self.loginCell addGestureRecognizer:tap];
+        self.userProfileImage.image=[UIImage imageNamed:@"152_152icon.png"];
+        self.prompt.text=@"Tap to login";
+    }
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)profileTapped{
+    ProfilePageViewController* vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
+    vc.targetUser=[UserModel current_user];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)logoutTapped{
     if ([UserModel isLogin]) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTopCell) name:@"loginProcessFinish" object:nil];
         UserModel* model=[[UserModel alloc] init];
         [model logoutCurrentUser];
+        [self reloadTopCell];
         [popoverAlterModel alterWithTitle:@"Logout" Message:@"Logout Succeed"];
-        [self.view setNeedsDisplay];
+//        [self.view setNeedsDisplay];
     }
 }
 
-- (IBAction)loginClicked:(id)sender
+- (void)loginTapped
 {
-    [self popOver:sender];
+    [self popOver];
+//    [self.view setNeedsDisplay];
 }
 
 //- (IBAction)onclickLoginViaWeibo:(id)sender {
@@ -61,10 +101,11 @@
 //    [self popOver:sender];
 //}
 
--(void)popOver:(id)sender
+-(void)popOver
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTopCell) name:@"loginProcessFinish" object:nil];
     [UserModel popupLoginViewToViewController:self];
-    [self.view setNeedsDisplay];
+//    [self.view setNeedsDisplay];
 }
 
 //- (void)loadLoginView

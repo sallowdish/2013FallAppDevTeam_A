@@ -34,6 +34,10 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
     return self;
 }
 
+-(IBAction)editLocation:(id)sender{
+    [self performSegueWithIdentifier:@"editLocation" sender:self];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

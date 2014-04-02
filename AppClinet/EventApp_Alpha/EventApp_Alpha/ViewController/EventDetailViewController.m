@@ -14,11 +14,12 @@
 #import "popoverAlterModel.h"
 #import "UserModel.h"
 #import "FullScreenImageController.h"
+#import "ProfilePageViewController.h"
 #define MAXTAG 104
 @interface EventDetailViewController ()
 @property (strong,nonatomic) NSDictionary* event;
 @property (strong,nonatomic) NSMutableArray* RSVPList;
-@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *ViewedPeopleIcons;
+@property (strong, nonatomic) NSMutableArray *joinedPeopleIcons;
 @property (weak, nonatomic) IBOutlet UIView *joinedPeopleSpanArea;
 @property (weak, nonatomic) IBOutlet UILabel *joinedPeopleLabel;
 @end
@@ -48,6 +49,7 @@ EventJoinAndLikeModel* jlmodel;
     isJoined=NO;
     isLiked=NO;
     self.RSVPList=[NSMutableArray arrayWithCapacity:0];
+    self.joinedPeopleIcons=[NSMutableArray arrayWithCapacity:0];
     model=[[EventFetchModel alloc]init];
     jlmodel=[[EventJoinAndLikeModel alloc]init];
 
@@ -133,7 +135,7 @@ EventJoinAndLikeModel* jlmodel;
         //UI initialization
         //Get uiimage content
         NSDictionary* user=self.RSVPList[i];
-        UIImage* img=[UserModel getProfileImageWithUser:[UserModel current_user]];
+        UIImage* img=[UserModel getProfileImageWithUser:user];
         
         //prepare the frame
         
@@ -150,6 +152,7 @@ EventJoinAndLikeModel* jlmodel;
         view.userInteractionEnabled=YES;
         [view addGestureRecognizer:singleTap];
         [self.joinedPeopleSpanArea addSubview:view];
+        [self.joinedPeopleIcons addObject:view];
         basex+=55;
     }
     if (self.RSVPList.count<=5) {
@@ -165,9 +168,11 @@ EventJoinAndLikeModel* jlmodel;
 
 -(IBAction)viewedPeopleTapped:(id)sender{
     UITapGestureRecognizer* tap=(UITapGestureRecognizer*)sender;
-    NSUInteger i=[self.ViewedPeopleIcons indexOfObject:tap.view];
+    NSUInteger i=[self.joinedPeopleIcons indexOfObject:tap.view];
     NSLog(@"%ld Tapped!",(long)i);
-    [self performSegueWithIdentifier:@"seeUsersDetail" sender:self];
+    ProfilePageViewController* vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
+    vc.targetUser=self.RSVPList[i];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)modelToViewMatch

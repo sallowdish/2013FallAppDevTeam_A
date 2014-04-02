@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ProfilePageViewController : UIViewController
-@property (strong,nonatomic) NSDictionary* targetUser;
+@property (weak,nonatomic) NSDictionary* targetUser;
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UILabel *userLocation;

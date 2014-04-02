@@ -17,6 +17,7 @@
 static NSString *username,*userAPIKey,*userResourceURL;
 static NSDictionary* current_user;
 static bool isLogin;
+//static UIViewController* hostViewController;
 -(id)init{
     self=[super init];
     if (self) {
@@ -94,6 +95,11 @@ static bool isLogin;
 +(NSDictionary*)current_user{
     return current_user;
 }
+
+//+(UIViewController*)hostViewController{
+//    return hostViewController;
+//}
+
 +(BOOL)isLogin{
     return  isLogin;
 }
@@ -107,6 +113,7 @@ static bool isLogin;
     [floatingController setLandscapeFrameSize:loginview.view.bounds.size];
     [floatingController setPortraitFrameSize:loginview.view.bounds.size];
     [floatingController showInView:viewController.view withContentViewController:loginview animated:YES];
+    
 }
 
 +(UIViewController*)getCurrentViewController

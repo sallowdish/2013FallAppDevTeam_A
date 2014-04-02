@@ -73,6 +73,7 @@ UserModel* model;
 }
 - (IBAction)cancelButtonPressed:(id)sende
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"loginProcessFinish" object:nil];
     [self.shareController dismissAnimated:YES];
 }
 

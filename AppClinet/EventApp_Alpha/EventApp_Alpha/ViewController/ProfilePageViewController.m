@@ -37,7 +37,7 @@
     
     
     //Data Setup
-    if ([UserModel isLogin]) {
+    if (self.targetUser) {
         
         self.userProfileImage.image=[UserModel getProfileImageWithUser:self.targetUser];
         self.username.text=[self.targetUser objectForKey:@"username"];

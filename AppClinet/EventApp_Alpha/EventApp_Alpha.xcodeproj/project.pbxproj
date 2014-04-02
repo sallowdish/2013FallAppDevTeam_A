@@ -49,6 +49,7 @@
 		71D830BB18EB959300485B1B /* loginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D830BA18EB959300485B1B /* loginModel.m */; };
 		71D830BE18EBA3EE00485B1B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D830BD18EBA3EE00485B1B /* LoginViewController.m */; };
 		71D830C118EBF02100485B1B /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D830C018EBF02100485B1B /* UserModel.m */; };
+		71D830C418EC2EA700485B1B /* AddressInfoPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D830C318EC2EA700485B1B /* AddressInfoPageViewController.m */; };
 		71DFFA43182104C900269E3E /* SettingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DFFA42182104C900269E3E /* SettingPageViewController.m */; };
 		71DFFA4518210FAA00269E3E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4418210FAA00269E3E /* CFNetwork.framework */; };
 		71DFFA4718210FB200269E3E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4618210FB200269E3E /* Security.framework */; };
@@ -151,6 +152,8 @@
 		71D830BD18EBA3EE00485B1B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Model/LoginViewController.m; sourceTree = "<group>"; };
 		71D830BF18EBF02100485B1B /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserModel.h; path = Model/UserModel.h; sourceTree = "<group>"; };
 		71D830C018EBF02100485B1B /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserModel.m; path = Model/UserModel.m; sourceTree = "<group>"; };
+		71D830C218EC2EA700485B1B /* AddressInfoPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddressInfoPageViewController.h; path = ViewController/AddressInfoPageViewController.h; sourceTree = "<group>"; };
+		71D830C318EC2EA700485B1B /* AddressInfoPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddressInfoPageViewController.m; path = ViewController/AddressInfoPageViewController.m; sourceTree = "<group>"; };
 		71DFFA41182104C900269E3E /* SettingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingPageViewController.h; path = ViewController/SettingPageViewController.h; sourceTree = "<group>"; };
 		71DFFA42182104C900269E3E /* SettingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingPageViewController.m; path = ViewController/SettingPageViewController.m; sourceTree = "<group>"; };
 		71DFFA4418210FAA00269E3E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -521,6 +524,8 @@
 			children = (
 				71F8A91D183C7CAB001AEF6A /* EventEdittingViewController.h */,
 				71F8A91E183C7CAB001AEF6A /* EventEdittingViewController.m */,
+				71D830C218EC2EA700485B1B /* AddressInfoPageViewController.h */,
+				71D830C318EC2EA700485B1B /* AddressInfoPageViewController.m */,
 			);
 			name = EventCreating;
 			sourceTree = "<group>";
@@ -669,6 +674,7 @@
 				7103FEA118AA1A220047EFAD /* CommentViewController.m in Sources */,
 				71974BB91869A618004493DC /* CQMPathUtilities.m in Sources */,
 				719CE1DA1874627500D2F058 /* FormatingModel.m in Sources */,
+				71D830C418EC2EA700485B1B /* AddressInfoPageViewController.m in Sources */,
 				712A2C5C1883A4EA00BF3AC6 /* URLConstructModel.m in Sources */,
 				7103FEA418AAE99E0047EFAD /* FullScreenImageController.m in Sources */,
 				71DFFA43182104C900269E3E /* SettingPageViewController.m in Sources */,

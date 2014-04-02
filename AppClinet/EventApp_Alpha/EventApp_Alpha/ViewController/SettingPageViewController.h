@@ -12,7 +12,6 @@
 
 @interface SettingPageViewController : UITableViewController
 
-- (IBAction)loginClicked:(id)sender;
 
 //@property (strong,nonatomic) CQMFloatingController *popController;
 
