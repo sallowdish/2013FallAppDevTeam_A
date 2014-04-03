@@ -12,6 +12,7 @@
 #import "ProgressHUD.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "ImageUploadModel.h"
+#import "EventListViewController.h"
 @interface EventEdittingViewController ()
 @property (weak, nonatomic) IBOutlet UITableViewCell *photoCell;
 @property (weak, nonatomic) IBOutlet UIButton *photoAddButton;
@@ -111,6 +112,7 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     // Code here to work with media
+    [selectedPhoto removeAllObjects];
     [self dismissViewControllerAnimated:YES completion:nil];
     NSString *mediaType = info[UIImagePickerControllerMediaType];
     
@@ -193,7 +195,9 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
         [ProgressHUD show:@"Submitting new event..."];
         [model postEventwithInfo:[self packUpInfo]];
         ImageUploadModel* uploadModel=[[ImageUploadModel alloc] init];
-        [uploadModel uploadImage:selectedPhoto[0]];
+        if (selectedPhoto.count>0) {
+            [uploadModel uploadImage:selectedPhoto[0]];
+        }
     }else
     {
         [popoverAlterModel alterWithTitle:@"Failed" Message:@"Please fill up all required field"];
@@ -207,6 +211,8 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
 -(void)didCreateNewEvent{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [ProgressHUD dismiss];
+    [self.navigationController popViewControllerAnimated:YES];
+    [(EventListViewController*)[self.navigationController presentedViewController] refreshEventList:nil];
     [popoverAlterModel alterWithTitle:@"Succeed" Message:@"You have created a new event, please reload the event list page."];
 }
 
