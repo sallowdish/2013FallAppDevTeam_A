@@ -158,6 +158,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="createButton" destination="mOi-j9-hC6" id="qoS-k5-f7p"/>
                         <segue destination="Xma-vz-yPb" kind="push" identifier="eventListToEventRecommend" id="uqM-Qp-hZc"/>
                     </connections>
                 </tableViewController>
@@ -422,7 +423,7 @@
                                             <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="gqo-Nl-GG3">
+                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="gqo-Nl-GG3">
                                         <rect key="frame" x="0.0" y="483" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gqo-Nl-GG3" id="PuS-YY-0Ft">
@@ -517,8 +518,18 @@
                         <outlet property="photoAddButton" destination="cO2-qU-nU7" id="277-HO-UJE"/>
                         <outlet property="photoCell" destination="Fss-Br-d86" id="k3p-qS-nkO"/>
                         <outlet property="photoSpanView" destination="4Xf-gR-uWm" id="4sq-N7-7fG"/>
+                        <outlet property="tableSection" destination="b1D-2h-4jL" id="cgJ-6n-dzU"/>
                         <outlet property="timeFromInputTextField" destination="rnU-z3-cbm" id="Syv-uy-bMj"/>
                         <outlet property="titleInputTextField" destination="UnW-CX-EPm" id="c3j-W3-9lB"/>
+                        <outletCollection property="surfaceUnion" destination="rY4-Ea-ZNr" id="ScH-PB-zmZ"/>
+                        <outletCollection property="surfaceUnion" destination="4az-kr-Er7" id="7vy-55-sON"/>
+                        <outletCollection property="surfaceUnion" destination="JAI-Mf-7Qa" id="jh2-8C-5ek"/>
+                        <outletCollection property="surfaceUnion" destination="idH-sM-ies" id="67d-aa-Oup"/>
+                        <outletCollection property="surfaceUnion" destination="o7M-4f-ILo" id="axR-oO-MaX"/>
+                        <outletCollection property="surfaceUnion" destination="tQn-fZ-9lQ" id="ULJ-c8-Ijn"/>
+                        <outletCollection property="surfaceUnion" destination="ljQ-AO-11R" id="hjT-rX-4Dp"/>
+                        <outletCollection property="surfaceUnion" destination="4Xf-gR-uWm" id="Nii-sv-3Rs"/>
+                        <outletCollection property="surfaceUnion" destination="fCc-Vt-HqT" id="OLN-ev-Q4G"/>
                         <segue destination="loe-9O-Npg" kind="modal" identifier="editLocation" modalTransitionStyle="partialCurl" id="3yq-77-0QZ"/>
                     </connections>
                 </tableViewController>

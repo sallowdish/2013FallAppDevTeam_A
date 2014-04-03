@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *photoCell;
 @property (weak, nonatomic) IBOutlet UIButton *photoAddButton;
 @property (weak, nonatomic) IBOutlet UIView *photoSpanView;
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *surfaceUnion;
+
 @end
 
 @implementation EventEdittingViewController
@@ -82,6 +84,10 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
     editLocationTap.numberOfTapsRequired=1;
     [self.locationTextField addGestureRecognizer:editLocationTap];
     
+    
+    UITapGestureRecognizer* dismissKeyBoardTap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyBoard)];
+    dismissKeyBoardTap.numberOfTapsRequired=1;
+    [self.view addGestureRecognizer:dismissKeyBoardTap];
 }
 
 

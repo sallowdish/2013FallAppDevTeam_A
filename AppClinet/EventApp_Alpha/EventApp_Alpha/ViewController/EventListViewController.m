@@ -15,6 +15,7 @@
 
 @interface EventListViewController ()
 @property (strong,nonatomic)EventListFetchModel* model;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *createButton;
 @end
 
 @implementation EventListViewController
@@ -115,6 +116,7 @@ bool isUpdated;
 
 - (IBAction)refreshEventList:(id)sender{
     //top indication
+    self.createButton.enabled=NO;
     self.refreshControl.attributedTitle=[[NSAttributedString alloc]initWithString:@"努力從四次元搬運中...才怪_(:з」∠)_"];
     
     //HUD indication
@@ -124,7 +126,8 @@ bool isUpdated;
     [self.refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:2];
     //HUD dismiss
     [self.refreshControl performSelector:@selector(setAttributedTitle:) withObject:[[NSAttributedString alloc]initWithString:@"再多一點點...(灬ºωº灬)"] afterDelay:2.2];
-    [[ProgressHUD class] performSelector:@selector(showSuccess:) withObject:@"Loading Finish" afterDelay:2];
+    [[ProgressHUD class] performSelector:@selector(showSuccess:) withObject:@"Loading Finish" afterDelay:4];
+    self.createButton.enabled=YES;
     //    [self performSelector:@selector(showHubwithMessage:) withObject:@"Loading Finsih" afterDelay:2];
 //    [self performSelector:@selector(dismissHub) withObject:nil afterDelay:3];
 }
