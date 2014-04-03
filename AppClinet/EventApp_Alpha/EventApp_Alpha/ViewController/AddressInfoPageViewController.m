@@ -84,11 +84,17 @@ EventPostModel* model;
 }
 
 -(IBAction)comfirmTapped:(id)sender{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostNewAddress:) name:@"didPostNewAddress" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostNewAddressFailed) name:@"didPostNewAddressFailed" object:nil];
-    [ProgressHUD show:@"POSTing new Address"];
-    model=[[EventPostModel alloc] init];
-    [model postAddresswithInfo:[self collectInfo]];
+    if (![self.addressTitle.text isEqualToString:@""]) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostNewAddress:) name:@"didPostNewAddress" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostNewAddressFailed) name:@"didPostNewAddressFailed" object:nil];
+        [ProgressHUD show:@"POSTing new Address"];
+        model=[[EventPostModel alloc] init];
+        [model postAddresswithInfo:[self collectInfo]];
+
+    }
+    else{
+        [popoverAlterModel alterWithTitle:@"Failed" Message:@"Please fill up all required fields."];
+    }
 }
 
 -(void)didPostNewAddress:(NSNotification*) notif{
