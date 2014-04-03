@@ -25,6 +25,4 @@
 
 
 
-@interface myConnect: NSURLConnection
-@property BOOL isRSVP,isLike,isCountingRSVP,isCountingLike;
-@end
+

@@ -137,22 +137,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EventApp_Alpha/Model/UserModel.m"
-            timestampString = "418138079.114994"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "+popupLoginViewToViewController:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "EventApp_Alpha/Model/LoginViewController.m"
             timestampString = "418136493.50353"
             startingColumnNumber = "9223372036854775807"
@@ -246,7 +230,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EventApp_Alpha/Model/EventPostModel.m"
@@ -298,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EventApp_Alpha/ViewController/EventEdittingViewController.m"
-            timestampString = "418145655.968922"
+            timestampString = "418181168.872481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "-didCreateNewAddress:"
             landmarkType = "5">
          </BreakpointContent>
@@ -374,7 +358,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EventApp_Alpha/Model/EventPostModel.m"
@@ -390,7 +374,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EventApp_Alpha/Model/EventPostModel.m"
@@ -426,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EventApp_Alpha/Model/EventJoinAndLikeModel.m"
-            timestampString = "418162361.534284"
+            timestampString = "418168595.216648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "-countLike:"
             landmarkType = "5">
          </BreakpointContent>
@@ -570,11 +554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EventApp_Alpha/Model/EventJoinAndLikeModel.m"
-            timestampString = "418162361.534284"
+            timestampString = "418168595.216648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "-connection:didReceiveResponse:"
             landmarkType = "5">
          </BreakpointContent>
@@ -746,12 +730,92 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EventApp_Alpha/Model/EventJoinAndLikeModel.m"
-            timestampString = "418165990.485707"
+            timestampString = "418168595.216648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "-dislikeEvent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EventApp_Alpha/Model/ImageUploadModel.m"
+            timestampString = "418180880.145193"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "-connectionDidFinishLoading:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EventApp_Alpha/Model/ImageUploadModel.m"
+            timestampString = "418180881.331524"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "-connection:didReceiveResponse:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EventApp_Alpha/Model/ImageUploadModel.m"
+            timestampString = "418180910.931488"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "-uploadImage:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EventApp_Alpha/ViewController/EventEdittingViewController.m"
+            timestampString = "418181152.330176"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "-donePressed:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EventApp_Alpha/ViewController/EventEdittingViewController.m"
+            timestampString = "418181388.476414"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -115,15 +115,9 @@ static bool isLogin,isDevelopment;
 }
 
 +(void)popupLoginViewToViewController:(UIViewController*) viewController{
-    LoginViewController* loginview=[viewController.storyboard instantiateViewControllerWithIdentifier:@"loginview"];
+    LoginViewController* loginview=[viewController.storyboard instantiateViewControllerWithIdentifier:@"LoginPage"];
     //    UIViewController* loginview=[[UIViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-    CQMFloatingController *floatingController = [CQMFloatingController sharedFloatingController];
-    loginview.shareController=floatingController;
-    [floatingController setFrameColor:[UIColor whiteColor]];
-    [floatingController setLandscapeFrameSize:loginview.view.bounds.size];
-    [floatingController setPortraitFrameSize:loginview.view.bounds.size];
-    [floatingController showInView:viewController.view withContentViewController:loginview animated:YES];
-    
+    [viewController.navigationController pushViewController:loginview animated:YES];
 }
 
 +(UIViewController*)getCurrentViewController

@@ -17,3 +17,9 @@
 -(void)countRSVP:(NSDictionary*)event;
 -(void)countLike:(NSDictionary*)event;
 @end
+
+
+@interface RSVPAndLikeConnect: NSURLConnection
+@property BOOL isRSVP,isLike,isCountingRSVP,isCountingLike;
++(RSVPAndLikeConnect*) connectionWithRequest:(NSURLRequest*)request delegate:(id) delegate;
+@end

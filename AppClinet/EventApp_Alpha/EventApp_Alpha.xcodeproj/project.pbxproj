@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7101D32F18ECD068002B9592 /* ImageUploadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7101D32E18ECD068002B9592 /* ImageUploadModel.m */; };
 		7103FE9118A1ED6A0047EFAD /* locationIcon_done.png in Resources */ = {isa = PBXBuildFile; fileRef = 7103FE8E18A1ED6A0047EFAD /* locationIcon_done.png */; };
 		7103FE9218A1ED6A0047EFAD /* peopleIcon_done.png in Resources */ = {isa = PBXBuildFile; fileRef = 7103FE8F18A1ED6A0047EFAD /* peopleIcon_done.png */; };
 		7103FE9318A1ED6A0047EFAD /* TimeIcon_done.png in Resources */ = {isa = PBXBuildFile; fileRef = 7103FE9018A1ED6A0047EFAD /* TimeIcon_done.png */; };
@@ -82,6 +83,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7101D32D18ECD068002B9592 /* ImageUploadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageUploadModel.h; path = Model/ImageUploadModel.h; sourceTree = "<group>"; };
+		7101D32E18ECD068002B9592 /* ImageUploadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageUploadModel.m; path = Model/ImageUploadModel.m; sourceTree = "<group>"; };
 		7103FE8E18A1ED6A0047EFAD /* locationIcon_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = locationIcon_done.png; path = Images/locationIcon_done.png; sourceTree = "<group>"; };
 		7103FE8F18A1ED6A0047EFAD /* peopleIcon_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = peopleIcon_done.png; path = Images/peopleIcon_done.png; sourceTree = "<group>"; };
 		7103FE9018A1ED6A0047EFAD /* TimeIcon_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TimeIcon_done.png; path = Images/TimeIcon_done.png; sourceTree = "<group>"; };
@@ -208,6 +211,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7101D32C18ECD041002B9592 /* Upload */ = {
+			isa = PBXGroup;
+			children = (
+				7101D32D18ECD068002B9592 /* ImageUploadModel.h */,
+				7101D32E18ECD068002B9592 /* ImageUploadModel.m */,
+			);
+			name = Upload;
+			sourceTree = "<group>";
+		};
 		7103FE9418A9C16B0047EFAD /* EventRecommend */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +304,7 @@
 		719CE1D61874621B00D2F058 /* DataCommunicationModels */ = {
 			isa = PBXGroup;
 			children = (
+				7101D32C18ECD041002B9592 /* Upload */,
 				71D830B818EB957800485B1B /* User */,
 				71D830B418EAAE4600485B1B /* Base */,
 				71D830B318EAAE3C00485B1B /* Event */,
@@ -652,6 +665,7 @@
 				71D830B718EAAE6D00485B1B /* EventJoinAndLikeModel.m in Sources */,
 				71974BB81869A618004493DC /* CQMFloatingNavigationBar.m in Sources */,
 				71EE8685187854B6007FD900 /* ProfilePageViewController.m in Sources */,
+				7101D32F18ECD068002B9592 /* ImageUploadModel.m in Sources */,
 				71F8A91F183C7CAB001AEF6A /* EventEdittingViewController.m in Sources */,
 				718C9011185DA0A300D86EA1 /* TemplateTableCell.m in Sources */,
 				7185DF9618B9609A00C3DE90 /* EventPostModel.m in Sources */,

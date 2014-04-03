@@ -11,6 +11,7 @@
 #import "popoverAlterModel.h"
 #import "ProgressHUD.h"
 #import <MobileCoreServices/UTCoreTypes.h>
+#import "ImageUploadModel.h"
 @interface EventEdittingViewController ()
 @property (weak, nonatomic) IBOutlet UITableViewCell *photoCell;
 @property (weak, nonatomic) IBOutlet UIButton *photoAddButton;
@@ -126,7 +127,7 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
 //    for (UIImageView* i in selectedPhotoView) {
 //        [i removeFromSuperview];
 //    }
-//    [selectedPhotoView removeAllObjects];
+    [selectedPhotoView removeAllObjects];
     for (int i=0; i<selectedPhoto.count; i++) {
         UIImage* current_image=selectedPhoto[i];
         UIImageView* view=[[UIImageView alloc] initWithFrame:CGRectMake(basex, 5, 50, 50)];
@@ -135,7 +136,7 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
         [selectedPhotoView addObject:view];
         basex+=55;
     }
-    [selectedPhoto removeAllObjects];
+//    [selectedPhoto removeAllObjects];
     
     if (selectedPhotoView.count<3) {
         CGRect newFrame=self.photoAddButton.frame;
@@ -191,6 +192,8 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
         EventPostModel* model=[[EventPostModel alloc] init];
         [ProgressHUD show:@"Submitting new event..."];
         [model postEventwithInfo:[self packUpInfo]];
+        ImageUploadModel* uploadModel=[[ImageUploadModel alloc] init];
+        [uploadModel uploadImage:selectedPhoto[0]];
     }else
     {
         [popoverAlterModel alterWithTitle:@"Failed" Message:@"Please fill up all required field"];

@@ -40,6 +40,14 @@ bool isRSVP,isLike,isCountingRSVP,isCountingLike;
     isCountingRSVP=true;
     NSURL* url=[[self class] constructRequestWithResource:@"/eventrsvp"];
     url=[NSURL URLWithString:[[url absoluteString ] stringByAppendingString:[NSString stringWithFormat:@"/?%@&fk_event=%@",JSONFORMAT,[event objectForKey:@"id"]]]];
+//    NSMutableURLRequest* request=[NSMutableURLRequest requestWithURL:url];
+//    [NSURLConnection connectionWithRequest:<#(NSURLRequest *)#> delegate:<#(id)#>]
+//    RSVPAndLikeConnect* conn=[RSVPAndLikeConnect connectionWithRequest:[self configGetRequest:request] delegate:self];
+//    if (conn) {
+//        conn.isCountingRSVP=true;
+//        [self prepareForConnection];
+//        [conn start];
+//    }
     [self fetchDataWithUrl:url];
 }
 
@@ -139,8 +147,15 @@ bool isRSVP,isLike,isCountingRSVP,isCountingLike;
     }
     
 }
+@end
 
+@implementation RSVPAndLikeConnect
 
-
++(RSVPAndLikeConnect*) connectionWithRequest:(NSURLRequest*)request delegate:(id) delegate{
+//    [NSURLConnection connectionWithRequest:<#(NSURLRequest *)#> delegate:<#(id)#>]
+    return [super connectionWithRequest:request delegate:delegate];
+}
 
 @end
+
+

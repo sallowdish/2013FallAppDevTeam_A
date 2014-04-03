@@ -84,7 +84,7 @@ UserModel* model;
 - (IBAction)cancelButtonPressed:(id)sende
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"loginProcessFinish" object:nil];
-    [self.shareController dismissAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)touchOutside:(id)sender {
