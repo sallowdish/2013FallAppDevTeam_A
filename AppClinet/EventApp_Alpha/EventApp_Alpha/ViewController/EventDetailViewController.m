@@ -235,7 +235,16 @@ EventJoinAndLikeModel* jlmodel;
     if (isLiked) {
         [self.likeButton setTitle:@"Unlike" forState:UIControlStateNormal];
     }
-    self.images.image=[ UIImage imageNamed:@"Beach.png"];
+    
+    
+    //load event image
+    if (![[event objectForKey:@"fk_event_image"] isEqual:[NSNull null]]) {
+        NSURL *imageurl=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,[[event objectForKey:@"fk_event_image"] objectForKey:@"path"]]];
+        self.images.image=[ UIImage imageWithData:[NSData dataWithContentsOfURL:imageurl]];
+    }
+    else{
+        self.images.image=[UIImage imageNamed:@"event3.jpg"];
+    }
 
 }
 

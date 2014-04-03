@@ -890,11 +890,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" id="3hS-ke-OIA">
-                                <rect key="frame" x="0.0" y="64" width="320" height="1000"/>
+                                <rect key="frame" x="0.0" y="67" width="320" height="1000"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <subviews>
                                     <view tag="99" contentMode="scaleToFill" id="YZQ-rO-Ab1">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="406"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="497"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="pXL-20-qbC" userLabel="Top">
@@ -1047,7 +1047,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" id="4cw-FZ-ilY">
-                                                        <rect key="frame" x="0.0" y="79" width="300" height="225"/>
+                                                        <rect key="frame" x="0.0" y="79" width="300" height="188"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -1090,14 +1090,6 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.80000000000000004" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <containerView contentMode="scaleToFill" id="pB5-5B-nWR">
-                                        <rect key="frame" x="10" y="426" width="300" height="226"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="mud-s7-nyP" kind="embed" id="AvY-Vz-e7h"/>
-                                        </connections>
-                                    </containerView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.75" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -2004,60 +1996,6 @@ XX日發佈了XXXX活動 .
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-644" y="646"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="gqM-dR-SKe">
-            <objects>
-                <tableViewController id="mud-s7-nyP" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tWL-bq-9sc">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="226"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" rowHeight="55" id="xTt-xB-WL5">
-                                <rect key="frame" x="0.0" y="22" width="300" height="55"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xTt-xB-WL5" id="lmJ-nt-1Wf">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="54"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1LY-Lv-3Xh">
-                                            <rect key="frame" x="12" y="16" width="91" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Bb-eb-EKj">
-                                            <rect key="frame" x="97" y="16" width="198" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="mud-s7-nyP" id="Kbv-ZY-wXd"/>
-                            <outlet property="delegate" destination="mud-s7-nyP" id="dH0-Rz-YgK"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hpa-m7-uBu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <barButtonItem systemItem="cancel" id="0U1-wb-Q72">
-                    <connections>
-                        <action selector="cancelPressed:" destination="Ijd-Nk-bWE" id="hwj-L4-Vut"/>
-                    </connections>
-                </barButtonItem>
-                <barButtonItem systemItem="done" id="syR-qM-xoW">
-                    <connections>
-                        <action selector="donePressed:" destination="Ijd-Nk-bWE" id="cVw-L8-Tdp"/>
-                    </connections>
-                </barButtonItem>
-            </objects>
-            <point key="canvasLocation" x="1614" y="29"/>
         </scene>
     </scenes>
     <resources>

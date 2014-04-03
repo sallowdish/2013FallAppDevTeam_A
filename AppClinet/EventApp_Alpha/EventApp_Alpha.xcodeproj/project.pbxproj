@@ -165,7 +165,7 @@
 		71EE867718784D63007FD900 /* profileImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileImage.png; sourceTree = "<group>"; };
 		71EE8683187854B6007FD900 /* ProfilePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfilePageViewController.h; path = ViewController/ProfilePageViewController.h; sourceTree = "<group>"; };
 		71EE8684187854B6007FD900 /* ProfilePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfilePageViewController.m; path = ViewController/ProfilePageViewController.m; sourceTree = "<group>"; };
-		71F3218717F830D700FFFB95 /* EventApp_Alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventApp_Alpha.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		71F3218717F830D700FFFB95 /* Seeker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seeker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F3218A17F830D700FFFB95 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		71F3218C17F830D700FFFB95 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		71F3218E17F830D700FFFB95 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -413,7 +413,7 @@
 		71F3218817F830D700FFFB95 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				71F3218717F830D700FFFB95 /* EventApp_Alpha.app */,
+				71F3218717F830D700FFFB95 /* Seeker.app */,
 				71F321AB17F830D700FFFB95 /* EventApp_AlphaTests.xctest */,
 			);
 			name = Products;
@@ -546,9 +546,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		71F3218617F830D700FFFB95 /* EventApp_Alpha */ = {
+		71F3218617F830D700FFFB95 /* Seeker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 71F321BC17F830D700FFFB95 /* Build configuration list for PBXNativeTarget "EventApp_Alpha" */;
+			buildConfigurationList = 71F321BC17F830D700FFFB95 /* Build configuration list for PBXNativeTarget "Seeker" */;
 			buildPhases = (
 				71F3218317F830D700FFFB95 /* Sources */,
 				71F3218417F830D700FFFB95 /* Frameworks */,
@@ -558,9 +558,9 @@
 			);
 			dependencies = (
 			);
-			name = EventApp_Alpha;
+			name = Seeker;
 			productName = EventApp_Alpha;
-			productReference = 71F3218717F830D700FFFB95 /* EventApp_Alpha.app */;
+			productReference = 71F3218717F830D700FFFB95 /* Seeker.app */;
 			productType = "com.apple.product-type.application";
 		};
 		71F321AA17F830D700FFFB95 /* EventApp_AlphaTests */ = {
@@ -611,7 +611,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				71F3218617F830D700FFFB95 /* EventApp_Alpha */,
+				71F3218617F830D700FFFB95 /* Seeker */,
 				71F321AA17F830D700FFFB95 /* EventApp_AlphaTests */,
 			);
 		};
@@ -709,7 +709,7 @@
 /* Begin PBXTargetDependency section */
 		71F321B117F830D700FFFB95 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 71F3218617F830D700FFFB95 /* EventApp_Alpha */;
+			target = 71F3218617F830D700FFFB95 /* Seeker */;
 			targetProxy = 71F321B017F830D700FFFB95 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -904,7 +904,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		71F321BC17F830D700FFFB95 /* Build configuration list for PBXNativeTarget "EventApp_Alpha" */ = {
+		71F321BC17F830D700FFFB95 /* Build configuration list for PBXNativeTarget "Seeker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				71F321BD17F830D700FFFB95 /* Debug */,
