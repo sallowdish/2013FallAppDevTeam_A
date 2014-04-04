@@ -77,6 +77,12 @@
     [self.view viewWithTag:997].layer.borderColor=[UIColor grayColor].CGColor;
     [self.view viewWithTag:997].layer.cornerRadius=15;
     [self.view viewWithTag:996].layer.cornerRadius=15;
+    
+    
+    
+    [self.scrollView removeFromSuperview];
+    self.scrollView.frame=CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
+    [self.view addSubview:self.scrollView];
 }
 
 -(void)drawShadowForView:(UIView*)view{

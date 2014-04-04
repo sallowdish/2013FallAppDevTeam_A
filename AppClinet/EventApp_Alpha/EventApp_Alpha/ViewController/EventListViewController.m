@@ -8,6 +8,7 @@
 
 #import "EventListViewController.h"
 #import "EventListFetchModel.h"
+#import "EventEdittingViewController.h"
 #import "TemplateTableCell.h"
 #import "FormatingModel.h"
 #import "ProgressHUD.h"
@@ -228,7 +229,7 @@ bool isUpdated;
 
 -(IBAction)createButtonTapped:(id)sender{
     if ([UserModel isLogin]) {
-        id vc=[self.storyboard instantiateViewControllerWithIdentifier:@"CreateEventPage"];
+        EventEdittingViewController* vc=(EventEdittingViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"CreateEventPage"];
         [self.navigationController pushViewController:vc animated:YES];
     }
     else{

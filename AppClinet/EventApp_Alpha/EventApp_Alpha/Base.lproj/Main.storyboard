@@ -152,7 +152,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="mOi-j9-hC6">
                             <connections>
-                                <action selector="createButtonTapped:" destination="Weq-5w-scL" id="QSZ-Yf-viT"/>
+                                <action selector="createButtonTapped:" destination="Weq-5w-scL" id="11U-Pf-hiF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -169,7 +169,7 @@
         <!--Event Editting View Controller-->
         <scene sceneID="0eD-3I-6VS">
             <objects>
-                <tableViewController storyboardIdentifier="CreateEventPage" id="Ijd-Nk-bWE" customClass="EventEdittingViewController" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="CreateEventPage" storyboardIdentifier="CreateEventPage" id="Ijd-Nk-bWE" customClass="EventEdittingViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="NLu-wh-9KC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -510,6 +510,7 @@
                             <outlet property="delegate" destination="Ijd-Nk-bWE" id="akF-BB-Og9"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="c5K-WG-P2P"/>
                     <connections>
                         <outlet property="capacityInputTextField" destination="hOf-Se-Atz" id="nVz-uf-QOg"/>
                         <outlet property="dateInputTextField" destination="uEy-op-XTW" id="snr-El-Eer"/>
@@ -518,7 +519,6 @@
                         <outlet property="photoAddButton" destination="cO2-qU-nU7" id="277-HO-UJE"/>
                         <outlet property="photoCell" destination="Fss-Br-d86" id="k3p-qS-nkO"/>
                         <outlet property="photoSpanView" destination="4Xf-gR-uWm" id="4sq-N7-7fG"/>
-                        <outlet property="tableSection" destination="b1D-2h-4jL" id="cgJ-6n-dzU"/>
                         <outlet property="timeFromInputTextField" destination="rnU-z3-cbm" id="Syv-uy-bMj"/>
                         <outlet property="titleInputTextField" destination="UnW-CX-EPm" id="c3j-W3-9lB"/>
                         <outletCollection property="surfaceUnion" destination="rY4-Ea-ZNr" id="ScH-PB-zmZ"/>
@@ -1114,7 +1114,6 @@
                         <outlet property="likeButton" destination="yX7-4V-JzY" id="e2N-LJ-yRg"/>
                         <outlet property="location" destination="O0n-VW-VFH" id="JXB-u5-Pzf"/>
                         <outlet property="scrollView" destination="3hS-ke-OIA" id="r2q-V4-jhQ"/>
-                        <segue destination="i4G-Cf-69o" kind="push" identifier="seeUsersDetail" id="6KJ-SQ-dCR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hD-ke-25h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1674,16 +1673,16 @@
             </objects>
             <point key="canvasLocation" x="669" y="2006"/>
         </scene>
-        <!--Profile Page View Controller - Profile-->
+        <!--Profile Page View Controller-->
         <scene sceneID="kaU-dT-CJh">
             <objects>
                 <viewController storyboardIdentifier="ProfilePage" automaticallyAdjustsScrollViewInsets="NO" id="i4G-Cf-69o" customClass="ProfilePageViewController" sceneMemberID="viewController">
-                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="tV4-i2-Y1e">
+                    <view key="view" contentMode="scaleToFill" id="WO8-Hh-Kg5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="FDX-s5-dgU">
-                                <rect key="frame" x="0.0" y="65" width="320" height="535"/>
+                                <rect key="frame" x="0.0" y="17" width="320" height="535"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="A6G-hi-2dY" userLabel="BackgroundContainer">
@@ -1902,8 +1901,8 @@ XX日發佈了XXXX活動 .
                                 <color key="backgroundColor" white="0.80000000000000004" alpha="1" colorSpace="calibratedWhite"/>
                             </scrollView>
                         </subviews>
-                    </scrollView>
-                    <navigationItem key="navigationItem" title="Profile" id="Htp-jO-dtX"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
                     <connections>
                         <outlet property="scrollView" destination="FDX-s5-dgU" id="D30-er-nld"/>
                         <outlet property="userDescription" destination="7Za-C6-oq2" id="ePn-MW-ccr"/>
@@ -1913,32 +1912,32 @@ XX日發佈了XXXX活動 .
                         <outlet property="userRecentActivity" destination="vtC-Ab-0LZ" id="EJ6-rK-37R"/>
                         <outlet property="userTag" destination="HpV-fX-RcC" id="qoh-PU-7zr"/>
                         <outlet property="username" destination="pdT-nU-9AG" id="JHc-Zi-lCw"/>
-                        <outletCollection property="needRoundCorner" destination="MBT-9w-NJg" id="QRC-s6-V6z"/>
-                        <outletCollection property="needRoundCorner" destination="ISt-ZD-eAW" id="cvc-CR-YkF"/>
-                        <outletCollection property="needBorder" destination="heX-Yz-uCy" id="qQB-wD-Emq"/>
-                        <outletCollection property="needRoundCorner" destination="DVL-IR-n8t" id="rkR-6f-2ru"/>
-                        <outletCollection property="needBorder" destination="nv0-Qf-irS" id="nxm-y4-7Ky"/>
-                        <outletCollection property="needTransparent" destination="X0b-RH-0fd" id="QEa-R0-yy3"/>
-                        <outletCollection property="needRoundCorner" destination="Hhk-Eg-ur1" id="dvh-GC-2CQ"/>
-                        <outletCollection property="needRoundCorner" destination="nv0-Qf-irS" id="VF7-VN-rF2"/>
-                        <outletCollection property="needTransparent" destination="cm8-nA-Gpz" id="viz-sI-g1X"/>
-                        <outletCollection property="needRoundCorner" destination="8Vc-dj-fad" id="1oU-xH-gb9"/>
-                        <outletCollection property="needBorder" destination="Hhk-Eg-ur1" id="Q4x-5O-qPK"/>
-                        <outletCollection property="needTransparent" destination="heX-Yz-uCy" id="9jl-Ce-Nt2"/>
-                        <outletCollection property="needRoundCorner" destination="Swd-Lj-ggC" id="HSY-hG-s4r"/>
                         <outletCollection property="needRoundCorner" destination="tKS-Fq-DZm" id="XHp-Vo-XPs"/>
-                        <outletCollection property="needBorder" destination="YxL-ni-0lw" id="Wi9-do-59W"/>
-                        <outletCollection property="needRoundCorner" destination="YxL-ni-0lw" id="f2u-rn-Jc4"/>
                         <outletCollection property="needBorder" destination="tKS-Fq-DZm" id="uh7-f4-ZOR"/>
-                        <outletCollection property="needRoundCorner" destination="X0b-RH-0fd" id="V3x-1f-7qx"/>
-                        <outletCollection property="needRoundCorner" destination="heX-Yz-uCy" id="yVC-1H-Bjj"/>
-                        <outletCollection property="needTransparent" destination="ISt-ZD-eAW" id="yvz-oa-VPW"/>
-                        <outletCollection property="needTransparent" destination="YxL-ni-0lw" id="6gM-AP-WXk"/>
-                        <outletCollection property="needTransparent" destination="nv0-Qf-irS" id="41I-tj-BTM"/>
                         <outletCollection property="needRoundCorner" destination="H73-44-8fa" id="BRl-Ah-VkJ"/>
-                        <outletCollection property="needBorder" destination="ISt-ZD-eAW" id="HUJ-2b-TL2"/>
+                        <outletCollection property="needBorder" destination="heX-Yz-uCy" id="qQB-wD-Emq"/>
+                        <outletCollection property="needTransparent" destination="heX-Yz-uCy" id="9jl-Ce-Nt2"/>
                         <outletCollection property="needRoundCorner" destination="S62-x7-obr" id="vGx-bv-bJ7"/>
+                        <outletCollection property="needRoundCorner" destination="8Vc-dj-fad" id="1oU-xH-gb9"/>
+                        <outletCollection property="needTransparent" destination="cm8-nA-Gpz" id="viz-sI-g1X"/>
+                        <outletCollection property="needTransparent" destination="ISt-ZD-eAW" id="yvz-oa-VPW"/>
+                        <outletCollection property="needBorder" destination="nv0-Qf-irS" id="nxm-y4-7Ky"/>
+                        <outletCollection property="needBorder" destination="ISt-ZD-eAW" id="HUJ-2b-TL2"/>
+                        <outletCollection property="needRoundCorner" destination="Swd-Lj-ggC" id="HSY-hG-s4r"/>
+                        <outletCollection property="needTransparent" destination="nv0-Qf-irS" id="41I-tj-BTM"/>
+                        <outletCollection property="needBorder" destination="YxL-ni-0lw" id="Wi9-do-59W"/>
+                        <outletCollection property="needRoundCorner" destination="ISt-ZD-eAW" id="cvc-CR-YkF"/>
+                        <outletCollection property="needRoundCorner" destination="heX-Yz-uCy" id="yVC-1H-Bjj"/>
+                        <outletCollection property="needRoundCorner" destination="YxL-ni-0lw" id="f2u-rn-Jc4"/>
+                        <outletCollection property="needRoundCorner" destination="X0b-RH-0fd" id="V3x-1f-7qx"/>
+                        <outletCollection property="needTransparent" destination="YxL-ni-0lw" id="6gM-AP-WXk"/>
+                        <outletCollection property="needRoundCorner" destination="MBT-9w-NJg" id="QRC-s6-V6z"/>
+                        <outletCollection property="needRoundCorner" destination="Hhk-Eg-ur1" id="dvh-GC-2CQ"/>
+                        <outletCollection property="needRoundCorner" destination="DVL-IR-n8t" id="rkR-6f-2ru"/>
+                        <outletCollection property="needTransparent" destination="X0b-RH-0fd" id="QEa-R0-yy3"/>
                         <outletCollection property="needTransparent" destination="Hhk-Eg-ur1" id="rGT-Qv-1qL"/>
+                        <outletCollection property="needBorder" destination="Hhk-Eg-ur1" id="Q4x-5O-qPK"/>
+                        <outletCollection property="needRoundCorner" destination="nv0-Qf-irS" id="VF7-VN-rF2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LqO-z8-I6E" userLabel="First Responder" sceneMemberID="firstResponder"/>

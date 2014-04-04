@@ -195,19 +195,37 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
 
 - (IBAction)donePressed:(id)sender{
     if ([self isAllRequiredFilled]) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreateNewEvent) name:@"didCreateNewEvent" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreateNewEventFailed) name:@"didCreateNewEventFailed" object:nil];
-        EventPostModel* model=[[EventPostModel alloc] init];
-        [ProgressHUD show:@"Submitting new event..."];
-        [model postEventwithInfo:[self packUpInfo]];
-        ImageUploadModel* uploadModel=[[ImageUploadModel alloc] init];
         if (selectedPhoto.count>0) {
+            [ProgressHUD show:@"Uploading Image..."];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishUploadImage:) name:@"didFinishUploadImage" object:nil];
+            ImageUploadModel* uploadModel=[[ImageUploadModel alloc] init];
             [uploadModel uploadImage:selectedPhoto[0]];
+            return;
+        }
+        else{
+            [self didFinishUploadImage:nil];
         }
     }else
     {
         [popoverAlterModel alterWithTitle:@"Failed" Message:@"Please fill up all required field"];
     }
+}
+
+
+-(void)didFinishUploadImage:(NSNotification*) notif{
+    NSMutableDictionary* dic=[self packUpInfo];
+    if (notif) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFinishUploadImage" object:nil];
+        
+        [dic setObject:[NSString stringWithFormat:@"%@",[notif object]] forKey:@"event_image_name"];
+    }
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreateNewEvent) name:@"didCreateNewEvent" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreateNewEventFailed) name:@"didCreateNewEventFailed" object:nil];
+    EventPostModel* model=[[EventPostModel alloc] init];
+    [ProgressHUD show:@"Submitting new event..."];
+    [model postEventwithInfo:dic];
 }
 
 -(BOOL)isAllRequiredFilled{

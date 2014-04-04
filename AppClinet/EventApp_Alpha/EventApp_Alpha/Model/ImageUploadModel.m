@@ -90,6 +90,7 @@
 -(void) connectionDidFinishLoading:(NSURLConnection *)connection{
     [super connectionDidFinishLoading:connection];
     NSString* feedback=[[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"didFinishUploadImage" object:[[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]];
     NSLog(@"%@",feedback);
 }
 @end

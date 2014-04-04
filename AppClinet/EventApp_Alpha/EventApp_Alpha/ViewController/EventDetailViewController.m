@@ -242,6 +242,11 @@ EventJoinAndLikeModel* jlmodel;
         NSURL *imageurl=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,[[event objectForKey:@"fk_event_image"] objectForKey:@"path"]]];
         self.images.image=[ UIImage imageWithData:[NSData dataWithContentsOfURL:imageurl]];
     }
+    else if(![[event objectForKey:@"event_image_name"] isEqual:[NSNull null]]) {
+        NSURL *imageurl=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,@"/app_project/media/",[event objectForKey:@"event_image_name"]]];
+        self.images.image=[ UIImage imageWithData:[NSData dataWithContentsOfURL:imageurl]];
+    }
+    
     else{
         self.images.image=[UIImage imageNamed:@"event3.jpg"];
     }
