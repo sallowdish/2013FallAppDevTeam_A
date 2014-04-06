@@ -35,6 +35,8 @@
 		71974BB71869A618004493DC /* CQMFloatingMaskControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BAE1869A618004493DC /* CQMFloatingMaskControl.m */; };
 		71974BB81869A618004493DC /* CQMFloatingNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BB11869A618004493DC /* CQMFloatingNavigationBar.m */; };
 		71974BB91869A618004493DC /* CQMPathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BB31869A618004493DC /* CQMPathUtilities.m */; };
+		719AF7D618EF7BAA00075313 /* EventListHotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 719AF7D518EF7BAA00075313 /* EventListHotViewController.m */; };
+		719AF7D918EF8A3300075313 /* SegmentControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 719AF7D818EF8A3300075313 /* SegmentControllerCell.m */; };
 		719CE1DA1874627500D2F058 /* FormatingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 719CE1D91874627500D2F058 /* FormatingModel.m */; };
 		71A6D0DE18CC234E005A0F6E /* redheart.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A6D0DD18CC234E005A0F6E /* redheart.png */; };
 		71AF5EFC18250D660013ABB3 /* EventFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF5EFB18250D660013ABB3 /* EventFetchModel.m */; };
@@ -133,6 +135,10 @@
 		71974BB11869A618004493DC /* CQMFloatingNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMFloatingNavigationBar.m; sourceTree = "<group>"; };
 		71974BB21869A618004493DC /* CQMPathUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMPathUtilities.h; sourceTree = "<group>"; };
 		71974BB31869A618004493DC /* CQMPathUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMPathUtilities.m; sourceTree = "<group>"; };
+		719AF7D418EF7BAA00075313 /* EventListHotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventListHotViewController.h; path = ViewController/EventListHotViewController.h; sourceTree = "<group>"; };
+		719AF7D518EF7BAA00075313 /* EventListHotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventListHotViewController.m; path = ViewController/EventListHotViewController.m; sourceTree = "<group>"; };
+		719AF7D718EF8A3300075313 /* SegmentControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SegmentControllerCell.h; path = ViewController/SegmentControllerCell.h; sourceTree = "<group>"; };
+		719AF7D818EF8A3300075313 /* SegmentControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SegmentControllerCell.m; path = ViewController/SegmentControllerCell.m; sourceTree = "<group>"; };
 		719CE1D81874627500D2F058 /* FormatingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormatingModel.h; path = Model/FormatingModel.h; sourceTree = "<group>"; };
 		719CE1D91874627500D2F058 /* FormatingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FormatingModel.m; path = Model/FormatingModel.m; sourceTree = "<group>"; };
 		71A6D0DD18CC234E005A0F6E /* redheart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redheart.png; path = Images/redheart.png; sourceTree = "<group>"; };
@@ -266,6 +272,8 @@
 			children = (
 				718C900F185DA0A300D86EA1 /* TemplateTableCell.h */,
 				718C9010185DA0A300D86EA1 /* TemplateTableCell.m */,
+				719AF7D718EF8A3300075313 /* SegmentControllerCell.h */,
+				719AF7D818EF8A3300075313 /* SegmentControllerCell.m */,
 			);
 			name = CustomizeCell;
 			sourceTree = "<group>";
@@ -495,6 +503,8 @@
 				718C900E185DA03E00D86EA1 /* CustomizeCell */,
 				71B763BF1807830A00717D67 /* EventListViewController.h */,
 				71B763C01807830A00717D67 /* EventListViewController.m */,
+				719AF7D418EF7BAA00075313 /* EventListHotViewController.h */,
+				719AF7D518EF7BAA00075313 /* EventListHotViewController.m */,
 			);
 			name = EventList;
 			sourceTree = "<group>";
@@ -660,6 +670,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71974BB61869A618004493DC /* CQMFloatingFrameView.m in Sources */,
+				719AF7D618EF7BAA00075313 /* EventListHotViewController.m in Sources */,
 				719664651879BB1900D8BC7B /* popoverAlterModel.m in Sources */,
 				71B763C11807830A00717D67 /* EventListViewController.m in Sources */,
 				71D830B718EAAE6D00485B1B /* EventJoinAndLikeModel.m in Sources */,
@@ -679,6 +690,7 @@
 				71F3219B17F830D700FFFB95 /* AppDelegate.m in Sources */,
 				71F3219717F830D700FFFB95 /* main.m in Sources */,
 				71D830BB18EB959300485B1B /* loginModel.m in Sources */,
+				719AF7D918EF8A3300075313 /* SegmentControllerCell.m in Sources */,
 				712A2C5B1883A4EA00BF3AC6 /* DataTransferModel.m in Sources */,
 				71AF5EFC18250D660013ABB3 /* EventFetchModel.m in Sources */,
 				71974BB51869A618004493DC /* CQMFloatingController.m in Sources */,

@@ -290,6 +290,7 @@ EventJoinAndLikeModel* jlmodel;
 //    [self.view setNeedsDisplay];
     [self getRSVPInfo];
     [popoverAlterModel alterWithTitle:@"Succeed" Message:@"You have RSVP this event."];
+    self.joinButton.enabled=NO;
 }
 
 -(void)didRSVPEventFailed{
@@ -322,6 +323,7 @@ EventJoinAndLikeModel* jlmodel;
     //    [self.view setNeedsDisplay];
     [self getRSVPInfo];
     [popoverAlterModel alterWithTitle:@"Succeed" Message:@"You have liked this event."];
+    self.likeButton.enabled=NO;
 }
 
 -(void)didLikeEventFailed{

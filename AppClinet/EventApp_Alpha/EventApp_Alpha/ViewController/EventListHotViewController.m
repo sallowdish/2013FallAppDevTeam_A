@@ -1,4 +1,4 @@
-	//
+//
 //  EventTableViewController.m
 //  EventApp_Alpha
 //
@@ -6,28 +6,28 @@
 //  Copyright (c) 2013 2013_Fall_Dev_Team_A. All rights reserved.
 //
 
-#import "EventListViewController.h"
+#import "EventListHotViewController.h"
 #import "EventListFetchModel.h"
 #import "EventEdittingViewController.h"
 #import "TemplateTableCell.h"
-#import "SegmentControllerCell.h"
 #import "FormatingModel.h"
 #import "ProgressHUD.h"
 #import "UserModel.h"
 
-@interface EventListViewController ()
+@interface EventListHotViewController ()
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *createButton;
-@property (strong,nonatomic)EventListFetchModel* model;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentController;
+
+
 
 @end
 
-@implementation EventListViewController
+@implementation EventListHotViewController
 
 @synthesize eventList,model;
 
-bool isUpdated,isBasedOnTime;
+bool isUpdated;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -44,14 +44,13 @@ bool isUpdated,isBasedOnTime;
 {
     [super viewDidLoad];
     isUpdated=false;
-    isBasedOnTime=YES;
     eventList=nil;
     
-    self.segmentController.selectedSegmentIndex=0;
+    self.segmentController.selectedSegmentIndex=1;
     
     // Uncomment the following line to preserve selection between presentations.
 //    self.clearsSelectionOnViewWillAppear = YES;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
@@ -61,12 +60,12 @@ bool isUpdated,isBasedOnTime;
     model=[[EventListFetchModel alloc] init];
     [model fetchEventListFromFile];
     eventList=[EventListFetchModel eventsList];
-//    //no network or connection fails
-//    if (eventList.count==0) {
-//        
-//        eventList=[EventListFetchModel eventsList];
-//        NSLog(@"%@",@"No Internet now.");
-//    }
+    //    //no network or connection fails
+    //    if (eventList.count==0) {
+    //
+    //        eventList=[EventListFetchModel eventsList];
+    //        NSLog(@"%@",@"No Internet now.");
+    //    }
     
     UIRefreshControl* f5=[[UIRefreshControl alloc] init];
     [f5 addTarget:self action:@selector(refreshEventList:) forControlEvents:UIControlEventValueChanged];
@@ -74,24 +73,17 @@ bool isUpdated,isBasedOnTime;
     
     self.refreshControl=f5;
     
-    
-    if (isBasedOnTime) {
-        [self fetchNewDataFromServer:@"time"];
-
-    }else{
-        [self fetchNewDataFromServer:@"hot"];
-    }
-        //start appearing
+    [self fetchNewDataFromServer];
+    //start appearing
 }
 
 
-
--(void)fetchNewDataFromServer:(NSString*)mode{
+-(void)fetchNewDataFromServer{
     [ProgressHUD show:@"Loading new events list..."];
     isUpdated=false;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchNewDataFromServer:) name:@"didFetchEventListWithMode" object:nil];
-    [model fetchEventListWithMode:mode];
-    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(removeFromNSNotificationCenter) userInfo:nil repeats:NO];
+    [model fetchEventListWithMode:@"hot"];
+    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(removeFromNSNotificationCenter) userInfo:nil repeats:NO];
     //    [self fetchNewDataFromServer];
     [[ProgressHUD class] performSelector:@selector(dismiss) withObject:nil afterDelay:0.8];
 }
@@ -103,12 +95,10 @@ bool isUpdated,isBasedOnTime;
         isUpdated=true;
         NSLog(@"%@",@"UPDATED");
     }
-    [self.tableView reloadData];
 }
 
 -(void) viewWillAppear:(BOOL)animated{
-    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:animated];
-    [super viewWillAppear:animated];
+    
 }
 
 -(void) removeFromNSNotificationCenter{
@@ -133,27 +123,22 @@ bool isUpdated,isBasedOnTime;
 
 - (IBAction)refreshEventList:(id)sender{
     //top indication
-//    self.createButton.enabled=NO;
+    //    self.createButton.enabled=NO;
     self.refreshControl.attributedTitle=[[NSAttributedString alloc]initWithString:@"努力從四次元搬運中...才怪_(:з」∠)_"];
     
     //HUD indication
     //Functionality
-    if (isBasedOnTime) {
-        [self fetchNewDataFromServer:@"time"];
-    }
-    else{
-        [self fetchNewDataFromServer:@"hot"];
-    }
-    
+    [self fetchNewDataFromServer];
+    [self.tableView reloadData];
     [self.refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:2];
     //HUD dismiss
     [self.refreshControl performSelector:@selector(setAttributedTitle:) withObject:[[NSAttributedString alloc]initWithString:@"再多一點點...(灬ºωº灬)"] afterDelay:2.2];
-//    [[ProgressHUD class] performSelector:@selector(showSuccess:) withObject:@"Loading Finish" afterDelay:3];
-//    [self.createButton performSelector:@selector(setEnabled:) withObject:[NSNumber numberWithBool:YES] afterDelay:5];
+    [[ProgressHUD class] performSelector:@selector(showSuccess:) withObject:@"Loading Finish" afterDelay:3];
+    //    [self.createButton performSelector:@selector(setEnabled:) withObject:[NSNumber numberWithBool:YES] afterDelay:5];
     
     
     //    [self performSelector:@selector(showHubwithMessage:) withObject:@"Loading Finsih" afterDelay:2];
-//    [self performSelector:@selector(dismissHub) withObject:nil afterDelay:3];
+    //    [self performSelector:@selector(dismissHub) withObject:nil afterDelay:3];
 }
 
 - (void)didReceiveMemoryWarning
@@ -166,63 +151,48 @@ bool isUpdated,isBasedOnTime;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-//#warning Potentially incomplete method implementation.
+    //#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//#warning Incomplete method implementation.
+    //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [eventList count]+1;
+    return [eventList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    static NSString *CellIdentifier = @"cellTemplate";
+    TemplateTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    if (indexPath.row==0) {
-        SegmentControllerCell *cell= [tableView dequeueReusableCellWithIdentifier:@"SegmentControllerCell" forIndexPath:indexPath];
-        return cell;
-    }
-        else{
-        static NSString *CellIdentifier = @"cellTemplate";
-        TemplateTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        
-        // Configure the cell...
-        NSDictionary* event=[eventList objectAtIndex:indexPath.row-1];
-        cell=[self modelToViewMatch:cell ForRowAtIndexPath:(NSIndexPath *)indexPath eventInstance:event];
-            return cell;
-    }
+    // Configure the cell...
+    NSDictionary* event=[eventList objectAtIndex:indexPath.row];
+    cell=[self modelToViewMatch:cell ForRowAtIndexPath:(NSIndexPath *)indexPath eventInstance:event];
+    
+    
+    //    cell.hosterLabel.text=[NSString stringWithFormat:@"%@|%@|%@",
+    //        [[event objectForKey:@"event_organizer_id"] objectForKey:@"account_user_name"],
+    //        [(NSString*)[event objectForKey:@"event_time"] componentsSeparatedByString:@"T"][0],
+    //        [event objectForKey:@"event_location"]];
+    
+    return cell;
 }
-
-
 
 -(IBAction)segementationButtonPressed:(id)sender{
     UISegmentedControl* seg=(UISegmentedControl*)sender;
     if ([seg selectedSegmentIndex]==2) {
-        seg.selectedSegmentIndex=2;
-        [self performSegueWithIdentifier:@"eventListToEventRecommend" sender:nil];
-    }else if ([seg selectedSegmentIndex]==1) {
-//        seg.selectedSegmentIndex=1;
-//        [self performSegueWithIdentifier:@"eventListToEventListHot" sender:nil];
-        isBasedOnTime=false;
-        [self refreshEventList:nil];
-    }else if ([seg selectedSegmentIndex]==0)
-    {
-        isBasedOnTime=true;
-        [self refreshEventList:nil];
+//        seg.selectedSegmentIndex=2;
+//        [self performSegueWithIdentifier:@"eventListToEventRecommend" sender:nil];
+    }else if ([seg selectedSegmentIndex]==0) {
+        seg.selectedSegmentIndex=0;
+        UIViewController* vc=(UIViewController*)[self.navigationController presentedViewController];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        [vc viewDidLoad];
     }
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.row == 0) {
-        return 40;
-    }
-    return 95;
-}
-
 
 -(TemplateTableCell*)modelToViewMatch:(id)sender ForRowAtIndexPath:(NSIndexPath *)indexPath eventInstance:(NSDictionary*)event
 {
@@ -233,14 +203,12 @@ bool isUpdated,isBasedOnTime;
         subview.layer.cornerRadius=6;
         subview.layer.masksToBounds=YES;
     }
-//    [cell.profileImage.layer setBorderColor: [[UIColor grayColor] CGColor]];
-//    [cell.profileImage.layer setBorderWidth: 2.0];
+    //    [cell.profileImage.layer setBorderColor: [[UIColor grayColor] CGColor]];
+    //    [cell.profileImage.layer setBorderWidth: 2.0];
     cell.eventNameLabel.text=[event objectForKey:@"event_title"];
     cell.hosterLabel.text=[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"username"];
     cell.dataLabel.text=[NSString stringWithFormat:@"%@ | %@",[event objectForKey:@"event_date"],[event objectForKey:@"event_time"]];
     cell.locationLabel.text=[FormatingModel addressDictionaryToStringL:[event objectForKey:@"fk_address"]];
-    cell.likeLabel.text=[NSString stringWithFormat: @"%@",[event objectForKey:@"event_like"] ];
-    cell.RSVPLabel.text=[NSString stringWithFormat: @"%@",[event objectForKey:@"event_rsvp"] ];;
     
     
     UIImage* img=nil;
@@ -263,7 +231,7 @@ bool isUpdated,isBasedOnTime;
     if ([[segue identifier] isEqualToString:@"selectedSegue"]) {
         UIViewController *destination=[segue destinationViewController];
         UITableViewCell* cell=sender;
-        id obj=[eventList objectAtIndex:[[self.tableView indexPathForCell:cell] row]-1];
+        id obj=[eventList objectAtIndex:[[self.tableView indexPathForCell:cell] row]];
         [destination setValue:[obj valueForKey:@"id"] forKey:@"eventID"];
     }
 }
@@ -281,54 +249,54 @@ bool isUpdated,isBasedOnTime;
     
 }
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 /*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
+ #pragma mark - Navigation
+ 
+ // In a story board-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ 
  */
 
 @end
