@@ -110,7 +110,7 @@ static NSArray* eventList;
         NSURL* url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,[[user objectForKey:@"fk_user_image"] objectForKey:@"path"]]];
         return [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
     }else{
-        return [UIImage imageNamed:@"152_152icon.png"];
+        return [UIImage imageNamed:@"default_profile_5_bigger.png"];
     }
 }
 

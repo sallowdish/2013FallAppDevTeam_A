@@ -89,8 +89,8 @@ UserModel* model;
 
 - (IBAction)cancelButtonPressed:(id)sende
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"loginProcessFinish" object:nil];
-    [self.navigationController popViewControllerAnimated:YES];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"loginProcessFinish" object:nil];
+//    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)touchOutside:(id)sender {
@@ -115,7 +115,8 @@ UserModel* model;
     self.user_profile_image.image=[UserModel getProfileImage];
     self.loginButton.enabled=NO;
     [popoverAlterModel alterWithTitle:@"Login Succeed" Message:[NSString stringWithFormat:@"Hi,%@",[UserModel username]]];
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"loginProcessFinish" object:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void) didFailToLogin{

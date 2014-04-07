@@ -37,6 +37,7 @@
 		71974BB91869A618004493DC /* CQMPathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BB31869A618004493DC /* CQMPathUtilities.m */; };
 		719AF7D618EF7BAA00075313 /* EventListHotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 719AF7D518EF7BAA00075313 /* EventListHotViewController.m */; };
 		719AF7D918EF8A3300075313 /* SegmentControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 719AF7D818EF8A3300075313 /* SegmentControllerCell.m */; };
+		719AF7DB18F324C900075313 /* default_profile_5_bigger.png in Resources */ = {isa = PBXBuildFile; fileRef = 719AF7DA18F324C900075313 /* default_profile_5_bigger.png */; };
 		719CE1DA1874627500D2F058 /* FormatingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 719CE1D91874627500D2F058 /* FormatingModel.m */; };
 		71A6D0DE18CC234E005A0F6E /* redheart.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A6D0DD18CC234E005A0F6E /* redheart.png */; };
 		71AF5EFC18250D660013ABB3 /* EventFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF5EFB18250D660013ABB3 /* EventFetchModel.m */; };
@@ -139,6 +140,7 @@
 		719AF7D518EF7BAA00075313 /* EventListHotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventListHotViewController.m; path = ViewController/EventListHotViewController.m; sourceTree = "<group>"; };
 		719AF7D718EF8A3300075313 /* SegmentControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SegmentControllerCell.h; path = ViewController/SegmentControllerCell.h; sourceTree = "<group>"; };
 		719AF7D818EF8A3300075313 /* SegmentControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SegmentControllerCell.m; path = ViewController/SegmentControllerCell.m; sourceTree = "<group>"; };
+		719AF7DA18F324C900075313 /* default_profile_5_bigger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_profile_5_bigger.png; sourceTree = "<group>"; };
 		719CE1D81874627500D2F058 /* FormatingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormatingModel.h; path = Model/FormatingModel.h; sourceTree = "<group>"; };
 		719CE1D91874627500D2F058 /* FormatingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FormatingModel.m; path = Model/FormatingModel.m; sourceTree = "<group>"; };
 		71A6D0DD18CC234E005A0F6E /* redheart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redheart.png; path = Images/redheart.png; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 		71EE867518784D63007FD900 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				719AF7DA18F324C900075313 /* default_profile_5_bigger.png */,
 				71D830B118E9AB9E00485B1B /* underconstruction.jpg */,
 				71D7AF4C189DF3E70082A6AA /* event1.jpg */,
 				71D7AF4D189DF3E70082A6AA /* event2.jpg */,
@@ -651,6 +654,7 @@
 				7103FE9D18AA0BE70047EFAD /* greyheart_done.png in Resources */,
 				71EE867818784D63007FD900 /* backgroundImage.png in Resources */,
 				71F3219517F830D700FFFB95 /* InfoPlist.strings in Resources */,
+				719AF7DB18F324C900075313 /* default_profile_5_bigger.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
