@@ -66,7 +66,7 @@ NSError* error;
 }
 
 -(NSMutableURLRequest*)configPatchRequest:(NSMutableURLRequest*)request withData:(NSData*)data{
-    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPMethod:@"PATCH"];
     [request setHTTPBody:data];
     return request;
@@ -74,14 +74,14 @@ NSError* error;
 
 
 -(NSMutableURLRequest*)configPostRequest:(NSMutableURLRequest*)request withData:(NSData*)data{
-    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:data];
     return request;
 }
 
 -(NSMutableURLRequest*)configGetRequest:(NSMutableURLRequest*)request{
-    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPMethod:@"GET"];
     return request;
 }

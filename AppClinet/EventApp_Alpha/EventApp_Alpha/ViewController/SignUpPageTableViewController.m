@@ -5,10 +5,11 @@
 //  Created by Rui Zheng on 2014-04-27.
 //  Copyright (c) 2014 2013_Fall_Dev_Team_A. All rights reserved.
 //
-
+#import <MobileCoreServices/UTCoreTypes.h>
 #import "SignUpPageTableViewController.h"
 #import "SignUpModel.h"
 #import "popoverAlterModel.h"
+#import "ProgressHUD.h"
 
 @interface SignUpPageTableViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
@@ -59,9 +60,22 @@
         [dict setValue:self.passwordField.text forKey:@"password"];
         [dict setValue:self.emailField.text forKey:@"email"];
         
-//        [[[SignUpModel alloc]init] signUp:dict];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didSignUp) name:@"didSignUp" object:nil];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didFailSignUp:) name:@"didFailSignUp" object:nil];
+        [[[SignUpModel alloc]init] signUp:dict];
     }
     
+}
+
+-(void)didSignUp{
+    [popoverAlterModel alterWithTitle:@"Succeed!" Message:[NSString stringWithFormat:@"You have created a new account named %@", self.usernameField.text]];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)didFailSignUp:(NSNotification*) notif{
+    [popoverAlterModel alterWithTitle:@"Failed." Message:[[NSString alloc] initWithData:notif.object encoding:NSUTF8StringEncoding]];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(BOOL)validateInfo{
@@ -80,80 +94,49 @@
     return YES;
 }
 
-//#pragma mark - Table view data source
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 0;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//#warning Incomplete method implementation.
-//    // Return the number of rows in the section.
-//    return 0;
-//}
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+
+
+-(IBAction)imagePickerPopup:(id)sender{
+    UIImagePickerController *mediaUI = [[UIImagePickerController alloc] init];
+    mediaUI.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     
-    // Configure the cell...
+    // Displays saved pictures and movies, if both are available, from the
+    // Camera Roll album.
+    mediaUI.mediaTypes =
+    [UIImagePickerController availableMediaTypesForSourceType:
+     UIImagePickerControllerSourceTypeSavedPhotosAlbum];
     
-    return cell;
+    // Hides the controls for moving & scaling pictures, or for
+    // trimming movies. To instead show the controls, use YES.
+    mediaUI.allowsEditing = YES;
+    
+    mediaUI.delegate = self;
+    
+    [self presentViewController: mediaUI animated: YES completion:nil];
+    //    return YES;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    // Code here to work with media
+    [self dismissViewControllerAnimated:YES completion:nil];
+    NSString *mediaType = info[UIImagePickerControllerMediaType];
+    
+    if ([mediaType isEqualToString:(NSString *)kUTTypeImage])
+    {
+        self.profileImageView.image=info[UIImagePickerControllerOriginalImage];
+        // Media is an image
+//        [self updateSelectedImage];
+    }
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+
+-(void)imagePickerControllerDidCancel:
+(UIImagePickerController *)picker
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

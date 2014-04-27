@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SignUpPageTableViewController : UITableViewController
+@interface SignUpPageTableViewController : UITableViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @end
