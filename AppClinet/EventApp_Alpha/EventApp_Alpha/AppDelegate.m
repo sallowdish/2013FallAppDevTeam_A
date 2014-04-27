@@ -10,6 +10,7 @@
 #import "UserModel.h"
 //#import "WebServiceCommunicationModel.h"
 
+#define defaultLogin 0
 
 @implementation AppDelegate
 
@@ -69,9 +70,12 @@
 
 #pragma mark - Development use only
 -(void)quickLogin{
-    UserModel* model=[[UserModel alloc] init];
-    [UserModel turnOnDevelopmentMode];
-    [model loginWithUsername:@"tester" AndPassword:@"1"];
+    if (defaultLogin) {
+        UserModel* model=[[UserModel alloc] init];
+        [UserModel turnOnDevelopmentMode];
+        [model loginWithUsername:@"tester" AndPassword:@"1"];
+
+    }
 }
 
 

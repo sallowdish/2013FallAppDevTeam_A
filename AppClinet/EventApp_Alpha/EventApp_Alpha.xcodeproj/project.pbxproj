@@ -19,6 +19,7 @@
 		7103FEA418AAE99E0047EFAD /* FullScreenImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7103FEA318AAE99E0047EFAD /* FullScreenImageController.m */; };
 		7104A7A01824D1B500EB3AD5 /* EventListFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */; };
 		71094D58190D28D90098751A /* SignUpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71094D57190D28D90098751A /* SignUpModel.m */; };
+		71094D5B190D347A0098751A /* SignUpPageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71094D5A190D347A0098751A /* SignUpPageTableViewController.m */; };
 		712A2C5B1883A4EA00BF3AC6 /* DataTransferModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C581883A4EA00BF3AC6 /* DataTransferModel.m */; };
 		712A2C5C1883A4EA00BF3AC6 /* URLConstructModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C5A1883A4EA00BF3AC6 /* URLConstructModel.m */; };
 		712A2C6B1884FBBF00BF3AC6 /* RecommandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C6A1884FBBF00BF3AC6 /* RecommandViewController.m */; };
@@ -106,6 +107,8 @@
 		7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventListFetchModel.m; path = Model/EventListFetchModel.m; sourceTree = "<group>"; };
 		71094D56190D28D90098751A /* SignUpModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignUpModel.h; path = Model/SignUpModel.h; sourceTree = "<group>"; };
 		71094D57190D28D90098751A /* SignUpModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignUpModel.m; path = Model/SignUpModel.m; sourceTree = "<group>"; };
+		71094D59190D347A0098751A /* SignUpPageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignUpPageTableViewController.h; path = ViewController/SignUpPageTableViewController.h; sourceTree = "<group>"; };
+		71094D5A190D347A0098751A /* SignUpPageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignUpPageTableViewController.m; path = ViewController/SignUpPageTableViewController.m; sourceTree = "<group>"; };
 		712A2C571883A4EA00BF3AC6 /* DataTransferModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataTransferModel.h; path = Model/DataTransferModel.h; sourceTree = "<group>"; };
 		712A2C581883A4EA00BF3AC6 /* DataTransferModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataTransferModel.m; path = Model/DataTransferModel.m; sourceTree = "<group>"; };
 		712A2C591883A4EA00BF3AC6 /* URLConstructModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLConstructModel.h; path = Model/URLConstructModel.h; sourceTree = "<group>"; };
@@ -397,6 +400,8 @@
 				71D830C018EBF02100485B1B /* UserModel.m */,
 				71094D56190D28D90098751A /* SignUpModel.h */,
 				71094D57190D28D90098751A /* SignUpModel.m */,
+				71094D59190D347A0098751A /* SignUpPageTableViewController.h */,
+				71094D5A190D347A0098751A /* SignUpPageTableViewController.m */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -710,6 +715,7 @@
 				71974BB91869A618004493DC /* CQMPathUtilities.m in Sources */,
 				719CE1DA1874627500D2F058 /* FormatingModel.m in Sources */,
 				71D830C418EC2EA700485B1B /* AddressInfoPageViewController.m in Sources */,
+				71094D5B190D347A0098751A /* SignUpPageTableViewController.m in Sources */,
 				712A2C5C1883A4EA00BF3AC6 /* URLConstructModel.m in Sources */,
 				7103FEA418AAE99E0047EFAD /* FullScreenImageController.m in Sources */,
 				71094D58190D28D90098751A /* SignUpModel.m in Sources */,

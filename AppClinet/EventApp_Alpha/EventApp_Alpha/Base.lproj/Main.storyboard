@@ -1503,10 +1503,10 @@
             </objects>
             <point key="canvasLocation" x="2147" y="2482"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Sign Up Page Table View Controller-->
         <scene sceneID="Bwm-pD-8HE">
             <objects>
-                <tableViewController storyboardIdentifier="SignupPage" id="lVW-YJ-TXB" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SignupPage" id="lVW-YJ-TXB" customClass="SignUpPageTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="7IN-hb-8bx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1570,7 +1570,7 @@
                                                     <rect key="frame" x="12" y="7" width="296" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1590,7 +1590,7 @@
                                                     <rect key="frame" x="12" y="7" width="296" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1610,7 +1610,7 @@
                                                     <rect key="frame" x="12" y="7" width="296" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1642,7 +1642,7 @@
                             </tableViewSection>
                             <tableViewSection id="0UK-rC-YGA">
                                 <cells>
-                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="bWg-C6-RXz">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="bWg-C6-RXz">
                                         <rect key="frame" x="0.0" y="518" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bWg-C6-RXz" id="1pM-Wu-xGv">
@@ -1655,6 +1655,9 @@
                                                     <state key="normal" title="Cancel">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="cancelButtonPressed" destination="lVW-YJ-TXB" eventType="touchUpInside" id="4N9-6c-3By"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PYf-hB-Yr4">
                                                     <rect key="frame" x="253" y="7" width="49" height="30"/>
@@ -1662,6 +1665,9 @@
                                                     <state key="normal" title="Submit">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="submitButtonPressed" destination="lVW-YJ-TXB" eventType="touchUpInside" id="1Vp-1j-ckz"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1674,6 +1680,17 @@
                             <outlet property="delegate" destination="lVW-YJ-TXB" id="xGB-D4-8xo"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="confirmPasswordField" destination="nAu-fs-gVf" id="tVx-pS-SB0"/>
+                        <outlet property="emailField" destination="pHT-m2-36d" id="xDY-DN-yyJ"/>
+                        <outlet property="passwordField" destination="wOx-6V-Ia0" id="xpj-wb-96B"/>
+                        <outlet property="profileImageView" destination="bDB-5r-rEi" id="Jms-61-OZb"/>
+                        <outlet property="usernameField" destination="PZa-d1-oLd" id="r9e-lp-hli"/>
+                        <outletCollection property="fillupCheckSet" destination="PZa-d1-oLd" id="FuA-DE-xQi"/>
+                        <outletCollection property="fillupCheckSet" destination="wOx-6V-Ia0" id="Zs5-gy-GdF"/>
+                        <outletCollection property="fillupCheckSet" destination="nAu-fs-gVf" id="S3w-kJ-Vsj"/>
+                        <outletCollection property="fillupCheckSet" destination="pHT-m2-36d" id="ZkY-UT-wHD"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bM-yb-IVD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
