@@ -16,7 +16,9 @@
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *forgetLabel;
 @property (weak, nonatomic) IBOutlet UIButton *forgetButton;
+@property (weak, nonatomic) IBOutlet UILabel *signupLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *user_profile_image;
+@property (weak, nonatomic) IBOutlet UIButton *signupButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
 
 @end
@@ -66,7 +68,9 @@ UserModel* model;
     
     NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
     self.forgetLabel.attributedText = [[NSAttributedString alloc] initWithString:@"Forget your password?" attributes:underlineAttribute];
+    self.signupLabel.attributedText = [[NSAttributedString alloc] initWithString:@"Need a new account?" attributes:underlineAttribute];
     self.forgetButton.frame=self.forgetLabel.frame;
+    self.signupButton.frame=self.signupLabel.frame;
     self.view.layer.cornerRadius=6;
     for (int i=100; i<MAXTAG+1; i++) {
         UIView* subview=[self.view viewWithTag:i];
@@ -136,6 +140,11 @@ UserModel* model;
     [popoverAlterModel alterWithTitle:@"Forget Your Password?" Message:@"Baka!\nばか!!\n馬~鹿!!!"];
 }
 
+
+- (IBAction)signupButtonPassword:(id)sender
+{
+    [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"SignupPage"] animated:YES];
+}
 
 - (void)didReceiveMemoryWarning
 {
