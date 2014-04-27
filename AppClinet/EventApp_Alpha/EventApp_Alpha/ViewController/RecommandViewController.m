@@ -40,11 +40,11 @@
     [model fetchEventListWithMode:@"hot"];
     self.eventList=[EventListFetchModel eventsList];
     
-    NSMutableArray *temp=[[NSMutableArray alloc]init];
-    for (int i=1;i<5; i++) {
-        [temp addObject:[UIImage imageNamed:[NSString stringWithFormat:@"event%d.jpg",i]]];
-    }
-    self.eventImages=[[NSArray alloc] initWithArray:temp];
+//    NSMutableArray *temp=[[NSMutableArray alloc]init];
+//    for (int i=1;i<5; i++) {
+//        [temp addObject:[UIImage imageNamed:[NSString stringWithFormat:@"event%d.jpg",i]]];
+//    }
+//    self.eventImages=[[NSArray alloc] initWithArray:temp];
     
     //Initial view
     self.pageViewController=[self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
@@ -103,7 +103,7 @@
     pageContentViewController.eventHoster=[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"username"];
     pageContentViewController.eventLike=[[event objectForKey:@"event_like"] integerValue];
     pageContentViewController.eventRSVP=[[event objectForKey:@"event_rsvp"] integerValue];
-    pageContentViewController.eventImage=self.eventImages[index%4];
+//    pageContentViewController.eventImage=self.eventImages[index%4];
     pageContentViewController.pageIndex = index;
     
     return pageContentViewController;

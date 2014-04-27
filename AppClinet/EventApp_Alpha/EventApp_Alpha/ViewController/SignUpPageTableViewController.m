@@ -10,6 +10,7 @@
 #import "SignUpModel.h"
 #import "popoverAlterModel.h"
 #import "ProgressHUD.h"
+//#import "GKImagePicker.h"
 
 @interface SignUpPageTableViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
@@ -18,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordField;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (strong, nonatomic) IBOutletCollection(UITextField) NSArray *fillupCheckSet;
-
+@property GKImagePicker* imagePicker;
 @end
 
 @implementation SignUpPageTableViewController
@@ -98,45 +99,45 @@
 
 
 -(IBAction)imagePickerPopup:(id)sender{
-    UIImagePickerController *mediaUI = [[UIImagePickerController alloc] init];
-    mediaUI.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    self.imagePicker = [[GKImagePicker alloc] init];
+    self.imagePicker.cropSize = CGSizeMake(320, 320);
+    self.imagePicker.delegate = self;
+    self.imagePicker.resizeableCropArea = YES;
     
-    // Displays saved pictures and movies, if both are available, from the
-    // Camera Roll album.
-    mediaUI.mediaTypes =
-    [UIImagePickerController availableMediaTypesForSourceType:
-     UIImagePickerControllerSourceTypeSavedPhotosAlbum];
-    
-    // Hides the controls for moving & scaling pictures, or for
-    // trimming movies. To instead show the controls, use YES.
-    mediaUI.allowsEditing = YES;
-    
-    mediaUI.delegate = self;
-    
-    [self presentViewController: mediaUI animated: YES completion:nil];
-    //    return YES;
+//    [self presentModalViewController:self.imagePicker.imagePickerController animated:YES];
+
+    [self presentViewController:self.imagePicker.imagePickerController animated:YES completion:nil];
 }
 
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    // Code here to work with media
-    [self dismissViewControllerAnimated:YES completion:nil];
-    NSString *mediaType = info[UIImagePickerControllerMediaType];
-    
-    if ([mediaType isEqualToString:(NSString *)kUTTypeImage])
-    {
-        self.profileImageView.image=info[UIImagePickerControllerOriginalImage];
-        // Media is an image
-//        [self updateSelectedImage];
-    }
+-(void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
+    self.profileImageView.image=image;
+    [self hideImagePicker];
 }
 
-
--(void)imagePickerControllerDidCancel:
-(UIImagePickerController *)picker
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
+-(void)hideImagePicker{
+    [self.imagePicker.imagePickerController dismissViewControllerAnimated:YES completion:nil];
 }
+
+//-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+//{
+//    // Code here to work with media
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//    NSString *mediaType = info[UIImagePickerControllerMediaType];
+//    
+//    if ([mediaType isEqualToString:(NSString *)kUTTypeImage])
+//    {
+//        self.profileImageView.image=info[UIImagePickerControllerOriginalImage];
+//        // Media is an image
+////        [self updateSelectedImage];
+//    }
+//}
+//
+//
+//-(void)imagePickerControllerDidCancel:
+//(UIImagePickerController *)picker
+//{
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
 
 
 @end

@@ -161,20 +161,6 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="3RB-d0-Tqn">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="1o7-fw-Dlh">
-                            <segmentedControl key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="dMl-yl-fDo">
-                                <rect key="frame" x="16" y="8" width="150" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="最新"/>
-                                    <segment title="最熱"/>
-                                    <segment title="推薦"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segementationButtonPressed:" destination="Weq-5w-scL" eventType="valueChanged" id="IKA-Ma-eHX"/>
-                                </connections>
-                            </segmentedControl>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="mOi-j9-hC6">
                             <connections>
                                 <action selector="createButtonTapped:" destination="Weq-5w-scL" id="11U-Pf-hiF"/>
@@ -184,8 +170,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="createButton" destination="mOi-j9-hC6" id="qoS-k5-f7p"/>
-                        <outlet property="segmentController" destination="dMl-yl-fDo" id="2v8-Hp-Nba"/>
-                        <segue destination="Xma-vz-yPb" kind="push" identifier="eventListToEventRecommend" id="uqM-Qp-hZc"/>
+                        <segue destination="GpO-o8-XJ2" kind="push" identifier="eventListToEventRecommend" id="ESd-Ii-lYT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U7l-7q-2Kl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1241,15 +1226,13 @@
             </objects>
             <point key="canvasLocation" x="417" y="455"/>
         </scene>
-        <!--Page View Controller - Item-->
-        <scene sceneID="twN-PD-XBZ">
+        <!--Page View Controller-->
+        <scene sceneID="Cmc-8g-aUs">
             <objects>
-                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="2fD-kA-YAw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="DGt-ff-loz"/>
-                </pageViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oJC-83-WRZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="jUs-vR-EpV" customClass="PageViewController" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DHt-Qo-Kmx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1711" y="569"/>
+            <point key="canvasLocation" x="1893" y="571"/>
         </scene>
         <!--Page Content View Controller-->
         <scene sceneID="zkt-UW-JEs">
@@ -1260,7 +1243,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Zuq-D1-DZp">
-                                <rect key="frame" x="0.0" y="65" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="530"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <view tag="100" contentMode="scaleToFill" id="4z2-DX-Reg">
@@ -1386,7 +1369,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8QZ-bG-Tai" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1711" y="1280"/>
+            <point key="canvasLocation" x="1899" y="1286"/>
         </scene>
         <!--Login Page-->
         <scene sceneID="zi8-eE-FQc">
@@ -1927,7 +1910,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="650"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundImage.png" id="mZm-Li-3fs" userLabel="Background">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" id="mZm-Li-3fs" userLabel="Background">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="650"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </imageView>
@@ -2187,15 +2170,28 @@ XX日發佈了XXXX活動 .
             <objects>
                 <viewController id="Xma-vz-yPb" userLabel="Recommand View Controller - Recommend" customClass="RecommandViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dmn-St-wMq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="413"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.25" colorSpace="calibratedRGB"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="k18-Fl-gQd">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="gFW-Pj-npp">
-                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="2" id="E8D-qm-Hql">
-                                <rect key="frame" x="16" y="8" width="150" height="29"/>
+                    <navigationItem key="navigationItem" id="k18-Fl-gQd"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oGq-gb-jck" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="905" y="218"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="iGg-9l-wMw">
+            <objects>
+                <viewController id="GpO-o8-XJ2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mxd-rW-7F7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="26M-Vd-ezg">
+                                <rect key="frame" x="20" y="72" width="280" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="最新"/>
@@ -2203,16 +2199,25 @@ XX日發佈了XXXX活動 .
                                     <segment title="推薦"/>
                                 </segments>
                                 <connections>
-                                    <action selector="segementeationPressed:" destination="Xma-vz-yPb" eventType="valueChanged" id="GYV-ex-7oV"/>
+                                    <action selector="segementationButtonPressed:" destination="Weq-5w-scL" eventType="valueChanged" id="SZM-bK-Ol6"/>
                                 </connections>
                             </segmentedControl>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                            <containerView contentMode="scaleToFill" id="0bV-uV-fhd">
+                                <rect key="frame" x="0.0" y="108" width="320" height="413"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="Xma-vz-yPb" kind="embed" id="4NC-JC-sRV"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="HkG-4n-NsK"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oGq-gb-jck" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hvk-Ga-KQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1095" y="135"/>
+            <point key="canvasLocation" x="1356" y="-102"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
@@ -2241,7 +2246,7 @@ XX日發佈了XXXX活動 .
         <image name="Photos" width="30" height="30"/>
         <image name="Setting" width="30" height="30"/>
         <image name="TimeIcon_done.png" width="50" height="50"/>
-        <image name="backgroundImage.png" width="1280" height="800"/>
+        <image name="background" width="512" height="512"/>
         <image name="default_profile_5_bigger.png" width="450" height="450"/>
         <image name="event1.jpg" width="225" height="225"/>
         <image name="event2.jpg" width="259" height="194"/>

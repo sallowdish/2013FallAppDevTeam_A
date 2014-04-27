@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GKImagePicker.h"
 
-@interface SignUpPageTableViewController : UITableViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface SignUpPageTableViewController : UITableViewController<GKImagePickerDelegate>
 
 @end
