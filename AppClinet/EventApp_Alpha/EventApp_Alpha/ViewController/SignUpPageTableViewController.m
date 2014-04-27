@@ -67,10 +67,10 @@ UIImage* selectedImage;
         [dict setValue:self.emailField.text forKey:@"email"];
         
         if (selectedImage) {
-            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didSignUp) name:@"didFinishUploadImage" object:nil];
+            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didFinishUploadImage:) name:@"didFinishUploadImage" object:nil];
             
             [ProgressHUD show:@"Uploading profile image..."];
-            [[[ImageModel alloc]init]uploadImage:selectedImage];
+            [[[ImageModel alloc]init] uploadImage:selectedImage];
             
         }else{
             [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didSignUp) name:@"didSignUp" object:nil];
@@ -89,13 +89,16 @@ UIImage* selectedImage;
         [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFinishUploadImage" object:nil];
         
         [dict setObject:[NSString stringWithFormat:@"%@",[notif object]] forKey:@"profile_image_name"];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didSignUp) name:@"didSignUp" object:nil];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didFailSignUp:) name:@"didFailSignUp" object:nil];
+        [ProgressHUD show:@"Creating new account..."];
+        [[[SignUpModel alloc]init] signUp:dict];
+    }else{
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFinishUploadImage" object:nil];
+        [ProgressHUD dismiss];
+        [popoverAlterModel alterWithTitle:@"Failed" Message:@"Something went wrong. Please try again later."];
     }
     
-    
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didSignUp) name:@"didSignUp" object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didFailSignUp:) name:@"didFailSignUp" object:nil];
-    [ProgressHUD show:@"Creating new account..."];
-    [[[SignUpModel alloc]init] signUp:dict];
 //    [model postEventwithInfo:dic];
 }
 -(void)didSignUp{

@@ -25,6 +25,8 @@ bool isRSVP,isLike,isCountingRSVP,isCountingLike;
     else if(isCountingRSVP){
         [[NSNotificationCenter defaultCenter] postNotificationName:@"didFinishCountingRSVP" object:nil];
         isCountingRSVP=false;
+    }else{
+            NSLog(@"%@",[[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]);
     }
 //    else if (isLike) {
 //        isLike=false;
@@ -112,7 +114,7 @@ bool isRSVP,isLike,isCountingRSVP,isCountingLike;
     if (isRSVP) {
         if ( [(NSHTTPURLResponse*)response statusCode]!= 201) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"didRSVPEventFailed" object:nil];
-            self.receivedData=nil;
+//            self.receivedData=nil;
         }
         else{
             [[NSNotificationCenter defaultCenter] postNotificationName:@"didRSVPEvent" object:nil];
@@ -125,7 +127,7 @@ bool isRSVP,isLike,isCountingRSVP,isCountingLike;
     {
         if ( [(NSHTTPURLResponse*)response statusCode]!= 201) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"didLikeEventFailed" object:nil];
-            self.receivedData=nil;
+//            self.receivedData=nil;
         }
         else{
             [[NSNotificationCenter defaultCenter] postNotificationName:@"didLikeEvent" object:nil];
@@ -147,15 +149,17 @@ bool isRSVP,isLike,isCountingRSVP,isCountingLike;
     }
     
 }
-@end
 
-@implementation RSVPAndLikeConnect
-
-+(RSVPAndLikeConnect*) connectionWithRequest:(NSURLRequest*)request delegate:(id) delegate{
-//    [NSURLConnection connectionWithRequest:<#(NSURLRequest *)#> delegate:<#(id)#>]
-    return [super connectionWithRequest:request delegate:delegate];
-}
 
 @end
+
+//@implementation RSVPAndLikeConnect
+//
+//+(RSVPAndLikeConnect*) connectionWithRequest:(NSURLRequest*)request delegate:(id) delegate{
+////    [NSURLConnection connectionWithRequest:<#(NSURLRequest *)#> delegate:<#(id)#>]
+//    return (RSVPAndLikeConnect*)[super connectionWithRequest:request delegate:delegate];
+//}
+//
+//@end
 
 

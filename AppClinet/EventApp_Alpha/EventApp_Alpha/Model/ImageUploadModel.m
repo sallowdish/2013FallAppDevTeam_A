@@ -26,7 +26,8 @@
     NSString* FileParamConstant = @"path";
     
     // the server url to which the image (or the media) is uploaded. Use your server url here
-    NSURL* requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,@"/user_image_create_api",@"/?username=",[UserModel username]]];
+    NSString* username=[UserModel isLogin]?[UserModel username]:@"ray";
+    NSURL* requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,@"/user_image_create_api",@"/?username=",username]];
     
     // create request
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestURL];

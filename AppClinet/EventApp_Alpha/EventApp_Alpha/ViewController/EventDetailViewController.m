@@ -222,6 +222,8 @@ EventJoinAndLikeModel* jlmodel;
     if ([capacity isEqual:[NSNull null]]) {
         self.RSVP.text=@" ∞/∞";
 //        [self.joinButton removeFromSuperview];
+    }else{
+        self.RSVP.text=[NSString stringWithFormat:@"%@/%@",[event objectForKey:@"event_rsvp"],[event objectForKey:@"event_capacity"]];
     }
     NSString *description=[event objectForKey:@"event_detail"];
     if ([description isEqualToString:@""]) {
