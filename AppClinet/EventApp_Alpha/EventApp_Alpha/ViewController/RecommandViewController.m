@@ -13,6 +13,7 @@
 #import "EventListFetchModel.h"
 #import "PageContentViewController.h"
 #import "PageViewController.h"
+#import "ImageModel.h"
 
 @interface RecommandViewController ()
 
@@ -103,7 +104,7 @@
     pageContentViewController.eventHoster=[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"username"];
     pageContentViewController.eventLike=[[event objectForKey:@"event_like"] integerValue];
     pageContentViewController.eventRSVP=[[event objectForKey:@"event_rsvp"] integerValue];
-//    pageContentViewController.eventImage=self.eventImages[index%4];
+    pageContentViewController.eventImage=[ImageModel downloadImage:event];
     pageContentViewController.pageIndex = index;
     
     return pageContentViewController;

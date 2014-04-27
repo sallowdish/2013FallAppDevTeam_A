@@ -26,6 +26,7 @@
 		71094D6C190D63800098751A /* GKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71094D64190D63800098751A /* GKImageCropViewController.m */; };
 		71094D6D190D63800098751A /* GKImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 71094D66190D63800098751A /* GKImagePicker.m */; };
 		71094D6E190D63800098751A /* GKResizeableCropOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71094D68190D63800098751A /* GKResizeableCropOverlayView.m */; };
+		71094D71190D74A30098751A /* ImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71094D70190D74A30098751A /* ImageModel.m */; };
 		712A2C5B1883A4EA00BF3AC6 /* DataTransferModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C581883A4EA00BF3AC6 /* DataTransferModel.m */; };
 		712A2C5C1883A4EA00BF3AC6 /* URLConstructModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C5A1883A4EA00BF3AC6 /* URLConstructModel.m */; };
 		712A2C6B1884FBBF00BF3AC6 /* RecommandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C6A1884FBBF00BF3AC6 /* RecommandViewController.m */; };
@@ -127,6 +128,8 @@
 		71094D66190D63800098751A /* GKImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKImagePicker.m; sourceTree = "<group>"; };
 		71094D67190D63800098751A /* GKResizeableCropOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKResizeableCropOverlayView.h; sourceTree = "<group>"; };
 		71094D68190D63800098751A /* GKResizeableCropOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKResizeableCropOverlayView.m; sourceTree = "<group>"; };
+		71094D6F190D74A30098751A /* ImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageModel.h; path = Model/ImageModel.h; sourceTree = "<group>"; };
+		71094D70190D74A30098751A /* ImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageModel.m; path = Model/ImageModel.m; sourceTree = "<group>"; };
 		712A2C571883A4EA00BF3AC6 /* DataTransferModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataTransferModel.h; path = Model/DataTransferModel.h; sourceTree = "<group>"; };
 		712A2C581883A4EA00BF3AC6 /* DataTransferModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataTransferModel.m; path = Model/DataTransferModel.m; sourceTree = "<group>"; };
 		712A2C591883A4EA00BF3AC6 /* URLConstructModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLConstructModel.h; path = Model/URLConstructModel.h; sourceTree = "<group>"; };
@@ -248,6 +251,8 @@
 			children = (
 				7101D32D18ECD068002B9592 /* ImageUploadModel.h */,
 				7101D32E18ECD068002B9592 /* ImageUploadModel.m */,
+				71094D6F190D74A30098751A /* ImageModel.h */,
+				71094D70190D74A30098751A /* ImageModel.m */,
 			);
 			name = Upload;
 			sourceTree = "<group>";
@@ -752,6 +757,7 @@
 				71D830C118EBF02100485B1B /* UserModel.m in Sources */,
 				712A2C6B1884FBBF00BF3AC6 /* RecommandViewController.m in Sources */,
 				71094D6E190D63800098751A /* GKResizeableCropOverlayView.m in Sources */,
+				71094D71190D74A30098751A /* ImageModel.m in Sources */,
 				7185DF9C18B9AF4F00C3DE90 /* ProgressHUD.m in Sources */,
 				7103FEA118AA1A220047EFAD /* CommentViewController.m in Sources */,
 				71974BB91869A618004493DC /* CQMPathUtilities.m in Sources */,

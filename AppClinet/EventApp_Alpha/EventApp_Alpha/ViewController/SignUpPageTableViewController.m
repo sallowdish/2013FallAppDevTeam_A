@@ -10,6 +10,7 @@
 #import "SignUpModel.h"
 #import "popoverAlterModel.h"
 #import "ProgressHUD.h"
+#import "ImageModel.h"
 //#import "GKImagePicker.h"
 
 @interface SignUpPageTableViewController ()
@@ -24,6 +25,9 @@
 
 @implementation SignUpPageTableViewController
 
+NSMutableDictionary* dict;
+UIImage* selectedImage;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -36,7 +40,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    dict=nil;
+    selectedImage=nil;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -56,27 +61,54 @@
 
 -(IBAction)submitButtonPressed{
     if ([self validateInfo]) {
-        NSMutableDictionary* dict=[NSMutableDictionary dictionaryWithCapacity:0];
+        dict=[NSMutableDictionary dictionaryWithCapacity:0];
         [dict setValue:self.usernameField.text forKey:@"username"];
         [dict setValue:self.passwordField.text forKey:@"password"];
         [dict setValue:self.emailField.text forKey:@"email"];
         
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didSignUp) name:@"didSignUp" object:nil];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didFailSignUp:) name:@"didFailSignUp" object:nil];
-        [[[SignUpModel alloc]init] signUp:dict];
+        if (selectedImage) {
+            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didSignUp) name:@"didFinishUploadImage" object:nil];
+            
+            [ProgressHUD show:@"Uploading profile image..."];
+            [[[ImageModel alloc]init]uploadImage:selectedImage];
+            
+        }else{
+            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didSignUp) name:@"didSignUp" object:nil];
+            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didFailSignUp:) name:@"didFailSignUp" object:nil];
+            [ProgressHUD show:@"Creating new account..."];
+            [[[SignUpModel alloc]init] signUp:dict];
+        }
+        
+        
     }
     
 }
 
+-(void)didFinishUploadImage:(NSNotification*)notif{
+    if (notif) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFinishUploadImage" object:nil];
+        
+        [dict setObject:[NSString stringWithFormat:@"%@",[notif object]] forKey:@"profile_image_name"];
+    }
+    
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didSignUp) name:@"didSignUp" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didFailSignUp:) name:@"didFailSignUp" object:nil];
+    [ProgressHUD show:@"Creating new account..."];
+    [[[SignUpModel alloc]init] signUp:dict];
+//    [model postEventwithInfo:dic];
+}
 -(void)didSignUp{
     [popoverAlterModel alterWithTitle:@"Succeed!" Message:[NSString stringWithFormat:@"You have created a new account named %@", self.usernameField.text]];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.navigationController popViewControllerAnimated:YES];
+    [ProgressHUD dismiss];
 }
 
 -(void)didFailSignUp:(NSNotification*) notif{
     [popoverAlterModel alterWithTitle:@"Failed." Message:[[NSString alloc] initWithData:notif.object encoding:NSUTF8StringEncoding]];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [ProgressHUD dismiss];
 }
 
 -(BOOL)validateInfo{
@@ -111,6 +143,7 @@
 
 -(void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
     self.profileImageView.image=image;
+    selectedImage=image;
     [self hideImagePicker];
 }
 

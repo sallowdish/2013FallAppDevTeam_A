@@ -56,7 +56,7 @@
 //    [body appendData:[[NSString stringWithFormat:@"%@\r\n", [NSString stringWithFormat:@"%@_new_image.jpg",[UserModel current_user]]] dataUsingEncoding:NSUTF8StringEncoding]];
     
     // add image data
-    NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
     if (imageData) {
         //first bounder
         [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
