@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordField;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (strong, nonatomic) IBOutletCollection(UITextField) NSArray *fillupCheckSet;
+@property (weak, nonatomic) IBOutlet UITextField *nicknameField;
 @property GKImagePicker* imagePicker;
 @end
 
@@ -65,6 +66,7 @@ UIImage* selectedImage;
         [dict setValue:self.usernameField.text forKey:@"username"];
         [dict setValue:self.passwordField.text forKey:@"password"];
         [dict setValue:self.emailField.text forKey:@"email"];
+        [dict setValue:self.nicknameField.text forKey:@"user_nickname"];
         
         if (selectedImage) {
             [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didFinishUploadImage:) name:@"didFinishUploadImage" object:nil];

@@ -27,6 +27,8 @@
 		71094D6D190D63800098751A /* GKImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 71094D66190D63800098751A /* GKImagePicker.m */; };
 		71094D6E190D63800098751A /* GKResizeableCropOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71094D68190D63800098751A /* GKResizeableCropOverlayView.m */; };
 		71094D71190D74A30098751A /* ImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71094D70190D74A30098751A /* ImageModel.m */; };
+		71094D73190EEDAE0098751A /* Blank-Profile-Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 71094D72190EEDAE0098751A /* Blank-Profile-Image.png */; };
+		71094D75190EEFB90098751A /* addprofileimage.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 71094D74190EEFB90098751A /* addprofileimage.JPG */; };
 		712A2C5B1883A4EA00BF3AC6 /* DataTransferModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C581883A4EA00BF3AC6 /* DataTransferModel.m */; };
 		712A2C5C1883A4EA00BF3AC6 /* URLConstructModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C5A1883A4EA00BF3AC6 /* URLConstructModel.m */; };
 		712A2C6B1884FBBF00BF3AC6 /* RecommandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C6A1884FBBF00BF3AC6 /* RecommandViewController.m */; };
@@ -130,6 +132,8 @@
 		71094D68190D63800098751A /* GKResizeableCropOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKResizeableCropOverlayView.m; sourceTree = "<group>"; };
 		71094D6F190D74A30098751A /* ImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageModel.h; path = Model/ImageModel.h; sourceTree = "<group>"; };
 		71094D70190D74A30098751A /* ImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageModel.m; path = Model/ImageModel.m; sourceTree = "<group>"; };
+		71094D72190EEDAE0098751A /* Blank-Profile-Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blank-Profile-Image.png"; sourceTree = "<group>"; };
+		71094D74190EEFB90098751A /* addprofileimage.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = addprofileimage.JPG; sourceTree = "<group>"; };
 		712A2C571883A4EA00BF3AC6 /* DataTransferModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataTransferModel.h; path = Model/DataTransferModel.h; sourceTree = "<group>"; };
 		712A2C581883A4EA00BF3AC6 /* DataTransferModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataTransferModel.m; path = Model/DataTransferModel.m; sourceTree = "<group>"; };
 		712A2C591883A4EA00BF3AC6 /* URLConstructModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLConstructModel.h; path = Model/URLConstructModel.h; sourceTree = "<group>"; };
@@ -453,6 +457,8 @@
 		71EE867518784D63007FD900 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				71094D74190EEFB90098751A /* addprofileimage.JPG */,
+				71094D72190EEDAE0098751A /* Blank-Profile-Image.png */,
 				719AF7DA18F324C900075313 /* default_profile_5_bigger.png */,
 				71D830B118E9AB9E00485B1B /* underconstruction.jpg */,
 				71D7AF4C189DF3E70082A6AA /* event1.jpg */,
@@ -691,12 +697,14 @@
 			files = (
 				7103FE9E18AA0BE70047EFAD /* greytick_done.png in Resources */,
 				7103FE9118A1ED6A0047EFAD /* locationIcon_done.png in Resources */,
+				71094D73190EEDAE0098751A /* Blank-Profile-Image.png in Resources */,
 				71DFFA48182115A900269E3E /* Main.storyboard in Resources */,
 				7103FE9218A1ED6A0047EFAD /* peopleIcon_done.png in Resources */,
 				71D7AF50189DF3E70082A6AA /* event1.jpg in Resources */,
 				71D830B018E9927300485B1B /* 152_152icon.png in Resources */,
 				71D7AF52189DF3E70082A6AA /* event3.jpg in Resources */,
 				71F321A617F830D700FFFB95 /* Images.xcassets in Resources */,
+				71094D75190EEFB90098751A /* addprofileimage.JPG in Resources */,
 				71D830B218E9AB9E00485B1B /* underconstruction.jpg in Resources */,
 				71EE867918784D63007FD900 /* profileImage.png in Resources */,
 				7103FE9318A1ED6A0047EFAD /* TimeIcon_done.png in Resources */,

@@ -160,6 +160,9 @@ EventJoinAndLikeModel* jlmodel;
     if (![[event objectForKey:@"event_capacity"] isEqual:[NSNull null]]) {
         self.RSVP.text=[NSString stringWithFormat:@"%d/%@",[self.RSVPList count],[event objectForKey:@"event_capacity"]];
     }
+    else{
+        self.RSVP.text=[NSString stringWithFormat:@"%d/∞",[self.RSVPList count]];
+    }
     //Visual setup
     [[self.joinedPeopleSpanArea subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
@@ -323,7 +326,7 @@ EventJoinAndLikeModel* jlmodel;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [ProgressHUD dismiss];
     //    [self.view setNeedsDisplay];
-    [self getRSVPInfo];
+    [self getLikeInfo];
     [popoverAlterModel alterWithTitle:@"Succeed" Message:@"You have liked this event."];
     self.likeButton.enabled=NO;
 }
