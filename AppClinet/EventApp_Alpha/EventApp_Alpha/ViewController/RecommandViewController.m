@@ -120,12 +120,7 @@
     return 0;
 }
 
--(IBAction)segementeationPressed:(id)sender{
-    UISegmentedControl* seg=(UISegmentedControl*)sender;
-    if ([seg selectedSegmentIndex]==0) {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-}
+
 
 - (void)didReceiveMemoryWarning
 {

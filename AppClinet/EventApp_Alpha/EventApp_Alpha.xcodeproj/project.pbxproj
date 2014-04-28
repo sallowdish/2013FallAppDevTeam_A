@@ -29,6 +29,7 @@
 		71094D71190D74A30098751A /* ImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71094D70190D74A30098751A /* ImageModel.m */; };
 		71094D73190EEDAE0098751A /* Blank-Profile-Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 71094D72190EEDAE0098751A /* Blank-Profile-Image.png */; };
 		71094D75190EEFB90098751A /* addprofileimage.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 71094D74190EEFB90098751A /* addprofileimage.JPG */; };
+		71094D78190EF2A50098751A /* RecommandContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71094D77190EF2A50098751A /* RecommandContainerViewController.m */; };
 		712A2C5B1883A4EA00BF3AC6 /* DataTransferModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C581883A4EA00BF3AC6 /* DataTransferModel.m */; };
 		712A2C5C1883A4EA00BF3AC6 /* URLConstructModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C5A1883A4EA00BF3AC6 /* URLConstructModel.m */; };
 		712A2C6B1884FBBF00BF3AC6 /* RecommandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C6A1884FBBF00BF3AC6 /* RecommandViewController.m */; };
@@ -134,6 +135,8 @@
 		71094D70190D74A30098751A /* ImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageModel.m; path = Model/ImageModel.m; sourceTree = "<group>"; };
 		71094D72190EEDAE0098751A /* Blank-Profile-Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blank-Profile-Image.png"; sourceTree = "<group>"; };
 		71094D74190EEFB90098751A /* addprofileimage.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = addprofileimage.JPG; sourceTree = "<group>"; };
+		71094D76190EF2A50098751A /* RecommandContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecommandContainerViewController.h; path = ViewController/RecommandContainerViewController.h; sourceTree = "<group>"; };
+		71094D77190EF2A50098751A /* RecommandContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecommandContainerViewController.m; path = ViewController/RecommandContainerViewController.m; sourceTree = "<group>"; };
 		712A2C571883A4EA00BF3AC6 /* DataTransferModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataTransferModel.h; path = Model/DataTransferModel.h; sourceTree = "<group>"; };
 		712A2C581883A4EA00BF3AC6 /* DataTransferModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataTransferModel.m; path = Model/DataTransferModel.m; sourceTree = "<group>"; };
 		712A2C591883A4EA00BF3AC6 /* URLConstructModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLConstructModel.h; path = Model/URLConstructModel.h; sourceTree = "<group>"; };
@@ -270,6 +273,8 @@
 				7103FE9618A9C1A30047EFAD /* PageViewController.m */,
 				7103FE9818A9C2820047EFAD /* PageContentViewController.h */,
 				7103FE9918A9C2820047EFAD /* PageContentViewController.m */,
+				71094D76190EF2A50098751A /* RecommandContainerViewController.h */,
+				71094D77190EF2A50098751A /* RecommandContainerViewController.m */,
 			);
 			name = EventRecommend;
 			sourceTree = "<group>";
@@ -744,6 +749,7 @@
 				71974BB81869A618004493DC /* CQMFloatingNavigationBar.m in Sources */,
 				71EE8685187854B6007FD900 /* ProfilePageViewController.m in Sources */,
 				7101D32F18ECD068002B9592 /* ImageUploadModel.m in Sources */,
+				71094D78190EF2A50098751A /* RecommandContainerViewController.m in Sources */,
 				71F8A91F183C7CAB001AEF6A /* EventEdittingViewController.m in Sources */,
 				71094D6A190D63800098751A /* GKImageCropOverlayView.m in Sources */,
 				718C9011185DA0A300D86EA1 /* TemplateTableCell.m in Sources */,

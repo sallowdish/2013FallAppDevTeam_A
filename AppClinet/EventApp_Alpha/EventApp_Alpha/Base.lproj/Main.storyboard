@@ -13,32 +13,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="RcI-2K-iDG">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="BKz-Ok-Ywf">
+                                    <rect key="frame" x="20" y="8" width="280" height="29"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <segments>
+                                        <segment title="最新"/>
+                                        <segment title="最熱"/>
+                                        <segment title="推薦"/>
+                                    </segments>
+                                    <connections>
+                                        <action selector="segementationButtonPressed:" destination="Weq-5w-scL" eventType="valueChanged" id="6r5-bN-9t5"/>
+                                    </connections>
+                                </segmentedControl>
+                            </subviews>
+                            <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.77000000000000002" colorSpace="calibratedRGB"/>
+                        </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SegmentControllerCell" rowHeight="38" id="DXb-WI-L4r" customClass="SegmentControllerCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DXb-WI-L4r" id="Y30-gt-NmW">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="BKz-Ok-Ywf">
-                                            <rect key="frame" x="20" y="5" width="280" height="29"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <segments>
-                                                <segment title="最新"/>
-                                                <segment title="最熱"/>
-                                                <segment title="推薦"/>
-                                            </segments>
-                                            <connections>
-                                                <action selector="segementationButtonPressed:" destination="Weq-5w-scL" eventType="valueChanged" id="iQ3-OO-IqM"/>
-                                            </connections>
-                                        </segmentedControl>
-                                    </subviews>
-                                    <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellTemplate" rowHeight="95" id="fUA-lq-CgG" customClass="TemplateTableCell">
-                                <rect key="frame" x="0.0" y="124" width="320" height="95"/>
+                                <rect key="frame" x="0.0" y="130" width="320" height="95"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fUA-lq-CgG" id="OsZ-Z9-p9C">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
@@ -170,6 +166,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="createButton" destination="mOi-j9-hC6" id="qoS-k5-f7p"/>
+                        <outlet property="segmentController" destination="BKz-Ok-Ywf" id="KL6-He-cDj"/>
                         <segue destination="GpO-o8-XJ2" kind="push" identifier="eventListToEventRecommend" id="ESd-Ii-lYT"/>
                     </connections>
                 </tableViewController>
@@ -2189,7 +2186,7 @@ XX日發佈了XXXX活動 .
             <objects>
                 <viewController id="Xma-vz-yPb" userLabel="Recommand View Controller - Recommend" customClass="RecommandViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dmn-St-wMq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="413"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="486"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.25" colorSpace="calibratedRGB"/>
                     </view>
@@ -2199,12 +2196,12 @@ XX日發佈了XXXX活動 .
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oGq-gb-jck" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="905" y="218"/>
+            <point key="canvasLocation" x="898" y="511"/>
         </scene>
-        <!--View Controller-->
+        <!--Recommand Container View Controller-->
         <scene sceneID="iGg-9l-wMw">
             <objects>
-                <viewController id="GpO-o8-XJ2" sceneMemberID="viewController">
+                <viewController id="GpO-o8-XJ2" customClass="RecommandContainerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mxd-rW-7F7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2218,11 +2215,11 @@ XX日發佈了XXXX活動 .
                                     <segment title="推薦"/>
                                 </segments>
                                 <connections>
-                                    <action selector="segementationButtonPressed:" destination="Weq-5w-scL" eventType="valueChanged" id="SZM-bK-Ol6"/>
+                                    <action selector="segementeationPressed:" destination="GpO-o8-XJ2" eventType="valueChanged" id="PnL-Yf-O7R"/>
                                 </connections>
                             </segmentedControl>
                             <containerView contentMode="scaleToFill" id="0bV-uV-fhd">
-                                <rect key="frame" x="0.0" y="108" width="320" height="413"/>
+                                <rect key="frame" x="0.0" y="108" width="320" height="486"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
@@ -2233,10 +2230,13 @@ XX日發佈了XXXX活動 .
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="HkG-4n-NsK"/>
+                    <connections>
+                        <outlet property="segmentController" destination="26M-Vd-ezg" id="GGd-BG-Wgg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvk-Ga-KQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1356" y="-102"/>
+            <point key="canvasLocation" x="1239" y="11"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">

@@ -12,5 +12,5 @@
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) NSArray *eventList;
 //@property (strong, nonatomic) NSArray *eventImages;
--(IBAction)segementeationPressed:(id)sender;
+
 @end

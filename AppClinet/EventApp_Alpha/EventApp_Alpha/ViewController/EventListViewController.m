@@ -14,12 +14,13 @@
 #import "FormatingModel.h"
 #import "ProgressHUD.h"
 #import "UserModel.h"
+#import "RecommandContainerViewController.h"
 
 @interface EventListViewController ()
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *createButton;
 @property (strong,nonatomic)EventListFetchModel* model;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentController;
+
 
 @end
 
@@ -175,25 +176,25 @@ bool isUpdated,isBasedOnTime;
 {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [eventList count]+1;
+    return [eventList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    if (indexPath.row==0) {
-        SegmentControllerCell *cell= [tableView dequeueReusableCellWithIdentifier:@"SegmentControllerCell" forIndexPath:indexPath];
-        return cell;
-    }
-        else{
+//    
+//    if (indexPath.row==0) {
+//        SegmentControllerCell *cell= [tableView dequeueReusableCellWithIdentifier:@"SegmentControllerCell" forIndexPath:indexPath];
+//        return cell;
+//    }
+//        else{
         static NSString *CellIdentifier = @"cellTemplate";
         TemplateTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
         // Configure the cell...
-        NSDictionary* event=[eventList objectAtIndex:indexPath.row-1];
+        NSDictionary* event=[eventList objectAtIndex:indexPath.row];
         cell=[self modelToViewMatch:cell ForRowAtIndexPath:(NSIndexPath *)indexPath eventInstance:event];
             return cell;
-    }
+//    }
 }
 
 
@@ -217,9 +218,9 @@ bool isUpdated,isBasedOnTime;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
-        return 40;
-    }
+//    if (indexPath.row == 0) {
+//        return 40;
+//    }
     return 95;
 }
 
@@ -263,8 +264,13 @@ bool isUpdated,isBasedOnTime;
     if ([[segue identifier] isEqualToString:@"selectedSegue"]) {
         UIViewController *destination=[segue destinationViewController];
         UITableViewCell* cell=sender;
-        id obj=[eventList objectAtIndex:[[self.tableView indexPathForCell:cell] row]-1];
+        id obj=[eventList objectAtIndex:[[self.tableView indexPathForCell:cell] row]];
         [destination setValue:[obj valueForKey:@"id"] forKey:@"eventID"];
+    }
+    else if ([[segue identifier] isEqualToString:@"eventListToEventRecommend"]){
+        RecommandContainerViewController* viewController=[segue destinationViewController];
+        viewController.selectedSegmentIndex=2;
+        viewController.previousViewController=self;
     }
 }
 
