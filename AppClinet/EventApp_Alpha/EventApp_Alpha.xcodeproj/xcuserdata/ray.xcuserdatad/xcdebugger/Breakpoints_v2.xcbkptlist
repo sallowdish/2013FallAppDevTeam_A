@@ -310,15 +310,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EventApp_Alpha/Model/loginModel.m"
-            timestampString = "418149112.151689"
+            timestampString = "421188337.762935"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
             landmarkName = "-loginWithUsername:AndPassword:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1408,6 +1408,22 @@
             startingLineNumber = "271"
             endingLineNumber = "271"
             landmarkName = "-prepareForSegue:sender:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EventApp_Alpha/Model/loginModel.m"
+            timestampString = "421188422.396344"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "-connection:didReceiveAuthenticationChallenge:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

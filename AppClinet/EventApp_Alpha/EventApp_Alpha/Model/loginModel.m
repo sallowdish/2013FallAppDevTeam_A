@@ -9,11 +9,15 @@
 #import "LoginModel.h"
 #import "AppDelegate.h"
 @implementation LoginModel
+NSString *_username, *_password;
 
 -(void)loginWithUsername:(NSString*)username AndPassword:(NSString*) password{
-    NSURL* url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@:%@@%@%@%@%@", HTTPPREFIX, username,password,WEBSERVICEDOMAIN,WEBSERVICENAME,API,@"/token/1/"]];
-    NSMutableURLRequest* request=[NSMutableURLRequest requestWithURL:url];
+    _username=username;
+    _password=password;
+    NSURL* url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@", HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,API,@"/token/1/"]];
+    NSMutableURLRequest* request=[NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
     NSURLConnection* conn=[NSURLConnection connectionWithRequest:request delegate:self];
     self.receivedData=[NSMutableData dataWithCapacity:0];
     if (conn) {
@@ -23,6 +27,23 @@
 
 -(void)logoutCurrentUser{
     
+}
+
+-(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge{
+    if ([challenge previousFailureCount] == 0) {
+        NSLog(@"received authentication challenge");
+        NSURLCredential *newCredential = [NSURLCredential credentialWithUser:_username
+                                                                    password:_password
+                                                                 persistence:NSURLCredentialPersistenceForSession];
+        NSLog(@"credential created");
+        [[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
+        NSLog(@"responded to authentication challenge");
+    }
+    else {
+        NSLog(@"previous authentication failure");
+        self.receivedData=nil;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"failToLogin" object:nil];
+    }
 }
 
 
