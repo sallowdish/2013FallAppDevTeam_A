@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TemplateTableCell.h"
 
 @interface FormatingModel : NSObject
 +(NSArray*)pythonDateTimeToStringArray:(NSString*)pythonDateTimeInfo;
 +(NSString*)addressDictionaryToStringL:(NSDictionary*)address;
++(TemplateTableCell*)modelToViewMatch:(id)sender ForRowAtIndexPath:(NSIndexPath *)indexPath eventInstance:(NSDictionary*)event;
 @end

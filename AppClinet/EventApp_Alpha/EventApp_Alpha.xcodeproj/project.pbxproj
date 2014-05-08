@@ -54,6 +54,7 @@
 		71A6D0DE18CC234E005A0F6E /* redheart.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A6D0DD18CC234E005A0F6E /* redheart.png */; };
 		71AF5EFC18250D660013ABB3 /* EventFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF5EFB18250D660013ABB3 /* EventFetchModel.m */; };
 		71B763C11807830A00717D67 /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B763C01807830A00717D67 /* EventListViewController.m */; };
+		71C9B735191C3256004631D0 /* MyEventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9B734191C3256004631D0 /* MyEventTableViewController.m */; };
 		71D7AF50189DF3E70082A6AA /* event1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71D7AF4C189DF3E70082A6AA /* event1.jpg */; };
 		71D7AF51189DF3E70082A6AA /* event2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71D7AF4D189DF3E70082A6AA /* event2.jpg */; };
 		71D7AF52189DF3E70082A6AA /* event3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71D7AF4E189DF3E70082A6AA /* event3.jpg */; };
@@ -182,6 +183,8 @@
 		71AF5EFB18250D660013ABB3 /* EventFetchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventFetchModel.m; path = Model/EventFetchModel.m; sourceTree = "<group>"; };
 		71B763BF1807830A00717D67 /* EventListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventListViewController.h; path = ViewController/EventListViewController.h; sourceTree = "<group>"; };
 		71B763C01807830A00717D67 /* EventListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventListViewController.m; path = ViewController/EventListViewController.m; sourceTree = "<group>"; };
+		71C9B733191C3256004631D0 /* MyEventTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyEventTableViewController.h; path = ViewController/MyEventTableViewController.h; sourceTree = "<group>"; };
+		71C9B734191C3256004631D0 /* MyEventTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyEventTableViewController.m; path = ViewController/MyEventTableViewController.m; sourceTree = "<group>"; };
 		71D7AF4C189DF3E70082A6AA /* event1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = event1.jpg; sourceTree = "<group>"; };
 		71D7AF4D189DF3E70082A6AA /* event2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = event2.jpg; sourceTree = "<group>"; };
 		71D7AF4E189DF3E70082A6AA /* event3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = event3.jpg; sourceTree = "<group>"; };
@@ -606,6 +609,8 @@
 				71DFFA42182104C900269E3E /* SettingPageViewController.m */,
 				71EE8683187854B6007FD900 /* ProfilePageViewController.h */,
 				71EE8684187854B6007FD900 /* ProfilePageViewController.m */,
+				71C9B733191C3256004631D0 /* MyEventTableViewController.h */,
+				71C9B734191C3256004631D0 /* MyEventTableViewController.m */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -766,6 +771,7 @@
 				71D830BB18EB959300485B1B /* loginModel.m in Sources */,
 				719AF7D918EF8A3300075313 /* SegmentControllerCell.m in Sources */,
 				712A2C5B1883A4EA00BF3AC6 /* DataTransferModel.m in Sources */,
+				71C9B735191C3256004631D0 /* MyEventTableViewController.m in Sources */,
 				71AF5EFC18250D660013ABB3 /* EventFetchModel.m in Sources */,
 				71974BB51869A618004493DC /* CQMFloatingController.m in Sources */,
 				71D830C118EBF02100485B1B /* UserModel.m in Sources */,
