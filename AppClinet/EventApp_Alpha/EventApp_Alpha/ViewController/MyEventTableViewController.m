@@ -9,6 +9,9 @@
 #import "MyEventTableViewController.h"
 #import "FormatingModel.h"
 #import "EventListFetchModel.h"
+#import "EventDeleteModel.h"
+#import "ProgressHUD.h"
+#import "popoverAlterModel.h"
 
 @interface MyEventTableViewController ()
 
@@ -97,7 +100,25 @@ EventListFetchModel* model;
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //add code here for when you hit delete
+        [ProgressHUD show:@"Deleteing.."];
+        EventDeleteModel* model=[[EventDeleteModel alloc] init];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didDeleteSelectedEvent) name:@"didDeleteEvent" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailedDeleteEvent) name:@"didFailedDeleteEvent" object:nil];
+        [model deleteEvent:myEventList[indexPath.row]];
     }
+}
+
+-(void) didDeleteSelectedEvent{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self viewDidLoad];
+    [ProgressHUD dismiss];
+
+}
+
+-(void) didFailedDeleteEvent{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [popoverAlterModel alterWithTitle:@"Failed" Message:@"Please try again later."];
+    [ProgressHUD dismiss];
 }
 
 @end

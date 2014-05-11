@@ -15,6 +15,7 @@
 
 -(void)prepareForConnection;
 -(void)fetchDataWithUrl:(NSURL*)url;
+-(void)fetchData:(NSURLRequest*)request;
 -(void)postData:(NSData*)data WithUrl:(NSURL *)url;
 -(void)patchData:(NSData*)data WithURL:(NSURL*)url;
 -(NSMutableURLRequest*)configPostRequest:(NSMutableURLRequest*)request withData:(NSData*)data;

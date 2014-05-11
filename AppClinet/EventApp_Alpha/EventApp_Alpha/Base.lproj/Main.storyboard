@@ -1619,7 +1619,7 @@
                                                     <rect key="frame" x="12" y="7" width="296" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                                    <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1818,9 +1818,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="iuq-7Q-Cl0" kind="push" id="nVx-x7-EDJ"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1872,13 +1869,15 @@
                     <connections>
                         <outlet property="loginCell" destination="Vax-FL-i0r" id="MhV-D4-bMA"/>
                         <outlet property="logoutCell" destination="45h-0f-Wmt" id="0mL-ds-Hl4"/>
+                        <outlet property="myEventListCell" destination="iDN-ip-LzD" id="F6n-ff-Fxh"/>
                         <outlet property="prompt" destination="oca-MB-gzX" id="vRb-IU-jY0"/>
                         <outlet property="userProfileImage" destination="HEo-RJ-mF3" id="vZ5-gV-Jxb"/>
+                        <segue destination="iuq-7Q-Cl0" kind="push" identifier="myEventListSegue" id="Bmc-q0-6pm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCQ-2i-nEU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="537" y="1878"/>
+            <point key="canvasLocation" x="537" y="1887"/>
         </scene>
         <!--My Event Table View Controller-->
         <scene sceneID="8KL-Lu-Pkd">

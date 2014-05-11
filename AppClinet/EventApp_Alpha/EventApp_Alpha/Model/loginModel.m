@@ -25,16 +25,13 @@ NSString *_username, *_password;
     }
 }
 
--(void)logoutCurrentUser{
-    
-}
 
 -(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge{
     if ([challenge previousFailureCount] == 0) {
         NSLog(@"received authentication challenge");
         NSURLCredential *newCredential = [NSURLCredential credentialWithUser:_username
                                                                     password:_password
-                                                                 persistence:NSURLCredentialPersistenceForSession];
+                                                                 persistence:NSURLCredentialPersistenceNone];
         NSLog(@"credential created");
         [[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
         NSLog(@"responded to authentication challenge");
@@ -60,6 +57,7 @@ NSString *_username, *_password;
     
     if (self.data) {
         self.jsonInfo=[NSJSONSerialization JSONObjectWithData:self.data options:NSJSONReadingMutableContainers error:nil];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"didLogin" object:nil];
     }
 }
 

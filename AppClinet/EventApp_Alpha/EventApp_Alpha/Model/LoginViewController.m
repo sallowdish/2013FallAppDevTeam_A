@@ -114,6 +114,7 @@ UserModel* model;
 
 -(void) didLogin{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [model updataUserInfo];
     [[ProgressHUD class] dismiss];
     
     self.user_profile_image.image=[UserModel getProfileImage];

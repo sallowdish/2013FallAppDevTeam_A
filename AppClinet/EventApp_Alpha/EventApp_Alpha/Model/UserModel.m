@@ -58,18 +58,26 @@ static bool isLogin,isDevelopment;
 
 
 
-+(void)cleanUpUserInfo{
-    username=nil;
-    userResourceURL=nil;
-    userAPIKey=nil;
-    current_user=nil;
-}
+//+(void)cleanUpUserInfo{
+//    username=nil;
+//    userResourceURL=nil;
+//    userAPIKey=nil;
+//    current_user=nil;
+//}
 
 -(void)cleanUpUserInfo{
     username=nil;
     userResourceURL=nil;
     userAPIKey=nil;
     current_user=nil;
+    self.data=nil;
+    self.jsonInfo=nil;
+//    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+//    for ( NSHTTPCookie* cookie in [storage cookies])
+//    {
+//        [storage deleteCookie:cookie];
+//    }
+//    [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
 
 
@@ -125,4 +133,8 @@ static bool isLogin,isDevelopment;
     return [[[UIApplication sharedApplication] keyWindow] rootViewController];
 }
 
+
+-(void)updateUserInfo{
+    
+}
 @end

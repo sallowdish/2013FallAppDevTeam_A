@@ -55,6 +55,7 @@
 		71AF5EFC18250D660013ABB3 /* EventFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF5EFB18250D660013ABB3 /* EventFetchModel.m */; };
 		71B763C11807830A00717D67 /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B763C01807830A00717D67 /* EventListViewController.m */; };
 		71C9B735191C3256004631D0 /* MyEventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9B734191C3256004631D0 /* MyEventTableViewController.m */; };
+		71C9B738191F34AE004631D0 /* EventDeleteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9B737191F34AE004631D0 /* EventDeleteModel.m */; };
 		71D7AF50189DF3E70082A6AA /* event1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71D7AF4C189DF3E70082A6AA /* event1.jpg */; };
 		71D7AF51189DF3E70082A6AA /* event2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71D7AF4D189DF3E70082A6AA /* event2.jpg */; };
 		71D7AF52189DF3E70082A6AA /* event3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71D7AF4E189DF3E70082A6AA /* event3.jpg */; };
@@ -185,6 +186,8 @@
 		71B763C01807830A00717D67 /* EventListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventListViewController.m; path = ViewController/EventListViewController.m; sourceTree = "<group>"; };
 		71C9B733191C3256004631D0 /* MyEventTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyEventTableViewController.h; path = ViewController/MyEventTableViewController.h; sourceTree = "<group>"; };
 		71C9B734191C3256004631D0 /* MyEventTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyEventTableViewController.m; path = ViewController/MyEventTableViewController.m; sourceTree = "<group>"; };
+		71C9B736191F34AE004631D0 /* EventDeleteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventDeleteModel.h; path = Model/EventDeleteModel.h; sourceTree = "<group>"; };
+		71C9B737191F34AE004631D0 /* EventDeleteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventDeleteModel.m; path = Model/EventDeleteModel.m; sourceTree = "<group>"; };
 		71D7AF4C189DF3E70082A6AA /* event1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = event1.jpg; sourceTree = "<group>"; };
 		71D7AF4D189DF3E70082A6AA /* event2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = event2.jpg; sourceTree = "<group>"; };
 		71D7AF4E189DF3E70082A6AA /* event3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = event3.jpg; sourceTree = "<group>"; };
@@ -430,6 +433,8 @@
 				7185DF9518B9609A00C3DE90 /* EventPostModel.m */,
 				71D830B518EAAE6D00485B1B /* EventJoinAndLikeModel.h */,
 				71D830B618EAAE6D00485B1B /* EventJoinAndLikeModel.m */,
+				71C9B736191F34AE004631D0 /* EventDeleteModel.h */,
+				71C9B737191F34AE004631D0 /* EventDeleteModel.m */,
 			);
 			name = Event;
 			sourceTree = "<group>";
@@ -780,6 +785,7 @@
 				71094D71190D74A30098751A /* ImageModel.m in Sources */,
 				7185DF9C18B9AF4F00C3DE90 /* ProgressHUD.m in Sources */,
 				7103FEA118AA1A220047EFAD /* CommentViewController.m in Sources */,
+				71C9B738191F34AE004631D0 /* EventDeleteModel.m in Sources */,
 				71974BB91869A618004493DC /* CQMPathUtilities.m in Sources */,
 				719CE1DA1874627500D2F058 /* FormatingModel.m in Sources */,
 				71094D69190D63800098751A /* GKCropBorderView.m in Sources */,

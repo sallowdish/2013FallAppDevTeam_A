@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *prompt;
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
 
+@property (weak, nonatomic) IBOutlet UITableViewCell *myEventListCell;
 
 @end	
 
@@ -50,6 +51,10 @@
     UITapGestureRecognizer* tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(logoutTapped)];
     tap.numberOfTapsRequired=1;
     [self.logoutCell addGestureRecognizer:tap];
+    
+    tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(myEventListTapped:)];
+    tap.numberOfTapsRequired=1;
+    [self.myEventListCell addGestureRecognizer:tap];
     
 
 }
@@ -86,7 +91,7 @@
 
 -(void)logoutTapped{
     if ([UserModel isLogin]) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTopCell) name:@"loginProcessFinish" object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTopCell) name:@"loginProcessFinish" object:nil];
         UserModel* model=[[UserModel alloc] init];
         [model logoutCurrentUser];
         [self reloadTopCell];
@@ -101,10 +106,15 @@
 //    [self.view setNeedsDisplay];
 }
 
-//- (IBAction)onclickLoginViaWeibo:(id)sender {
-////    [self loadLoginView];
-//    [self popOver:sender];
-//}
+- (IBAction)myEventListTapped:(id)sender {
+    if ([UserModel isLogin]) {
+        [self performSegueWithIdentifier:@"myEventListSegue" sender:self];
+    }
+    else{
+        [UserModel popupLoginViewToViewController:self];
+    }
+
+}
 
 -(void)popOver
 {

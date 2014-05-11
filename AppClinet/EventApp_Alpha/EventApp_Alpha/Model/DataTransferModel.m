@@ -27,6 +27,18 @@ NSError* error;
     }
 }
 
+-(void)fetchData:(NSURLRequest*)request{
+    //NSData* result;
+    NSURLConnection* conn=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+    if (!conn) {
+        receivedData=nil;
+    }
+    else{
+        [self prepareForConnection];
+        [conn start];
+    }
+}
+
 -(void)postData:(NSData*)data WithUrl:(NSURL *)url{
     NSMutableURLRequest* request=[NSMutableURLRequest requestWithURL:url];
     @try {
