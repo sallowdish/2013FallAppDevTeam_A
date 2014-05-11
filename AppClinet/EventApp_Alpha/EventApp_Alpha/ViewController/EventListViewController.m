@@ -76,15 +76,21 @@ bool isUpdated,isBasedOnTime;
     self.refreshControl=f5;
     
     
-    if (isBasedOnTime) {
-        [self fetchNewDataFromServer:@"time"];
-
-    }else{
-        [self fetchNewDataFromServer:@"hot"];
-    }
+//    if (isBasedOnTime) {
+//        [self fetchNewDataFromServer:@"time"];
+//
+//    }else{
+//        [self fetchNewDataFromServer:@"hot"];
+//    }
         //start appearing
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:animated];
+    [self fetchNewDataFromServer:@"time"];
+//    [self.tableView reloadData];
+    [super viewWillAppear:animated];
+}
 
 
 -(void)fetchNewDataFromServer:(NSString*)mode{
@@ -107,10 +113,6 @@ bool isUpdated,isBasedOnTime;
     [self.tableView reloadData];
 }
 
--(void) viewWillAppear:(BOOL)animated{
-    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:animated];
-    [super viewWillAppear:animated];
-}
 
 -(void) removeFromNSNotificationCenter{
     if (isUpdated==false) {

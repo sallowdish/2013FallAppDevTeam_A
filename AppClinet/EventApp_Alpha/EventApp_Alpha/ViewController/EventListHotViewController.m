@@ -73,7 +73,7 @@ bool isUpdated;
     
     self.refreshControl=f5;
     
-    [self fetchNewDataFromServer];
+    
     //start appearing
 }
 
@@ -98,7 +98,7 @@ bool isUpdated;
 }
 
 -(void) viewWillAppear:(BOOL)animated{
-    
+    [self fetchNewDataFromServer];
 }
 
 -(void) removeFromNSNotificationCenter{
