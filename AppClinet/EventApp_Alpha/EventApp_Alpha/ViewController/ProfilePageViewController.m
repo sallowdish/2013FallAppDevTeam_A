@@ -50,7 +50,7 @@
     
 	// Visual Setup
     [self navigationController].automaticallyAdjustsScrollViewInsets=YES;
-    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height*1.4)];
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height*1.35)];
     
     //Set transparent background
     for (UIView *view in self.needTransparent) {
@@ -80,11 +80,16 @@
     
     
     
-    [self.scrollView removeFromSuperview];
-    self.scrollView.frame=CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
-    [self.view addSubview:self.scrollView];
+//    [self.scrollView removeFromSuperview];
+//    self.scrollView.frame=CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
+//    [self.view addSubview:self.scrollView];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self.scrollView removeFromSuperview];
+    self.scrollView.frame=CGRectMake(0, self.navigationController.navigationBar.frame.size.height, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
+    [self.view addSubview:self.scrollView];
+}
 -(void)drawShadowForView:(UIView*)view{
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:view.bounds];
     view.layer.masksToBounds = NO;
