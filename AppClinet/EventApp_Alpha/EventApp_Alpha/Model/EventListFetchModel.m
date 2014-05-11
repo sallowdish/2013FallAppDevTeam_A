@@ -8,6 +8,7 @@
 
 #import "EventListFetchModel.h"
 #import "DataTransferModel.h"
+#import "UserModel.h"
 
 
 @implementation EventListFetchModel
@@ -40,7 +41,7 @@ static NSArray* eventList;
         else if ([mode isEqualToString:@"hot"]){
             targeturl=[NSURL URLWithString:[[targeturl absoluteString] stringByAppendingString:@"&order_by=-event_rsvp"]];
         }
-        NSLog(@"%@",[targeturl absoluteString]);
+//        NSLog(@"%@",[targeturl absoluteString]);
         [self fetchDataWithUrl:targeturl];
         
 
@@ -49,6 +50,19 @@ static NSArray* eventList;
     }
     @catch (NSException *exception) {
         NSLog(@"%@:%@",exception.name,exception.reason);
+    }
+}
+
+-(void) fetchEventListWithUser{
+    @try {
+        NSURL* targeturl=[DataTransferModel constructFetchRequestWithResource:@"/event/" WithConstrain:NOCONSTRAIN WithFormat:JSONFORMAT];
+        targeturl=[NSURL URLWithString:[[targeturl absoluteString] stringByAppendingString:[NSString stringWithFormat:@"&fk_event_poster_user__username=%@", [UserModel username]]]];
+        NSLog(@"%@",[targeturl absoluteString]);
+        [self fetchDataWithUrl:targeturl];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@:%@",exception.name,exception.reason);
+        @throw exception;
     }
 }
 
@@ -78,7 +92,7 @@ static NSArray* eventList;
         }
         else
         {
-            //                NSLog(@"%@",jsonContent);
+            //NSLog(@"%@",jsonContent);
         }
     
         [[NSNotificationCenter defaultCenter] postNotificationName:@"didFetchEventListWithMode" object:eventList];
@@ -105,14 +119,14 @@ static NSArray* eventList;
     eventList=rawData;
 }
 
--(UIImage*)fetchProfileImageForUser:(NSDictionary*) user{
-    if (![[user objectForKey:@"fk_user_image"] isEqual:[NSNull null]]) {
-        NSURL* url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,[[user objectForKey:@"fk_user_image"] objectForKey:@"path"]]];
-        return [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
-    }else{
-        return [UIImage imageNamed:@"default_profile_5_bigger.png"];
-    }
-}
+//-(UIImage*)fetchProfileImageForUser:(NSDictionary*) user{
+//    if (![[user objectForKey:@"fk_user_image"] isEqual:[NSNull null]]) {
+//        NSURL* url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,[[user objectForKey:@"fk_user_image"] objectForKey:@"path"]]];
+//        return [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+//    }else{
+//        return [UIImage imageNamed:@"default_profile_5_bigger.png"];
+//    }
+//}
 
 
 -(void) fetchEventListFromFile

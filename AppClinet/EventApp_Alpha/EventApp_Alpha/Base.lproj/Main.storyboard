@@ -1746,7 +1746,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="115"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="152_152icon.png" id="HEo-RJ-mF3">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Blank-Profile-Image.png" id="HEo-RJ-mF3">
                                                     <rect key="frame" x="20" y="8" width="100" height="100"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
@@ -1818,6 +1818,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="iuq-7Q-Cl0" kind="push" id="nVx-x7-EDJ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1875,27 +1878,19 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCQ-2i-nEU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="669" y="2006"/>
+            <point key="canvasLocation" x="537" y="1878"/>
         </scene>
-        <!--Table View Controller-->
+        <!--My Event Table View Controller-->
         <scene sceneID="8KL-Lu-Pkd">
             <objects>
-                <tableViewController id="iuq-7Q-Cl0" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="wM3-M3-SPO">
+                <tableViewController id="iuq-7Q-Cl0" customClass="MyEventTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="wM3-M3-SPO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="gHs-9c-016">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gHs-9c-016" id="EDu-6V-T2c">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellTemplate" rowHeight="95" id="OtE-b4-YkS" customClass="TemplateTableCell">
-                                <rect key="frame" x="0.0" y="66" width="320" height="95"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="95"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OtE-b4-YkS" id="2o3-D2-7fC">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
@@ -2007,10 +2002,11 @@
                             <outlet property="delegate" destination="iuq-7Q-Cl0" id="5kt-6R-6Hf"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="UkT-4j-uNK"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YOs-Qm-3op" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1123" y="1887"/>
+            <point key="canvasLocation" x="995" y="1887"/>
         </scene>
         <!--Profile Page View Controller-->
         <scene sceneID="kaU-dT-CJh">
@@ -2280,7 +2276,7 @@ XX日發佈了XXXX活動 .
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LqO-z8-I6E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1482" y="1765"/>
+            <point key="canvasLocation" x="1738" y="2481"/>
         </scene>
         <!--Recommand View Controller - Recommend-->
         <scene sceneID="CfP-EL-xCs">
@@ -2361,7 +2357,6 @@ XX日發佈了XXXX活動 .
         </scene>
     </scenes>
     <resources>
-        <image name="152_152icon.png" width="153" height="153"/>
         <image name="Blank-Profile-Image.png" width="128" height="128"/>
         <image name="Calender" width="204" height="204"/>
         <image name="Photos" width="30" height="30"/>

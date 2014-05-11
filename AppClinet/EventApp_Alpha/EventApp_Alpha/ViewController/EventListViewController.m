@@ -192,7 +192,7 @@ bool isUpdated,isBasedOnTime;
         
         // Configure the cell...
         NSDictionary* event=[eventList objectAtIndex:indexPath.row];
-        cell=[self modelToViewMatch:cell ForRowAtIndexPath:(NSIndexPath *)indexPath eventInstance:event];
+        cell=[FormatingModel modelToViewMatch:cell ForRowAtIndexPath:(NSIndexPath*)indexPath eventInstance:event];
             return cell;
 //    }
 }
@@ -225,40 +225,7 @@ bool isUpdated,isBasedOnTime;
 }
 
 
--(TemplateTableCell*)modelToViewMatch:(id)sender ForRowAtIndexPath:(NSIndexPath *)indexPath eventInstance:(NSDictionary*)event
-{
-    
-    TemplateTableCell* cell=(TemplateTableCell*)sender;
-    for (int i=101; i<MAXTAG+1; i++) {
-        UIView* subview=[cell viewWithTag:i];
-        subview.layer.cornerRadius=6;
-        subview.layer.masksToBounds=YES;
-    }
-//    [cell.profileImage.layer setBorderColor: [[UIColor grayColor] CGColor]];
-//    [cell.profileImage.layer setBorderWidth: 2.0];
-    cell.eventNameLabel.text=[event objectForKey:@"event_title"];
-    cell.hosterLabel.text=[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"username"];
-    cell.dataLabel.text=[NSString stringWithFormat:@"%@ | %@",[event objectForKey:@"event_date"],[event objectForKey:@"event_time"]];
-    cell.locationLabel.text=[FormatingModel addressDictionaryToStringL:[event objectForKey:@"fk_address"]];
-    cell.likeLabel.text=[NSString stringWithFormat: @"%@",[event objectForKey:@"event_like"] ];
-    cell.RSVPLabel.text=[NSString stringWithFormat: @"%@",[event objectForKey:@"event_rsvp"] ];;
-    
-    
-    UIImage* img=nil;
-    if (![[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"fk_user_image"] isEqual:[NSNull null]]) {
-        NSString* path=[[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"fk_user_image"] objectForKey:@"path"];
-        NSURL* targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@", HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,path]];
-        NSData* data=[NSData dataWithContentsOfURL:targetURL];
-        img=[UIImage imageWithData:data];
-    }
-    else{
-        img=[UIImage imageNamed:@"152_152icon.png"];
-    }
-    
-    
-    cell.profileImage.image=img;
-    return cell;
-}
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([[segue identifier] isEqualToString:@"selectedSegue"]) {

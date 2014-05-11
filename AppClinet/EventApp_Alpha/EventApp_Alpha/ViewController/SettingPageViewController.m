@@ -71,7 +71,8 @@
         tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(loginTapped)];
         tap.numberOfTapsRequired=1;
         [self.loginCell addGestureRecognizer:tap];
-        self.userProfileImage.image=[UIImage imageNamed:@"default_profile_5_bigger.png"];
+        
+        self.userProfileImage.image=[UIImage imageNamed:@"Blank-Profile-Image.png"];
         self.prompt.text=@"Tap to login";
     }
     [[NSNotificationCenter defaultCenter] removeObserver:self];

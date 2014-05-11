@@ -10,7 +10,7 @@
 #import "UserModel.h"
 //#import "WebServiceCommunicationModel.h"
 
-#define defaultLogin 0
+#define defaultLogin 1
 
 @implementation AppDelegate
 
@@ -73,7 +73,7 @@
     if (defaultLogin) {
         UserModel* model=[[UserModel alloc] init];
         [UserModel turnOnDevelopmentMode];
-        [model loginWithUsername:@"tester" AndPassword:@"1"];
+        [model loginWithUsername:@"ray" AndPassword:@"1"];
 
     }
 }

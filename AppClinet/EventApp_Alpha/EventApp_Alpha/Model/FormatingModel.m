@@ -46,16 +46,26 @@
     
     
     UIImage* img=nil;
-    if (![[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"fk_user_image"] isEqual:[NSNull null]]) {
-        NSString* path=[[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"fk_user_image"] objectForKey:@"path"];
-        NSURL* targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@", HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,path]];
-        NSData* data=[NSData dataWithContentsOfURL:targetURL];
-        img=[UIImage imageWithData:data];
+    @try {
+        if (![[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"fk_user_image"] isEqual:[NSNull null]]) {
+            NSString* path=[[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"fk_user_image"] objectForKey:@"path"];
+            NSURL* targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@", HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,path]];
+            NSData* data=[NSData dataWithContentsOfURL:targetURL];
+            if (data) {
+                img=[UIImage imageWithData:data];
+            }else{
+                @throw [NSException exceptionWithName:@"fail to fetch event image" reason:nil userInfo:nil];
+            }
+            
+        }else{
+            @throw [NSException exceptionWithName:@"no event image" reason:nil userInfo:nil];
+        }
+
     }
-    else{
+    @catch (NSException *exception) {
         img=[UIImage imageNamed:@"152_152icon.png"];
+
     }
-    
     
     cell.profileImage.image=img;
     return cell;
