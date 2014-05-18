@@ -167,7 +167,6 @@
                     <connections>
                         <outlet property="createButton" destination="mOi-j9-hC6" id="qoS-k5-f7p"/>
                         <outlet property="segmentController" destination="BKz-Ok-Ywf" id="KL6-He-cDj"/>
-                        <segue destination="GpO-o8-XJ2" kind="push" identifier="eventListToEventRecommend" id="ESd-Ii-lYT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U7l-7q-2Kl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1194,12 +1193,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="1At-Ri-dZK" kind="relationship" relationship="rootViewController" id="mtf-g9-chA"/>
+                        <segue destination="GpO-o8-XJ2" kind="relationship" relationship="rootViewController" id="4Tz-Kb-lZB"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3TA-8B-ktS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-10" y="455"/>
+            <point key="canvasLocation" x="-102" y="405"/>
         </scene>
         <!--View Controller - Unavailable-->
         <scene sceneID="MIp-nj-FSn">
@@ -1220,7 +1219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i1G-SQ-JyR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="417" y="455"/>
+            <point key="canvasLocation" x="413" y="943"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="Cmc-8g-aUs">
@@ -1239,7 +1238,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Zuq-D1-DZp">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="530"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="496"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <view tag="100" contentMode="scaleToFill" id="4z2-DX-Reg">
@@ -2282,7 +2281,7 @@ XX日發佈了XXXX活動 .
             <objects>
                 <viewController id="Xma-vz-yPb" userLabel="Recommand View Controller - Recommend" customClass="RecommandViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dmn-St-wMq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="486"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.25" colorSpace="calibratedRGB"/>
                     </view>
@@ -2302,20 +2301,8 @@ XX日發佈了XXXX活動 .
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="26M-Vd-ezg">
-                                <rect key="frame" x="20" y="72" width="280" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="最新"/>
-                                    <segment title="最熱"/>
-                                    <segment title="推薦"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segementeationPressed:" destination="GpO-o8-XJ2" eventType="valueChanged" id="PnL-Yf-O7R"/>
-                                </connections>
-                            </segmentedControl>
                             <containerView contentMode="scaleToFill" id="0bV-uV-fhd">
-                                <rect key="frame" x="0.0" y="108" width="320" height="486"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
@@ -2326,13 +2313,10 @@ XX日發佈了XXXX活動 .
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="HkG-4n-NsK"/>
-                    <connections>
-                        <outlet property="segmentController" destination="26M-Vd-ezg" id="GGd-BG-Wgg"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvk-Ga-KQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1239" y="11"/>
+            <point key="canvasLocation" x="403" y="175"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">

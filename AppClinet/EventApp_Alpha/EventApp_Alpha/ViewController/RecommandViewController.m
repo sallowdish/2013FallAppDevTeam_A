@@ -50,10 +50,21 @@
     //Initial view
     self.pageViewController=[self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
     self.pageViewController.dataSource=self;
-    [self.pageViewController setViewControllers:@[[self viewControllerAtIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    UIViewController* initialViewController=[self viewControllerAtIndex:0];
+    if (initialViewController) {
+        [self.pageViewController setViewControllers:@[initialViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    }else{
+        UIViewController* alternativeViewController=[[UIViewController alloc]init];
+        UILabel* msg=[[UILabel alloc] init];
+        [msg setText:@"No Recommanded Event for now."];
+        msg.frame=CGRectMake(alternativeViewController.view.frame.size.width/2, alternativeViewController.view.frame.size.height/2, msg.frame.size.width, msg.frame.size.height);
+        [alternativeViewController.view addSubview:msg];
+        [self.pageViewController setViewControllers:@[] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    }
+    
     
     //add page view controller to main page
-    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-45);
+    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];

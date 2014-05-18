@@ -30,7 +30,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self.scrollView setScrollEnabled:YES];
-    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height*1.3)];
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
     //model to view matching
     self.eventTitleLabel.text=self.eventTitle;
     self.eventDateLabel.text=self.eventDate;
