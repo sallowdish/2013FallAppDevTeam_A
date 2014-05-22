@@ -10,7 +10,7 @@
 
 @implementation SignUpModel
 
-isFailed=NO;
+bool isFailed=NO;
 
 -(void)signUp:(NSDictionary *)info{
     NSURL* url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@", HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,API,@"/user/"]];

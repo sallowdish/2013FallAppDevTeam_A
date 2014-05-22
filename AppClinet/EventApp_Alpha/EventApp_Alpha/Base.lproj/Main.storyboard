@@ -23,7 +23,6 @@
                                     <segments>
                                         <segment title="最新"/>
                                         <segment title="最熱"/>
-                                        <segment title="推薦"/>
                                     </segments>
                                     <connections>
                                         <action selector="segementationButtonPressed:" destination="Weq-5w-scL" eventType="valueChanged" id="6r5-bN-9t5"/>
@@ -435,33 +434,8 @@
                                             <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="gqo-Nl-GG3">
-                                        <rect key="frame" x="0.0" y="483" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gqo-Nl-GG3" id="PuS-YY-0Ft">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cMO-LB-QPi">
-                                                    <rect key="frame" x="20" y="11" width="50" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="aNK-Iy-hx0">
-                                                    <rect key="frame" x="85" y="11" width="22" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <state key="normal">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                </button>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="62" id="Fss-Br-d86">
-                                        <rect key="frame" x="0.0" y="527" width="320" height="62"/>
+                                        <rect key="frame" x="0.0" y="483" width="320" height="62"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fss-Br-d86" id="4Xf-gR-uWm">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
@@ -489,7 +463,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="102" id="YBy-qi-DPD">
-                                        <rect key="frame" x="0.0" y="589" width="320" height="102"/>
+                                        <rect key="frame" x="0.0" y="545" width="320" height="102"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YBy-qi-DPD" id="fCc-Vt-HqT">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
@@ -902,11 +876,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" id="3hS-ke-OIA">
-                                <rect key="frame" x="0.0" y="67" width="320" height="1000"/>
+                                <rect key="frame" x="0.0" y="65" width="320" height="600"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <subviews>
-                                    <view tag="99" contentMode="scaleToFill" id="YZQ-rO-Ab1">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="497"/>
+                                    <view tag="99" contentMode="scaleToFill" id="YZQ-rO-Ab1" userLabel="Container">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="598"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="pXL-20-qbC" userLabel="Top">
@@ -1055,21 +1029,42 @@
                                                 </subviews>
                                             </view>
                                             <view tag="103" contentMode="scaleToFill" id="Afz-yz-1my" userLabel="Detail">
-                                                <rect key="frame" x="10" y="168" width="300" height="309"/>
+                                                <rect key="frame" x="10" y="178" width="300" height="400"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" id="4cw-FZ-ilY">
-                                                        <rect key="frame" x="0.0" y="79" width="300" height="188"/>
+                                                        <rect key="frame" x="10" y="125" width="280" height="281"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Zwh-zs-7Oz">
+                                                        <rect key="frame" x="0.0" y="77" width="150" height="39"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" title="Description">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="descriptionTabTapped:" destination="Fec-tY-Qmi" eventType="touchUpInside" id="4jG-Dn-MfE"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CWx-zO-gz8">
+                                                        <rect key="frame" x="150" y="77" width="150" height="40"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <state key="normal" title="Comments">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="commentTabTapped:" destination="Fec-tY-Qmi" eventType="touchUpInside" id="VZl-QH-t3j"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             </view>
                                             <view contentMode="scaleToFill" id="VBs-Uo-q3v" userLabel="Viewed People">
-                                                <rect key="frame" x="0.0" y="175" width="320" height="65"/>
+                                                <rect key="frame" x="0.0" y="190" width="320" height="65"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event1.jpg" id="Jba-u4-UG9">
@@ -1113,8 +1108,12 @@
                     <navigationItem key="navigationItem" title="Event Details" id="Hhk-Q0-CQW"/>
                     <connections>
                         <outlet property="RSVP" destination="jZp-lN-PIT" id="hXB-Bt-zo0"/>
+                        <outlet property="commentsTab" destination="CWx-zO-gz8" id="KZE-0A-0E1"/>
+                        <outlet property="containerView" destination="YZQ-rO-Ab1" id="UdZ-0s-pN5"/>
                         <outlet property="dateTime" destination="dXw-M4-vBq" id="7i1-Ey-qPG"/>
                         <outlet property="description" destination="4cw-FZ-ilY" id="9XV-eF-IPn"/>
+                        <outlet property="descriptionTab" destination="Zwh-zs-7Oz" id="LJj-XU-9q8"/>
+                        <outlet property="detailSpanArea" destination="Afz-yz-1my" id="OeN-9m-Pbv"/>
                         <outlet property="eventName" destination="mzh-6e-b07" id="FX9-6k-pdS"/>
                         <outlet property="hoster" destination="vi5-jL-Whu" id="Ijq-9u-Nmg"/>
                         <outlet property="images" destination="PpP-PB-3Ba" id="oyn-DK-6BP"/>
@@ -1199,27 +1198,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3TA-8B-ktS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-102" y="405"/>
-        </scene>
-        <!--View Controller - Unavailable-->
-        <scene sceneID="MIp-nj-FSn">
-            <objects>
-                <viewController id="1At-Ri-dZK" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="n9p-e3-1dK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="underconstruction.jpg" id="LWq-MM-UEb">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Unavailable" id="OZv-G7-M1l"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i1G-SQ-JyR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="413" y="943"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="Cmc-8g-aUs">
@@ -2359,7 +2337,6 @@ XX日發佈了XXXX活動 .
         <image name="profileImage.png" width="300" height="300"/>
         <image name="redheart.png" width="64" height="64"/>
         <image name="shopping" width="30" height="30"/>
-        <image name="underconstruction.jpg" width="407" height="572"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

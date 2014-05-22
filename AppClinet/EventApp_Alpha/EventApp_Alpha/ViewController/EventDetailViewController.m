@@ -16,6 +16,7 @@
 #import "FullScreenImageController.h"
 #import "ProfilePageViewController.h"
 #import "AddressInfoPageViewController.h"
+#undef MAXTAG
 #define MAXTAG 104
 @interface EventDetailViewController ()
 @property (strong,nonatomic) NSDictionary* event;
@@ -24,6 +25,9 @@
 @property (strong, nonatomic) NSMutableArray *joinedPeopleIcons;
 @property (weak, nonatomic) IBOutlet UIView *joinedPeopleSpanArea;
 @property (weak, nonatomic) IBOutlet UILabel *joinedPeopleLabel;
+@property (weak, nonatomic) IBOutlet UIButton *descriptionTab;
+@property (weak, nonatomic) IBOutlet UIButton *commentsTab;
+@property (weak, nonatomic) IBOutlet UIView *detailSpanArea;
 @end
 
 @implementation EventDetailViewController
@@ -44,9 +48,12 @@ EventJoinAndLikeModel* jlmodel;
 
 - (void)viewDidLoad
 {
-    [self.scrollView setScrollEnabled:YES];
-    [self.scrollView setContentSize:CGSizeMake(320,self.scrollView.frame.size.height*1.2)];
     [super viewDidLoad];
+    self.scrollView.hidden=YES;
+    [self.scrollView setScrollEnabled:YES];
+    CGSize contentsize=CGSizeMake(320,self.containerView.frame.size.height*1.2+self.navigationController.navigationBar.frame.size.height);
+    [self.scrollView setContentSize:contentsize];
+    
     
     isJoined=NO;
     isLiked=NO;
@@ -119,31 +126,8 @@ EventJoinAndLikeModel* jlmodel;
     [jlmodel countRSVP:event];
 }
 
--(void) getLikeInfo{
-    //start listen to fetching joined people
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetLikeInfo) name:@"didFinishCountingLike" object:nil];
-    [jlmodel countLike:event];
-}
-
--(void) didGetLikeInfo{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFinishCountingLike" object:nil];
-    @try {
-        NSArray* like=[jlmodel.json objectForKey:@"objects"];
-        [self.likeList removeAllObjects];
-        for (int i = 0; i<like.count; i++) {
-            [self.likeList addObject:[(NSDictionary*)like[i] objectForKey:@"fk_user"]];
-        }
-    }
-    @catch (NSException *exception) {
-        NSLog(@"%@",exception.reason);
-    }
-    //visual setup
-    self.like.text=[NSString stringWithFormat:@"%d",[self.likeList count]];
-    [ProgressHUD dismiss];
-}
-
 -(void)didGetRSVPInfo{
-//    NSLog(@"");
+    //    NSLog(@"");
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFinishCountingRSVP" object:nil];
     @try {
         NSArray* RSVP=[jlmodel.json objectForKey:@"objects"];
@@ -158,10 +142,10 @@ EventJoinAndLikeModel* jlmodel;
     
     //visual setup
     if (![[event objectForKey:@"event_capacity"] isEqual:[NSNull null]]) {
-        self.RSVP.text=[NSString stringWithFormat:@"%d/%@",[self.RSVPList count],[event objectForKey:@"event_capacity"]];
+        self.RSVP.text=[NSString stringWithFormat:@"%lu/%@",[self.RSVPList count],[event objectForKey:@"event_capacity"]];
     }
     else{
-        self.RSVP.text=[NSString stringWithFormat:@"%d/∞",[self.RSVPList count]];
+        self.RSVP.text=[NSString stringWithFormat:@"%lu/∞",[self.RSVPList count]];
     }
     //Visual setup
     [[self.joinedPeopleSpanArea subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -198,9 +182,35 @@ EventJoinAndLikeModel* jlmodel;
     self.joinedPeopleLabel.frame=CGRectMake(basex, self.joinedPeopleLabel.frame.origin.y, self.joinedPeopleLabel.frame.size.width, self.joinedPeopleLabel.frame.size.height);
     [self.joinedPeopleSpanArea addSubview:self.joinedPeopleLabel];
     //stop listening to fetching joined people
-
+    
     [self getLikeInfo];
 }
+
+
+-(void) getLikeInfo{
+    //start listen to fetching joined people
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetLikeInfo) name:@"didFinishCountingLike" object:nil];
+    [jlmodel countLike:event];
+}
+
+-(void) didGetLikeInfo{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFinishCountingLike" object:nil];
+    @try {
+        NSArray* like=[jlmodel.json objectForKey:@"objects"];
+        [self.likeList removeAllObjects];
+        for (int i = 0; i<like.count; i++) {
+            [self.likeList addObject:[(NSDictionary*)like[i] objectForKey:@"fk_user"]];
+        }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@",exception.reason);
+    }
+    //visual setup
+    self.like.text=[NSString stringWithFormat:@"%lu",(unsigned long)[self.likeList count]];
+    [ProgressHUD dismiss];
+    self.scrollView.hidden=NO;
+}
+
 
 
 
@@ -358,46 +368,21 @@ EventJoinAndLikeModel* jlmodel;
     }
     return  false;
 }
-//-(void)likeEvent{
-////    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLikeEvent) name:@"didPatchDataWithEventID" object:nil];
-////    [jlmodel likeEvent:event];
-//
-//}
-//
-//-(void)unLikeEvent{
-////    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLikeEvent) name:@"didPatchDataWithEventID" object:nil];
-////    [jlmodel dislikeEvent:event];
-//    
-//}
 
-//-(void)didLikeEvent{
-    //save staue
-//    BOOL originalStatue=isLiked;
-    //reload whole page
-//    if(isLiked==NO)
-//    {
-//        [popoverAlterModel alterWithTitle:@"Congratulation" Message:@"You have liked the event successfully."];
-//        
-//    }else
-//    {
-//        [popoverAlterModel alterWithTitle:@"Done" Message:@"You have disliked this event."];
-//    }
-//    isLiked=!isLiked;
-//    //Stop listening to the patch
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didPatchDataWithEventID" object:nil];
-//    
-//    //reload the page
-//    [ProgressHUD show:@"Loading event info..."];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchEvent) name:@"didFetchDataWithEventID" object:nil];
-//    @try {
-//        [model fetchEventWithEventID:eventID];
-//    }
-//    @catch (NSException *exception) {
-//        [popoverAlterModel alterWithTitle:@"Failed" Message:@"Fetching event detail failed."];
-//        [self.navigationController popViewControllerAnimated:YES];
-//    }
 
-//}
+-(IBAction)commentTabTapped:(id)sender{
+    
+    self.commentsTab.backgroundColor=self.descriptionTab.backgroundColor;
+    self.descriptionTab.backgroundColor=[UIColor clearColor];
+    self.description.hidden=YES;
+    
+}
+
+-(IBAction)descriptionTabTapped:(id)sender{
+    self.descriptionTab.backgroundColor=self.commentsTab.backgroundColor;
+    self.commentsTab.backgroundColor=[UIColor clearColor];
+    self.description.hidden=NO;
+}
 
 
 

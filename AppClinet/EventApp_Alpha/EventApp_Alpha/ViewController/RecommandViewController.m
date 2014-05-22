@@ -64,7 +64,7 @@
     
     
     //add page view controller to main page
-    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+//    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
@@ -118,6 +118,7 @@
     pageContentViewController.eventImage=[ImageModel downloadImage:event];
     pageContentViewController.pageIndex = index;
     
+//    pageContentViewController.view.frame = CGRectMake(0, self.navigationController.navigationBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
     return pageContentViewController;
 }
 

@@ -29,6 +29,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self.scrollView removeFromSuperview];
     [self.scrollView setScrollEnabled:YES];
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
     //model to view matching
@@ -41,6 +42,9 @@
     self.eventImageView.image=self.eventImage;
     //polish
     [self setRoundConnerForViewWithMaxTag:MAXTAG];
+    
+    self.view.frame=CGRectMake(0, self.navigationController.navigationBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:self.scrollView];
 }
 
 - (void)didReceiveMemoryWarning
