@@ -111,7 +111,8 @@ UIImage* selectedImage;
 }
 
 -(void)didFailSignUp:(NSNotification*) notif{
-    [popoverAlterModel alterWithTitle:@"Failed." Message:[[NSString alloc] initWithData:notif.object encoding:NSUTF8StringEncoding]];
+    NSDictionary* errorMessage=[NSJSONSerialization JSONObjectWithData:notif.object options:NSJSONReadingMutableContainers error:nil];
+    [popoverAlterModel alterWithTitle:@"Failed." Message:[errorMessage objectForKey:@"error_message"]];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [ProgressHUD dismiss];
 }

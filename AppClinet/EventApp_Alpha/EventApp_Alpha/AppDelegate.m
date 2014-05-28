@@ -73,7 +73,7 @@
     if (defaultLogin) {
         UserModel* model=[[UserModel alloc] init];
         [UserModel turnOnDevelopmentMode];
-        [model loginWithUsername:@"ray" AndPassword:@"1"];
+        [model loginWithUsername:PUBLICAUTHENUSER AndPassword:PUBLICAUTHENPASSWORD];
 
     }
 }

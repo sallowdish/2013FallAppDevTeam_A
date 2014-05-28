@@ -15,15 +15,17 @@
 #import <Foundation/Foundation.h>
 //for web service
 #define HTTPPREFIX @"http://"
-#define WEBSERVICEDOMAIN  @"machoapes.no-ip.org"
-#define WEBSERVICENAME @"/app_project"
+#define WEBSERVICEDOMAIN  @"54.187.172.82"
+#define WEBSERVICENAME @""
 //#define WEBSERVICEDOMAIN  @"http://127.0.0.1:8000/eventApp"
 #define API @"/api/v01"
 //for web service
 #define JSONFORMAT @"format=json"
+#define MEDIAPREFIX @"/app_project/media/"
 //#define JSONFORMAT @""
 //for webservice
 #define NOCONSTRAIN @"?"
 #define PUBLICAUTHENUSER @"tester"
 #define PUBLICAUTHENPASSWORD @"1"
+
 #endif

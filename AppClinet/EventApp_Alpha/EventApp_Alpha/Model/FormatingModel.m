@@ -7,6 +7,7 @@
 //
 
 #import "FormatingModel.h"
+#import "ImageModel.h"
 
 
 @implementation FormatingModel
@@ -38,35 +39,19 @@
     //    [cell.profileImage.layer setBorderColor: [[UIColor grayColor] CGColor]];
     //    [cell.profileImage.layer setBorderWidth: 2.0];
     cell.eventNameLabel.text=[event objectForKey:@"event_title"];
-    cell.hosterLabel.text=[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"username"];
+    
+//    cell.hosterLabel.text=[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"username"];
     cell.dataLabel.text=[NSString stringWithFormat:@"%@ | %@",[event objectForKey:@"event_date"],[event objectForKey:@"event_time"]];
-    cell.locationLabel.text=[FormatingModel addressDictionaryToStringL:[event objectForKey:@"fk_address"]];
-    cell.likeLabel.text=[NSString stringWithFormat: @"%@",[event objectForKey:@"event_like"] ];
-    cell.RSVPLabel.text=[NSString stringWithFormat: @"%@",[event objectForKey:@"event_rsvp"] ];;
+//    cell.locationLabel.text=[FormatingModel addressDictionaryToStringL:[event objectForKey:@"fk_address"]];
+    cell.likeLabel.text=[NSString stringWithFormat: @"%@",[event objectForKey:@"event_like_count"] ];
+    cell.RSVPLabel.text=[NSString stringWithFormat: @"%@",[event objectForKey:@"event_rsvp_count"] ];;
     
     
-    UIImage* img=nil;
-    @try {
-        if (![[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"fk_user_image"] isEqual:[NSNull null]]) {
-            NSString* path=[[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"fk_user_image"] objectForKey:@"path"];
-            NSURL* targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@", HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,path]];
-            NSData* data=[NSData dataWithContentsOfURL:targetURL];
-            if (data) {
-                img=[UIImage imageWithData:data];
-            }else{
-                @throw [NSException exceptionWithName:@"fail to fetch event image" reason:nil userInfo:nil];
-            }
-            
-        }else{
-            @throw [NSException exceptionWithName:@"no event image" reason:nil userInfo:nil];
-        }
-
-    }
-    @catch (NSException *exception) {
-        img=[UIImage imageNamed:@"152_152icon.png"];
-
-    }
+    //newer matching
+    cell.hosterLabel.text=[event objectForKey:@"fk_event_poster_user_name"];
+    cell.locationLabel.text=[event objectForKey:@"address_country"];
     
+    UIImage* img=[ImageModel downloadImageViaPath:[event objectForKey:@"fk_event_poster_user_fk_user_image"]];
     cell.profileImage.image=img;
     return cell;
 }

@@ -10,4 +10,5 @@
 
 @interface ImageModel : ImageUploadModel
 +(UIImage*)downloadImage:(NSDictionary*)event;
++(UIImage*)downloadImageViaPath:(NSString*)path;
 @end

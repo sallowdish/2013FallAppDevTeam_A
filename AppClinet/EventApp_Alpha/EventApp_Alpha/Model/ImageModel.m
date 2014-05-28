@@ -24,4 +24,19 @@
     }
 
 }
++(UIImage*)downloadImageViaPath:(NSString *)path{
+    UIImage* img=[UIImage imageNamed:@"152_152icon.png"];
+    if (path!=(id)[NSNull null]) {
+        NSURL* targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,MEDIAPREFIX,path]];
+        NSLog(@"%@",[targetURL absoluteString]);
+        NSData* imgContent=[NSData dataWithContentsOfURL:targetURL];
+        if (imgContent) {
+            img=[UIImage imageWithData:imgContent];
+        }
+        
+    }
+        return img;
+    
+}
+
 @end
