@@ -85,12 +85,12 @@ EventPostModel* model;
 
 -(IBAction)comfirmTapped:(id)sender{
     if (![self.addressTitle.text isEqualToString:@""]) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostNewAddress:) name:@"didPostNewAddress" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostNewAddressFailed) name:@"didPostNewAddressFailed" object:nil];
-        [ProgressHUD show:@"POSTing new Address"];
-        model=[[EventPostModel alloc] init];
-        [model postAddresswithInfo:[self collectInfo]];
-
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostNewAddress:) name:@"didPostNewAddress" object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostNewAddressFailed) name:@"didPostNewAddressFailed" object:nil];
+//        [ProgressHUD show:@"POSTing new Address"];
+//        model=[[EventPostModel alloc] init];
+//        [model postAddresswithInfo:[self collectInfo]];
+        [self didPostNewAddress:nil];
     }
     else{
         [popoverAlterModel alterWithTitle:@"Failed" Message:@"Please fill up all required fields."];
@@ -98,10 +98,11 @@ EventPostModel* model;
 }
 
 -(void)didPostNewAddress:(NSNotification*) notif{
-    NSString* location=(NSString*)[notif object];
-    NSDictionary* dic=[NSDictionary dictionaryWithObjects:@[self.addressTitle.text,location] forKeys:@[@"event_title",@"event_resourceurl"]];
+//    NSString* location=(NSString*)[notif object];
+//    NSDictionary* dic=[NSDictionary dictionaryWithObjects:@[self.addressTitle.text,location] forKeys:@[@"event_title",@"event_resourceurl"]];
+    NSDictionary* dic=[self collectInfo];
     [ProgressHUD dismiss];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"didCreateNewAddress" object:dic];
     [self.navigationController popViewControllerAnimated:YES];
 }

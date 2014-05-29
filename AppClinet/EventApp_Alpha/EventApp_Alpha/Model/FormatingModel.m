@@ -49,9 +49,9 @@
     
     //newer matching
     cell.hosterLabel.text=[event objectForKey:@"fk_event_poster_user_name"];
-    cell.locationLabel.text=[event objectForKey:@"address_country"];
+    cell.locationLabel.text=[event objectForKey:@"address_title"];
     
-    UIImage* img=[ImageModel downloadImageViaPath:[event objectForKey:@"fk_event_poster_user_fk_user_image"]];
+    UIImage* img=[ImageModel downloadImageViaPath:[event objectForKey:@"fk_event_poster_user_fk_user_image"] For:@"user"];
     cell.profileImage.image=img;
     return cell;
 }

@@ -90,6 +90,7 @@ UIImage* selectedImage;
     if (notif) {
         [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFinishUploadImage" object:nil];
         
+#pragma pass the point to image into dict
         [dict setObject:[NSString stringWithFormat:@"%@",[notif object]] forKey:@"profile_image_name"];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didSignUp) name:@"didSignUp" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didFailSignUp:) name:@"didFailSignUp" object:nil];

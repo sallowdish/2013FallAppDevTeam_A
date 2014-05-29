@@ -16,6 +16,7 @@
 #import "FullScreenImageController.h"
 #import "ProfilePageViewController.h"
 #import "AddressInfoPageViewController.h"
+#import "ImageModel.h"
 #undef MAXTAG
 #define MAXTAG 104
 @interface EventDetailViewController ()
@@ -142,10 +143,10 @@ EventJoinAndLikeModel* jlmodel;
     
     //visual setup
     if (![[event objectForKey:@"event_capacity"] isEqual:[NSNull null]]) {
-        self.RSVP.text=[NSString stringWithFormat:@"%lu/%@",[self.RSVPList count],[event objectForKey:@"event_capacity"]];
+        self.RSVP.text=[NSString stringWithFormat:@"%lu/%@",(unsigned long)[self.RSVPList count],[event objectForKey:@"event_capacity"]];
     }
     else{
-        self.RSVP.text=[NSString stringWithFormat:@"%lu/∞",[self.RSVPList count]];
+        self.RSVP.text=[NSString stringWithFormat:@"%lu/∞",(unsigned long)[self.RSVPList count]];
     }
     //Visual setup
     [[self.joinedPeopleSpanArea subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -226,17 +227,17 @@ EventJoinAndLikeModel* jlmodel;
 -(void)modelToViewMatch
 {
     self.eventName.text=[NSString stringWithFormat:@"- %@ -",[event objectForKey:@"event_title"]];
-    self.hoster.text=[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"username"];
+    self.hoster.text=[event objectForKey:@"fk_event_poster_user_name"];
 //    NSArray* timeInfo=[FormatingModel pythonDateTimeToStringArray:[event objectForKey:@"event_time"]];
     self.dateTime.text=[NSString stringWithFormat:@"%@|%@",[event objectForKey:@"event_date"],[event objectForKey:@"event_time"]];
-    self.location.text=[FormatingModel addressDictionaryToStringL:[event objectForKey:@"fk_address"]];
+    self.location.text=[event objectForKey:@"address_title"];
     self.like.text=[NSString stringWithFormat:@"%@",[event objectForKey:@"event_like"]];
     id capacity=[event objectForKey:@"event_capacity"];
     if ([capacity isEqual:[NSNull null]]) {
         self.RSVP.text=@" ∞/∞";
 //        [self.joinButton removeFromSuperview];
     }else{
-        self.RSVP.text=[NSString stringWithFormat:@"%@/%@",[event objectForKey:@"event_rsvp"],[event objectForKey:@"event_capacity"]];
+        self.RSVP.text=[NSString stringWithFormat:@"%@/%@",[event objectForKey:@"event_rsvp_count"],[event objectForKey:@"event_capacity"]];
     }
     NSString *description=[event objectForKey:@"event_detail"];
     if ([description isEqualToString:@""]) {
@@ -253,15 +254,9 @@ EventJoinAndLikeModel* jlmodel;
     
     
     //load event image
-    if (![[event objectForKey:@"fk_event_image"] isEqual:[NSNull null]]) {
-        NSURL *imageurl=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,[[event objectForKey:@"fk_event_image"] objectForKey:@"path"]]];
-        self.images.image=[ UIImage imageWithData:[NSData dataWithContentsOfURL:imageurl]];
+    if ([[event objectForKey:@"event_image"] count]>0) {
+        self.images.image=[ImageModel downloadImageViaPath:[[event objectForKey:@"event_image"][0] objectForKey:@"path"] For:@"event"];
     }
-    else if(![[event objectForKey:@"event_image_name"] isEqual:[NSNull null]]) {
-        NSURL *imageurl=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,@"/app_project/media/",[event objectForKey:@"event_image_name"]]];
-        self.images.image=[ UIImage imageWithData:[NSData dataWithContentsOfURL:imageurl]];
-    }
-    
     else{
         self.images.image=[UIImage imageNamed:@"event3.jpg"];
     }

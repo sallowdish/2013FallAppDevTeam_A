@@ -24,10 +24,31 @@
     }
 
 }
-+(UIImage*)downloadImageViaPath:(NSString *)path{
-    UIImage* img=[UIImage imageNamed:@"152_152icon.png"];
++(UIImage*)downloadImageViaPath:(NSString *)path For:(NSString*)receiver{
+    UIImage* img;
+    if ([receiver isEqualToString:@"user"]) {
+        img=[UIImage imageNamed:@"152_152icon.png"];
+    }
+    else if([receiver isEqualToString:@"event"])
+    {
+        img=[UIImage imageNamed:@"event1.jpg"];
+    }
+    else{
+        img=[UIImage imageNamed:@"default_profile_5_bigger.png"];
+        return img;
+    }
+//    UIImage* img=[UIImage imageNamed:@"152_152icon.png"];
     if (path!=(id)[NSNull null]) {
-        NSURL* targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,MEDIAPREFIX,path]];
+        NSURL* targetURL;
+        if ([receiver isEqualToString:@"user"]) {
+            targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,MEDIAPREFIX,path]];
+
+        }
+        else
+        {
+            targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,path]];
+
+        }
         NSLog(@"%@",[targetURL absoluteString]);
         NSData* imgContent=[NSData dataWithContentsOfURL:targetURL];
         if (imgContent) {

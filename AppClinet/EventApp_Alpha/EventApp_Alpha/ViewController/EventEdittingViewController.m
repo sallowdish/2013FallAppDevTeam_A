@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *photoAddButton;
 @property (weak, nonatomic) IBOutlet UIView *photoSpanView;
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *surfaceUnion;
-
+@property (strong,nonatomic) NSDictionary* address;
 @end
 
 @implementation EventEdittingViewController
@@ -46,8 +46,9 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
 
 -(void)didCreateNewAddress:(NSNotification*) notif{
     NSDictionary* dic=(NSDictionary*)[notif object];
-    self.locationTextField.text=[dic objectForKey:@"event_title"];
-    self.locationResourceURL=[dic objectForKey:@"event_resourceurl"];
+    self.locationTextField.text=[dic objectForKey:@"address_title"];
+//    self.locationResourceURL=[dic objectForKey:@"event_resourceurl"];
+    self.address=dic;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -229,7 +230,7 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
 }
 
 -(BOOL)isAllRequiredFilled{
-    return !([self.titleInputTextField.text isEqualToString:@""]||[self.dateInputTextField.text isEqualToString:@""]||[self.timeFromInputTextField.text isEqualToString:@""]||[self.locationResourceURL isEqual:[NSNull null]]);
+    return !([self.titleInputTextField.text isEqualToString:@""]||[self.dateInputTextField.text isEqualToString:@""]||[self.timeFromInputTextField.text isEqualToString:@""]||[self.address isEqual:[NSNull null]]);
 }
 
 -(void)didCreateNewEvent{
@@ -258,7 +259,7 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
     [info setValue:self.timeFromInputTextField.text forKey:@"event_time"];
     [info setValue:self.detailInputTextField.text forKey:@"event_detail"];
     [info setValue:@([self.capacityInputTextField.text integerValue]) forKey:@"event_capacity"] ;
-    [info setValue:self.locationResourceURL forKey:@"fk_address"];
+    [info setValue:[self.address objectForKey:@""] forKey:@"address"];
     return info;
 
 }
