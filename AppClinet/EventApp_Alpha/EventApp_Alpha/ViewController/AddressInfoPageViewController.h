@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface AddressInfoPageViewController : UITableViewController
-@property (weak,nonatomic) NSDictionary* address;
+@property (strong,nonatomic) NSDictionary* address;
 @property (strong,nonatomic)NSString* addressResource;
 @property (weak, nonatomic) IBOutlet UITextField *addressTitle;
 @property (weak, nonatomic) IBOutlet UITextField *addressDetail;

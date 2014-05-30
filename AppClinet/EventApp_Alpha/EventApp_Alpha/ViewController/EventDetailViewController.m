@@ -280,7 +280,7 @@ EventJoinAndLikeModel* jlmodel;
     address[@"address_detail"]=[event objectForKey:@"address_detail"];
     address[@"address_postal_code"]=[event objectForKey:@"address_postal_code"];
     vc.address=address;
-    [self.navigationController pushViewController:vc animated:YES];
+    [self.navigationController pushViewController:vc animated:NO];
 }
 
 - (IBAction)RSVPButtonTapped:(id)sender {

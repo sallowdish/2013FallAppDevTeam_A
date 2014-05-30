@@ -259,7 +259,12 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
     [info setValue:self.timeFromInputTextField.text forKey:@"event_time"];
     [info setValue:self.detailInputTextField.text forKey:@"event_detail"];
     [info setValue:@([self.capacityInputTextField.text integerValue]) forKey:@"event_capacity"] ;
-    [info setValue:[self.address objectForKey:@""] forKey:@"address"];
+    [info setValue:[self.address objectForKey:@"address_city"] forKey:@"address_city"];
+    [info setValue:[self.address objectForKey:@"address_country"] forKey:@"address_country"];
+    [info setValue:[self.address objectForKey:@"address_detail"] forKey:@"address_detail"];
+    [info setValue:[self.address objectForKey:@"address_postal_code"] forKey:@"address_postal_code"];
+    [info setValue:[self.address objectForKey:@"address_region"] forKey:@"address_region"];
+    [info setValue:[self.address objectForKey:@"address_title"] forKey:@"address_title"];
     return info;
 
 }

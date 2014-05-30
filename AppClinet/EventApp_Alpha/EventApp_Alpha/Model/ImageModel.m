@@ -49,7 +49,7 @@
             targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,path]];
 
         }
-        NSLog(@"%@",[targetURL absoluteString]);
+//        NSLog(@"%@",[targetURL absoluteString]);
         NSData* imgContent=[NSData dataWithContentsOfURL:targetURL];
         if (imgContent) {
             img=[UIImage imageWithData:imgContent];
