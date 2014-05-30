@@ -24,7 +24,7 @@
     }
 
 }
-+(UIImage*)downloadImageViaPath:(NSString *)path For:(NSString*)receiver{
++(UIImage*)downloadImageViaPath:(NSString *)path For:(NSString*)receiver WithPrefix:(NSString*)Prefix{
     UIImage* img;
     if ([receiver isEqualToString:@"user"]) {
         img=[UIImage imageNamed:@"152_152icon.png"];
@@ -40,15 +40,16 @@
 //    UIImage* img=[UIImage imageNamed:@"152_152icon.png"];
     if (path!=(id)[NSNull null]) {
         NSURL* targetURL;
-        if ([receiver isEqualToString:@"user"]) {
-            targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,MEDIAPREFIX,path]];
-
-        }
-        else
-        {
-            targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,path]];
-
-        }
+//        if ([receiver isEqualToString:@"user"]) {
+//            targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,MEDIAPREFIX,path]];
+//
+//        }
+//        else
+//        {
+//            targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,path]];
+//
+//        }
+        targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,Prefix,path]];
 //        NSLog(@"%@",[targetURL absoluteString]);
         NSData* imgContent=[NSData dataWithContentsOfURL:targetURL];
         if (imgContent) {

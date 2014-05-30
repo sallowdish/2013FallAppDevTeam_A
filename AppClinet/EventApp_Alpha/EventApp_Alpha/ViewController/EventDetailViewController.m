@@ -255,7 +255,7 @@ EventJoinAndLikeModel* jlmodel;
     
     //load event image
     if ([[event objectForKey:@"event_image"] count]>0) {
-        self.images.image=[ImageModel downloadImageViaPath:[[event objectForKey:@"event_image"][0] objectForKey:@"path"] For:@"event"];
+        self.images.image=[ImageModel downloadImageViaPath:[[event objectForKey:@"event_image"][0] objectForKey:@"path"] For:@"event" WithPrefix:@""];
     }
     else{
         self.images.image=[UIImage imageNamed:@"event3.jpg"];

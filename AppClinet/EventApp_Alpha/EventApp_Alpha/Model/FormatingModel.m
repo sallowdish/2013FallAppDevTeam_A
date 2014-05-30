@@ -51,7 +51,7 @@
     cell.hosterLabel.text=[event objectForKey:@"fk_event_poster_user_name"];
     cell.locationLabel.text=[event objectForKey:@"address_title"];
     
-    UIImage* img=[ImageModel downloadImageViaPath:[event objectForKey:@"fk_event_poster_user_fk_user_image"] For:@"user"];
+    UIImage* img=[ImageModel downloadImageViaPath:[event objectForKey:@"fk_event_poster_user_fk_user_image"] For:@"user" WithPrefix:MEDIAPREFIX];
     cell.profileImage.image=img;
     return cell;
 }
