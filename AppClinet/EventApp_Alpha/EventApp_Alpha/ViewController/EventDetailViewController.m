@@ -272,7 +272,14 @@ EventJoinAndLikeModel* jlmodel;
 
 -(IBAction)locationInfoTapped{
     AddressInfoPageViewController* vc= [self.storyboard instantiateViewControllerWithIdentifier:@"AddressInfoPage"];
-    vc.address=[event objectForKey:@"fk_address"];
+    NSMutableDictionary* address=[NSMutableDictionary dictionaryWithCapacity:0];
+    address[@"address_title"]=[event objectForKey:@"address_title"];
+    address[@"address_region"]=[event objectForKey:@"address_region"];
+    address[@"address_city"]=[event objectForKey:@"address_city"];
+    address[@"address_country"]=[event objectForKey:@"address_country"];
+    address[@"address_detail"]=[event objectForKey:@"address_detail"];
+    address[@"address_postal_code"]=[event objectForKey:@"address_postal_code"];
+    vc.address=address;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
