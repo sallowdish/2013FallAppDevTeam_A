@@ -9,6 +9,6 @@
 #import "DataTransferModel.h"
 
 @interface ImageUploadModel : DataTransferModel
--(void)uploadImage:(UIImage*)image;
+-(void)uploadImage:(UIImage*)image User:(NSString*)username;
 //-(void)uploadImage:(UIImage*) image ForUser:(NSDictionary*)user;
 @end

@@ -25,6 +25,9 @@
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
     pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
     pageControl.backgroundColor = [UIColor whiteColor];
+    
+    [[Ubertesters shared] initializeWithOptions:UTOptionsSlider |UTOptionsLockingModeDisableUbertestersIfBuildNotExist];
+//    NSLog(@"%f", [[UIScreen mainScreen] bounds].size.height);
     return YES;
 }
 

@@ -10,7 +10,7 @@
 #import "UserModel.h"
 
 @implementation ImageUploadModel
--(void)uploadImage:(UIImage*)image{
+-(void)uploadImage:(UIImage*)image User:(NSString*)username{
     
     // Dictionary that holds post parameters. You can set your post parameters that your server accepts or programmed to accept.
     NSMutableDictionary* _params = [[NSMutableDictionary alloc] init];
@@ -26,7 +26,9 @@
     NSString* FileParamConstant = @"path";
     
     // the server url to which the image (or the media) is uploaded. Use your server url here
-    NSString* username=[UserModel isLogin]?[UserModel username]:@"ray";
+    if(!username){
+        username=[UserModel isLogin]?[UserModel username]:@"tester";
+    }
     NSURL* requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,@"/user_image_create_api",@"/?username=",username]];
     
     // create request
@@ -85,13 +87,14 @@
 -(void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
     if ([(NSHTTPURLResponse*) response statusCode]!=201&&[(NSHTTPURLResponse*) response statusCode]!=100) {
         self.receivedData=nil;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"didFailUploadImage" object:nil];
     }
 }
 
 -(void) connectionDidFinishLoading:(NSURLConnection *)connection{
     [super connectionDidFinishLoading:connection];
     NSString* feedback=[[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"didFinishUploadImage" object:[[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"didUploadImage" object:[[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]];
     NSLog(@"%@",feedback);
 }
 @end

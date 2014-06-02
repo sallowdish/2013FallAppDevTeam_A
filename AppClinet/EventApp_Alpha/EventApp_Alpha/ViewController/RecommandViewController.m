@@ -111,8 +111,8 @@
     //match model to view
     pageContentViewController.eventTitle=[event objectForKey:@"event_title"];
     pageContentViewController.eventDate=[event objectForKey:@"event_date"];
-    pageContentViewController.eventLocation=[[event objectForKey:@"fk_address"] objectForKey:@"address_title"];
-    pageContentViewController.eventHoster=[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"username"];
+    pageContentViewController.eventLocation=[event objectForKey:@"address_title"];
+    pageContentViewController.eventHoster=[event objectForKey:@"fk_event_poster_user"];
     pageContentViewController.eventLike=[[event objectForKey:@"event_like"] integerValue];
     pageContentViewController.eventRSVP=[[event objectForKey:@"event_rsvp"] integerValue];
     pageContentViewController.eventImage=[ImageModel downloadImage:event];

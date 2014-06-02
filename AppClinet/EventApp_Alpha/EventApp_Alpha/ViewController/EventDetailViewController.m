@@ -52,7 +52,8 @@ EventJoinAndLikeModel* jlmodel;
     [super viewDidLoad];
     self.scrollView.hidden=YES;
     [self.scrollView setScrollEnabled:YES];
-    CGSize contentsize=CGSizeMake(320,self.containerView.frame.size.height*1.2+self.navigationController.navigationBar.frame.size.height);
+    float para=[[UIScreen mainScreen] bounds].size.height== 480?1.3:1.16;
+    CGSize contentsize=CGSizeMake(320,self.containerView.frame.size.height*para+self.navigationController.navigationBar.frame.size.height);
     [self.scrollView setContentSize:contentsize];
     
     

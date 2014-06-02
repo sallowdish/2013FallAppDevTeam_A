@@ -68,44 +68,37 @@ UIImage* selectedImage;
         [dict setValue:self.emailField.text forKey:@"email"];
         [dict setValue:self.nicknameField.text forKey:@"user_nickname"];
         
-        if (selectedImage) {
-            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didFinishUploadImage:) name:@"didFinishUploadImage" object:nil];
-            
-            [ProgressHUD show:@"Uploading profile image..."];
-            [[[ImageModel alloc]init] uploadImage:selectedImage];
-            
-        }else{
-            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didSignUp) name:@"didSignUp" object:nil];
-            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didFailSignUp:) name:@"didFailSignUp" object:nil];
-            [ProgressHUD show:@"Creating new account..."];
-            [[[SignUpModel alloc]init] signUp:dict];
-        }
-        
-        
-    }
-    
-}
-
--(void)didFinishUploadImage:(NSNotification*)notif{
-    if (notif) {
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFinishUploadImage" object:nil];
-        
-#pragma pass the point to image into dict
-        [dict setObject:[NSString stringWithFormat:@"%@",[notif object]] forKey:@"profile_image_name"];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didSignUp) name:@"didSignUp" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didFailSignUp:) name:@"didFailSignUp" object:nil];
         [ProgressHUD show:@"Creating new account..."];
         [[[SignUpModel alloc]init] signUp:dict];
-    }else{
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFinishUploadImage" object:nil];
-        [ProgressHUD dismiss];
-        [popoverAlterModel alterWithTitle:@"Failed" Message:@"Something went wrong. Please try again later."];
     }
     
-//    [model postEventwithInfo:dic];
 }
+
 -(void)didSignUp{
     [popoverAlterModel alterWithTitle:@"Succeed!" Message:[NSString stringWithFormat:@"You have created a new account named %@", self.usernameField.text]];
+    if (selectedImage) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUploadProfileImage) name:@"didUploadImage" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailUploadProfileImage) name:@"didFailUploadImage" object:nil];
+        [[[ImageModel alloc] init] uploadImage:selectedImage User:self.usernameField.text];
+    }else{
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
+        [self.navigationController popViewControllerAnimated:YES];
+        [ProgressHUD dismiss];
+    }
+    
+}
+
+-(void)didUploadProfileImage{
+//    [popoverAlterModel alterWithTitle:@"Succeed" Message:[NSString stringWithFormat:@"You have created a new account named %@",self.usernameField.text]];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.navigationController popViewControllerAnimated:YES];
+    [ProgressHUD dismiss];
+}
+
+-(void)didFailUploadProfileImage{
+    [popoverAlterModel alterWithTitle:@"Warning" Message:[NSString stringWithFormat:@"You have created a new account named %@.\n But the profile image upload failed, please try again in profile page later.",self.usernameField.text]];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.navigationController popViewControllerAnimated:YES];
     [ProgressHUD dismiss];
@@ -119,12 +112,30 @@ UIImage* selectedImage;
 }
 
 -(BOOL)validateInfo{
+    //check required field
     for (UITextField* field in self.fillupCheckSet) {
         if ([field.text isEqualToString:@""]) {
             [popoverAlterModel alterWithTitle:@"Warning!" Message:@"Please fill up all blanks."];
             return NO;
         }
     }
+    //check if username is valid
+    NSCharacterSet *s = [NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_"];
+    s=[s invertedSet];
+    NSRange range=[self.usernameField.text rangeOfCharacterFromSet:s];
+    if (range.location!=NSNotFound) {
+        [popoverAlterModel alterWithTitle:@"Warning!" Message:@"Please use [a-z],[0-9] and '_' in username only."];
+        return NO;
+
+    }
+    //check if email if valid
+    BOOL res=[self isValidEmail:self.emailField.text];
+    if (!res) {
+        [popoverAlterModel alterWithTitle:@"Warning!" Message:@"Please submit a valid email address."];
+        return NO;
+
+    }
+    //check if passwords are consistent
     if (![self.passwordField.text isEqualToString:self.confirmPasswordField.text]) {
         self.passwordField.text=@"";
         self.confirmPasswordField.text=@"";
@@ -135,7 +146,19 @@ UIImage* selectedImage;
 }
 
 
-
+-(BOOL)isValidEmail:(NSString*)email{
+    NSString *emailRegEx =
+    @"(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"
+    @"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"
+    @"x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-"
+    @"z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5"
+    @"]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-"
+    @"9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21"
+    @"-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
+    
+     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES[c] %@", emailRegEx];
+    return [emailTest evaluateWithObject:email];
+}
 
 -(IBAction)imagePickerPopup:(id)sender{
     self.imagePicker = [[GKImagePicker alloc] init];

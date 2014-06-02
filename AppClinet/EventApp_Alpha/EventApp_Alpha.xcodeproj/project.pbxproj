@@ -54,6 +54,17 @@
 		71A6D0DE18CC234E005A0F6E /* redheart.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A6D0DD18CC234E005A0F6E /* redheart.png */; };
 		71AF5EFC18250D660013ABB3 /* EventFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF5EFB18250D660013ABB3 /* EventFetchModel.m */; };
 		71B763C11807830A00717D67 /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B763C01807830A00717D67 /* EventListViewController.m */; };
+		71C883AD193AD61A00E5E63C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C883AC193AD61A00E5E63C /* AdSupport.framework */; };
+		71C883AF193AD62C00E5E63C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C883AE193AD62C00E5E63C /* QuartzCore.framework */; };
+		71C883B1193AD63300E5E63C /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C883B0193AD63300E5E63C /* CoreImage.framework */; };
+		71C883B3193AD63A00E5E63C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C883B2193AD63A00E5E63C /* SystemConfiguration.framework */; };
+		71C883B5193AD64200E5E63C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C883B4193AD64200E5E63C /* CoreTelephony.framework */; };
+		71C883B7193AD64A00E5E63C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C883B6193AD64A00E5E63C /* CoreLocation.framework */; };
+		71C883B9193AD65300E5E63C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C883B8193AD65300E5E63C /* AudioToolbox.framework */; };
+		71C883BB193AD65B00E5E63C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C883BA193AD65B00E5E63C /* OpenGLES.framework */; };
+		71C883BD193AD66700E5E63C /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C883BC193AD66700E5E63C /* CoreMotion.framework */; };
+		71C883C2193ADD2C00E5E63C /* UbertestersSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C883C0193ADD2C00E5E63C /* UbertestersSDK.framework */; };
+		71C883C3193ADD2C00E5E63C /* UbertestersSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71C883C1193ADD2C00E5E63C /* UbertestersSDKResources.bundle */; };
 		71C9B735191C3256004631D0 /* MyEventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9B734191C3256004631D0 /* MyEventTableViewController.m */; };
 		71C9B738191F34AE004631D0 /* EventDeleteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9B737191F34AE004631D0 /* EventDeleteModel.m */; };
 		71D7AF50189DF3E70082A6AA /* event1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71D7AF4C189DF3E70082A6AA /* event1.jpg */; };
@@ -184,6 +195,17 @@
 		71AF5EFB18250D660013ABB3 /* EventFetchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventFetchModel.m; path = Model/EventFetchModel.m; sourceTree = "<group>"; };
 		71B763BF1807830A00717D67 /* EventListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventListViewController.h; path = ViewController/EventListViewController.h; sourceTree = "<group>"; };
 		71B763C01807830A00717D67 /* EventListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventListViewController.m; path = ViewController/EventListViewController.m; sourceTree = "<group>"; };
+		71C883AC193AD61A00E5E63C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		71C883AE193AD62C00E5E63C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		71C883B0193AD63300E5E63C /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		71C883B2193AD63A00E5E63C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		71C883B4193AD64200E5E63C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		71C883B6193AD64A00E5E63C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		71C883B8193AD65300E5E63C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		71C883BA193AD65B00E5E63C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		71C883BC193AD66700E5E63C /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		71C883C0193ADD2C00E5E63C /* UbertestersSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UbertestersSDK.framework; sourceTree = "<group>"; };
+		71C883C1193ADD2C00E5E63C /* UbertestersSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UbertestersSDKResources.bundle; sourceTree = "<group>"; };
 		71C9B733191C3256004631D0 /* MyEventTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyEventTableViewController.h; path = ViewController/MyEventTableViewController.h; sourceTree = "<group>"; };
 		71C9B734191C3256004631D0 /* MyEventTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyEventTableViewController.m; path = ViewController/MyEventTableViewController.m; sourceTree = "<group>"; };
 		71C9B736191F34AE004631D0 /* EventDeleteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventDeleteModel.h; path = Model/EventDeleteModel.h; sourceTree = "<group>"; };
@@ -238,11 +260,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71C883BD193AD66700E5E63C /* CoreMotion.framework in Frameworks */,
+				71C883BB193AD65B00E5E63C /* OpenGLES.framework in Frameworks */,
+				71C883B9193AD65300E5E63C /* AudioToolbox.framework in Frameworks */,
+				71C883B7193AD64A00E5E63C /* CoreLocation.framework in Frameworks */,
+				71C883B5193AD64200E5E63C /* CoreTelephony.framework in Frameworks */,
+				71C883B3193AD63A00E5E63C /* SystemConfiguration.framework in Frameworks */,
+				71C883B1193AD63300E5E63C /* CoreImage.framework in Frameworks */,
+				71C883AF193AD62C00E5E63C /* QuartzCore.framework in Frameworks */,
+				71C883AD193AD61A00E5E63C /* AdSupport.framework in Frameworks */,
 				71D830AE18E7D0D200485B1B /* MobileCoreServices.framework in Frameworks */,
 				71DFFA4718210FB200269E3E /* Security.framework in Frameworks */,
 				71DFFA4518210FAA00269E3E /* CFNetwork.framework in Frameworks */,
 				71F3218D17F830D700FFFB95 /* CoreGraphics.framework in Frameworks */,
 				71F3218F17F830D700FFFB95 /* UIKit.framework in Frameworks */,
+				71C883C2193ADD2C00E5E63C /* UbertestersSDK.framework in Frameworks */,
 				71F3218B17F830D700FFFB95 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,6 +440,23 @@
 			name = ViewController;
 			sourceTree = "<group>";
 		};
+		71C883BE193ADD1B00E5E63C /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				71C883BF193ADD2C00E5E63C /* UbertestersSDK */,
+			);
+			name = SDK;
+			sourceTree = "<group>";
+		};
+		71C883BF193ADD2C00E5E63C /* UbertestersSDK */ = {
+			isa = PBXGroup;
+			children = (
+				71C883C0193ADD2C00E5E63C /* UbertestersSDK.framework */,
+				71C883C1193ADD2C00E5E63C /* UbertestersSDKResources.bundle */,
+			);
+			path = UbertestersSDK;
+			sourceTree = "<group>";
+		};
 		71D7AF5418A1D0CA0082A6AA /* Icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -506,6 +555,15 @@
 		71F3218917F830D700FFFB95 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71C883BC193AD66700E5E63C /* CoreMotion.framework */,
+				71C883BA193AD65B00E5E63C /* OpenGLES.framework */,
+				71C883B8193AD65300E5E63C /* AudioToolbox.framework */,
+				71C883B6193AD64A00E5E63C /* CoreLocation.framework */,
+				71C883B4193AD64200E5E63C /* CoreTelephony.framework */,
+				71C883B2193AD63A00E5E63C /* SystemConfiguration.framework */,
+				71C883B0193AD63300E5E63C /* CoreImage.framework */,
+				71C883AE193AD62C00E5E63C /* QuartzCore.framework */,
+				71C883AC193AD61A00E5E63C /* AdSupport.framework */,
 				71D830AD18E7D0D200485B1B /* MobileCoreServices.framework */,
 				71DFFA4618210FB200269E3E /* Security.framework */,
 				71DFFA4418210FAA00269E3E /* CFNetwork.framework */,
@@ -523,6 +581,7 @@
 				71F3219A17F830D700FFFB95 /* AppDelegate.m */,
 				71F3219C17F830D700FFFB95 /* Main.storyboard */,
 				71F321A517F830D700FFFB95 /* Images.xcassets */,
+				71C883BE193ADD1B00E5E63C /* SDK */,
 				71B763C21807832100717D67 /* ViewController */,
 				7104A7A11824D1BA00EB3AD5 /* Model */,
 				71F3219117F830D700FFFB95 /* Supporting Files */,
@@ -679,7 +738,7 @@
 				ORGANIZATIONNAME = 2013_Fall_Dev_Team_A;
 				TargetAttributes = {
 					71F3218617F830D700FFFB95 = {
-						DevelopmentTeam = RN98FM5S9N;
+						DevelopmentTeam = AT8YYZEPD2;
 					};
 					71F321AA17F830D700FFFB95 = {
 						TestTargetID = 71F3218617F830D700FFFB95;
@@ -710,6 +769,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71C883C3193ADD2C00E5E63C /* UbertestersSDKResources.bundle in Resources */,
 				7103FE9E18AA0BE70047EFAD /* greytick_done.png in Resources */,
 				7103FE9118A1ED6A0047EFAD /* locationIcon_done.png in Resources */,
 				71094D73190EEDAE0098751A /* Blank-Profile-Image.png in Resources */,
@@ -928,12 +988,16 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EventApp_Alpha/UbertestersSDK",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventApp_Alpha/EventApp_Alpha-Prefix.pch";
 				INFOPLIST_FILE = "EventApp_Alpha/EventApp_Alpha-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "2EE1B147-E73D-4701-8991-B05E9E93FA5E";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -946,12 +1010,16 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EventApp_Alpha/UbertestersSDK",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventApp_Alpha/EventApp_Alpha-Prefix.pch";
 				INFOPLIST_FILE = "EventApp_Alpha/EventApp_Alpha-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6EA3F765-3F74-46FA-A6A0-0153430C1419";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

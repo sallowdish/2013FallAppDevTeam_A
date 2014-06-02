@@ -13,6 +13,7 @@
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "ImageUploadModel.h"
 #import "EventListViewController.h"
+#import "UserModel.h"
 @interface EventEdittingViewController ()
 @property (weak, nonatomic) IBOutlet UITableViewCell *photoCell;
 @property (weak, nonatomic) IBOutlet UIButton *photoAddButton;
@@ -198,9 +199,9 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
     if ([self isAllRequiredFilled]) {
         if (selectedPhoto.count>0) {
             [ProgressHUD show:@"Uploading Image..."];
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishUploadImage:) name:@"didFinishUploadImage" object:nil];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishUploadImage:) name:@"didUploadImage" object:nil];
             ImageUploadModel* uploadModel=[[ImageUploadModel alloc] init];
-            [uploadModel uploadImage:selectedPhoto[0]];
+            [uploadModel uploadImage:selectedPhoto[0] User:[UserModel username]];
             return;
         }
         else{
@@ -216,7 +217,7 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
 -(void)didFinishUploadImage:(NSNotification*) notif{
     NSMutableDictionary* dic=[self packUpInfo];
     if (notif) {
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFinishUploadImage" object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didUploadImage" object:nil];
         
         [dic setObject:[NSString stringWithFormat:@"%@",[notif object]] forKey:@"event_image_name"];
     }

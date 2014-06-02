@@ -10,18 +10,16 @@
 
 @implementation ImageModel
 +(UIImage*)downloadImage:(NSDictionary*)event{
-    if (![[event objectForKey:@"fk_event_image"] isEqual:[NSNull null]]) {
-        NSURL *imageurl=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,[[event objectForKey:@"fk_event_image"] objectForKey:@"path"]]];
-        return[ UIImage imageWithData:[NSData dataWithContentsOfURL:imageurl]];
+    UIImage* img=[UIImage imageNamed:@"event1.jpg"];
+    if ([[event objectForKey:@"event_image"] count]>0) {
+        NSURL *imageurl=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,[[event objectForKey:@"event_image"][0] objectForKey:@"path"]]];
+        
+        NSData* imageContent=[NSData dataWithContentsOfURL:imageurl];
+        if (imageContent) {
+            img=[UIImage imageWithData:imageContent];
+        }
     }
-    else if(![[event objectForKey:@"event_image_name"] isEqual:[NSNull null]]) {
-        NSURL *imageurl=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,@"/app_project/media/",[event objectForKey:@"event_image_name"]]];
-        return [ UIImage imageWithData:[NSData dataWithContentsOfURL:imageurl]];
-    }
-    
-    else{
-        return [UIImage imageNamed:@"event3.jpg"];
-    }
+    return img;
 
 }
 +(UIImage*)downloadImageViaPath:(NSString *)path For:(NSString*)receiver WithPrefix:(NSString*)Prefix{
