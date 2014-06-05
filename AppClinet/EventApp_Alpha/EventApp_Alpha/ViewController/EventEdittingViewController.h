@@ -13,8 +13,9 @@
 //#define CAPACITYPICKER 103
 
 #import <UIKit/UIKit.h>
+#import "GKImagePicker.h"
 
-@interface EventEdittingViewController : UITableViewController <UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface EventEdittingViewController : UITableViewController <UITextFieldDelegate,UINavigationControllerDelegate,GKImagePickerDelegate>
 - (IBAction)donePressed:(id)sender;
 - (IBAction)cancelPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *dateInputTextField;

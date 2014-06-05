@@ -14,12 +14,14 @@
 #import "ImageUploadModel.h"
 #import "EventListViewController.h"
 #import "UserModel.h"
+
 @interface EventEdittingViewController ()
 @property (weak, nonatomic) IBOutlet UITableViewCell *photoCell;
 @property (weak, nonatomic) IBOutlet UIButton *photoAddButton;
 @property (weak, nonatomic) IBOutlet UIView *photoSpanView;
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *surfaceUnion;
 @property (strong,nonatomic) NSDictionary* address;
+@property GKImagePicker* imagePicker;
 @end
 
 @implementation EventEdittingViewController
@@ -98,39 +100,15 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
 }
 
 -(IBAction)imagePickerPopup:(id)sender{
-    UIImagePickerController *mediaUI = [[UIImagePickerController alloc] init];
-    mediaUI.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    self.imagePicker = [[GKImagePicker alloc] init];
+//    self.imagePicker.cropSize = CGSizeMake(320, 90);
+    self.imagePicker.delegate = self;
+    self.imagePicker.resizeableCropArea = YES;
     
-    // Displays saved pictures and movies, if both are available, from the
-    // Camera Roll album.
-    mediaUI.mediaTypes =
-    [UIImagePickerController availableMediaTypesForSourceType:
-     UIImagePickerControllerSourceTypeSavedPhotosAlbum];
-    
-    // Hides the controls for moving & scaling pictures, or for
-    // trimming movies. To instead show the controls, use YES.
-    mediaUI.allowsEditing = YES;
-    
-    mediaUI.delegate = self;
-    
-    [self presentViewController: mediaUI animated: YES completion:nil];
-//    return YES;
+    [self presentViewController:self.imagePicker.imagePickerController animated:YES completion:nil];
 }
 
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    // Code here to work with media
-    [selectedPhoto removeAllObjects];
-    [self dismissViewControllerAnimated:YES completion:nil];
-    NSString *mediaType = info[UIImagePickerControllerMediaType];
-    
-    if ([mediaType isEqualToString:(NSString *)kUTTypeImage])
-    {
-        [selectedPhoto addObject:info[UIImagePickerControllerOriginalImage]];
-        // Media is an image
-        [self updateSelectedImage];
-    }
-}
+
 
 -(void)updateSelectedImage{
     int basex=self.photoAddButton.frame.origin.x;
@@ -158,11 +136,6 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
     }
 }
 
--(void)imagePickerControllerDidCancel:
-(UIImagePickerController *)picker
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 //-(IBAction)datePickerDidChanged:(id)sender{
 //    date=[sender date];
@@ -268,6 +241,24 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
     [info setValue:[self.address objectForKey:@"address_title"] forKey:@"address_title"];
     return info;
 
+}
+
+
+- (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
+    [selectedPhoto addObject:image];
+    [self hideImagePicker];
+    [self updateSelectedImage];
+}
+
+-(void)hideImagePicker{
+    [self.imagePicker.imagePickerController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo{
+    [selectedPhoto addObject:image];
+        
+    [picker dismissViewControllerAnimated:YES completion:nil];
+        
 }
 
 

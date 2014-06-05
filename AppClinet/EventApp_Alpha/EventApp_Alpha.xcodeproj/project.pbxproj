@@ -430,7 +430,6 @@
 		71B763C21807832100717D67 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				71094D5C190D637F0098751A /* GKClasses */,
 				712A2C681884FBAA00BF3AC6 /* Recommand */,
 				71974BA61869A618004493DC /* CQMFloatingView */,
 				71F8A914183C7AB8001AEF6A /* Event */,
@@ -443,6 +442,7 @@
 		71C883BE193ADD1B00E5E63C /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				71094D5C190D637F0098751A /* GKClasses */,
 				71C883BF193ADD2C00E5E63C /* UbertestersSDK */,
 			);
 			name = SDK;
