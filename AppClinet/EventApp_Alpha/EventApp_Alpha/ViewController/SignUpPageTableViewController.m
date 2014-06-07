@@ -11,6 +11,7 @@
 #import "popoverAlterModel.h"
 #import "ProgressHUD.h"
 #import "ImageModel.h"
+#import "UserModel.h"
 //#import "GKImagePicker.h"
 
 @interface SignUpPageTableViewController ()
@@ -77,11 +78,18 @@ UIImage* selectedImage;
 }
 
 -(void)didSignUp{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogin) name:@"didLogin" object:nil];
+    [[[UserModel alloc] init] loginWithUsername:self.usernameField.text AndPassword:self.passwordField.text];
+}
+
+-(void)didLogin{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [popoverAlterModel alterWithTitle:@"Succeed!" Message:[NSString stringWithFormat:@"You have created a new account named %@", self.usernameField.text]];
     if (selectedImage) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUploadProfileImage) name:@"didUploadImage" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailUploadProfileImage) name:@"didFailUploadImage" object:nil];
-        [[[ImageModel alloc] init] uploadImage:selectedImage User:self.usernameField.text];
+        
+        [[[ImageModel alloc] init] uploadUserImage:selectedImage Mode:1];
     }else{
         [[NSNotificationCenter defaultCenter] removeObserver:self];
         [self.navigationController popViewControllerAnimated:YES];

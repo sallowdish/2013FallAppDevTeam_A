@@ -10,7 +10,7 @@
 #import "UserModel.h"
 
 @implementation ImageUploadModel
--(void)uploadImage:(UIImage*)image User:(NSString*)username{
+-(void)uploadUserImage:(UIImage*)image Mode:(int)mode{
     
     NSMutableDictionary* _params = [[NSMutableDictionary alloc] init];
     [_params setObject:@"1.0" forKey:@"ver"];
@@ -19,10 +19,10 @@
     NSString* FileParamConstant = @"path";
     
     // the server url to which the image (or the media) is uploaded. Use your server url here
-    if(!username){
-        username=[UserModel isLogin]?[UserModel username]:@"tester";
-    }
-    NSURL* requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,@"/user_image_create_api",@"/?username=",username]];
+    
+NSURL* requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,API,@"/userimage/"]];
+    
+     requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@",HTTPPREFIX,@"127.0.0.1:8000",WEBSERVICENAME,API,@"/userimage/"]];
     
     // create request
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestURL];
@@ -31,14 +31,32 @@
     [request setTimeoutInterval:30];
     [request setHTTPMethod:@"POST"];
     
+    //set APIkey
+    
+    [request addValue:[NSString stringWithFormat:@"ApiKey %@:%@", [UserModel username],[UserModel userAPIKey]] forHTTPHeaderField:@"Authorization"];
     
     NSString *boundary = @"---------------------------14737809831466499882746641449";
     // set Content-Type in HTTP header
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
     [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
     
+
+    
     // post body
     NSMutableData *body = [NSMutableData data];
+    
+    
+    //add parameters
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", @"mode"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"%ul\r\n", mode] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", @"fk_user"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"%@\r\n", [UserModel userResourceURL]] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+
     
     
     // add image data
@@ -68,7 +86,7 @@
     }
 }
 
--(void)uploadImage:(UIImage*)image Event:(NSString *)fk_event{
+-(void)uploadEventImage:(UIImage*)image Event:(NSString *)fk_event{
     
     NSMutableDictionary* _params = [[NSMutableDictionary alloc] init];
     [_params setObject:@"1.0" forKey:@"ver"];

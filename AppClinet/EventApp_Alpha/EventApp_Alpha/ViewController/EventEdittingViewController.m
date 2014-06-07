@@ -231,7 +231,7 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishUploadImage:) name:@"didUploadImage" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailUploadImage) name:@"didFailUploadImage" object:nil];
         ImageUploadModel* uploadModel=[[ImageUploadModel alloc] init];
-        [uploadModel uploadImage:selectedPhoto[0] Event:fk_event];
+        [uploadModel uploadEventImage:selectedPhoto[0] Event:fk_event];
 //        [uploadModel uploadImage:selectedPhoto[0] User:[UserModel username]];
         return;
     }

@@ -320,7 +320,6 @@
 		7104A7A11824D1BA00EB3AD5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				719664621879BAE200D8BC7B /* HUD */,
 				719CE1D71874623800D2F058 /* FormatingModels */,
 				719CE1D61874621B00D2F058 /* DataCommunicationModels */,
 			);
@@ -442,6 +441,7 @@
 		71C883BE193ADD1B00E5E63C /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				719664621879BAE200D8BC7B /* HUD */,
 				71094D5C190D637F0098751A /* GKClasses */,
 				71C883BF193ADD2C00E5E63C /* UbertestersSDK */,
 			);

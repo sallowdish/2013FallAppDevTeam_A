@@ -57,7 +57,6 @@ NSString *_username, *_password;
     
     if (self.data) {
         self.jsonInfo=[NSJSONSerialization JSONObjectWithData:self.data options:NSJSONReadingMutableContainers error:nil];
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"didLogin" object:nil];
     }
 }
 

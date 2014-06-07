@@ -2016,9 +2016,12 @@
                                                                 <rect key="frame" x="5" y="1" width="60" height="30"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <state key="normal" title="更改頭像">
-                                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="didTapUpdateProfileImageButton" destination="i4G-Cf-69o" eventType="touchUpInside" id="ALv-ZG-m9I"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
@@ -2134,7 +2137,7 @@ XX日發佈了XXXX活動 .
                                                         <rect key="frame" x="3" y="1" width="84" height="53"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redheart.png" highlighted="YES" id="F3c-BS-Lma">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redheart.png" id="F3c-BS-Lma">
                                                                 <rect key="frame" x="20" y="0.0" width="40" height="43"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             </imageView>
@@ -2215,6 +2218,7 @@ XX日發佈了XXXX活動 .
                     </view>
                     <connections>
                         <outlet property="scrollView" destination="FDX-s5-dgU" id="D30-er-nld"/>
+                        <outlet property="updateProfilImageButton" destination="nS5-gP-snw" id="zIi-3b-xkb"/>
                         <outlet property="userDescription" destination="7Za-C6-oq2" id="ePn-MW-ccr"/>
                         <outlet property="userLike" destination="b3y-o1-K0u" id="aTv-JT-wqx"/>
                         <outlet property="userLocation" destination="CwI-6s-GxG" id="Yo3-dr-qww"/>
