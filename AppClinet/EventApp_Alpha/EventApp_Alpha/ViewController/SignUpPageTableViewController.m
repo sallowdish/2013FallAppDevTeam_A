@@ -79,12 +79,12 @@ UIImage* selectedImage;
 
 -(void)didSignUp{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogin) name:@"didLogin" object:nil];
-    [[[UserModel alloc] init] loginWithUsername:self.usernameField.text AndPassword:self.passwordField.text];
+    UserModel* model=[[UserModel alloc] init];
+    [model loginWithUsername:self.usernameField.text AndPassword:self.passwordField.text];
 }
 
 -(void)didLogin{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [popoverAlterModel alterWithTitle:@"Succeed!" Message:[NSString stringWithFormat:@"You have created a new account named %@", self.usernameField.text]];
     if (selectedImage) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUploadProfileImage) name:@"didUploadImage" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailUploadProfileImage) name:@"didFailUploadImage" object:nil];
@@ -101,6 +101,7 @@ UIImage* selectedImage;
 -(void)didUploadProfileImage{
 //    [popoverAlterModel alterWithTitle:@"Succeed" Message:[NSString stringWithFormat:@"You have created a new account named %@",self.usernameField.text]];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [popoverAlterModel alterWithTitle:@"Succeed!" Message:[NSString stringWithFormat:@"You have created a new account named %@", self.usernameField.text]];
     [self.navigationController popViewControllerAnimated:YES];
     [ProgressHUD dismiss];
 }

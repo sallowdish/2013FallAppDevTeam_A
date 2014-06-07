@@ -90,9 +90,7 @@ static bool isLogin,isDevelopment;
         username=[current_user objectForKey:@"username"];
         userResourceURL=[current_user objectForKey:@"resource_uri"];
         isLogin=true;
-        if (!isDevelopment) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"didLogin" object:nil];
-        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"didLogin" object:nil];
     }
 }
 
