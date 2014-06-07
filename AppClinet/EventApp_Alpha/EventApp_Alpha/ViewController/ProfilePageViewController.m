@@ -96,9 +96,12 @@
     [self.scrollView removeFromSuperview];
     self.scrollView.frame=CGRectMake(0, self.navigationController.navigationBar.frame.size.height, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
     [self.view addSubview:self.scrollView];
+    self.updateProfilImageButton.enabled=NO;
+    self.updateProfilImageButton.alpha=0.4f;
     if ([UserModel isLogin]) {
         if ([[self.targetUser objectForKey:@"username"] isEqualToString:[UserModel username]]) {
             self.updateProfilImageButton.enabled=YES;
+            self.updateProfilImageButton.alpha=1;
         }
     }
 }
@@ -112,6 +115,7 @@
 }
 
 -(IBAction)didTapUpdateProfileImageButton{
+    self.selectedPhoto=[NSMutableArray arrayWithCapacity:0];
     self.imagePicker = [[GKImagePicker alloc] init];
     //    self.imagePicker.cropSize = CGSizeMake(320, 90);
     self.imagePicker.delegate = self;
@@ -151,11 +155,15 @@
 - (void)didUpdateProfileImage{
     [ProgressHUD dismiss];
     [popoverAlterModel alterWithTitle:@"Succeed" Message:@"Updating is done. Please login again to see the new profile image."];
+    [self.navigationController popViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 -(void)didFailUpdateProfileImage{
     [ProgressHUD dismiss];
     [popoverAlterModel alterWithTitle:@"Failed" Message:@"Updating failed. Please try again later."];
+    [self.navigationController popViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning

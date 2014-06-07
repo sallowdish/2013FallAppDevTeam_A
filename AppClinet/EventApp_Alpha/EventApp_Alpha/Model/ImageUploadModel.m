@@ -22,7 +22,7 @@
     
 NSURL* requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,API,@"/userimage/"]];
     
-     requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@",HTTPPREFIX,@"127.0.0.1:8000",WEBSERVICENAME,API,@"/userimage/"]];
+//     requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@",HTTPPREFIX,@"127.0.0.1:8000",WEBSERVICENAME,API,@"/userimage/"]];
     
     // create request
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestURL];
@@ -49,7 +49,7 @@ NSURL* requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@
     //add parameters
     [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", @"mode"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"%ul\r\n", mode] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"%d\r\n", mode] dataUsingEncoding:NSUTF8StringEncoding]];
     
     
     [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
