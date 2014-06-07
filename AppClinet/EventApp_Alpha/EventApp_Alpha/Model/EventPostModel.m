@@ -94,6 +94,11 @@ bool isSendingAddress,isSendingEvent;
     }
     else if (isSendingEvent) {
         isSendingEvent=NO;
+        
+    }
+    else{
+        isSendingAddress=NO;
+        isSendingEvent=NO;
     }
 }
 @end

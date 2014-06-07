@@ -170,49 +170,83 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
 
 - (IBAction)donePressed:(id)sender{
     if ([self isAllRequiredFilled]) {
-        if (selectedPhoto.count>0) {
-            [ProgressHUD show:@"Uploading Image..."];
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishUploadImage:) name:@"didUploadImage" object:nil];
-            ImageUploadModel* uploadModel=[[ImageUploadModel alloc] init];
-            [uploadModel uploadImage:selectedPhoto[0] User:[UserModel username]];
-            return;
-        }
-        else{
-            [self didFinishUploadImage:nil];
-        }
-    }else
-    {
-        [popoverAlterModel alterWithTitle:@"Failed" Message:@"Please fill up all required field"];
+        [ProgressHUD show:@"Uploading..."];
+        NSMutableDictionary* dic=[self packUpInfo];
+        //    if (notif) {
+        //        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didUploadImage" object:nil];
+        //
+        //        [dic setObject:[NSString stringWithFormat:@"%@",[notif object]] forKey:@"event_image_name"];
+        //    }
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreateNewEvent:) name:@"didCreateNewEvent" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreateNewEventFailed) name:@"didCreateNewEventFailed" object:nil];
+        EventPostModel* model=[[EventPostModel alloc] init];
+        [ProgressHUD show:@"Submitting new event..."];
+        [model postEventwithInfo:dic];
+    }
+    else{
+        [popoverAlterModel alterWithTitle:@"Warning" Message:@"Please fill up all required fields."];
     }
 }
 
 
 -(void)didFinishUploadImage:(NSNotification*) notif{
-    NSMutableDictionary* dic=[self packUpInfo];
-    if (notif) {
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didUploadImage" object:nil];
-        
-        [dic setObject:[NSString stringWithFormat:@"%@",[notif object]] forKey:@"event_image_name"];
-    }
+//    NSMutableDictionary* dic=[self packUpInfo];
+//    if (notif) {
+//        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didUploadImage" object:nil];
+//        
+//        [dic setObject:[NSString stringWithFormat:@"%@",[notif object]] forKey:@"event_image_name"];
+//    }
+//    
+//    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreateNewEvent) name:@"didCreateNewEvent" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreateNewEventFailed) name:@"didCreateNewEventFailed" object:nil];
+//    EventPostModel* model=[[EventPostModel alloc] init];
+//    [ProgressHUD show:@"Submitting new event..."];
+//    [model postEventwithInfo:dic];
     
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreateNewEvent) name:@"didCreateNewEvent" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreateNewEventFailed) name:@"didCreateNewEventFailed" object:nil];
-    EventPostModel* model=[[EventPostModel alloc] init];
-    [ProgressHUD show:@"Submitting new event..."];
-    [model postEventwithInfo:dic];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [ProgressHUD dismiss];
+    [self.navigationController popViewControllerAnimated:YES];
+    [(EventListViewController*)[self.navigationController presentedViewController] refreshEventList:nil];
+    [popoverAlterModel alterWithTitle:@"Succeed" Message:@"You have created a new event, please reload the event list page."];
 }
 
 -(BOOL)isAllRequiredFilled{
     return !([self.titleInputTextField.text isEqualToString:@""]||[self.dateInputTextField.text isEqualToString:@""]||[self.timeFromInputTextField.text isEqualToString:@""]||[self.address isEqual:[NSNull null]]);
 }
 
--(void)didCreateNewEvent{
+-(void)didCreateNewEvent:(NSNotification*)notif{
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [ProgressHUD dismiss];
+//    [self.navigationController popViewControllerAnimated:YES];
+//    [(EventListViewController*)[self.navigationController presentedViewController] refreshEventList:nil];
+//    [popoverAlterModel alterWithTitle:@"Succeed" Message:@"You have created a new event, please reload the event list page."];
+    NSString* location=(NSString*)[notif object];
+    NSString* fk_event=[[location stringByReplacingOccurrencesOfString:HTTPPREFIX withString:@""] stringByReplacingOccurrencesOfString:WEBSERVICEDOMAIN withString:@""];
+
+    if (selectedPhoto.count>0) {
+        [ProgressHUD show:@"Uploading Image..."];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishUploadImage:) name:@"didUploadImage" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailUploadImage) name:@"didFailUploadImage" object:nil];
+        ImageUploadModel* uploadModel=[[ImageUploadModel alloc] init];
+        [uploadModel uploadImage:selectedPhoto[0] Event:fk_event];
+//        [uploadModel uploadImage:selectedPhoto[0] User:[UserModel username]];
+        return;
+    }
+    else{
+        [self didFinishUploadImage:nil];
+    }
+}
+
+-(void)didFailUploadImage{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [ProgressHUD dismiss];
+    [popoverAlterModel alterWithTitle:@"Error" Message:@"Fail to upload the event image."];
     [self.navigationController popViewControllerAnimated:YES];
     [(EventListViewController*)[self.navigationController presentedViewController] refreshEventList:nil];
-    [popoverAlterModel alterWithTitle:@"Succeed" Message:@"You have created a new event, please reload the event list page."];
+
 }
 
 -(void)didCreateNewEventFailed{
@@ -245,12 +279,13 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
 
 
 - (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
+    [selectedPhoto removeAllObjects];
     [selectedPhoto addObject:image];
     [self hideImagePicker];
     [self updateSelectedImage];
 }
 
--(void)hideImagePicker{
+- (void)hideImagePicker{
     [self.imagePicker.imagePickerController dismissViewControllerAnimated:YES completion:nil];
 }
 
