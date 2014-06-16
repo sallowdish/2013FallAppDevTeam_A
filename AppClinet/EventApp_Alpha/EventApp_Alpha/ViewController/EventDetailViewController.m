@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *descriptionTab;
 @property (weak, nonatomic) IBOutlet UIButton *commentsTab;
 @property (weak, nonatomic) IBOutlet UIView *detailSpanArea;
+@property UITextField* noComments;
 @end
 
 @implementation EventDetailViewController
@@ -62,6 +63,7 @@ EventJoinAndLikeModel* jlmodel;
     self.RSVPList=[NSMutableArray arrayWithCapacity:0];
     self.likeList=[NSMutableArray arrayWithCapacity:0];
     self.joinedPeopleIcons=[NSMutableArray arrayWithCapacity:0];
+    self.descriptionTab.enabled=NO;
     model=[[EventFetchModel alloc]init];
     jlmodel=[[EventJoinAndLikeModel alloc]init];
 
@@ -375,16 +377,33 @@ EventJoinAndLikeModel* jlmodel;
 
 -(IBAction)commentTabTapped:(id)sender{
     
+
+#pragma comment in developing
+
     self.commentsTab.backgroundColor=self.descriptionTab.backgroundColor;
     self.descriptionTab.backgroundColor=[UIColor clearColor];
-    self.description.hidden=YES;
+    self.description.text=@"Comments feature will be added in next reversion.";
     
+    //disable self&enable the other one
+    self.commentsTab.enabled=NO;
+    self.descriptionTab.enabled=YES;
 }
 
 -(IBAction)descriptionTabTapped:(id)sender{
+
+#pragma comment in dev
+    if (self.noComments) {
+        self.noComments.hidden=YES;
+    }
     self.descriptionTab.backgroundColor=self.commentsTab.backgroundColor;
     self.commentsTab.backgroundColor=[UIColor clearColor];
-    self.description.hidden=NO;
+    NSString *description=[event objectForKey:@"event_detail"];
+    if ([description isEqualToString:@""]) {
+        self.description.text=@"This guy is really lazy. He didn't write anything in detail.";
+    }
+    //disable self&enable the other one
+    self.descriptionTab.enabled=NO;
+    self.commentsTab.enabled=YES;
 }
 
 
