@@ -17,8 +17,10 @@
 @interface SettingPageViewController ()
 @property (weak, nonatomic) IBOutlet UIView *logoutCell;
 @property (weak, nonatomic) IBOutlet UIView *loginCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *topCell;
 @property (weak, nonatomic) IBOutlet UILabel *prompt;
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
+@property (weak, nonatomic) IBOutlet UIView *profileCell;
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *myEventListCell;
 
@@ -40,15 +42,30 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+    self.topCell.selectionStyle=UITableViewCellSelectionStyleNone;
     
     //Functionanity Setup
     self.prompt.lineBreakMode=NSLineBreakByWordWrapping;
     self.prompt.numberOfLines=0;
     
     //Visual
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTopCell) name:@"loginProcessFinish" object:nil];
-    UITapGestureRecognizer* tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(logoutTapped)];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    //User Interaction
+    UITapGestureRecognizer* tap;
+    
+    
+    if (![UserModel isLogin]) {
+        tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(loginTapped)];
+        tap.numberOfTapsRequired=1;
+        [self.loginCell addGestureRecognizer:tap];
+    }
+    
+    tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileTapped)];
+    tap.numberOfTapsRequired=1;
+    [self.profileCell addGestureRecognizer:tap];
+    
+    tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(logoutTapped)];
     tap.numberOfTapsRequired=1;
     [self.logoutCell addGestureRecognizer:tap];
     
@@ -64,16 +81,18 @@
 }
 
 -(void)reloadTopCell{
-    UITapGestureRecognizer* tap;
+    //clean up the ges
+    for (UIGestureRecognizer* ges in self.loginCell.gestureRecognizers) {
+        [self.loginCell removeGestureRecognizer:ges];
+    }
+    UITapGestureRecognizer *tap;
     if ([UserModel isLogin]) {
-        tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileTapped)];
-        tap.numberOfTapsRequired=1;
-        [self.loginCell addGestureRecognizer:tap];
         self.userProfileImage.image=[UserModel getProfileImage];
         self.prompt.text=[NSString stringWithFormat:@"Hi, %@.\nTap to see your profile.",[UserModel username]];
     }
     else{
         tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(loginTapped)];
+        
         tap.numberOfTapsRequired=1;
         [self.loginCell addGestureRecognizer:tap];
         
@@ -84,19 +103,22 @@
 }
 
 -(void)profileTapped{
-    ProfilePageViewController* vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
-    vc.targetUser=[UserModel current_user];
-    [self.navigationController pushViewController:vc animated:YES];
+    if ([UserModel isLogin]) {
+        ProfilePageViewController* vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
+        vc.targetUser=[UserModel current_user];
+        [self.navigationController pushViewController:vc animated:YES];
+
+    }else{
+        [self loginTapped];
+    }
 }
 
 -(void)logoutTapped{
     if ([UserModel isLogin]) {
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTopCell) name:@"loginProcessFinish" object:nil];
         UserModel* model=[[UserModel alloc] init];
         [model logoutCurrentUser];
         [self reloadTopCell];
         [popoverAlterModel alterWithTitle:@"Logout" Message:@"Logout Succeed"];
-//        [self.view setNeedsDisplay];
     }
 }
 
@@ -120,7 +142,6 @@
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTopCell) name:@"loginProcessFinish" object:nil];
     [UserModel popupLoginViewToViewController:self];
-//    [self.view setNeedsDisplay];
 }
 
 //- (void)loadLoginView
