@@ -29,7 +29,6 @@
 		71094D71190D74A30098751A /* ImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71094D70190D74A30098751A /* ImageModel.m */; };
 		71094D73190EEDAE0098751A /* Blank-Profile-Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 71094D72190EEDAE0098751A /* Blank-Profile-Image.png */; };
 		71094D75190EEFB90098751A /* addprofileimage.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 71094D74190EEFB90098751A /* addprofileimage.JPG */; };
-		71094D78190EF2A50098751A /* RecommandContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71094D77190EF2A50098751A /* RecommandContainerViewController.m */; };
 		711DA0CC194EC05F001A4F28 /* UIdataPickerWithDone.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DA0CB194EC05F001A4F28 /* UIdataPickerWithDone.m */; };
 		711DA0CE194EDD79001A4F28 /* 152_152icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 711DA0CD194EDD79001A4F28 /* 152_152icon.png */; };
 		711DA0D1194EDDBB001A4F28 /* setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 711DA0CF194EDDBB001A4F28 /* setting@2x.png */; };
@@ -154,8 +153,6 @@
 		71094D70190D74A30098751A /* ImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageModel.m; path = Model/ImageModel.m; sourceTree = "<group>"; };
 		71094D72190EEDAE0098751A /* Blank-Profile-Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blank-Profile-Image.png"; sourceTree = "<group>"; };
 		71094D74190EEFB90098751A /* addprofileimage.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = addprofileimage.JPG; sourceTree = "<group>"; };
-		71094D76190EF2A50098751A /* RecommandContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecommandContainerViewController.h; path = ViewController/RecommandContainerViewController.h; sourceTree = "<group>"; };
-		71094D77190EF2A50098751A /* RecommandContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecommandContainerViewController.m; path = ViewController/RecommandContainerViewController.m; sourceTree = "<group>"; };
 		711DA0CA194EC05F001A4F28 /* UIdataPickerWithDone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIdataPickerWithDone.h; path = ViewController/UIdataPickerWithDone.h; sourceTree = "<group>"; };
 		711DA0CB194EC05F001A4F28 /* UIdataPickerWithDone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIdataPickerWithDone.m; path = ViewController/UIdataPickerWithDone.m; sourceTree = "<group>"; };
 		711DA0CD194EDD79001A4F28 /* 152_152icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 152_152icon.png; path = Images/152_152icon.png; sourceTree = "<group>"; };
@@ -324,8 +321,6 @@
 				7103FE9618A9C1A30047EFAD /* PageViewController.m */,
 				7103FE9818A9C2820047EFAD /* PageContentViewController.h */,
 				7103FE9918A9C2820047EFAD /* PageContentViewController.m */,
-				71094D76190EF2A50098751A /* RecommandContainerViewController.h */,
-				71094D77190EF2A50098751A /* RecommandContainerViewController.m */,
 			);
 			name = EventRecommend;
 			sourceTree = "<group>";
@@ -366,13 +361,6 @@
 				711DA0CB194EC05F001A4F28 /* UIdataPickerWithDone.m */,
 			);
 			name = CustomizedUI;
-			sourceTree = "<group>";
-		};
-		712A2C681884FBAA00BF3AC6 /* Recommand */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Recommand;
 			sourceTree = "<group>";
 		};
 		7185DF9718B9AF4F00C3DE90 /* ProgressHUD */ = {
@@ -452,7 +440,6 @@
 			isa = PBXGroup;
 			children = (
 				711DA0C9194EC01E001A4F28 /* CustomizedUI */,
-				712A2C681884FBAA00BF3AC6 /* Recommand */,
 				71974BA61869A618004493DC /* CQMFloatingView */,
 				71F8A914183C7AB8001AEF6A /* Event */,
 				71F8A917183C7B19001AEF6A /* MainTab */,
@@ -852,7 +839,6 @@
 				71974BB81869A618004493DC /* CQMFloatingNavigationBar.m in Sources */,
 				71EE8685187854B6007FD900 /* ProfilePageViewController.m in Sources */,
 				7101D32F18ECD068002B9592 /* ImageUploadModel.m in Sources */,
-				71094D78190EF2A50098751A /* RecommandContainerViewController.m in Sources */,
 				71F8A91F183C7CAB001AEF6A /* EventEdittingViewController.m in Sources */,
 				71094D6A190D63800098751A /* GKImageCropOverlayView.m in Sources */,
 				718C9011185DA0A300D86EA1 /* TemplateTableCell.m in Sources */,

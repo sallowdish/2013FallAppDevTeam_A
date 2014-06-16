@@ -11,6 +11,7 @@
 #define MAXTAG 100
 
 @interface PageContentViewController ()
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @end
 
@@ -29,9 +30,21 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+//    UIScrollView* draftScrollView=self.scrollView;
     [self.scrollView removeFromSuperview];
     [self.scrollView setScrollEnabled:YES];
-    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
+    NSLog(@"%f",[[UIScreen mainScreen] bounds].size.height);
+    if ([[UIScreen mainScreen] bounds].size.height==568) {
+        CGSize size=CGSizeMake(self.scrollView.frame.size.width, [[UIScreen mainScreen] bounds].size.height-50);
+        [self.scrollView setContentSize:size];
+    }else{
+        CGSize size=CGSizeMake(self.scrollView.frame.size.width, [[UIScreen mainScreen] bounds].size.height+110);
+        [self.scrollView setContentSize:size];
+    }
+    
+    //autoresize
+    [self.contentView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
+    
     //model to view matching
     self.eventTitleLabel.text=self.eventTitle;
     self.eventDateLabel.text=self.eventDate;
@@ -43,7 +56,7 @@
     //polish
     [self setRoundConnerForViewWithMaxTag:MAXTAG];
     
-    self.view.frame=CGRectMake(0, self.navigationController.navigationBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+//    self.view.frame=CGRectMake(0, self.navigationController.navigationBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:self.scrollView];
 }
 

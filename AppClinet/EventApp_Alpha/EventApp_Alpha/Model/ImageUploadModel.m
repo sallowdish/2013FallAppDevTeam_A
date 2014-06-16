@@ -60,7 +60,7 @@ NSURL* requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@
     
     
     // add image data
-    NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.2);
     if (imageData) {
         //first bounder
         [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -128,7 +128,7 @@ NSURL* requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@
 
     
     // add image data
-    NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.4);
     if (imageData) {
         //first bounder
         [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];

@@ -36,6 +36,7 @@
 - (IBAction)fullScreenButtonPressed:(id)sender{
     self.navigationController.navigationBarHidden=!self.navigationController.navigationBarHidden;
     self.tabBarController.tabBar.hidden=!self.tabBarController.tabBar.hidden;
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning

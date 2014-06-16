@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface PageContentViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *eventImageView;
 @property (weak, nonatomic) IBOutlet UILabel *eventTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventDateLabel;

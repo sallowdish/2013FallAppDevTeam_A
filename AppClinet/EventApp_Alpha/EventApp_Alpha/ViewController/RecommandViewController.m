@@ -1,10 +1,3 @@
-//
-//  ViewController.m
-//  BTGlassScrollViewExample
-//
-//  Created by Byte on 10/18/13.
-//  Copyright (c) 2013 Byte. All rights reserved.
-//
 
 #define SIMPLE_SAMPLE NO
 
@@ -53,6 +46,7 @@
     UIViewController* initialViewController=[self viewControllerAtIndex:0];
     if (initialViewController) {
         [self.pageViewController setViewControllers:@[initialViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+//        [self addChildViewController:initialViewController];
     }else{
         UIViewController* alternativeViewController=[[UIViewController alloc]init];
         UILabel* msg=[[UILabel alloc] init];
@@ -66,7 +60,7 @@
     //add page view controller to main page
 //    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     
-    [self addChildViewController:_pageViewController];
+//    [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
 }
@@ -112,10 +106,16 @@
     pageContentViewController.eventTitle=[event objectForKey:@"event_title"];
     pageContentViewController.eventDate=[event objectForKey:@"event_date"];
     pageContentViewController.eventLocation=[event objectForKey:@"address_title"];
-    pageContentViewController.eventHoster=[event objectForKey:@"fk_event_poster_user"];
+    pageContentViewController.eventHoster=[event objectForKey:@"fk_event_poster_user_name"];
     pageContentViewController.eventLike=[[event objectForKey:@"event_like"] integerValue];
     pageContentViewController.eventRSVP=[[event objectForKey:@"event_rsvp"] integerValue];
-    pageContentViewController.eventImage=[ImageModel downloadImage:event];
+    NSArray* imageSet=[event objectForKey:@"event_image"];
+    if (imageSet.count>0) {
+        pageContentViewController.eventImage=[ImageModel downloadImageViaPath:[imageSet[0] objectForKey:@"path"] For:@"event" WithPrefix:@""];
+    }else{
+        pageContentViewController.eventImage=[ImageModel downloadImageViaPath:nil For:@"event" WithPrefix:@""];
+    }
+    
     pageContentViewController.pageIndex = index;
     
 //    pageContentViewController.view.frame = CGRectMake(0, self.navigationController.navigationBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);

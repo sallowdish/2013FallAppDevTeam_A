@@ -14,7 +14,7 @@
 #import "FormatingModel.h"
 #import "ProgressHUD.h"
 #import "UserModel.h"
-#import "RecommandContainerViewController.h"
+
 
 @interface EventListViewController ()
 
@@ -235,11 +235,6 @@ bool isUpdated,isBasedOnTime;
         UITableViewCell* cell=sender;
         id obj=[eventList objectAtIndex:[[self.tableView indexPathForCell:cell] row]];
         [destination setValue:[obj valueForKey:@"id"] forKey:@"eventID"];
-    }
-    else if ([[segue identifier] isEqualToString:@"eventListToEventRecommend"]){
-        RecommandContainerViewController* viewController=[segue destinationViewController];
-        viewController.selectedSegmentIndex=2;
-        viewController.previousViewController=self;
     }
 }
 
