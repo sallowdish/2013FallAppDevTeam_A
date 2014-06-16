@@ -30,6 +30,7 @@
 		71094D73190EEDAE0098751A /* Blank-Profile-Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 71094D72190EEDAE0098751A /* Blank-Profile-Image.png */; };
 		71094D75190EEFB90098751A /* addprofileimage.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 71094D74190EEFB90098751A /* addprofileimage.JPG */; };
 		71094D78190EF2A50098751A /* RecommandContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71094D77190EF2A50098751A /* RecommandContainerViewController.m */; };
+		711DA0CC194EC05F001A4F28 /* UIdataPickerWithDone.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DA0CB194EC05F001A4F28 /* UIdataPickerWithDone.m */; };
 		712A2C5B1883A4EA00BF3AC6 /* DataTransferModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C581883A4EA00BF3AC6 /* DataTransferModel.m */; };
 		712A2C5C1883A4EA00BF3AC6 /* URLConstructModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C5A1883A4EA00BF3AC6 /* URLConstructModel.m */; };
 		712A2C6B1884FBBF00BF3AC6 /* RecommandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C6A1884FBBF00BF3AC6 /* RecommandViewController.m */; };
@@ -150,6 +151,8 @@
 		71094D74190EEFB90098751A /* addprofileimage.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = addprofileimage.JPG; sourceTree = "<group>"; };
 		71094D76190EF2A50098751A /* RecommandContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecommandContainerViewController.h; path = ViewController/RecommandContainerViewController.h; sourceTree = "<group>"; };
 		71094D77190EF2A50098751A /* RecommandContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecommandContainerViewController.m; path = ViewController/RecommandContainerViewController.m; sourceTree = "<group>"; };
+		711DA0CA194EC05F001A4F28 /* UIdataPickerWithDone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIdataPickerWithDone.h; path = ViewController/UIdataPickerWithDone.h; sourceTree = "<group>"; };
+		711DA0CB194EC05F001A4F28 /* UIdataPickerWithDone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIdataPickerWithDone.m; path = ViewController/UIdataPickerWithDone.m; sourceTree = "<group>"; };
 		712A2C571883A4EA00BF3AC6 /* DataTransferModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataTransferModel.h; path = Model/DataTransferModel.h; sourceTree = "<group>"; };
 		712A2C581883A4EA00BF3AC6 /* DataTransferModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataTransferModel.m; path = Model/DataTransferModel.m; sourceTree = "<group>"; };
 		712A2C591883A4EA00BF3AC6 /* URLConstructModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLConstructModel.h; path = Model/URLConstructModel.h; sourceTree = "<group>"; };
@@ -346,6 +349,15 @@
 			path = ViewController/GKClasses;
 			sourceTree = "<group>";
 		};
+		711DA0C9194EC01E001A4F28 /* CustomizedUI */ = {
+			isa = PBXGroup;
+			children = (
+				711DA0CA194EC05F001A4F28 /* UIdataPickerWithDone.h */,
+				711DA0CB194EC05F001A4F28 /* UIdataPickerWithDone.m */,
+			);
+			name = CustomizedUI;
+			sourceTree = "<group>";
+		};
 		712A2C681884FBAA00BF3AC6 /* Recommand */ = {
 			isa = PBXGroup;
 			children = (
@@ -429,6 +441,7 @@
 		71B763C21807832100717D67 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				711DA0C9194EC01E001A4F28 /* CustomizedUI */,
 				712A2C681884FBAA00BF3AC6 /* Recommand */,
 				71974BA61869A618004493DC /* CQMFloatingView */,
 				71F8A914183C7AB8001AEF6A /* Event */,
@@ -824,6 +837,7 @@
 				71094D6A190D63800098751A /* GKImageCropOverlayView.m in Sources */,
 				718C9011185DA0A300D86EA1 /* TemplateTableCell.m in Sources */,
 				7185DF9618B9609A00C3DE90 /* EventPostModel.m in Sources */,
+				711DA0CC194EC05F001A4F28 /* UIdataPickerWithDone.m in Sources */,
 				7104A7A01824D1B500EB3AD5 /* EventListFetchModel.m in Sources */,
 				7103FE9A18A9C2820047EFAD /* PageContentViewController.m in Sources */,
 				71974BB41869A618004493DC /* CQMFloatingContentOverlayView.m in Sources */,

@@ -14,6 +14,7 @@
 #import "ImageUploadModel.h"
 #import "EventListViewController.h"
 #import "UserModel.h"
+#import "UIdataPickerWithDone.h"
 
 @interface EventEdittingViewController ()
 @property (weak, nonatomic) IBOutlet UITableViewCell *photoCell;
@@ -71,19 +72,37 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
     
     
     //Functionality setup
-    UIDatePicker *datePicker=[[UIDatePicker alloc]init]
-        ,*timePicker=[[UIDatePicker alloc]init];
+//    UIDatePicker *datePicker=[[UIDatePicker alloc]init]
+//        ,*timePicker=[[UIDatePicker alloc]init];
+    
+    
+//    self.dateInputTextField.inputView=datePicker;
+//    self.timeFromInputTextField.inputView=timePicker;
+
+
+    
+//    [self.timeFromInputTextField addTarget:self action:@selector(didFinishTimeEditting:) forControlEvents:UIControlEventEditingDidEnd];
+//
+//    [self.dateInputTextField addTarget:self action:@selector(didFinishDateEditting:) forControlEvents:UIControlEventEditingDidEnd];
+    
+#pragma add done button
+    UIdataPickerWithDone *datePicker=[[UIdataPickerWithDone alloc]init]
+    ,*timePicker=[[UIdataPickerWithDone alloc]init];
     [datePicker setDatePickerMode:UIDatePickerModeDate];
     [timePicker setDatePickerMode:UIDatePickerModeTime];
+    
 
+    [datePicker setDatePickerMode:UIDatePickerModeDate];
+    [datePicker addTargetForDoneButton:self action:@selector(didFinishDateEditting:)];
+    
+    [timePicker setDatePickerMode:UIDatePickerModeTime];
+    [timePicker addTargetForDoneButton:self action:@selector(didFinishTimeEditting:)];
     
     self.dateInputTextField.inputView=datePicker;
     self.timeFromInputTextField.inputView=timePicker;
-
-    [self.timeFromInputTextField addTarget:self action:@selector(didFinishTimeEditting:) forControlEvents:UIControlEventEditingDidEnd];
-
-    [self.dateInputTextField addTarget:self action:@selector(didFinishDateEditting:) forControlEvents:UIControlEventEditingDidEnd];
     
+    
+    //location
     UITapGestureRecognizer* editLocationTap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(editLocation:)];
     editLocationTap.numberOfTapsRequired=1;
     [self.locationTextField addGestureRecognizer:editLocationTap];
@@ -148,18 +167,15 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
 -(IBAction)didFinishTimeEditting:(id)sender{
     NSDateFormatter* formatter=[[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH:mm"];
-    UITextField* tf=(UITextField*)sender;
-    UIDatePicker* picker=(UIDatePicker*)tf.inputView;
-//    sender.text=[formatter stringFromDate:time];
-    [(UITextField*)sender setText:[formatter stringFromDate:[picker date]]];
+    [self.timeFromInputTextField setText:[formatter stringFromDate:sender]];
+    [self.view endEditing:YES];
 }
 
 -(IBAction)didFinishDateEditting:(id)sender{
     NSDateFormatter* formatter=[[NSDateFormatter alloc] init];
-    UITextField* tf=(UITextField*)sender;
-    UIDatePicker* picker=(UIDatePicker*)tf.inputView;
     [formatter setDateFormat:@"yyyy-MM-dd"];
-    [(UITextField*)sender setText: [formatter stringFromDate:[picker date]]];
+    [self.dateInputTextField setText: [formatter stringFromDate:sender]];
+    [self.view endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning
