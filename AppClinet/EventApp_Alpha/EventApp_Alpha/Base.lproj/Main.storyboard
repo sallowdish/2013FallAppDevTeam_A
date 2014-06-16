@@ -122,7 +122,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photos" id="5lG-JW-nY5">
+                                        <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Blank-Profile-Image.png" id="5lG-JW-nY5">
                                             <rect key="frame" x="10" y="7" width="80" height="80"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </imageView>
@@ -862,7 +862,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Calender" id="PpP-PB-3Ba">
+                                                    <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event1.jpg" id="PpP-PB-3Ba">
                                                         <rect key="frame" x="10" y="10" width="111" height="150"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1142,7 +1142,7 @@
         <scene sceneID="NLS-3Z-Hsz">
             <objects>
                 <navigationController definesPresentationContext="YES" id="aVg-TB-R8J" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Events" image="Photos" id="9a2-VO-zL6"/>
+                    <tabBarItem key="tabBarItem" title="Events" image="ticket.png" id="9a2-VO-zL6"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="t4X-k0-Eng">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
@@ -1160,7 +1160,7 @@
         <scene sceneID="r3f-5Q-9jp">
             <objects>
                 <navigationController definesPresentationContext="YES" id="93Q-yd-GsA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Recommand" image="shopping" id="30I-1N-fc2"/>
+                    <tabBarItem key="tabBarItem" title="Recommand" image="shopping.png" id="30I-1N-fc2"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="5e0-PH-c1v">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
@@ -1172,7 +1172,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3TA-8B-ktS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-102" y="405"/>
+            <point key="canvasLocation" x="50" y="725"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="Cmc-8g-aUs">
@@ -1180,7 +1180,7 @@
                 <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="jUs-vR-EpV" customClass="PageViewController" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DHt-Qo-Kmx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1893" y="571"/>
+            <point key="canvasLocation" x="2233" y="531"/>
         </scene>
         <!--Page Content View Controller-->
         <scene sceneID="zkt-UW-JEs">
@@ -1317,7 +1317,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8QZ-bG-Tai" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1899" y="1286"/>
+            <point key="canvasLocation" x="2423" y="1294"/>
         </scene>
         <!--Login Page-->
         <scene sceneID="zi8-eE-FQc">
@@ -1662,7 +1662,7 @@
         <scene sceneID="41X-eN-8O9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" definesPresentationContext="YES" id="Fi8-rs-FVR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="Setting" id="2sR-aW-4fR"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="setting.png" id="2sR-aW-4fR"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="pQa-zw-QWV">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
@@ -1791,6 +1791,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="XE4-Sb-qPx" kind="push" id="L9Z-6f-Y52"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1915,7 +1918,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photos" id="FkC-70-OUv">
+                                        <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket.png" id="FkC-70-OUv">
                                             <rect key="frame" x="10" y="7" width="80" height="80"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </imageView>
@@ -1944,6 +1947,315 @@
             </objects>
             <point key="canvasLocation" x="1056" y="1576"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="bOA-Sd-eHE">
+            <objects>
+                <viewController id="XE4-Sb-qPx" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vba-zx-OFl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moon_and_star.png" id="bsN-ii-CbG">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" usesAttributedText="YES" id="Gce-Ow-r1o">
+                                <rect key="frame" x="0.0" y="70" width="320" height="440"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="  App Architect">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue-Bold"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Rui Zheng ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="App Developer">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue-Bold"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Rui Zheng ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Database Designer">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue-Bold"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Lili Xie Jason Li ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Documentation">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue-Bold"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Zongwei Na ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Project Manager">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue-Bold"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Wenbo Li ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Quality Assurance">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue-Bold"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Lili Xie Jason Li  ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="UI Designer">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue-Bold"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" Miao Chen ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Web Service Architect">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue-Bold"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Weitong Su ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Web Service Admin">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue-Bold"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Weitong Su Ziyi Ding  ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="RTc-26-FlB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kfx-g1-Y2D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1367" y="2481"/>
+        </scene>
         <!--Profile Page View Controller-->
         <scene sceneID="kaU-dT-CJh">
             <objects>
@@ -1960,7 +2272,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="650"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" id="mZm-Li-3fs" userLabel="Background">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundImage.png" id="mZm-Li-3fs" userLabel="Background">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="650"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </imageView>
@@ -2233,7 +2545,7 @@ XX日發佈了XXXX活動 .
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oGq-gb-jck" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="898" y="511"/>
+            <point key="canvasLocation" x="1292" y="539"/>
         </scene>
         <!--Recommand Container View Controller-->
         <scene sceneID="iGg-9l-wMw">
@@ -2258,7 +2570,7 @@ XX日發佈了XXXX活動 .
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvk-Ga-KQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="403" y="175"/>
+            <point key="canvasLocation" x="659" y="539"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
@@ -2283,12 +2595,9 @@ XX日發佈了XXXX活動 .
     </scenes>
     <resources>
         <image name="Blank-Profile-Image.png" width="128" height="128"/>
-        <image name="Calender" width="204" height="204"/>
-        <image name="Photos" width="30" height="30"/>
-        <image name="Setting" width="30" height="30"/>
         <image name="TimeIcon_done.png" width="50" height="50"/>
         <image name="addprofileimage.JPG" width="134" height="133"/>
-        <image name="background" width="512" height="512"/>
+        <image name="backgroundImage.png" width="1280" height="800"/>
         <image name="event1.jpg" width="225" height="225"/>
         <image name="event2.jpg" width="259" height="194"/>
         <image name="event3.jpg" width="280" height="180"/>
@@ -2297,10 +2606,13 @@ XX日發佈了XXXX活動 .
         <image name="greyheart_done.png" width="69" height="65"/>
         <image name="greytick_done.png" width="70" height="70"/>
         <image name="locationIcon_done.png" width="50" height="50"/>
+        <image name="moon_and_star.png" width="640" height="960"/>
         <image name="peopleIcon_done.png" width="50" height="50"/>
         <image name="profileImage.png" width="300" height="300"/>
         <image name="redheart.png" width="64" height="64"/>
-        <image name="shopping" width="30" height="30"/>
+        <image name="setting.png" width="30" height="30"/>
+        <image name="shopping.png" width="30" height="30"/>
+        <image name="ticket.png" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
