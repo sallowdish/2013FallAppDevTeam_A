@@ -22,8 +22,10 @@
     return img;
 
 }
-+(UIImage*)downloadImageViaPath:(NSString *)path For:(NSString*)receiver WithPrefix:(NSString*)Prefix{
-    UIImage* img;
++(UIImage*)downloadImageViaPath:(NSString *)path For:(NSString*)receiver WithPrefix:(NSString*)Prefix
+{
+    __block UIImage* img;
+    NSURL* targetURL;
     if ([receiver isEqualToString:@"user"]) {
         img=[UIImage imageNamed:@"152_152icon.png"];
     }
@@ -33,21 +35,26 @@
     }
     else{
         img=[UIImage imageNamed:@"default_profile_5_bigger.png"];
-        return img;
     }
 //    UIImage* img=[UIImage imageNamed:@"152_152icon.png"];
     if (path!=(id)[NSNull null]) {
-        NSURL* targetURL;
-
         targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,Prefix,path]];
-//        NSLog(@"%@",[targetURL absoluteString]);
-        NSData* imgContent=[NSData dataWithContentsOfURL:targetURL];
-        if (imgContent) {
-            img=[UIImage imageWithData:imgContent];
-        }
-        
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager downloadWithURL:targetURL
+                         options:0
+                        progress:^(NSInteger receivedSize, NSInteger expectedSize)
+         {
+             // progression tracking code
+         }
+                       completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished)
+         {
+             if (image)
+             {
+                 img=image;
+             }
+         }];
     }
-        return img;
+    return img;
     
 }
 

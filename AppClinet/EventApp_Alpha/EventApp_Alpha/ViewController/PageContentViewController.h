@@ -22,4 +22,5 @@
 @property NSString *eventTitle,*eventDate,*eventLocation,*eventHoster;
 @property UIImage *eventImage;
 
+
 @end

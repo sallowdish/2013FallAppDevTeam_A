@@ -91,7 +91,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
-      customArchiveName = "Seeker.OTAT"
+      customArchiveName = "EventSeeker"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

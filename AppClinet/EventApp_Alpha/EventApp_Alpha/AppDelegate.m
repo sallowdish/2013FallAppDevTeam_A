@@ -11,6 +11,7 @@
 //#import "WebServiceCommunicationModel.h"
 
 #define defaultLogin 1
+#define betaTestLoadUberSDK 0
 
 @implementation AppDelegate
 
@@ -26,7 +27,10 @@
     pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
     pageControl.backgroundColor = [UIColor whiteColor];
     
-    [[Ubertesters shared] initializeWithOptions:UTOptionsSlider |UTOptionsLockingModeDisableUbertestersIfBuildNotExist];
+    if (betaTestLoadUberSDK) {
+        [[Ubertesters shared] initializeWithOptions:UTOptionsSlider |UTOptionsLockingModeDisableUbertestersIfBuildNotExist];
+    }
+
 //    NSLog(@"%f", [[UIScreen mainScreen] bounds].size.height);
     return YES;
 }

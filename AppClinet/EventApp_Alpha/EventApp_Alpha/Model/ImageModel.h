@@ -7,6 +7,7 @@
 //
 
 #import "ImageUploadModel.h"
+#import "SDWebImage/SDWebImageManager.h"
 
 @interface ImageModel : ImageUploadModel
 +(UIImage*)downloadImage:(NSDictionary*)event;
