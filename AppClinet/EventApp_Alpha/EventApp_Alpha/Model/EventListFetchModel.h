@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 2013_Fall_Dev_Team_A. All rights reserved.
 //
 
+#import "EventListViewController.h"
+
 #import <Foundation/Foundation.h>
 #import "DataTransferModel.h"
 
@@ -15,5 +17,6 @@
 -(void) fetchEventListWithMode:(NSString*) mode;
 -(void) fetchEventListFromFile;
 -(void) fetchEventListWithUser;
+-(void) fetchNextPage:(id)table;
 //-(UIImage*)fetchProfileImageForUser:(NSDictionary*) user;
 @end

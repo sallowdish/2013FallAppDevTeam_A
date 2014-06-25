@@ -17,4 +17,5 @@
 +(NSURL *)constructFetchRequest;
 //Construct the post request using the data from view
 +(NSURL*)constructEventPostURLwithUsername:(NSString*)username andKey:(NSString*) APIkey;
++(NSURL*)constructURLHeader;
 @end

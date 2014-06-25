@@ -178,17 +178,22 @@ bool isUpdated,isBasedOnTime;
 {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [eventList count];
+    return [eventList count]+1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    
-//    if (indexPath.row==0) {
-//        SegmentControllerCell *cell= [tableView dequeueReusableCellWithIdentifier:@"SegmentControllerCell" forIndexPath:indexPath];
-//        return cell;
-//    }
-//        else{
+    
+    if (indexPath.row==[eventList count]) {
+        UITableViewCell *cell= [tableView dequeueReusableCellWithIdentifier:@"loadMoreCell"];
+        UIButton* button=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
+        [button setTitle:@"Load More..." forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(loadNextPage:) forControlEvents:UIControlEventTouchDown];
+        [cell addSubview:button];
+        return cell;
+    }
+    else{
         static NSString *CellIdentifier = @"cellTemplate";
         TemplateTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
@@ -196,10 +201,19 @@ bool isUpdated,isBasedOnTime;
         NSDictionary* event=[eventList objectAtIndex:indexPath.row];
         cell=[FormatingModel modelToViewMatch:cell ForRowAtIndexPath:(NSIndexPath*)indexPath eventInstance:event];
             return cell;
-//    }
+    }
 }
 
-
+-(IBAction)loadNextPage:(id)sender{
+    [ProgressHUD show:@"Loading..."];
+    dispatch_queue_t queue;
+//    dispatch_group_t group;
+    queue = dispatch_queue_create("com.EventApp.EventListFetchModel.Model", DISPATCH_QUEUE_SERIAL);
+    dispatch_async(queue, ^{
+        [model fetchNextPage:self];
+        NSLog(@"Start");
+    });
+}
 
 -(IBAction)segementationButtonPressed:(id)sender{
     UISegmentedControl* seg=(UISegmentedControl*)sender;
@@ -220,9 +234,9 @@ bool isUpdated,isBasedOnTime;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (indexPath.row == 0) {
-//        return 40;
-//    }
+    if (indexPath.row == [eventList count]) {
+        return 65;
+    }
     return 95;
 }
 

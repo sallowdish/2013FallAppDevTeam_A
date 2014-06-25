@@ -29,8 +29,13 @@
 +(NSURL *)constructEventPostURLwithUsername:(NSString*)username andKey:(NSString*) APIkey{
     NSString* rawURL=[NSString stringWithFormat:@"%@%@%@%@%@", HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,API,@"/event/?"];
     rawURL=[rawURL stringByAppendingFormat:@"username=%@&api_key=%@",username,APIkey];
-    NSLog(@"%@",rawURL);
+//    NSLog(@"%@",rawURL);
     return [NSURL URLWithString:rawURL];
+}
+
++(NSURL*)constructURLHeader{
+    NSString* header=[NSString stringWithFormat:@"%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME];
+    return [NSURL URLWithString:header];
 }
 
 @end

@@ -78,12 +78,12 @@ bool isUpdated;
 }
 
 
--(void)fetchNewDataFromServer{
+-(void)fetchNewDataFromServer:(NSString*)mode{
     [ProgressHUD show:@"Loading new events list..."];
     isUpdated=false;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchNewDataFromServer:) name:@"didFetchEventListWithMode" object:nil];
-    [model fetchEventListWithMode:@"hot"];
-    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(removeFromNSNotificationCenter) userInfo:nil repeats:NO];
+    [model fetchEventListWithMode:mode];
+    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(removeFromNSNotificationCenter) userInfo:nil repeats:NO];
     //    [self fetchNewDataFromServer];
     [[ProgressHUD class] performSelector:@selector(dismiss) withObject:nil afterDelay:0.8];
 }
@@ -98,7 +98,7 @@ bool isUpdated;
 }
 
 -(void) viewWillAppear:(BOOL)animated{
-    [self fetchNewDataFromServer];
+    [self fetchNewDataFromServer:@"hot"];
 }
 
 -(void) removeFromNSNotificationCenter{
@@ -128,7 +128,7 @@ bool isUpdated;
     
     //HUD indication
     //Functionality
-    [self fetchNewDataFromServer];
+    [self fetchNewDataFromServer:@"hot"];
     [self.tableView reloadData];
     [self.refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:2];
     //HUD dismiss
