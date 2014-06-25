@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface EventDetailViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic) NSInteger eventID;
 @property (weak, nonatomic) IBOutlet UILabel *eventName;
 @property (weak, nonatomic) IBOutlet UILabel *hoster;
