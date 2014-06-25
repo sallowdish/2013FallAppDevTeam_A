@@ -211,7 +211,6 @@ bool isUpdated,isBasedOnTime;
     queue = dispatch_queue_create("com.EventApp.EventListFetchModel.Model", DISPATCH_QUEUE_SERIAL);
     dispatch_async(queue, ^{
         [model fetchNextPage:self];
-        NSLog(@"Start");
     });
 }
 

@@ -17,15 +17,21 @@
 #import "ProfilePageViewController.h"
 #import "AddressInfoPageViewController.h"
 #import "ImageModel.h"
+#import "UIImageView+AFNetworking.h"
 #undef MAXTAG
 #define MAXTAG 104
-@interface EventDetailViewController ()
+@interface EventDetailViewController (){
+    dispatch_queue_t queue;
+    dispatch_semaphore_t semeaphore;
+}
 @property (strong,nonatomic) NSDictionary* event;
 @property (strong,nonatomic) NSMutableArray* RSVPList;
 @property (strong,nonatomic) NSMutableArray* likeList;
-@property (strong, nonatomic) NSMutableArray *joinedPeopleIcons;
-@property (weak, nonatomic) IBOutlet UIView *joinedPeopleSpanArea;
-@property (weak, nonatomic) IBOutlet UILabel *joinedPeopleLabel;
+@property (strong,nonatomic) NSMutableArray* RSVPProfileIcons;
+
+@property (weak, nonatomic) IBOutlet UIView *RSVPSpanArea;
+@property (strong, nonatomic) IBOutlet UIImageView *RSVPProfileIconTemplate;
+@property (strong, nonatomic) IBOutlet UILabel *RSVPProfileStateLabel;
 @property (weak, nonatomic) IBOutlet UIButton *descriptionTab;
 @property (weak, nonatomic) IBOutlet UIButton *commentsTab;
 @property (weak, nonatomic) IBOutlet UIView *detailSpanArea;
@@ -56,11 +62,11 @@ EventJoinAndLikeModel* jlmodel;
     float para=[[UIScreen mainScreen] bounds].size.height== 480?1.3:1.16;
     CGSize contentsize=CGSizeMake(320,self.containerView.frame.size.height*para+self.navigationController.navigationBar.frame.size.height);
     [self.scrollView setContentSize:contentsize];
-    
+    [self cleanUpRSVPSpanArea];
     
     self.RSVPList=[NSMutableArray arrayWithCapacity:0];
     self.likeList=[NSMutableArray arrayWithCapacity:0];
-    self.joinedPeopleIcons=[NSMutableArray arrayWithCapacity:0];
+    self.RSVPProfileIcons=[NSMutableArray arrayWithCapacity:0];
     self.descriptionTab.enabled=NO;
     model=[[EventFetchModel alloc]init];
     jlmodel=[[EventJoinAndLikeModel alloc]init];
@@ -87,7 +93,6 @@ EventJoinAndLikeModel* jlmodel;
         [popoverAlterModel alterWithTitle:@"Failed" Message:@"Fetching event detail failed."];
         [self.navigationController popViewControllerAnimated:YES];
     }
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -111,7 +116,74 @@ EventJoinAndLikeModel* jlmodel;
     self.scrollView.hidden=NO;
     [ProgressHUD showSuccess:@"Loading Finish."];
     //post didLoadPage;
+    
+    [self getRSVPList];
 
+}
+
+
+-(void) getRSVPList{
+    if (!queue) {
+        queue=dispatch_queue_create("com.EventApp.EventDetailFetchModel", NULL);
+    }
+    //    if (!semeaphore) {
+    //        semeaphore=dispatch_semaphore_create(0);
+    //    }
+    dispatch_async(queue, ^{
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetRSVPList) name:@"didGetRSVPList" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailGetRSVPList) name:@"didFailGetRSVPList" object:nil];
+
+        [jlmodel getRSVPList:event];
+    });
+}
+-(void) didGetRSVPList{
+    self.RSVPList=[EventJoinAndLikeModel RSVPList];
+    [self updateRSVPProfileIcon];
+//TODO: Updata view people icons
+}
+-(void) didFailGetRSVPList{
+    self.RSVPProfileStateLabel.text=@"No RSVP";
+    [self cleanUpRSVPSpanArea];
+    [self.RSVPSpanArea addSubview:self.RSVPProfileStateLabel];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [ProgressHUD showError:@"Failed to get RSVPList"];
+}
+
+-(void)cleanUpRSVPSpanArea{
+    for (UIView * view in [self.RSVPSpanArea subviews]) {
+        [view removeFromSuperview];
+    }
+}
+
+-(void) updateRSVPProfileIcon{
+    if (self.RSVPList.count==0) {
+        [self cleanUpRSVPSpanArea];
+        self.RSVPProfileStateLabel.text=@"No RSVP.";
+        [self.RSVPSpanArea addSubview:self.RSVPProfileStateLabel];
+    }else{
+        CGRect templateFrame=self.RSVPProfileIconTemplate.frame;
+        [self cleanUpRSVPSpanArea];
+        for (NSDictionary* RSVPRecord in self.RSVPList) {
+            if ([self.RSVPList indexOfObject:RSVPRecord]<5) {
+                UIImageView* RSVPProfileIcon=[[UIImageView alloc] initWithFrame:templateFrame];
+                @try {
+                    NSString* tragetURL=[[[URLConstructModel constructURLHeader] absoluteString] stringByAppendingFormat:@"%@",[[[RSVPRecord valueForKey:@"fk_user"] valueForKey:@"fk_user_image"] valueForKey:@"path"]];
+                    [RSVPProfileIcon setImageWithURL:[NSURL URLWithString:tragetURL] placeholderImage:[UIImage imageNamed:@"152_152icon.png"]];
+                    
+                }
+                @catch (NSException *exception) {
+                    NSLog(@"fail to get RSVP users' profile image");
+                }
+                RSVPProfileIcon.layer.cornerRadius=RSVPProfileIcon.bounds.size.width/2;
+                RSVPProfileIcon.layer.masksToBounds=YES;
+                [self.RSVPSpanArea addSubview:RSVPProfileIcon];
+                templateFrame.origin.x=templateFrame.origin.x+templateFrame.size.width+10;
+            }else{
+                break;
+            }
+            
+        }
+    }
 }
 
 
@@ -119,19 +191,6 @@ EventJoinAndLikeModel* jlmodel;
 
 
 
-
-
-
-
-
--(IBAction)viewedPeopleTapped:(id)sender{
-    UITapGestureRecognizer* tap=(UITapGestureRecognizer*)sender;
-    NSUInteger i=[self.joinedPeopleIcons indexOfObject:tap.view];
-    NSLog(@"%ld Tapped!",(long)i);
-    ProfilePageViewController* vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
-    vc.targetUser=self.RSVPList[i];
-    [self.navigationController pushViewController:vc animated:YES];
-}
 
 -(void)modelToViewMatch
 {
@@ -172,13 +231,19 @@ EventJoinAndLikeModel* jlmodel;
 
 }
 
-
+-(IBAction)viewedPeopleTapped:(id)sender{
+    UITapGestureRecognizer* tap=(UITapGestureRecognizer*)sender;
+    NSUInteger i=[self.RSVPProfileIcons indexOfObject:tap.view];
+    NSLog(@"%ld Tapped!",(long)i);
+    ProfilePageViewController* vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
+    vc.targetUser=self.RSVPList[i];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 -(IBAction)hostInfoTapped{
 //    ProfilePageViewController* vc= [self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
 //    vc.targetUser=[event objectForKey:@"fk_event_poster_user"];
 //    [self.navigationController pushViewController:vc animated:YES];
 }
-
 -(IBAction)locationInfoTapped{
     AddressInfoPageViewController* vc= [self.storyboard instantiateViewControllerWithIdentifier:@"AddressInfoPage"];
     NSMutableDictionary* address=[NSMutableDictionary dictionaryWithCapacity:0];
@@ -208,10 +273,6 @@ EventJoinAndLikeModel* jlmodel;
 //        }
 //    }
 }
-
-
-
-
 - (IBAction)likeButtonTapped:(id)sender {
 //    if (![UserModel isLogin]) {
 //        [UserModel popupLoginViewToViewController:self];
@@ -230,14 +291,6 @@ EventJoinAndLikeModel* jlmodel;
 }
 
 
--(void)didLikeEvent{
-
-}
-
--(void)didLikeEventFailed{
-
-}
-
 
 -(IBAction)commentTabTapped:(id)sender{
     
@@ -253,7 +306,6 @@ EventJoinAndLikeModel* jlmodel;
     self.commentsTab.enabled=NO;
     self.descriptionTab.enabled=YES;
 }
-
 -(IBAction)descriptionTabTapped:(id)sender{
 
 #pragma comment in dev
