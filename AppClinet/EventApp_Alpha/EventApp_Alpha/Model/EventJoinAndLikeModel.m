@@ -53,13 +53,24 @@ static  NSMutableArray* LikeList;
     }];
 }
 -(void)getLikeList:(NSDictionary*)event{}
--(void)rsvpEvent:(NSDictionary*)event{
-
+-(void)rsvpEvent:(NSDictionary*)event :(EventDetailViewController*)sender{
+    NSString* targetURL=[[[URLConstructModel constructURLHeader] absoluteString] stringByAppendingFormat:@"%@%@",API,@"/eventrsvp/"];
+    
+    NSDictionary* para=@{@"fk_user":[UserModel userResourceURL], @"fk_event":[event valueForKey:@"resource_uri"]};
+    AFHTTPRequestOperationManager* manager=[AFHTTPRequestOperationManager manager];
+    manager.requestSerializer=[AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"ApiKey %@:%@", [UserModel username], [UserModel userAPIKey]] forHTTPHeaderField:@"Authorization"];
+    [manager POST:targetURL parameters:para success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [sender performSelector:@selector(didRSVPEvent)];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [sender performSelector:@selector(didFailRSVPEvent:) withObject:error];
+    }];
 }
--(void)quitEvent:(NSDictionary*)event{}
--(void)likeEvent:(NSDictionary*)event{
+-(void)quitEvent:(NSDictionary*)event :(EventDetailViewController*)sender{}
+-(void)likeEvent:(NSDictionary*)event :(EventDetailViewController*)sender{
 }
--(void)dislikeEvent:(NSDictionary*)event{
+-(void)dislikeEvent:(NSDictionary*)event :(EventDetailViewController*)sender{
 
 }
 
@@ -67,13 +78,6 @@ static  NSMutableArray* LikeList;
 
 @end
 
-//@implementation RSVPAndLikeConnect
-//
-//+(RSVPAndLikeConnect*) connectionWithRequest:(NSURLRequest*)request delegate:(id) delegate{
-////    [NSURLConnection connectionWithRequest:<#(NSURLRequest *)#> delegate:<#(id)#>]
-//    return (RSVPAndLikeConnect*)[super connectionWithRequest:request delegate:delegate];
-//}
-//
-//@end
+
 
 

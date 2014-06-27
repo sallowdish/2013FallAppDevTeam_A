@@ -36,6 +36,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *commentsTab;
 @property (weak, nonatomic) IBOutlet UIView *detailSpanArea;
 @property UITextField* noComments;
+@property (weak, nonatomic) IBOutlet UIButton *RSVPbutton;
 @end
 
 @implementation EventDetailViewController
@@ -81,8 +82,15 @@ EventJoinAndLikeModel* jlmodel;
         subview.layer.masksToBounds=YES;
     }
 
-//    NSError* err;
     
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    
+}
+
+-(void)fetchEvent{
     [ProgressHUD show:@"Loading event info..."];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchEvent) name:@"didFetchDataWithEventID" object:nil];
     @try {
@@ -93,12 +101,8 @@ EventJoinAndLikeModel* jlmodel;
         [popoverAlterModel alterWithTitle:@"Failed" Message:@"Fetching event detail failed."];
         [self.navigationController popViewControllerAnimated:YES];
     }
-}
 
--(void)viewDidAppear:(BOOL)animated{
-    
 }
-
 
 -(void)didFetchEvent{
     @try{
@@ -122,7 +126,7 @@ EventJoinAndLikeModel* jlmodel;
 }
 
 
--(void) getRSVPList{
+-(void)getRSVPList{
     if (!queue) {
         queue=dispatch_queue_create("com.EventApp.EventDetailFetchModel", NULL);
     }
@@ -136,12 +140,18 @@ EventJoinAndLikeModel* jlmodel;
         [jlmodel getRSVPList:event];
     });
 }
--(void) didGetRSVPList{
+-(void)didGetRSVPList{
     self.RSVPList=[EventJoinAndLikeModel RSVPList];
     [self updateRSVPProfileIcon];
-//TODO: Updata view people icons
+    for (NSDictionary* record in self.RSVPList) {
+        NSString* resourceURL=[[record valueForKey:@"fk_user"] valueForKey:@"resource_uri"];
+        if ([[UserModel userResourceURL] isEqualToString:resourceURL]) {
+            self.RSVPbutton.enabled=NO;
+        }
+    }
+    
 }
--(void) didFailGetRSVPList{
+-(void)didFailGetRSVPList{
     self.RSVPProfileStateLabel.text=@"No RSVP";
     [self cleanUpRSVPSpanArea];
     [self.RSVPSpanArea addSubview:self.RSVPProfileStateLabel];
@@ -155,7 +165,7 @@ EventJoinAndLikeModel* jlmodel;
     }
 }
 
--(void) updateRSVPProfileIcon{
+-(void)updateRSVPProfileIcon{
     if (self.RSVPList.count==0) {
         [self cleanUpRSVPSpanArea];
         self.RSVPProfileStateLabel.text=@"No RSVP.";
@@ -183,13 +193,23 @@ EventJoinAndLikeModel* jlmodel;
             }
             
         }
+        self.RSVPProfileStateLabel.text=@"RSVP";
+        [self.RSVPSpanArea addSubview:self.RSVPProfileStateLabel];
     }
 }
 
+-(IBAction)RSVPEvent{
+    [jlmodel rsvpEvent:event :self];
+}
 
+-(void)didRSVPEvent{
+    [self getRSVPList];
+    [ProgressHUD showSuccess:@"RSVP succeed."];
+}
 
-
-
+-(void)didFailRSVPEvent:(id)error{
+    [ProgressHUD showError:[error localizedDescription]];
+}
 
 
 -(void)modelToViewMatch
@@ -202,7 +222,7 @@ EventJoinAndLikeModel* jlmodel;
     self.like.text=[NSString stringWithFormat:@"%@",[event valueForKey:@"event_like_count"]];
     id capacity=[event valueForKey:@"event_capacity"];
     if ([capacity isEqual:[NSNull null]] || [capacity intValue]==0) {
-        self.RSVP.text=@" ∞/∞";
+        self.RSVP.text=@" ∞";
 //        [self.joinButton removeFromSuperview];
     }else{
         self.RSVP.text=[NSString stringWithFormat:@"%@/%@",[event objectForKey:@"event_rsvp_count"],[event objectForKey:@"event_capacity"]];

@@ -7,14 +7,15 @@
 //
 
 #import "URLConstructModel.h"
+#import "EventDetailViewController.h"
 
 
 @interface EventJoinAndLikeModel :URLConstructModel
 @property NSDictionary* json; //RSVPCount,likeCount;
--(void)rsvpEvent:(NSDictionary*)event;
--(void)quitEvent:(NSDictionary*)event;
--(void)likeEvent:(NSDictionary*)event;
--(void)dislikeEvent:(NSDictionary*)event;
+-(void)rsvpEvent:(NSDictionary*)event :(EventDetailViewController*)sender;
+-(void)quitEvent:(NSDictionary*)event :(EventDetailViewController*)sender;
+-(void)likeEvent:(NSDictionary*)event :(EventDetailViewController*)sender;
+-(void)dislikeEvent:(NSDictionary*)event :(EventDetailViewController*)sender;
 -(void)getRSVPList:(NSDictionary*)event;
 -(void)getLikeList:(NSDictionary*)event;
 

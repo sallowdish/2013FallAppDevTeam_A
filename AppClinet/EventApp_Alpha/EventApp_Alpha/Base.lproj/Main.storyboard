@@ -914,7 +914,7 @@
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <subviews>
                                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="II" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zkz-79-cW7">
-                                                                        <rect key="frame" x="0.0" y="6" width="170" height="21"/>
+                                                                        <rect key="frame" x="2" y="6" width="170" height="21"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                         <color key="textColor" white="0.80000000000000004" alpha="1" colorSpace="calibratedWhite"/>
@@ -942,6 +942,7 @@
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="RSVPButtonTapped:" destination="Fec-tY-Qmi" eventType="touchUpInside" id="rS1-Gv-gcu"/>
+                                                                            <action selector="RSVPEvent" destination="Fec-tY-Qmi" eventType="touchUpInside" id="kSf-tX-DOB"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yX7-4V-JzY">
@@ -1083,6 +1084,7 @@
                         <outlet property="RSVPProfileIconTemplate" destination="Jba-u4-UG9" id="oul-Ep-RXp"/>
                         <outlet property="RSVPProfileStateLabel" destination="dkr-SX-85n" id="acF-Tl-ZxR"/>
                         <outlet property="RSVPSpanArea" destination="VBs-Uo-q3v" id="BZV-8V-4Iv"/>
+                        <outlet property="RSVPbutton" destination="rmS-Tp-eAj" id="rFZ-PL-3g3"/>
                         <outlet property="commentsTab" destination="CWx-zO-gz8" id="KZE-0A-0E1"/>
                         <outlet property="containerView" destination="YZQ-rO-Ab1" id="UdZ-0s-pN5"/>
                         <outlet property="dateTime" destination="dXw-M4-vBq" id="7i1-Ey-qPG"/>
