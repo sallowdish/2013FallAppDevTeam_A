@@ -7,6 +7,7 @@
 //
 
 #import "PageContentViewController.h"
+#import "ImageModel.h"
 
 #define MAXTAG 100
 
@@ -52,7 +53,12 @@
     self.eventLikeLabel.text=[NSString stringWithFormat:@"%lu",(unsigned long)self.eventLike];
     self.eventRSVPLabel.text=[NSString stringWithFormat:@"%lu",(unsigned long)self.eventRSVP];
     self.eventHosterLabel.text=[NSString stringWithFormat:@"Hosted by %@",self.eventHoster];
-    self.eventImageView.image=self.eventImage;
+    if (self.eventImage) {
+        [ImageModel downloadImageViaPath:self.eventImage For:@"event" WithPrefix:@"" :self.eventImageView];
+    }else{
+        self.eventImageView.image=[UIImage imageNamed:@"event1.jpg"];
+    }
+    
     //polish
     [self setRoundConnerForViewWithMaxTag:MAXTAG];
     

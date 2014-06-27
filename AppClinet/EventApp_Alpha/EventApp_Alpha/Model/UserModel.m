@@ -47,13 +47,12 @@ static bool isLogin,isDevelopment;
     }
     
 }
-+(UIImage*)getProfileImageWithUser:(NSDictionary*)user{
++(UIImage*)getProfileImageWithUser:(NSDictionary*)user Sender:(UIImageView*)sender{
     if (![[user objectForKey:@"fk_user_image"] isEqual:[NSNull null]]) {
-        return [ImageModel downloadImageViaPath:[[user objectForKey:@"fk_user_image"] objectForKey:@"path"] For:@"user" WithPrefix:@""];
+        return [ImageModel downloadImageViaPath:[[user objectForKey:@"fk_user_image"] objectForKey:@"path"] For:@"user" WithPrefix:@"" :sender];
     }else{
         return [UIImage imageNamed:@"152_152icon.png"];
     }
-
 }
 
 

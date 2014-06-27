@@ -111,9 +111,9 @@
     pageContentViewController.eventRSVP=[[event objectForKey:@"event_rsvp"] integerValue];
     NSArray* imageSet=[event objectForKey:@"event_image"];
     if (imageSet.count>0) {
-        pageContentViewController.eventImage=[ImageModel downloadImageViaPath:[imageSet[0] objectForKey:@"path"] For:@"event" WithPrefix:@""];
+        pageContentViewController.eventImage=[imageSet[0] objectForKey:@"path"];
     }else{
-        pageContentViewController.eventImage=[ImageModel downloadImageViaPath:nil For:@"event" WithPrefix:@""];
+        pageContentViewController.eventImage=nil;
     }
     
     pageContentViewController.pageIndex = index;
