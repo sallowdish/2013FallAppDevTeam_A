@@ -43,8 +43,6 @@ static NSString* nextPage;
         NSLog(@"%@",[targeturl absoluteString]);
         [self fetchDataWithUrl:targeturl];
         
-
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchEventListWithMode:) name:@"didFinishLoadingData" object:nil];        
         
     }
     @catch (NSException *exception) {
@@ -94,36 +92,46 @@ static NSString* nextPage;
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     [super connectionDidFinishLoading:connection];
-    NSData* buffer=self.data;
-    NSError* error;
-    //        writeIntoCache(buffer);
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    //Serialize the raw data
-    NSDictionary* jsonDict=[NSJSONSerialization JSONObjectWithData:buffer options:NSJSONReadingMutableContainers error:&error] ;
-    if(error)
-    {
-        @throw [NSException exceptionWithName:@"Pharse Failed" reason:error.localizedDescription userInfo:nil];
-    }
-    eventList=[jsonDict valueForKey:@"objects"];
-    nextPage=[[jsonDict valueForKey:@"meta"] valueForKey:@"next"];
-    // TODO: write into local file
-    if ([NSJSONSerialization isValidJSONObject:eventList]) {
-        NSString *jsonContent=[[NSString alloc]initWithData:[NSJSONSerialization dataWithJSONObject:eventList options:NSJSONWritingPrettyPrinted error:&error] encoding:NSUTF8StringEncoding];
-        NSString *filepath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Events.json"];
-        
-        [jsonContent writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:&error];
-        if(error)
-        {
-            @throw [NSException exceptionWithName:@"Write into file Failed" reason:error.localizedDescription userInfo:nil];
+    if (self.data) {
+        @try {
+            NSData* buffer=self.data;
+            NSError* error;
+            //        writeIntoCache(buffer);
+            [[NSNotificationCenter defaultCenter] removeObserver:self];
+            //Serialize the raw data
+            NSDictionary* jsonDict=[NSJSONSerialization JSONObjectWithData:buffer options:NSJSONReadingMutableContainers error:&error] ;
+            if(error)
+            {
+                @throw [NSException exceptionWithName:@"Pharse Failed" reason:error.localizedDescription userInfo:nil];
+            }
+            eventList=[jsonDict valueForKey:@"objects"];
+            nextPage=[[jsonDict valueForKey:@"meta"] valueForKey:@"next"];
+            // TODO: write into local file
+            if ([NSJSONSerialization isValidJSONObject:eventList]) {
+                NSString *jsonContent=[[NSString alloc]initWithData:[NSJSONSerialization dataWithJSONObject:eventList options:NSJSONWritingPrettyPrinted error:&error] encoding:NSUTF8StringEncoding];
+                NSString *filepath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Events.json"];
+                
+                [jsonContent writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+                if(error)
+                {
+                    @throw [NSException exceptionWithName:@"Write into file Failed" reason:error.localizedDescription userInfo:nil];
+                }
+                else
+                {
+                    //NSLog(@"%@",jsonContent);
+                }
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"didFetchEventListWithMode" object:eventList];
+            }
+
         }
-        else
-        {
-            //NSLog(@"%@",jsonContent);
+        @catch (NSException *exception) {
+            NSLog(@"%@",[exception description]);
         }
-    
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"didFetchEventListWithMode" object:eventList];
     }
-    
+    else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"didFailFetchEventListWithMode" object:nil];
+    }
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge{

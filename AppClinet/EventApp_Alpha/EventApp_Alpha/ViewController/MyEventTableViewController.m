@@ -44,6 +44,8 @@ EventListFetchModel* model;
     model=[[EventListFetchModel alloc] init];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchMyEventList) name:@"didFetchEventListWithMode" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailFetchMyEventList) name:@"didFailFetchEventListWithMode" object:nil];
+
     [model fetchEventListWithUser];
 }
 
@@ -51,6 +53,14 @@ EventListFetchModel* model;
 -(void)didFetchMyEventList{
     myEventList= [EventListFetchModel eventsList];
     [self.tableView reloadData];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+}
+
+-(void)didFailFetchMyEventList{
+    [ProgressHUD showError:@"Network issue, plz try later."];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
 }
 
 - (void)didReceiveMemoryWarning

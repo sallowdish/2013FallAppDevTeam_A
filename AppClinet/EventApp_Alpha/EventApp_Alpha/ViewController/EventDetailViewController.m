@@ -83,7 +83,7 @@ EventJoinAndLikeModel* jlmodel;
     }
 
     
-    
+    [self fetchEvent];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -203,7 +203,7 @@ EventJoinAndLikeModel* jlmodel;
 }
 
 -(void)didRSVPEvent{
-    [self getRSVPList];
+    [self fetchEvent];
     [ProgressHUD showSuccess:@"RSVP succeed."];
 }
 

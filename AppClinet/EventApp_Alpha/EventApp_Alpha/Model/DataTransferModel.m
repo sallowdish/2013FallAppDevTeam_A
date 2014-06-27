@@ -105,7 +105,7 @@ NSError* error;
         [receivedData setLength:0];
     }else{
         receivedData=nil;
-        @throw [NSException exceptionWithName:@"Fetch Json data Failed" reason:error.localizedDescription userInfo:nil];
+        NSLog(@"Fetch Json data Failed");
     }
 }
 
