@@ -9,10 +9,13 @@
 #import "URLConstructModel.h"
 #import "EventDetailViewController.h"
 
+typedef void (^FailureHandleBlock)(id error);
+typedef void (^SucceeHandleBlock)(id message);
+
 
 @interface EventJoinAndLikeModel :URLConstructModel
 @property NSDictionary* json; //RSVPCount,likeCount;
--(void)rsvpEvent:(NSDictionary*)event :(EventDetailViewController*)sender;
+-(void)rsvpEvent:(NSDictionary*)event succeed:(SucceeHandleBlock)succeedBlock failed:(FailureHandleBlock)failedBlock;
 -(void)quitEvent:(NSDictionary*)event :(EventDetailViewController*)sender;
 -(void)likeEvent:(NSDictionary*)event :(EventDetailViewController*)sender;
 -(void)dislikeEvent:(NSDictionary*)event :(EventDetailViewController*)sender;

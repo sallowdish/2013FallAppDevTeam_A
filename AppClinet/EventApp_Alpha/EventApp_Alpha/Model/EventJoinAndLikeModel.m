@@ -12,6 +12,7 @@
 #import "EventDetailViewController.h"
 
 
+
 @implementation EventJoinAndLikeModel
 static  NSMutableArray* RSVPList;
 static  NSMutableArray* LikeList;
@@ -53,7 +54,7 @@ static  NSMutableArray* LikeList;
     }];
 }
 -(void)getLikeList:(NSDictionary*)event{}
--(void)rsvpEvent:(NSDictionary*)event :(EventDetailViewController*)sender{
+-(void)rsvpEvent:(NSDictionary*)event succeed:(SucceeHandleBlock)succeedBlock failed:(FailureHandleBlock)failedBlock{
     NSString* targetURL=[[[URLConstructModel constructURLHeader] absoluteString] stringByAppendingFormat:@"%@%@",API,@"/eventrsvp/"];
     
     NSDictionary* para=@{@"fk_user":[UserModel userResourceURL], @"fk_event":[event valueForKey:@"resource_uri"]};
@@ -62,9 +63,13 @@ static  NSMutableArray* LikeList;
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"ApiKey %@:%@", [UserModel username], [UserModel userAPIKey]] forHTTPHeaderField:@"Authorization"];
     [manager POST:targetURL parameters:para success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [sender performSelector:@selector(didRSVPEvent)];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            succeedBlock(nil);
+        });
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [sender performSelector:@selector(didFailRSVPEvent:) withObject:error];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            failedBlock(error);
+        });
     }];
 }
 -(void)quitEvent:(NSDictionary*)event :(EventDetailViewController*)sender{}

@@ -23,6 +23,7 @@
 @interface EventDetailViewController (){
     dispatch_queue_t queue;
     dispatch_semaphore_t semeaphore;
+    
 }
 @property (strong,nonatomic) NSDictionary* event;
 @property (strong,nonatomic) NSMutableArray* RSVPList;
@@ -199,7 +200,11 @@ EventJoinAndLikeModel* jlmodel;
 }
 
 -(IBAction)RSVPEvent{
-    [jlmodel rsvpEvent:event :self];
+    [jlmodel rsvpEvent:event succeed:^(id message) {
+        [self didRSVPEvent];
+    } failed:^(id error) {
+        [self didFailRSVPEvent:error];
+    }];
 }
 
 -(void)didRSVPEvent{
