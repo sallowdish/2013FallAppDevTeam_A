@@ -170,6 +170,7 @@ NSString* state;
     for (UIView * view in [self.RSVPSpanArea subviews]) {
         [view removeFromSuperview];
     }
+    [self.RSVPProfileIcons removeAllObjects];
 }
 
 -(void)updateRSVPProfileIcon{
@@ -184,15 +185,18 @@ NSString* state;
             if ([self.RSVPList indexOfObject:RSVPRecord]<5) {
                 UIImageView* RSVPProfileIcon=[[UIImageView alloc] initWithFrame:templateFrame];
                 @try {
-                    NSString* tragetURL=[[[URLConstructModel constructURLHeader] absoluteString] stringByAppendingFormat:@"%@",[[[RSVPRecord valueForKey:@"fk_user"] valueForKey:@"fk_user_image"] valueForKey:@"path"]];
-                    [RSVPProfileIcon setImageWithURL:[NSURL URLWithString:tragetURL] placeholderImage:[UIImage imageNamed:@"152_152icon.png"]];
-                    
+                    [ImageModel downloadImageViaPath:[[[RSVPRecord valueForKey:@"fk_user"] valueForKey:@"fk_user_image"] valueForKey:@"path"] For:@"user" WithPrefix:@"" :RSVPProfileIcon];
                 }
                 @catch (NSException *exception) {
                     NSLog(@"fail to get RSVP users' profile image");
                 }
                 RSVPProfileIcon.layer.cornerRadius=RSVPProfileIcon.bounds.size.width/2;
                 RSVPProfileIcon.layer.masksToBounds=YES;
+                UITapGestureRecognizer* tapper=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(RSVPProfileIconTapped:)];
+                tapper.numberOfTapsRequired=1;
+                [self.RSVPProfileIcons addObject:tapper];
+                [RSVPProfileIcon addGestureRecognizer:tapper];
+                RSVPProfileIcon.userInteractionEnabled=YES;
                 [self.RSVPSpanArea addSubview:RSVPProfileIcon];
                 templateFrame.origin.x=templateFrame.origin.x+templateFrame.size.width+10;
             }else{
@@ -280,12 +284,12 @@ NSString* state;
 
 }
 
--(IBAction)viewedPeopleTapped:(id)sender{
+-(IBAction)RSVPProfileIconTapped:(id)sender{
     UITapGestureRecognizer* tap=(UITapGestureRecognizer*)sender;
-    NSUInteger i=[self.RSVPProfileIcons indexOfObject:tap.view];
+    NSUInteger i=[self.RSVPProfileIcons indexOfObject:tap];
     NSLog(@"%ld Tapped!",(long)i);
     ProfilePageViewController* vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
-    vc.targetUser=self.RSVPList[i];
+    vc.userID=[[[self.RSVPList[i] valueForKey:@"fk_user"] valueForKey:@"id"] intValue];
     [self.navigationController pushViewController:vc animated:YES];
 }
 -(IBAction)hostInfoTapped{

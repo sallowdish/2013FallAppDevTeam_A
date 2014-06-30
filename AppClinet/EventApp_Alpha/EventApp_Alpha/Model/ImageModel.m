@@ -37,7 +37,6 @@
     else{
         img=[UIImage imageNamed:@"default_profile_5_bigger.png"];
     }
-//    UIImage* img=[UIImage imageNamed:@"152_152icon.png"];
     if (path!=(id)[NSNull null]) {
         targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,Prefix,path]];
         @try {
@@ -48,6 +47,8 @@
         @catch (NSException *exception) {
             [ProgressHUD showError:[exception description]];
         }
+    }else{
+        sender.image=img;
     }
     return img;
     

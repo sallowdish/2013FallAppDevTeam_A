@@ -45,9 +45,9 @@
     [super viewDidLoad];
     
 
-    [self dataSourceSetup];
-	[self visualSetup];
     
+	[self visualSetup];
+    [self dataSourceSetup];
     
 }
 
@@ -56,7 +56,8 @@
     if (self.targetUser) {
     }else if (self.userID){
         [UserModel getUserInfoofID:self.userID complete:^(NSDictionary *userInfo) {
-            self.targetUser=userInfo;
+            self.targetUser=[userInfo valueForKey:@"objects"][0];
+            [self dateSourceToViewMatch];
         } fail:^(NSError *error) {
             [ProgressHUD showError:[NSString stringWithFormat:@"Fail to get user info. %@",[error localizedDescription]]];
             [self.navigationController popViewControllerAnimated:YES];
@@ -104,7 +105,7 @@
 
 -(void)dateSourceToViewMatch{
     [UserModel getProfileImageWithUser:self.targetUser Sender:self.userProfileImage];
-    self.username.text=[self.targetUser objectForKey:@"username"];
+    self.username.text=[[self.targetUser valueForKey:@"user_nickname"] isEqualToString:@""]?[self.targetUser valueForKey:@"username"]:[self.targetUser valueForKey:@"user_nickname"];
     self.userLocation.text=[[self.targetUser valueForKey:@"user_location"] isEqualToString:@""]?@"Unknown":[self.targetUser valueForKey:@"user_location"];
     self.userLike.text=@"N/A";
     self.userTag.text=@"";
