@@ -11,6 +11,7 @@
 
 @interface ProfilePageViewController : UIViewController<GKImagePickerDelegate>
 @property (strong,nonatomic) NSDictionary* targetUser;
+@property (nonatomic) NSInteger userID;
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UILabel *userLocation;

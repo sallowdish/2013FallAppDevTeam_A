@@ -103,9 +103,17 @@ static bool isLogin,isDevelopment;
     return current_user;
 }
 
-//+(UIViewController*)hostViewController{
-//    return hostViewController;
-//}
++(void)getUserInfoofID:(NSInteger)userId complete:(void (^)(NSDictionary* userInfo))completeBlcok fail:(void(^)(NSError *error))failBlock{
+    NSString* targetURL=[[[URLConstructModel constructURLHeader] absoluteString] stringByAppendingFormat:@"%@%@%@%@%ld",API,@"/user/",@"?format=json",@"&id=",(long)userId];
+    
+    AFHTTPRequestOperationManager* manager=[URLConstructModel jsonManger];
+
+    [manager GET:targetURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        completeBlcok(responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        failBlock(error);
+    }];
+}
 
 +(BOOL)isLogin{
     return  isLogin;
