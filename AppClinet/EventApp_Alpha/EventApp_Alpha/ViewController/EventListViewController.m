@@ -8,16 +8,28 @@
 
 #import "EventListViewController.h"
 #import "EventListFetchModel.h"
+#import "EventEdittingViewController.h"
 #import "TemplateTableCell.h"
+#import "SegmentControllerCell.h"
 #import "FormatingModel.h"
+#import "ProgressHUD.h"
+#import "UserModel.h"
+
 
 @interface EventListViewController ()
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *createButton;
+@property (strong,nonatomic)EventListFetchModel* model;
+
 
 @end
 
 @implementation EventListViewController
 
-@synthesize eventList;
+@synthesize eventList,model;
+
+bool isUpdated,isBasedOnTime;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,40 +40,123 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    isUpdated=false;
+    isBasedOnTime=YES;
+    eventList=nil;
+    
+    self.segmentController.selectedSegmentIndex=0;
+    
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+//    self.clearsSelectionOnViewWillAppear = YES;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     
     //get the latest event list online
-    EventListFetchModel* model=[[EventListFetchModel alloc] init];
     
-    [model fetchEventList];
-//    [model fetchEventListFromFile:@"/Users/ray/Documents/Development/2013FallAppDevTeam_A/AppClinet/EventApp_Alpha/EventApp_Alpha/Localrecord.json"];
-    
-    
-//    //Get the filepath for local json file
-//    NSString *filepath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Events.json"];
-//    
-//
-//    
-//    
-//    //Load json string from the local file
-//    if(error){
-//        NSLog(@"Error loading json file:%@",[error localizedDescription]);
-//    }
-//    eventList=[NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:filepath] options:NSJSONReadingMutableContainers error:&error];
-//    if(error){
-//        NSLog(@"Error loading json file:%@",[error localizedDescription]);
-//    }
+    model=[[EventListFetchModel alloc] init];
+    [model fetchEventListFromFile];
     eventList=[EventListFetchModel eventsList];
+//    //no network or connection fails
+//    if (eventList.count==0) {
+//        
+//        eventList=[EventListFetchModel eventsList];
+//        NSLog(@"%@",@"No Internet now.");
+//    }
     
+    UIRefreshControl* f5=[[UIRefreshControl alloc] init];
+    [f5 addTarget:self action:@selector(refreshEventList:) forControlEvents:UIControlEventValueChanged];
+    f5.attributedTitle=[[NSAttributedString alloc]initWithString:@"再多一點點...(灬ºωº灬)"];
+    
+    self.refreshControl=f5;
+    
+    
+//    if (isBasedOnTime) {
+//        [self fetchNewDataFromServer:@"time"];
+//
+//    }else{
+//        [self fetchNewDataFromServer:@"hot"];
+//    }
+        //start appearing
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:animated];
+    [self fetchNewDataFromServer:@"time"];
+//    [self.tableView reloadData];
+    [super viewWillAppear:animated];
+}
+
+
+-(void)fetchNewDataFromServer:(NSString*)mode{
+    [ProgressHUD show:@"Loading new events list..."];
+    isUpdated=false;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchNewDataFromServer:) name:@"didFetchEventListWithMode" object:nil];
+    [model fetchEventListWithMode:mode];
+    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(removeFromNSNotificationCenter) userInfo:nil repeats:NO];
+    //    [self fetchNewDataFromServer];
+    [[ProgressHUD class] performSelector:@selector(dismiss) withObject:nil afterDelay:0.8];
+}
+
+-(void)didFetchNewDataFromServer:(NSNotification*) notif{
+    if ([notif object]) {
+        eventList=(NSArray*)[notif object];
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
+        isUpdated=true;
+        NSLog(@"%@",@"UPDATED");
+    }
+    [self.tableView reloadData];
+}
+
+
+-(void) removeFromNSNotificationCenter{
+    if (isUpdated==false) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
+    }
+}
+
+//-(void) dismissHub{
+//    [ProgressHUD dismiss];
+//}
+
+//-(void)showHubwithMessage:(NSString*)msg{
+//    [ProgressHUD show:msg];
+//}
+//
+//-(void)showSucceedHUB{
+//    [ProgressHUD showSuccess:@"Succeed."];
+//}
+
+
+
+- (IBAction)refreshEventList:(id)sender{
+    //top indication
+//    self.createButton.enabled=NO;
+    self.refreshControl.attributedTitle=[[NSAttributedString alloc]initWithString:@"努力從四次元搬運中...才怪_(:з」∠)_"];
+    
+    //HUD indication
+    //Functionality
+    if (isBasedOnTime) {
+        [self fetchNewDataFromServer:@"time"];
+    }
+    else{
+        [self fetchNewDataFromServer:@"hot"];
+    }
+    
+    [self.refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:2];
+    //HUD dismiss
+    [self.refreshControl performSelector:@selector(setAttributedTitle:) withObject:[[NSAttributedString alloc]initWithString:@"再多一點點...(灬ºωº灬)"] afterDelay:2.2];
+//    [[ProgressHUD class] performSelector:@selector(showSuccess:) withObject:@"Loading Finish" afterDelay:3];
+//    [self.createButton performSelector:@selector(setEnabled:) withObject:[NSNumber numberWithBool:YES] afterDelay:5];
+    
+    
+    //    [self performSelector:@selector(showHubwithMessage:) withObject:@"Loading Finsih" afterDelay:2];
+//    [self performSelector:@selector(dismissHub) withObject:nil afterDelay:3];
 }
 
 - (void)didReceiveMemoryWarning
@@ -83,28 +178,63 @@
 {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [eventList count];
+    return [eventList count]+1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"cellTemplate";
-    TemplateTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
-    NSDictionary* event=[eventList objectAtIndex:indexPath.row];
-    cell=[self modelToViewMatch:cell eventInstance:event];
-
-//    cell.hosterLabel.text=[NSString stringWithFormat:@"%@|%@|%@",
-//        [[event objectForKey:@"event_organizer_id"] objectForKey:@"account_user_name"],
-//        [(NSString*)[event objectForKey:@"event_time"] componentsSeparatedByString:@"T"][0],
-//        [event objectForKey:@"event_location"]];
-    
-    return cell;
+    if (indexPath.row==[eventList count]) {
+        UITableViewCell *cell= [tableView dequeueReusableCellWithIdentifier:@"loadMoreCell"];
+        UIButton* button=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
+        [button setTitle:@"Load More..." forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(loadNextPage:) forControlEvents:UIControlEventTouchDown];
+        [cell addSubview:button];
+        return cell;
+    }
+    else{
+        static NSString *CellIdentifier = @"cellTemplate";
+        TemplateTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        
+        // Configure the cell...
+        NSDictionary* event=[eventList objectAtIndex:indexPath.row];
+        cell=[FormatingModel modelToViewMatch:cell ForRowAtIndexPath:(NSIndexPath*)indexPath eventInstance:event];
+            return cell;
+    }
 }
 
--(TemplateTableCell*)modelToViewMatch:(id)sender eventInstance:(NSDictionary*)event
+-(IBAction)loadNextPage:(id)sender{
+    [ProgressHUD show:@"Loading..."];
+    dispatch_queue_t queue;
+//    dispatch_group_t group;
+    queue = dispatch_queue_create("com.EventApp.EventListFetchModel.Model", DISPATCH_QUEUE_SERIAL);
+    dispatch_async(queue, ^{
+        [model fetchNextPage:self];
+        NSLog(@"Start");
+    });
+}
+
+-(IBAction)segementationButtonPressed:(id)sender{
+    UISegmentedControl* seg=(UISegmentedControl*)sender;
+    if ([seg selectedSegmentIndex]==2) {
+        seg.selectedSegmentIndex=2;
+        [self performSegueWithIdentifier:@"eventListToEventRecommend" sender:nil];
+    }else if ([seg selectedSegmentIndex]==1) {
+//        seg.selectedSegmentIndex=1;
+//        [self performSegueWithIdentifier:@"eventListToEventListHot" sender:nil];
+        isBasedOnTime=false;
+        [self refreshEventList:nil];
+    }else if ([seg selectedSegmentIndex]==0)
+    {
+        isBasedOnTime=true;
+        [self refreshEventList:nil];
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+<<<<<<< HEAD
     
     TemplateTableCell* cell=(TemplateTableCell*)sender;
     event=[event objectForKey:@"fields"];
@@ -115,7 +245,16 @@
     cell.dataLabel.text=[NSString stringWithFormat:@"%@ | %@",timeInfo[0],timeInfo[1]];
     cell.locationLabel.text=[[event objectForKey:@"Address_ID"] objectForKey:@"address"];
     return cell;
+=======
+    if (indexPath.row == [eventList count]) {
+        return 65;
+    }
+    return 95;
+>>>>>>> Developing-Base-on-WS
 }
+
+
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([[segue identifier] isEqualToString:@"selectedSegue"]) {
@@ -124,6 +263,19 @@
         id obj=[eventList objectAtIndex:[[self.tableView indexPathForCell:cell] row]];
         [destination setValue:[obj valueForKey:@"pk"] forKey:@"eventID"];
     }
+}
+
+
+
+-(IBAction)createButtonTapped:(id)sender{
+    if ([UserModel isLogin]) {
+        EventEdittingViewController* vc=(EventEdittingViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"CreateEventPage"];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else{
+        [UserModel popupLoginViewToViewController:self];
+    }
+    
 }
 /*
 // Override to support conditional editing of the table view.

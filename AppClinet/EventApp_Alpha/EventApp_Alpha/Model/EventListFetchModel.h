@@ -6,11 +6,17 @@
 //  Copyright (c) 2013 2013_Fall_Dev_Team_A. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "EventListViewController.h"
 
-@interface EventListFetchModel : NSObject
+#import <Foundation/Foundation.h>
+#import "DataTransferModel.h"
+
+@interface EventListFetchModel : DataTransferModel
 
 +(NSArray*)eventsList;
--(void) fetchEventList;
--(void) fetchEventListFromFile:(NSString*) filename;
+-(void) fetchEventListWithMode:(NSString*) mode;
+-(void) fetchEventListFromFile;
+-(void) fetchEventListWithUser;
+-(void) fetchNextPage:(id)table;
+//-(UIImage*)fetchProfileImageForUser:(NSDictionary*) user;
 @end

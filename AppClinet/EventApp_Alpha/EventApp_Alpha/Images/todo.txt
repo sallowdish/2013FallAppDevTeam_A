@@ -1,0 +1,3 @@
+TimeIcon.png
+locationIcon.png
+peopleIcon.png

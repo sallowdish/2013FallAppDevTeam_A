@@ -10,11 +10,10 @@
 #import "AppDelegate.h"
 #import "CQMFloatingController.h"
 
-@interface SettingPageViewController : UIViewController
+@interface SettingPageViewController : UITableViewController
 
-- (IBAction)loginClicked:(id)sender;
 
-@property (strong,nonatomic) CQMFloatingController *popController;
+//@property (strong,nonatomic) CQMFloatingController *popController;
 
 
 @end

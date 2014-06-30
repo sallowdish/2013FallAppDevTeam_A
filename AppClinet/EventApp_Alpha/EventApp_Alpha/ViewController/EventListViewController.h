@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EventListFetchModel.h"
 
 @interface EventListViewController : UITableViewController
 @property (nonatomic,strong) NSArray* eventList;
+- (IBAction)refreshEventList:(id)sender;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentController;
 @end

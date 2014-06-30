@@ -8,10 +8,22 @@
 
 #import "SettingPageViewController.h"
 #import "LoginViewController.h"
+#import "UserModel.h"
+#import "popoverAlterModel.h"
+#import "ProfilePageViewController.h"
 
 
 
 @interface SettingPageViewController ()
+@property (weak, nonatomic) IBOutlet UIView *logoutCell;
+@property (weak, nonatomic) IBOutlet UIView *loginCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *topCell;
+@property (weak, nonatomic) IBOutlet UILabel *prompt;
+@property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
+@property (weak, nonatomic) IBOutlet UIView *profileCell;
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *myEventListCell;
+
 @end	
 
 @implementation SettingPageViewController
@@ -30,20 +42,105 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.topCell.selectionStyle=UITableViewCellSelectionStyleNone;
+    
+    //Functionanity Setup
+    self.prompt.lineBreakMode=NSLineBreakByWordWrapping;
+    self.prompt.numberOfLines=0;
+    
+    //Visual
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    //User Interaction
+    UITapGestureRecognizer* tap;
+    
+    
+    if (![UserModel isLogin]) {
+        tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(loginTapped)];
+        tap.numberOfTapsRequired=1;
+        [self.loginCell addGestureRecognizer:tap];
+    }
+    
+    tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileTapped)];
+    tap.numberOfTapsRequired=1;
+    [self.profileCell addGestureRecognizer:tap];
+    
+    tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(logoutTapped)];
+    tap.numberOfTapsRequired=1;
+    [self.logoutCell addGestureRecognizer:tap];
+    
+    tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(myEventListTapped:)];
+    tap.numberOfTapsRequired=1;
+    [self.myEventListCell addGestureRecognizer:tap];
+    
+
 }
 
-- (IBAction)loginClicked:(id)sender
-{
-    [self popOver:sender];
+-(void) viewWillAppear:(BOOL)animated{
+    [self reloadTopCell];
 }
 
-//- (IBAction)onclickLoginViaWeibo:(id)sender {
-////    [self loadLoginView];
-//    [self popOver:sender];
-//}
+-(void)reloadTopCell{
+    //clean up the ges
+    for (UIGestureRecognizer* ges in self.loginCell.gestureRecognizers) {
+        [self.loginCell removeGestureRecognizer:ges];
+    }
+    UITapGestureRecognizer *tap;
+    if ([UserModel isLogin]) {
+        self.userProfileImage.image=[UserModel getProfileImage];
+        self.prompt.text=[NSString stringWithFormat:@"Hi, %@.\nTap to see your profile.",[UserModel username]];
+    }
+    else{
+        tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(loginTapped)];
+        
+        tap.numberOfTapsRequired=1;
+        [self.loginCell addGestureRecognizer:tap];
+        
+        self.userProfileImage.image=[UIImage imageNamed:@"Blank-Profile-Image.png"];
+        self.prompt.text=@"Tap to login";
+    }
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
--(void)popOver:(id)sender
+-(void)profileTapped{
+    if ([UserModel isLogin]) {
+        ProfilePageViewController* vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
+        vc.targetUser=[UserModel current_user];
+        [self.navigationController pushViewController:vc animated:YES];
+
+    }else{
+        [self loginTapped];
+    }
+}
+
+-(void)logoutTapped{
+    if ([UserModel isLogin]) {
+        UserModel* model=[[UserModel alloc] init];
+        [model logoutCurrentUser];
+        [self reloadTopCell];
+        [popoverAlterModel alterWithTitle:@"Logout" Message:@"Logout Succeed"];
+    }
+}
+
+- (void)loginTapped
 {
+    [self popOver];
+//    [self.view setNeedsDisplay];
+}
+
+- (IBAction)myEventListTapped:(id)sender {
+    if ([UserModel isLogin]) {
+        [self performSegueWithIdentifier:@"myEventListSegue" sender:self];
+    }
+    else{
+        [UserModel popupLoginViewToViewController:self];
+    }
+
+}
+
+-(void)popOver
+{
+<<<<<<< HEAD
     LoginViewController* loginview=[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
 //    UIViewController* loginview=[[UIViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     CQMFloatingController *floatingController = [CQMFloatingController sharedFloatingController];
@@ -51,6 +148,10 @@
     [floatingController setLandscapeFrameSize:loginview.view.bounds.size];
     [floatingController setPortraitFrameSize:loginview.view.bounds.size];
     [floatingController showInView:self.view withContentViewController:loginview animated:YES];
+=======
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTopCell) name:@"loginProcessFinish" object:nil];
+    [UserModel popupLoginViewToViewController:self];
+>>>>>>> Developing-Base-on-WS
 }
 
 //- (void)loadLoginView

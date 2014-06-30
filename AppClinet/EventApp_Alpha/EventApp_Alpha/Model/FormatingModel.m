@@ -7,14 +7,56 @@
 //
 
 #import "FormatingModel.h"
+#import "ImageModel.h"
+#import "SDWebImage/UIImageView+WebCache.h"
+
 
 @implementation FormatingModel
 
--(NSArray*)pythonDateTimeToStringArray:(NSString*)pythonDateTimeInfo
++(NSArray*)pythonDateTimeToStringArray:(NSString*)pythonDateTimeInfo
 {
     NSMutableArray* datetimeInfo=[[NSMutableArray alloc] initWithArray:[pythonDateTimeInfo componentsSeparatedByString:@"T"]];
     datetimeInfo[1]=[datetimeInfo[1] substringToIndex:5];
     return datetimeInfo;
+}
+
++(NSString*)addressDictionaryToStringL:(NSDictionary*)address
+{
+//    return [NSString stringWithFormat:@"%@,%@,%@,%@",[address objectForKey:@"address_detail"],[address objectForKey:@"address_city"],[address objectForKey:@"address_region"],[address objectForKey:@"address_country"]];
+    return [address objectForKey:@"address_title"];
+    
+}
+
+
++(TemplateTableCell*)modelToViewMatch:(id)sender ForRowAtIndexPath:(NSIndexPath *)indexPath eventInstance:(NSDictionary*)event
+{
+    
+    TemplateTableCell* cell=(TemplateTableCell*)sender;
+    for (int i=101; i<MAXTAG+1; i++) {
+        UIView* subview=[cell viewWithTag:i];
+        subview.layer.cornerRadius=6;
+        subview.layer.masksToBounds=YES;
+    }
+    //    [cell.profileImage.layer setBorderColor: [[UIColor grayColor] CGColor]];
+    //    [cell.profileImage.layer setBorderWidth: 2.0];
+    cell.eventNameLabel.text=[event objectForKey:@"event_title"];
+    
+//    cell.hosterLabel.text=[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"username"];
+    cell.dataLabel.text=[NSString stringWithFormat:@"%@ | %@",[event objectForKey:@"event_date"],[event objectForKey:@"event_time"]];
+//    cell.locationLabel.text=[FormatingModel addressDictionaryToStringL:[event objectForKey:@"fk_address"]];
+    cell.likeLabel.text=[NSString stringWithFormat: @"%@",[event objectForKey:@"event_like_count"] ];
+    cell.RSVPLabel.text=[NSString stringWithFormat: @"%@",[event objectForKey:@"event_rsvp_count"] ];;
+    
+    
+    //newer matching
+    cell.hosterLabel.text=[event objectForKey:@"fk_event_poster_user_name"];
+    cell.locationLabel.text=[event objectForKey:@"address_title"];
+    
+//    UIImage* img=[ImageModel downloadImageViaPath:[event objectForKey:@"fk_event_poster_user_fk_user_image"] For:@"user" WithPrefix:MEDIAPREFIX];
+    NSURL* targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,MEDIAPREFIX,[event objectForKey:@"fk_event_poster_user_fk_user_image"]]];
+
+    [cell.profileImage setImageWithURL:targetURL  placeholderImage:[UIImage imageNamed:@"152_152icon.png"]];
+    return cell;
 }
 
 @end

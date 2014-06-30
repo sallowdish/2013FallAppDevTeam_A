@@ -9,23 +9,36 @@
 #import "EventFetchModel.h"
 
 @implementation EventFetchModel
-+(void) fetchEventWithEventID:(NSInteger)eventID Error: (NSError*)error
+-(void) fetchEventWithEventID:(NSInteger)eventID
 {
-    
-    NSString* buffer=[NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.sfu.ca/~rza31/%ld.json",(long)eventID]] encoding:NSUTF8StringEncoding error:&error];
-    if(error)
+//    NSError* error;
+    NSURL* url=[[self class] constructFetchRequestWithResource:[NSString stringWithFormat:@"%@%ld/",@"/event/",(long)eventID] WithConstrain:NOCONSTRAIN WithFormat:JSONFORMAT];
+    [self fetchDataWithUrl:url];
+}
+
+-(void) fetchRSVPWithEventID:(NSInteger)eventID{
+    NSURL* url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@%@%ld",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,API,@"/eventrsvp",@"/?format=json&fk_event=",(long)eventID]];
+    [self fetchDataWithUrl:url];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection{
+    NSError* error;
+    [super connectionDidFinishLoading:connection];
+    NSDictionary *rawData=[NSJSONSerialization JSONObjectWithData:self.data options:NSJSONReadingMutableContainers error:&error];
+    if(error||[NSJSONSerialization isValidJSONObject:rawData]==NO)
     {
-        NSLog(@"%@",[error localizedDescription]);
-        exit(0);
+        @throw [NSException exceptionWithName:@"Failed" reason:@"Serializtion failed!" userInfo:nil];
     }
-    NSString *filepath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/EventDetails.json"];
-    
-    [buffer writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:&error];
-    if(error)
-    {
-        NSLog(@"%@",[error localizedDescription]);
-        exit(0);
-    }
-    else
-        NSLog(@"%@",buffer);
-}@end
+    self.event=rawData;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"didFetchDataWithEventID" object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+
+-(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge{
+    NSURLCredential* cre=[NSURLCredential credentialWithUser:PUBLICAUTHENUSER password:PUBLICAUTHENPASSWORD persistence:NSURLCredentialPersistenceNone];
+    [[challenge sender] useCredential:cre forAuthenticationChallenge:challenge];
+}
+
+@end

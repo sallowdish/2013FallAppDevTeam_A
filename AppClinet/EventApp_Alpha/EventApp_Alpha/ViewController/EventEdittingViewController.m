@@ -8,20 +8,52 @@
 
 #import "EventEdittingViewController.h"
 #import "EventPostModel.h"
+#import "popoverAlterModel.h"
+#import "ProgressHUD.h"
+#import <MobileCoreServices/UTCoreTypes.h>
+#import "ImageUploadModel.h"
+#import "EventListViewController.h"
+#import "UserModel.h"
+#import "UIdataPickerWithDone.h"
 
 @interface EventEdittingViewController ()
-
+@property (weak, nonatomic) IBOutlet UITableViewCell *photoCell;
+@property (weak, nonatomic) IBOutlet UIButton *photoAddButton;
+@property (weak, nonatomic) IBOutlet UIView *photoSpanView;
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *surfaceUnion;
+@property (strong,nonatomic) NSDictionary* address;
+@property GKImagePicker* imagePicker;
 @end
 
 @implementation EventEdittingViewController
+
+static NSMutableData* responseData;
+
+NSMutableArray* selectedPhoto,*selectedPhotoView;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        
     }
     return self;
+}
+
+-(IBAction)editLocation:(id)sender{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreateNewAddress:) name:@"didCreateNewAddress" object:nil];
+    id vc=[self.storyboard instantiateViewControllerWithIdentifier:@"AddressInfoPage"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)didCreateNewAddress:(NSNotification*) notif{
+    NSDictionary* dic=(NSDictionary*)[notif object];
+    self.locationTextField.text=[dic objectForKey:@"address_title"];
+//    self.locationResourceURL=[dic objectForKey:@"event_resourceurl"];
+    self.address=dic;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad
@@ -33,6 +65,117 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    //initialize class variable
+    selectedPhoto=[[NSMutableArray alloc] init];
+    selectedPhotoView=[[NSMutableArray alloc] init];
+    
+    
+    //Functionality setup
+//    UIDatePicker *datePicker=[[UIDatePicker alloc]init]
+//        ,*timePicker=[[UIDatePicker alloc]init];
+    
+    
+//    self.dateInputTextField.inputView=datePicker;
+//    self.timeFromInputTextField.inputView=timePicker;
+
+
+    
+//    [self.timeFromInputTextField addTarget:self action:@selector(didFinishTimeEditting:) forControlEvents:UIControlEventEditingDidEnd];
+//
+//    [self.dateInputTextField addTarget:self action:@selector(didFinishDateEditting:) forControlEvents:UIControlEventEditingDidEnd];
+    
+#pragma add done button
+    UIdataPickerWithDone *datePicker=[[UIdataPickerWithDone alloc]init]
+    ,*timePicker=[[UIdataPickerWithDone alloc]init];
+    [datePicker setDatePickerMode:UIDatePickerModeDate];
+    [timePicker setDatePickerMode:UIDatePickerModeTime];
+    
+
+    [datePicker setDatePickerMode:UIDatePickerModeDate];
+    [datePicker addTargetForDoneButton:self action:@selector(didFinishDateEditting:)];
+    
+    [timePicker setDatePickerMode:UIDatePickerModeTime];
+    [timePicker addTargetForDoneButton:self action:@selector(didFinishTimeEditting:)];
+    
+    self.dateInputTextField.inputView=datePicker;
+    self.timeFromInputTextField.inputView=timePicker;
+    
+    
+    //location
+    UITapGestureRecognizer* editLocationTap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(editLocation:)];
+    editLocationTap.numberOfTapsRequired=1;
+    [self.locationTextField addGestureRecognizer:editLocationTap];
+    
+    
+    UITapGestureRecognizer* dismissKeyBoardTap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyBoard)];
+    dismissKeyBoardTap.numberOfTapsRequired=1;
+    [self.view addGestureRecognizer:dismissKeyBoardTap];
+}
+
+
+-(void)dismissKeyBoard{
+    [self.view endEditing:YES];
+}
+
+-(IBAction)imagePickerPopup:(id)sender{
+    self.imagePicker = [[GKImagePicker alloc] init];
+//    self.imagePicker.cropSize = CGSizeMake(320, 90);
+    self.imagePicker.delegate = self;
+    self.imagePicker.resizeableCropArea = YES;
+    
+    [self presentViewController:self.imagePicker.imagePickerController animated:YES completion:nil];
+}
+
+
+
+-(void)updateSelectedImage{
+    int basex=self.photoAddButton.frame.origin.x;
+//    for (UIImageView* i in selectedPhotoView) {
+//        [i removeFromSuperview];
+//    }
+    [selectedPhotoView removeAllObjects];
+    for (int i=0; i<selectedPhoto.count; i++) {
+        UIImage* current_image=selectedPhoto[i];
+        UIImageView* view=[[UIImageView alloc] initWithFrame:CGRectMake(basex, 5, 50, 50)];
+        view.image=current_image;
+        [self.photoSpanView addSubview:view];
+        [selectedPhotoView addObject:view];
+        basex+=55;
+    }
+//    [selectedPhoto removeAllObjects];
+    
+    if (selectedPhotoView.count<3) {
+        CGRect newFrame=self.photoAddButton.frame;
+        newFrame.origin.x=basex+5;
+        self.photoAddButton.frame=newFrame;
+    }
+    else{
+        [self.photoAddButton removeFromSuperview];
+    }
+}
+
+
+//-(IBAction)datePickerDidChanged:(id)sender{
+//    date=[sender date];
+//}
+//
+//-(IBAction)timePickerDidChanged:(id)sender{
+//    time=[sender date];
+//}
+
+-(IBAction)didFinishTimeEditting:(id)sender{
+    NSDateFormatter* formatter=[[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm"];
+    [self.timeFromInputTextField setText:[formatter stringFromDate:sender]];
+    [self.view endEditing:YES];
+}
+
+-(IBAction)didFinishDateEditting:(id)sender{
+    NSDateFormatter* formatter=[[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    [self.dateInputTextField setText: [formatter stringFromDate:sender]];
+    [self.view endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,93 +185,145 @@
 }
 
 - (IBAction)donePressed:(id)sender{
-    [self constructRequest];
+    if ([self isAllRequiredFilled]) {
+        [ProgressHUD show:@"Uploading..."];
+        NSMutableDictionary* dic=[self packUpInfo];
+        //    if (notif) {
+        //        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didUploadImage" object:nil];
+        //
+        //        [dic setObject:[NSString stringWithFormat:@"%@",[notif object]] forKey:@"event_image_name"];
+        //    }
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreateNewEvent:) name:@"didCreateNewEvent" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreateNewEventFailed) name:@"didCreateNewEventFailed" object:nil];
+        EventPostModel* model=[[EventPostModel alloc] init];
+        [ProgressHUD show:@"Submitting new event..."];
+        [model postEventwithInfo:dic];
+    }
+    else{
+        [popoverAlterModel alterWithTitle:@"Warning" Message:@"Please fill up all required fields."];
+    }
+}
+
+
+-(void)didFinishUploadImage:(NSNotification*) notif{
+//    NSMutableDictionary* dic=[self packUpInfo];
+//    if (notif) {
+//        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didUploadImage" object:nil];
+//        
+//        [dic setObject:[NSString stringWithFormat:@"%@",[notif object]] forKey:@"event_image_name"];
+//    }
+//    
+//    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreateNewEvent) name:@"didCreateNewEvent" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreateNewEventFailed) name:@"didCreateNewEventFailed" object:nil];
+//    EventPostModel* model=[[EventPostModel alloc] init];
+//    [ProgressHUD show:@"Submitting new event..."];
+//    [model postEventwithInfo:dic];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [ProgressHUD dismiss];
+    [self.navigationController popViewControllerAnimated:YES];
+    [(EventListViewController*)[self.navigationController presentedViewController] refreshEventList:nil];
+    [popoverAlterModel alterWithTitle:@"Succeed" Message:@"You have created a new event, please reload the event list page."];
+}
+
+-(BOOL)isAllRequiredFilled{
+    return !([self.titleInputTextField.text isEqualToString:@""]||[self.dateInputTextField.text isEqualToString:@""]||[self.timeFromInputTextField.text isEqualToString:@""]||[self.address isEqual:[NSNull null]]);
+}
+
+-(void)didCreateNewEvent:(NSNotification*)notif{
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [ProgressHUD dismiss];
+//    [self.navigationController popViewControllerAnimated:YES];
+//    [(EventListViewController*)[self.navigationController presentedViewController] refreshEventList:nil];
+//    [popoverAlterModel alterWithTitle:@"Succeed" Message:@"You have created a new event, please reload the event list page."];
+    NSString* location=(NSString*)[notif object];
+    NSString* fk_event=[[location stringByReplacingOccurrencesOfString:HTTPPREFIX withString:@""] stringByReplacingOccurrencesOfString:WEBSERVICEDOMAIN withString:@""];
+
+    if (selectedPhoto.count>0) {
+        [ProgressHUD show:@"Uploading Image..."];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishUploadImage:) name:@"didUploadImage" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailUploadImage) name:@"didFailUploadImage" object:nil];
+        ImageUploadModel* uploadModel=[[ImageUploadModel alloc] init];
+        [uploadModel uploadEventImage:selectedPhoto[0] Event:fk_event];
+//        [uploadModel uploadImage:selectedPhoto[0] User:[UserModel username]];
+        return;
+    }
+    else{
+        [self didFinishUploadImage:nil];
+    }
+}
+
+-(void)didFailUploadImage{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [ProgressHUD dismiss];
+    [popoverAlterModel alterWithTitle:@"Error" Message:@"Fail to upload the event image."];
+    [self.navigationController popViewControllerAnimated:YES];
+    [(EventListViewController*)[self.navigationController presentedViewController] refreshEventList:nil];
+
+}
+
+-(void)didCreateNewEventFailed{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [ProgressHUD dismiss];
+    [self.navigationController popViewControllerAnimated:YES];
+    [popoverAlterModel alterWithTitle:@"Failed" Message:@"Failed to create new event, please try again."];
 }
 
 - (IBAction)cancelPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)constructRequest{
-    EventPostModel* model=[[EventPostModel alloc] init];
-    [model postEventWithRequest:[EventPostModel constructPostRequestWithJsonData:[[NSData alloc] init]]];
+- (NSMutableDictionary*)packUpInfo{
+    NSMutableDictionary* info=[[NSMutableDictionary alloc]init];
+    [info setValue:self.titleInputTextField.text forKey:@"event_title"];
+    [info setValue:self.dateInputTextField.text forKey:@"event_date"];
+    [info setValue:self.timeFromInputTextField.text forKey:@"event_time"];
+    [info setValue:self.detailInputTextField.text forKey:@"event_detail"];
+    [info setValue:@([self.capacityInputTextField.text integerValue]) forKey:@"event_capacity"] ;
+    [info setValue:[self.address objectForKey:@"address_city"] forKey:@"address_city"];
+    [info setValue:[self.address objectForKey:@"address_country"] forKey:@"address_country"];
+    [info setValue:[self.address objectForKey:@"address_detail"] forKey:@"address_detail"];
+    [info setValue:[self.address objectForKey:@"address_postal_code"] forKey:@"address_postal_code"];
+    [info setValue:[self.address objectForKey:@"address_region"] forKey:@"address_region"];
+    [info setValue:[self.address objectForKey:@"address_title"] forKey:@"address_title"];
+    return info;
+
 }
 
-//#pragma mark - Table view data source
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 0;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//#warning Incomplete method implementation.
-//    // Return the number of rows in the section.
-//    return 0;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    static NSString *CellIdentifier = @"Cell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//    
-//    // Configure the cell...
-//    
-//    return cell;
-//}
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
+    [selectedPhoto removeAllObjects];
+    [selectedPhoto addObject:image];
+    [self hideImagePicker];
+    [self updateSelectedImage];
+}
+
+- (void)hideImagePicker{
+    [self.imagePicker.imagePickerController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo{
+    [selectedPhoto addObject:image];
+        
+    [picker dismissViewControllerAnimated:YES completion:nil];
+        
+}
+
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+// It is important for you to hide kwyboard
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
+    [textField resignFirstResponder];
     return YES;
 }
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end

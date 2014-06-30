@@ -2,56 +2,103 @@
 //  EventPostModel.m
 //  EventApp_Alpha
 //
-//  Created by Rui Zheng on 2013-11-21.
-//  Copyright (c) 2013 2013_Fall_Dev_Team_A. All rights reserved.
+//  Created by Rui Zheng on 2/22/2014.
+//  Copyright (c) 2014 2013_Fall_Dev_Team_A. All rights reserved.
 //
 
 #import "EventPostModel.h"
+#import "UserModel.h"
+
+#define REFERR "http://www.machoapes.com/app_project/api/v01/event/?"
+
 
 @implementation EventPostModel
--(bool)postEventWithRequest:(NSMutableURLRequest*)request{
-    NSURLConnection* conn=[[NSURLConnection alloc] initWithRequest:request delegate:self];
-    if(conn)
-        NSLog(@"conn set up successfully.");
-    else
-        NSLog(@"failed to set up.");
-    //[conn start];
-    return YES;
+bool isSendingAddress,isSendingEvent;
+
+-(void)postEventwithInfo:(NSMutableDictionary*)info{
+    [info setValue:[UserModel userResourceURL] forKey:@"fk_event_poster_user"];
+    NSURL* targetURL=[[self class] constructEventPostURLwithUsername:[UserModel username] andKey:[UserModel userAPIKey]];
+    isSendingEvent=true;
+    @try {
+        NSError* err;
+        NSData* data=[NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:&err];
+//        NSString *jsonString=[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//        NSLog(@"%@",jsonString);
+        if (err) {
+            @throw [NSException exceptionWithName:@"Failed" reason:@"Serialization Failed" userInfo:nil];
+        }
+        [self postData:data WithUrl:targetURL];
+    }
+    @catch (NSException *exception) {
+        [[[UIAlertView alloc]initWithTitle:@"Failed" message:exception.reason delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+    }
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    // This method is called when the server has determined that it
-    // has enough information to create the NSURLResponse object.
-    
-    // It can be called multiple times, for example in the case of a
-    // redirect, so each time we reset the data.
-    
-    // receivedData is an instance variable declared elsewhere.
-    NSURLResponse *res=response;
-    NSLog(@"%@",res);
+-(void)postAddresswithInfo:(NSDictionary *)info{
+    NSError* error;
+    NSMutableDictionary* dic=[NSMutableDictionary dictionaryWithDictionary:info];
+    [dic setObject:[UserModel userResourceURL] forKey:@"fk_user"];
+    isSendingAddress=true;
+    @try {
+        NSData* json=[NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&error];
+        if (error) {
+            @throw [NSException exceptionWithName:@"Failed" reason:@"Fail to serialize address info." userInfo:nil];
+        }
+        NSURL* url=[[self class] constructRequestWithResource:@"/address"];
+        url=[NSURL URLWithString:[[url absoluteString] stringByAppendingString:[NSString stringWithFormat:@"/?username=%@&api_key=%@",[UserModel username],[UserModel userAPIKey]]]];
+        
+        NSMutableURLRequest* request=[self configPostRequest:[NSMutableURLRequest requestWithURL:url] withData:json];
+        NSURLConnection* conn=[NSURLConnection connectionWithRequest:request delegate:self];
+        if (conn) {
+            [self prepareForConnection];
+            [conn start];
+        }
+        else{
+            @throw [NSException exceptionWithName:@"Failed" reason:@"Fail to send address info." userInfo:nil];
+        }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@",exception.reason);
+    }
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
-    NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+    if (isSendingAddress) {
+        if ([(NSHTTPURLResponse*)response statusCode]!=201) {
+            self.receivedData=nil;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"didPostNewAddressFailed" object:nil];
+        }
+        else{
+            NSString* resourceURL;
+            NSString* location=[[(NSHTTPURLResponse*)response allHeaderFields] objectForKey:@"Location"];
+            resourceURL=[location substringFromIndex:[[NSString stringWithFormat:@"%@%@",HTTPPREFIX,WEBSERVICEDOMAIN] length]];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"didPostNewAddress" object:resourceURL];
+        }
+    }
+    else if(isSendingEvent){
+        if ([(NSHTTPURLResponse*)response statusCode]!=201) {
+            self.receivedData=nil;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"didCreateNewEventFailed" object:nil];
+        }
+        else{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"didCreateNewEvent" object:[[(NSHTTPURLResponse*)response allHeaderFields] objectForKey:@"Location"]];
+        }
+    }
 }
 
-- (void)connection:(NSURLConnection *)connection
-  didFailWithError:(NSError *)error
-{
-    // Release the connection and the data object
-    // by setting the properties (declared elsewhere)
-    // to nil.  Note that a real-world app usually
-    // requires the delegate to manage more than one
-    // connection at a time, so these lines would
-    // typically be replaced by code to iterate through
-    // whatever data structures you are using.
-    
-    // inform the user
-    NSLog(@"Connection failed! Error - %@ %@",
-          [error localizedDescription],
-          [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection{
+    [super connectionDidFinishLoading:connection];
+    if (isSendingAddress) {
+        isSendingAddress=NO;
+    }
+    else if (isSendingEvent) {
+        isSendingEvent=NO;
+        
+    }
+    else{
+        isSendingAddress=NO;
+        isSendingEvent=NO;
+    }
 }
-
-
 @end

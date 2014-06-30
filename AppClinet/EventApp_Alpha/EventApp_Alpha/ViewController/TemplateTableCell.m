@@ -8,6 +8,8 @@
 
 #import "TemplateTableCell.h"
 
+
+
 @implementation TemplateTableCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -18,6 +20,7 @@
     }
     return self;
 }
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {

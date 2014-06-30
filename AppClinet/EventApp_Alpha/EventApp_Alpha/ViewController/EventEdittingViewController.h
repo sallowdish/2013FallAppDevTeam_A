@@ -6,11 +6,22 @@
 //  Copyright (c) 2013 2013_Fall_Dev_Team_A. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+//old implement, decarded
+//#define DATEPICKER 100
+//#define TIMEFROMPICKER 101
+//#define TIMETOPICKER 102
+//#define CAPACITYPICKER 103
 
-@interface EventEdittingViewController : UITableViewController
+#import <UIKit/UIKit.h>
+#import "GKImagePicker.h"
+
+@interface EventEdittingViewController : UITableViewController <UITextFieldDelegate,UINavigationControllerDelegate,GKImagePickerDelegate>
 - (IBAction)donePressed:(id)sender;
 - (IBAction)cancelPressed:(id)sender;
-
-
+@property (weak, nonatomic) IBOutlet UITextField *dateInputTextField;
+@property (weak, nonatomic) IBOutlet UITextField *timeFromInputTextField;
+@property (weak, nonatomic) IBOutlet UITextField *capacityInputTextField;
+@property (weak, nonatomic) IBOutlet UITextField *titleInputTextField;
+@property (weak, nonatomic) IBOutlet UITextField *detailInputTextField;
+@property (weak, nonatomic) IBOutlet UITextField *locationTextField;
 @end
