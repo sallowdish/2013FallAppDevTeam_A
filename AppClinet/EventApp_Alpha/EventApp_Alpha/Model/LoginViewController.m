@@ -81,7 +81,7 @@ UserModel* model;
     //Dynamic makeup
     if ([UserModel isLogin]) {
         self.loginButton.enabled=NO;
-        self.user_profile_image.image=[UserModel getProfileImage];
+        [UserModel getProfileImageWithUser:[UserModel current_user] Sender:self.user_profile_image];
     }else{
         model=[[UserModel alloc] init];
     }
@@ -117,7 +117,7 @@ UserModel* model;
 //    [model updataUserInfo];
     [[ProgressHUD class] dismiss];
     
-    self.user_profile_image.image=[UserModel getProfileImage];
+    [UserModel getProfileImageWithUser:[UserModel current_user] Sender:self.user_profile_image];
     self.loginButton.enabled=NO;
     [popoverAlterModel alterWithTitle:@"Login Succeed" Message:[NSString stringWithFormat:@"Hi,%@",[UserModel username]]];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"loginProcessFinish" object:nil];

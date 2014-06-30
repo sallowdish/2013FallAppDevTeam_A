@@ -44,20 +44,32 @@
 
     [super viewDidLoad];
     
+
     
+	[self visualSetup];
+    [self dataSourceSetup];
+    
+}
+
+-(void)dataSourceSetup{
     //Data Setup
     if (self.targetUser) {
-        
-        self.userProfileImage.image=[UserModel getProfileImageWithUser:self.targetUser];
-        self.username.text=[self.targetUser objectForKey:@"username"];
-        self.userLocation.text=@"Unknown";
-        self.userLike.text=@"N/A";
-        self.userTag.text=@"";
-        self.userDescription.text=@"Top Secret";
-        self.userRecentActivity.text=@"Top Secret";
+    }else if (self.userID){
+        [UserModel getUserInfoofID:self.userID complete:^(NSDictionary *userInfo) {
+            self.targetUser=[userInfo valueForKey:@"objects"][0];
+            [self dateSourceToViewMatch];
+        } fail:^(NSError *error) {
+            [ProgressHUD showError:[NSString stringWithFormat:@"Fail to get user info. %@",[error localizedDescription]]];
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    }else{
+        [ProgressHUD showError:@"Fatal operation"];
+        [self.navigationController popViewControllerAnimated:YES];
     }
-    
-	// Visual Setup
+}
+
+-(void)visualSetup{
+    // Visual Setup
     [self navigationController].automaticallyAdjustsScrollViewInsets=YES;
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height*1.35)];
     
@@ -65,8 +77,6 @@
     for (UIView *view in self.needTransparent) {
         [view setBackgroundColor:[UIColor clearColor]];
     }
-    
-    
     
     //Set border
     for (UIView *view in self.needBorder) {
@@ -87,10 +97,21 @@
     [self.view viewWithTag:997].layer.cornerRadius=15;
     [self.view viewWithTag:996].layer.cornerRadius=15;
     
+    if (self.targetUser) {
+        [self dateSourceToViewMatch];
+    }
     
 }
 
-
+-(void)dateSourceToViewMatch{
+    [UserModel getProfileImageWithUser:self.targetUser Sender:self.userProfileImage];
+    self.username.text=[[self.targetUser valueForKey:@"user_nickname"] isEqualToString:@""]?[self.targetUser valueForKey:@"username"]:[self.targetUser valueForKey:@"user_nickname"];
+    self.userLocation.text=[[self.targetUser valueForKey:@"user_location"] isEqualToString:@""]?@"Unknown":[self.targetUser valueForKey:@"user_location"];
+    self.userLike.text=@"N/A";
+    self.userTag.text=@"";
+    self.userDescription.text=@"Top Secret";
+    self.userRecentActivity.text=@"Top Secret";
+}
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.scrollView removeFromSuperview];

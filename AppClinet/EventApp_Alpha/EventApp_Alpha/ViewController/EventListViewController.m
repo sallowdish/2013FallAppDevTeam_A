@@ -50,6 +50,7 @@ bool isUpdated,isBasedOnTime;
     
     self.segmentController.selectedSegmentIndex=0;
     
+    
     // Uncomment the following line to preserve selection between presentations.
 //    self.clearsSelectionOnViewWillAppear = YES;
  
@@ -86,10 +87,9 @@ bool isUpdated,isBasedOnTime;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:animated];
-    [self fetchNewDataFromServer:@"time"];
-//    [self.tableView reloadData];
     [super viewWillAppear:animated];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:animated];
+    self.tabBarController.tabBar.hidden=NO;
 }
 
 
@@ -97,6 +97,7 @@ bool isUpdated,isBasedOnTime;
     [ProgressHUD show:@"Loading new events list..."];
     isUpdated=false;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchNewDataFromServer:) name:@"didFetchEventListWithMode" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailFetchNewDataFromServer:) name:@"didFailFetchEventListWithMode" object:nil];
     [model fetchEventListWithMode:mode];
     [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(removeFromNSNotificationCenter) userInfo:nil repeats:NO];
     //    [self fetchNewDataFromServer];
@@ -111,6 +112,11 @@ bool isUpdated,isBasedOnTime;
         NSLog(@"%@",@"UPDATED");
     }
     [self.tableView reloadData];
+}
+
+-(void)didFailFetchNewDataFromServer:(id)notif{
+    [ProgressHUD showError:@"Network issue, plz try later."];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -211,7 +217,6 @@ bool isUpdated,isBasedOnTime;
     queue = dispatch_queue_create("com.EventApp.EventListFetchModel.Model", DISPATCH_QUEUE_SERIAL);
     dispatch_async(queue, ^{
         [model fetchNextPage:self];
-        NSLog(@"Start");
     });
 }
 

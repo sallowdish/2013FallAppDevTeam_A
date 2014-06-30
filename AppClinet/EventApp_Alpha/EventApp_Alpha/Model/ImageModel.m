@@ -7,6 +7,7 @@
 //
 
 #import "ImageModel.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation ImageModel
 +(UIImage*)downloadImage:(NSDictionary*)event{
@@ -22,7 +23,7 @@
     return img;
 
 }
-+(UIImage*)downloadImageViaPath:(NSString *)path For:(NSString*)receiver WithPrefix:(NSString*)Prefix
++(UIImage*)downloadImageViaPath:(NSString *)path For:(NSString*)receiver WithPrefix:(NSString*)Prefix :(UIImageView*)sender
 {
     __block UIImage* img;
     NSURL* targetURL;
@@ -36,23 +37,18 @@
     else{
         img=[UIImage imageNamed:@"default_profile_5_bigger.png"];
     }
-//    UIImage* img=[UIImage imageNamed:@"152_152icon.png"];
     if (path!=(id)[NSNull null]) {
         targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,Prefix,path]];
-        SDWebImageManager *manager = [SDWebImageManager sharedManager];
-        [manager downloadWithURL:targetURL
-                         options:0
-                        progress:^(NSInteger receivedSize, NSInteger expectedSize)
-         {
-             // progression tracking code
-         }
-                       completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished)
-         {
-             if (image)
-             {
-                 img=image;
-             }
-         }];
+        @try {
+            if (sender) {
+                [sender setImageWithURL:targetURL placeholderImage:img];
+            }
+        }
+        @catch (NSException *exception) {
+            [ProgressHUD showError:[exception description]];
+        }
+    }else{
+        sender.image=img;
     }
     return img;
     

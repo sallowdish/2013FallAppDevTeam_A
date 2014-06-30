@@ -47,6 +47,7 @@ bool isUpdated;
     eventList=nil;
     
     self.segmentController.selectedSegmentIndex=1;
+    self.tabBarController.tabBar.hidden=NO;
     
     // Uncomment the following line to preserve selection between presentations.
 //    self.clearsSelectionOnViewWillAppear = YES;
@@ -82,6 +83,7 @@ bool isUpdated;
     [ProgressHUD show:@"Loading new events list..."];
     isUpdated=false;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchNewDataFromServer:) name:@"didFetchEventListWithMode" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailFetchNewDataFromServer:) name:@"didFailFetchEventListWithMode" object:nil];
     [model fetchEventListWithMode:mode];
     [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(removeFromNSNotificationCenter) userInfo:nil repeats:NO];
     //    [self fetchNewDataFromServer];
@@ -97,8 +99,15 @@ bool isUpdated;
     }
 }
 
+-(void)didFailFetchNewDataFromServer:(id)notif{
+    [ProgressHUD showError:@"Network issue, plz try later."];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(void) viewWillAppear:(BOOL)animated{
-    [self fetchNewDataFromServer:@"hot"];
+    [super viewWillAppear:animated];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:animated];
+    self.tabBarController.tabBar.hidden=NO;
 }
 
 -(void) removeFromNSNotificationCenter{

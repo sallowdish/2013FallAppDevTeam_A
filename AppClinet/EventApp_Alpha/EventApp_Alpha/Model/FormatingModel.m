@@ -8,7 +8,6 @@
 
 #import "FormatingModel.h"
 #import "ImageModel.h"
-#import "SDWebImage/UIImageView+WebCache.h"
 
 
 @implementation FormatingModel
@@ -53,9 +52,10 @@
     cell.locationLabel.text=[event objectForKey:@"address_title"];
     
 //    UIImage* img=[ImageModel downloadImageViaPath:[event objectForKey:@"fk_event_poster_user_fk_user_image"] For:@"user" WithPrefix:MEDIAPREFIX];
-    NSURL* targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,MEDIAPREFIX,[event objectForKey:@"fk_event_poster_user_fk_user_image"]]];
+//    NSURL* targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,MEDIAPREFIX,]];
 
-    [cell.profileImage setImageWithURL:targetURL  placeholderImage:[UIImage imageNamed:@"152_152icon.png"]];
+    [ImageModel downloadImageViaPath:[event valueForKey:@"fk_event_poster_user_fk_user_image"] For:@"user" WithPrefix:MEDIAPREFIX :cell.profileImage];
+//    [cell.profileImage setImageWithURL:targetURL  placeholderImage:[UIImage imageNamed:@"152_152icon.png"]];
     return cell;
 }
 

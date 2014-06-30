@@ -19,20 +19,32 @@
 #import "ProfilePageViewController.h"
 #import "AddressInfoPageViewController.h"
 #import "ImageModel.h"
+#import "UIImageView+AFNetworking.h"
 #undef MAXTAG
 #define MAXTAG 104
+<<<<<<< HEAD
 >>>>>>> Developing-Base-on-WS
 @interface EventDetailViewController ()
+=======
+@interface EventDetailViewController (){
+    dispatch_queue_t queue;
+    dispatch_semaphore_t semeaphore;
+    
+}
+>>>>>>> Redo-EventDetailPage
 @property (strong,nonatomic) NSDictionary* event;
 @property (strong,nonatomic) NSMutableArray* RSVPList;
 @property (strong,nonatomic) NSMutableArray* likeList;
-@property (strong, nonatomic) NSMutableArray *joinedPeopleIcons;
-@property (weak, nonatomic) IBOutlet UIView *joinedPeopleSpanArea;
-@property (weak, nonatomic) IBOutlet UILabel *joinedPeopleLabel;
+@property (strong,nonatomic) NSMutableArray* RSVPProfileIcons;
+
+@property (weak, nonatomic) IBOutlet UIView *RSVPSpanArea;
+@property (strong, nonatomic) IBOutlet UIImageView *RSVPProfileIconTemplate;
+@property (strong, nonatomic) IBOutlet UILabel *RSVPProfileStateLabel;
 @property (weak, nonatomic) IBOutlet UIButton *descriptionTab;
 @property (weak, nonatomic) IBOutlet UIButton *commentsTab;
 @property (weak, nonatomic) IBOutlet UIView *detailSpanArea;
 @property UITextField* noComments;
+@property (weak, nonatomic) IBOutlet UIButton *RSVPbutton;
 @end
 
 @implementation EventDetailViewController
@@ -43,7 +55,11 @@
 bool isJoined,isLiked;
 EventFetchModel* model;
 EventJoinAndLikeModel* jlmodel;
+<<<<<<< HEAD
 >>>>>>> Developing-Base-on-WS
+=======
+NSString* state;
+>>>>>>> Redo-EventDetailPage
 
 - (id)init{
     self=[super init];
@@ -62,29 +78,27 @@ EventJoinAndLikeModel* jlmodel;
     float para=[[UIScreen mainScreen] bounds].size.height== 480?1.3:1.16;
     CGSize contentsize=CGSizeMake(320,self.containerView.frame.size.height*para+self.navigationController.navigationBar.frame.size.height);
     [self.scrollView setContentSize:contentsize];
+    [self cleanUpRSVPSpanArea];
     
-    
-    isJoined=NO;
-    isLiked=NO;
     self.RSVPList=[NSMutableArray arrayWithCapacity:0];
     self.likeList=[NSMutableArray arrayWithCapacity:0];
-    self.joinedPeopleIcons=[NSMutableArray arrayWithCapacity:0];
+    self.RSVPProfileIcons=[NSMutableArray arrayWithCapacity:0];
     self.descriptionTab.enabled=NO;
     model=[[EventFetchModel alloc]init];
     jlmodel=[[EventJoinAndLikeModel alloc]init];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+//    self.navigationItem.rightBarButtonItem = self.editButtonItem;
 //    set the view frame to round conner
     for (int i=100; i<105; i++) {
         UIView* subview=[self.view viewWithTag:i];
         subview.layer.cornerRadius=6;
         subview.layer.masksToBounds=YES;
     }
+    [ProgressHUD show:@"Loading"];
 
+<<<<<<< HEAD
 //    NSError* err;
     
 <<<<<<< HEAD
@@ -101,6 +115,19 @@ EventJoinAndLikeModel* jlmodel;
     }
 =======
     [ProgressHUD show:@"Loading event info..."];
+=======
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    state=nil;
+    self.tabBarController.tabBar.hidden=YES;
+    [self drawRSVPnLikeFloatButton];
+    [self fetchEvent];
+}
+
+-(void)fetchEvent{
+//    [ProgressHUD show:@"Loading event info..."];
+>>>>>>> Redo-EventDetailPage
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchEvent) name:@"didFetchDataWithEventID" object:nil];
     @try {
         
@@ -110,17 +137,15 @@ EventJoinAndLikeModel* jlmodel;
         [popoverAlterModel alterWithTitle:@"Failed" Message:@"Fetching event detail failed."];
         [self.navigationController popViewControllerAnimated:YES];
     }
+<<<<<<< HEAD
     
     
 >>>>>>> Developing-Base-on-WS
     //matching
 //    event=(NSDictionary*)[event objectForKey:@"fields"];
+=======
+>>>>>>> Redo-EventDetailPage
 }
-
--(void)viewDidAppear:(BOOL)animated{
-    
-}
-
 
 -(void)didFetchEvent{
     @try{
@@ -132,119 +157,132 @@ EventJoinAndLikeModel* jlmodel;
         [self.navigationController popViewControllerAnimated:YES];
     }
     
-    
-//    [[ProgressHUD class] dismiss];
     //stop listen to fetching event data
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFetchDataWithEventID" object:nil];
     
-
-    [self getRSVPInfo];
-    //post didLoadPage;
-
-}
-
-
--(void) getRSVPInfo{
-    //start listen to fetching joined people
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetRSVPInfo) name:@"didFinishCountingRSVP" object:nil];
-    [jlmodel countRSVP:event];
-}
-
--(void)didGetRSVPInfo{
-    //    NSLog(@"");
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFinishCountingRSVP" object:nil];
-    @try {
-        NSArray* RSVP=[jlmodel.json objectForKey:@"objects"];
-        [self.RSVPList removeAllObjects];
-        for (int i = 0; i<RSVP.count; i++) {
-            [self.RSVPList addObject:[(NSDictionary*)RSVP[i] objectForKey:@"fk_user"]];
-        }
-    }
-    @catch (NSException *exception) {
-        NSLog(@"%@",exception.reason);
-    }
-    
-    //visual setup
-    if (![[event objectForKey:@"event_capacity"] isEqual:[NSNull null]]) {
-        self.RSVP.text=[NSString stringWithFormat:@"%lu/%@",(unsigned long)[self.RSVPList count],[event objectForKey:@"event_capacity"]];
-    }
-    else{
-        self.RSVP.text=[NSString stringWithFormat:@"%lu/∞",(unsigned long)[self.RSVPList count]];
-    }
-    //Visual setup
-    [[self.joinedPeopleSpanArea subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    
-    int basex=10;
-    int basey=(self.joinedPeopleSpanArea.frame.size.height-50)/2;
-    for (int i = 0; i<(self.RSVPList.count>5?5:self.RSVPList.count); i++) {
-        //UI initialization
-        //Get uiimage content
-        NSDictionary* user=self.RSVPList[i];
-        UIImage* img=[UserModel getProfileImageWithUser:user];
-        
-        //prepare the frame
-        
-        UIImageView* view=[[UIImageView alloc]initWithFrame:CGRectMake(basex, basey, 50, 50)];
-        view.image=img;
-        view.layer.borderWidth=2;
-        view.layer.borderColor=[UIColor whiteColor].CGColor;
-        view.layer.cornerRadius=25;
-        view.layer.masksToBounds = NO;
-        view.clipsToBounds = YES;
-        //functionality initialization
-        UITapGestureRecognizer* singleTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(viewedPeopleTapped:)];
-        singleTap.numberOfTapsRequired=1;
-        view.userInteractionEnabled=YES;
-        [view addGestureRecognizer:singleTap];
-        [self.joinedPeopleSpanArea addSubview:view];
-        [self.joinedPeopleIcons addObject:view];
-        basex+=55;
-    }
-    if (self.RSVPList.count<=5) {
-        self.joinedPeopleLabel.text=@"已參與";
-    }
-    self.joinedPeopleLabel.frame=CGRectMake(basex, self.joinedPeopleLabel.frame.origin.y, self.joinedPeopleLabel.frame.size.width, self.joinedPeopleLabel.frame.size.height);
-    [self.joinedPeopleSpanArea addSubview:self.joinedPeopleLabel];
-    //stop listening to fetching joined people
-    
-    [self getLikeInfo];
-}
-
-
--(void) getLikeInfo{
-    //start listen to fetching joined people
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetLikeInfo) name:@"didFinishCountingLike" object:nil];
-    [jlmodel countLike:event];
-}
-
--(void) didGetLikeInfo{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFinishCountingLike" object:nil];
-    @try {
-        NSArray* like=[jlmodel.json objectForKey:@"objects"];
-        [self.likeList removeAllObjects];
-        for (int i = 0; i<like.count; i++) {
-            [self.likeList addObject:[(NSDictionary*)like[i] objectForKey:@"fk_user"]];
-        }
-    }
-    @catch (NSException *exception) {
-        NSLog(@"%@",exception.reason);
-    }
-    //visual setup
-    self.like.text=[NSString stringWithFormat:@"%lu",(unsigned long)[self.likeList count]];
-    [ProgressHUD dismiss];
     self.scrollView.hidden=NO;
+//    [ProgressHUD showSuccess:@"Loading Finish."];
+    //post didLoadPage;
+//    [ProgressHUD dismiss];
+    if (!state) {
+        [ProgressHUD showSuccess:@"Loading finish."];
+    }else if ([state isEqualToString:@"RSVP"]){
+        [ProgressHUD showSuccess:@"RSVP this event succeed."];
+    }else{
+        [ProgressHUD showSuccess:@"Liking this event succeed."];
+    }
+    [self getRSVPList];
 }
 
 
+-(void)getRSVPList{
+    if (!queue) {
+        queue=dispatch_queue_create("com.EventApp.EventDetailFetchModel", NULL);
+    }
+    //    if (!semeaphore) {
+    //        semeaphore=dispatch_semaphore_create(0);
+    //    }
+    dispatch_async(queue, ^{
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetRSVPList) name:@"didGetRSVPList" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailGetRSVPList) name:@"didFailGetRSVPList" object:nil];
 
+        [jlmodel getRSVPList:event];
+    });
+}
+-(void)didGetRSVPList{
+    self.RSVPList=[EventJoinAndLikeModel RSVPList];
+    [self updateRSVPProfileIcon];
+    if ([jlmodel isCurrentUserinRSVPList]) {
+        self.RSVPbutton.enabled=NO;
+        self.RSVPbutton.backgroundColor=[UIColor lightGrayColor];
+    }
+    
+}
+-(void)didFailGetRSVPList{
+    self.RSVPProfileStateLabel.text=@"No RSVP";
+    [self cleanUpRSVPSpanArea];
+    [self.RSVPSpanArea addSubview:self.RSVPProfileStateLabel];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [popoverAlterModel alterWithTitle:@"Fail" Message:@"Failed to get RSVPList"];
+}
 
--(IBAction)viewedPeopleTapped:(id)sender{
-    UITapGestureRecognizer* tap=(UITapGestureRecognizer*)sender;
-    NSUInteger i=[self.joinedPeopleIcons indexOfObject:tap.view];
-    NSLog(@"%ld Tapped!",(long)i);
-    ProfilePageViewController* vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
-    vc.targetUser=self.RSVPList[i];
-    [self.navigationController pushViewController:vc animated:YES];
+-(void)cleanUpRSVPSpanArea{
+    for (UIView * view in [self.RSVPSpanArea subviews]) {
+        [view removeFromSuperview];
+    }
+    [self.RSVPProfileIcons removeAllObjects];
+}
+
+-(void)updateRSVPProfileIcon{
+    if (self.RSVPList.count==0) {
+        [self cleanUpRSVPSpanArea];
+        self.RSVPProfileStateLabel.text=@"No RSVP.";
+        [self.RSVPSpanArea addSubview:self.RSVPProfileStateLabel];
+    }else{
+        CGRect templateFrame=self.RSVPProfileIconTemplate.frame;
+        [self cleanUpRSVPSpanArea];
+        for (NSDictionary* RSVPRecord in self.RSVPList) {
+            if ([self.RSVPList indexOfObject:RSVPRecord]<5) {
+                UIImageView* RSVPProfileIcon=[[UIImageView alloc] initWithFrame:templateFrame];
+                @try {
+                    [ImageModel downloadImageViaPath:[[[RSVPRecord valueForKey:@"fk_user"] valueForKey:@"fk_user_image"] valueForKey:@"path"] For:@"user" WithPrefix:@"" :RSVPProfileIcon];
+                }
+                @catch (NSException *exception) {
+                    NSLog(@"fail to get RSVP users' profile image");
+                }
+                RSVPProfileIcon.layer.cornerRadius=RSVPProfileIcon.bounds.size.width/2;
+                RSVPProfileIcon.layer.masksToBounds=YES;
+                UITapGestureRecognizer* tapper=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(RSVPProfileIconTapped:)];
+                tapper.numberOfTapsRequired=1;
+                [self.RSVPProfileIcons addObject:tapper];
+                [RSVPProfileIcon addGestureRecognizer:tapper];
+                RSVPProfileIcon.userInteractionEnabled=YES;
+                [self.RSVPSpanArea addSubview:RSVPProfileIcon];
+                templateFrame.origin.x=templateFrame.origin.x+templateFrame.size.width+10;
+            }else{
+                break;
+            }
+            
+        }
+        self.RSVPProfileStateLabel.text=@"RSVP";
+        [self.RSVPSpanArea addSubview:self.RSVPProfileStateLabel];
+    }
+}
+
+-(IBAction)RSVPEvent{
+    [jlmodel rsvpEvent:event succeed:^(id message) {
+        [self didRSVPEvent];
+    } failed:^(id error) {
+        [self didFailRSVPEvent:error];
+    }];
+}
+
+-(void)didRSVPEvent{
+    [self fetchEvent];
+    state=@"RSVP";
+}
+
+-(void)didFailRSVPEvent:(id)error{
+//    [ProgressHUD dismiss];
+    [ProgressHUD showError:[error localizedDescription]];
+}
+
+-(IBAction)likeEvent{
+    [jlmodel likeEvent:event succeed:^(id message) {
+        [self didLikeEvent];
+    } failed:^(id error) {
+        [self didFailLikeEvent:error];
+    }];
+}
+
+-(void)didLikeEvent{
+    [self fetchEvent];
+    state=@"like";
+}
+
+-(void)didFailLikeEvent:(id)error{
+    [ProgressHUD dismiss];
+    [ProgressHUD showError:[error localizedDescription]];
 }
 
 -(void)modelToViewMatch
@@ -264,10 +302,10 @@ EventJoinAndLikeModel* jlmodel;
 //    NSArray* timeInfo=[FormatingModel pythonDateTimeToStringArray:[event objectForKey:@"event_time"]];
     self.dateTime.text=[NSString stringWithFormat:@"%@|%@",[event objectForKey:@"event_date"],[event objectForKey:@"event_time"]];
     self.location.text=[event objectForKey:@"address_title"];
-    self.like.text=[NSString stringWithFormat:@"%@",[event objectForKey:@"event_like"]];
-    id capacity=[event objectForKey:@"event_capacity"];
-    if ([capacity isEqual:[NSNull null]]) {
-        self.RSVP.text=@" ∞/∞";
+    self.like.text=[NSString stringWithFormat:@"%@",[event valueForKey:@"event_like_count"]];
+    id capacity=[event valueForKey:@"event_capacity"];
+    if ([capacity isEqual:[NSNull null]] || [capacity intValue]==0) {
+        self.RSVP.text=@" ∞";
 //        [self.joinButton removeFromSuperview];
     }else{
         self.RSVP.text=[NSString stringWithFormat:@"%@/%@",[event objectForKey:@"event_rsvp_count"],[event objectForKey:@"event_capacity"]];
@@ -288,7 +326,7 @@ EventJoinAndLikeModel* jlmodel;
     
     //load event image
     if ([[event objectForKey:@"event_image"] count]>0) {
-        self.images.image=[ImageModel downloadImageViaPath:[[event objectForKey:@"event_image"][0] objectForKey:@"path"] For:@"event" WithPrefix:@""];
+        [ImageModel downloadImageViaPath:[[event objectForKey:@"event_image"][0] objectForKey:@"path"] For:@"event" WithPrefix:@"" :self.images];
     }
     else{
         self.images.image=[UIImage imageNamed:@"event3.jpg"];
@@ -297,13 +335,19 @@ EventJoinAndLikeModel* jlmodel;
 
 }
 
-
--(IBAction)hostInfoTapped{
-    ProfilePageViewController* vc= [self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
-    vc.targetUser=[event objectForKey:@"fk_event_poster_user"];
+-(IBAction)RSVPProfileIconTapped:(id)sender{
+    UITapGestureRecognizer* tap=(UITapGestureRecognizer*)sender;
+    NSUInteger i=[self.RSVPProfileIcons indexOfObject:tap];
+    NSLog(@"%ld Tapped!",(long)i);
+    ProfilePageViewController* vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
+    vc.userID=[[[self.RSVPList[i] valueForKey:@"fk_user"] valueForKey:@"id"] intValue];
     [self.navigationController pushViewController:vc animated:YES];
 }
-
+-(IBAction)hostInfoTapped{
+//    ProfilePageViewController* vc= [self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
+//    vc.targetUser=[event objectForKey:@"fk_event_poster_user"];
+//    [self.navigationController pushViewController:vc animated:YES];
+}
 -(IBAction)locationInfoTapped{
     AddressInfoPageViewController* vc= [self.storyboard instantiateViewControllerWithIdentifier:@"AddressInfoPage"];
     NSMutableDictionary* address=[NSMutableDictionary dictionaryWithCapacity:0];
@@ -317,6 +361,7 @@ EventJoinAndLikeModel* jlmodel;
     [self.navigationController pushViewController:vc animated:NO];
 }
 
+<<<<<<< HEAD
 - (IBAction)RSVPButtonTapped:(id)sender {
     if (![UserModel isLogin]) {
         [UserModel popupLoginViewToViewController:self];
@@ -407,6 +452,8 @@ EventJoinAndLikeModel* jlmodel;
     }
     return  false;
 }
+=======
+>>>>>>> Redo-EventDetailPage
 
 
 -(IBAction)commentTabTapped:(id)sender{
@@ -414,33 +461,47 @@ EventJoinAndLikeModel* jlmodel;
 
 #pragma comment in developing
 
-    self.commentsTab.backgroundColor=self.descriptionTab.backgroundColor;
-    self.descriptionTab.backgroundColor=[UIColor clearColor];
+    self.descriptionTab.backgroundColor=[UIColor colorWithRed:0xCC/255.0 green:0xCC/255.0 blue:0xFF/255.0 alpha:1];
+//    self.descriptionTab.layer.cornerRadius=3;
+    self.commentsTab.backgroundColor=[UIColor clearColor];
     self.description.text=@"Comments feature will be added in next reversion.";
     
     //disable self&enable the other one
     self.commentsTab.enabled=NO;
     self.descriptionTab.enabled=YES;
 }
-
 -(IBAction)descriptionTabTapped:(id)sender{
 
 #pragma comment in dev
-    if (self.noComments) {
-        self.noComments.hidden=YES;
-    }
-    self.descriptionTab.backgroundColor=self.commentsTab.backgroundColor;
-    self.commentsTab.backgroundColor=[UIColor clearColor];
+    self.commentsTab.backgroundColor=[UIColor colorWithRed:0xCC/255.0 green:0xCC/255.0 blue:0xFF/255.0 alpha:1];
+    self.descriptionTab.backgroundColor=[UIColor clearColor];
     NSString *description=[event objectForKey:@"event_detail"];
     if ([description isEqualToString:@""]) {
         self.description.text=@"This guy is really lazy. He didn't write anything in detail.";
+    }else{
+        self.description.text=description;
     }
     //disable self&enable the other one
     self.descriptionTab.enabled=NO;
     self.commentsTab.enabled=YES;
 }
 
-
+-(void)drawRSVPnLikeFloatButton{
+    CGRect frame=CGRectMake([[UIScreen mainScreen] bounds].size.width/2,[[UIScreen mainScreen] bounds].size.height-self.tabBarController.tabBar.frame.size.height, 100, self.tabBarController.tabBar.frame.size.height);
+    UIButton* likeButton=[[UIButton alloc] initWithFrame:frame];
+    frame.origin.x=frame.origin.x-frame.size.width;
+    UIButton* RSVPButton=[[UIButton alloc] initWithFrame:frame];
+    [likeButton setTitle:@"Like" forState:UIControlStateNormal];
+    [RSVPButton setTitle:@"RSVP" forState:UIControlStateNormal];
+    RSVPButton.backgroundColor=[UIColor colorWithRed:0xCC/255.0 green:0xCC/255.0 blue:0xFF/255.0 alpha:1];
+    likeButton.backgroundColor=[UIColor orangeColor];
+        [self.view addSubview:likeButton];
+    [self.view addSubview:RSVPButton];
+    [RSVPButton addTarget:self action:@selector(RSVPEvent) forControlEvents:UIControlEventTouchDown];
+    [likeButton addTarget:self action:@selector(likeEvent) forControlEvents:UIControlEventTouchDown];
+    self.RSVPbutton=RSVPButton;
+    self.likeButton=likeButton;
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sende
 {

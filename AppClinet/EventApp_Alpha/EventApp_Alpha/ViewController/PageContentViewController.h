@@ -20,7 +20,7 @@
 @property NSUInteger pageIndex,eventLike,eventRSVP;
 
 @property NSString *eventTitle,*eventDate,*eventLocation,*eventHoster;
-@property UIImage *eventImage;
+@property NSString *eventImage;
 
 
 @end

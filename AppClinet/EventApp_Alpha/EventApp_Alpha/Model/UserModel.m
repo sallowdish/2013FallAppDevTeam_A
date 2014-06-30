@@ -39,21 +39,12 @@ static bool isLogin,isDevelopment;
     isDevelopment=false;
 }
 
-+(UIImage*)getProfileImage{
-    if (isLogin) {
-        return[self getProfileImageWithUser:current_user];
-    }else{
-        return [UIImage imageNamed:@"default_profile_5_bigger.png"];;
-    }
-    
-}
-+(UIImage*)getProfileImageWithUser:(NSDictionary*)user{
++(void)getProfileImageWithUser:(NSDictionary*)user Sender:(UIImageView*)sender{
     if (![[user objectForKey:@"fk_user_image"] isEqual:[NSNull null]]) {
-        return [ImageModel downloadImageViaPath:[[user objectForKey:@"fk_user_image"] objectForKey:@"path"] For:@"user" WithPrefix:@""];
+        [ImageModel downloadImageViaPath:[[user objectForKey:@"fk_user_image"] objectForKey:@"path"] For:@"user" WithPrefix:@"" :sender];
     }else{
-        return [UIImage imageNamed:@"152_152icon.png"];
+        sender.image=[UIImage imageNamed:@"152_152icon.png"];
     }
-
 }
 
 
@@ -112,9 +103,17 @@ static bool isLogin,isDevelopment;
     return current_user;
 }
 
-//+(UIViewController*)hostViewController{
-//    return hostViewController;
-//}
++(void)getUserInfoofID:(NSInteger)userId complete:(void (^)(NSDictionary* userInfo))completeBlcok fail:(void(^)(NSError *error))failBlock{
+    NSString* targetURL=[[[URLConstructModel constructURLHeader] absoluteString] stringByAppendingFormat:@"%@%@%@%@%ld",API,@"/user/",@"?format=json",@"&id=",(long)userId];
+    
+    AFHTTPRequestOperationManager* manager=[URLConstructModel jsonManger];
+
+    [manager GET:targetURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        completeBlcok(responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        failBlock(error);
+    }];
+}
 
 +(BOOL)isLogin{
     return  isLogin;

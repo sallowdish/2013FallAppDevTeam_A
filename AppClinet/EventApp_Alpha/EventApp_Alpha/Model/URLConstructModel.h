@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFNetworking.h"
 
 @interface URLConstructModel : NSObject
 //Return the URL to fetch specific resource
@@ -18,4 +19,6 @@
 //Construct the post request using the data from view
 +(NSURL*)constructEventPostURLwithUsername:(NSString*)username andKey:(NSString*) APIkey;
 +(NSURL*)constructURLHeader;
++(AFHTTPRequestOperationManager*)jsonManger;
++(AFHTTPRequestOperationManager*)authorizedJsonManger;
 @end

@@ -20,11 +20,10 @@
 
 
 
-+(UIImage*)getProfileImage;
-+(UIImage*)getProfileImageWithUser:(NSDictionary*)user;
++(void)getProfileImageWithUser:(NSDictionary*)user Sender:(UIImageView*)sender;
 +(void)popupLoginViewToViewController:(UIViewController*) viewController;
 
-
++(void)getUserInfoofID:(NSInteger)userId complete:(void (^)(NSDictionary* userInfo))completeBlcok fail:(void(^)(NSError *error))failBlock;
 
 +(void)turnOnDevelopmentMode;
 +(void)turnOffDevelopmentMode;

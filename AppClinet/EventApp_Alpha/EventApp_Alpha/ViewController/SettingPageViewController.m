@@ -87,7 +87,7 @@
     }
     UITapGestureRecognizer *tap;
     if ([UserModel isLogin]) {
-        self.userProfileImage.image=[UserModel getProfileImage];
+        [UserModel getProfileImageWithUser:[UserModel current_user] Sender:self.userProfileImage];
         self.prompt.text=[NSString stringWithFormat:@"Hi, %@.\nTap to see your profile.",[UserModel username]];
     }
     else{
