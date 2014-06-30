@@ -48,7 +48,7 @@
     //Data Setup
     if (self.targetUser) {
         
-        self.userProfileImage.image=[UserModel getProfileImageWithUser:self.targetUser];
+        [UserModel getProfileImageWithUser:self.targetUser Sender:self.userProfileImage];
         self.username.text=[self.targetUser objectForKey:@"username"];
         self.userLocation.text=@"Unknown";
         self.userLike.text=@"N/A";

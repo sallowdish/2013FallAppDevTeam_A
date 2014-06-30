@@ -46,6 +46,7 @@
 bool isJoined,isLiked;
 EventFetchModel* model;
 EventJoinAndLikeModel* jlmodel;
+NSString* state;
 
 - (id)init{
     self=[super init];
@@ -82,17 +83,19 @@ EventJoinAndLikeModel* jlmodel;
         subview.layer.cornerRadius=6;
         subview.layer.masksToBounds=YES;
     }
+    [ProgressHUD show:@"Loading"];
 
-    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    state=nil;
+    self.tabBarController.tabBar.hidden=YES;
+    [self drawRSVPnLikeFloatButton];
     [self fetchEvent];
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    
-}
-
 -(void)fetchEvent{
-    [ProgressHUD show:@"Loading event info..."];
+//    [ProgressHUD show:@"Loading event info..."];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchEvent) name:@"didFetchDataWithEventID" object:nil];
     @try {
         
@@ -102,7 +105,6 @@ EventJoinAndLikeModel* jlmodel;
         [popoverAlterModel alterWithTitle:@"Failed" Message:@"Fetching event detail failed."];
         [self.navigationController popViewControllerAnimated:YES];
     }
-
 }
 
 -(void)didFetchEvent{
@@ -119,11 +121,17 @@ EventJoinAndLikeModel* jlmodel;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFetchDataWithEventID" object:nil];
     
     self.scrollView.hidden=NO;
-    [ProgressHUD showSuccess:@"Loading Finish."];
+//    [ProgressHUD showSuccess:@"Loading Finish."];
     //post didLoadPage;
-    
+//    [ProgressHUD dismiss];
+    if (!state) {
+        [ProgressHUD showSuccess:@"Loading finish."];
+    }else if ([state isEqualToString:@"RSVP"]){
+        [ProgressHUD showSuccess:@"RSVP this event succeed."];
+    }else{
+        [ProgressHUD showSuccess:@"Liking this event succeed."];
+    }
     [self getRSVPList];
-
 }
 
 
@@ -144,11 +152,9 @@ EventJoinAndLikeModel* jlmodel;
 -(void)didGetRSVPList{
     self.RSVPList=[EventJoinAndLikeModel RSVPList];
     [self updateRSVPProfileIcon];
-    for (NSDictionary* record in self.RSVPList) {
-        NSString* resourceURL=[[record valueForKey:@"fk_user"] valueForKey:@"resource_uri"];
-        if ([[UserModel userResourceURL] isEqualToString:resourceURL]) {
-            self.RSVPbutton.enabled=NO;
-        }
+    if ([jlmodel isCurrentUserinRSVPList]) {
+        self.RSVPbutton.enabled=NO;
+        self.RSVPbutton.backgroundColor=[UIColor lightGrayColor];
     }
     
 }
@@ -157,7 +163,7 @@ EventJoinAndLikeModel* jlmodel;
     [self cleanUpRSVPSpanArea];
     [self.RSVPSpanArea addSubview:self.RSVPProfileStateLabel];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [ProgressHUD showError:@"Failed to get RSVPList"];
+    [popoverAlterModel alterWithTitle:@"Fail" Message:@"Failed to get RSVPList"];
 }
 
 -(void)cleanUpRSVPSpanArea{
@@ -209,13 +215,31 @@ EventJoinAndLikeModel* jlmodel;
 
 -(void)didRSVPEvent{
     [self fetchEvent];
-    [ProgressHUD showSuccess:@"RSVP succeed."];
+    state=@"RSVP";
 }
 
 -(void)didFailRSVPEvent:(id)error{
+//    [ProgressHUD dismiss];
     [ProgressHUD showError:[error localizedDescription]];
 }
 
+-(IBAction)likeEvent{
+    [jlmodel likeEvent:event succeed:^(id message) {
+        [self didLikeEvent];
+    } failed:^(id error) {
+        [self didFailLikeEvent:error];
+    }];
+}
+
+-(void)didLikeEvent{
+    [self fetchEvent];
+    state=@"like";
+}
+
+-(void)didFailLikeEvent:(id)error{
+    [ProgressHUD dismiss];
+    [ProgressHUD showError:[error localizedDescription]];
+}
 
 -(void)modelToViewMatch
 {
@@ -282,39 +306,6 @@ EventJoinAndLikeModel* jlmodel;
     [self.navigationController pushViewController:vc animated:NO];
 }
 
-- (IBAction)RSVPButtonTapped:(id)sender {
-//    if (![UserModel isLogin]) {
-//        [UserModel popupLoginViewToViewController:self];
-//    }else{
-//        if (![self hasRSVP]) {
-//            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRSVPEvent) name:@"didRSVPEvent" object:nil];
-//            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRSVPEventFailed) name:@"didRSVPEventFailed" object:nil];
-//            [ProgressHUD show:@"trying to RSVP the event..."];
-//            [jlmodel rsvpEvent:event];
-//        }
-//        else{
-//            self.joinButton.enabled=NO;
-//            [popoverAlterModel alterWithTitle:@"Warning" Message:@"You have RSVPed this event already."];
-//        }
-//    }
-}
-- (IBAction)likeButtonTapped:(id)sender {
-//    if (![UserModel isLogin]) {
-//        [UserModel popupLoginViewToViewController:self];
-//    }else{
-//        if (![self hasLiked]) {
-//            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLikeEvent) name:@"didLikeEvent" object:nil];
-//            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLikeEventFailed) name:@"didLikeEventFailed" object:nil];
-//            [ProgressHUD show:@"trying to like the event..."];
-//            [jlmodel likeEvent:event];
-//        }
-//        else{
-//            self.likeButton.enabled=NO;
-//            [popoverAlterModel alterWithTitle:@"Warning" Message:@"You have liked this event already."];
-//        }
-//    }
-}
-
 
 
 -(IBAction)commentTabTapped:(id)sender{
@@ -347,7 +338,22 @@ EventJoinAndLikeModel* jlmodel;
     self.commentsTab.enabled=YES;
 }
 
-
+-(void)drawRSVPnLikeFloatButton{
+    CGRect frame=CGRectMake([[UIScreen mainScreen] bounds].size.width/2,[[UIScreen mainScreen] bounds].size.height-self.tabBarController.tabBar.frame.size.height, 100, self.tabBarController.tabBar.frame.size.height);
+    UIButton* likeButton=[[UIButton alloc] initWithFrame:frame];
+    frame.origin.x=frame.origin.x-frame.size.width;
+    UIButton* RSVPButton=[[UIButton alloc] initWithFrame:frame];
+    [likeButton setTitle:@"Like" forState:UIControlStateNormal];
+    [RSVPButton setTitle:@"RSVP" forState:UIControlStateNormal];
+    RSVPButton.backgroundColor=[UIColor colorWithRed:0xCC/255.0 green:0xCC/255.0 blue:0xFF/255.0 alpha:1];
+    likeButton.backgroundColor=[UIColor orangeColor];
+        [self.view addSubview:likeButton];
+    [self.view addSubview:RSVPButton];
+    [RSVPButton addTarget:self action:@selector(RSVPEvent) forControlEvents:UIControlEventTouchDown];
+    [likeButton addTarget:self action:@selector(likeEvent) forControlEvents:UIControlEventTouchDown];
+    self.RSVPbutton=RSVPButton;
+    self.likeButton=likeButton;
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sende
 {

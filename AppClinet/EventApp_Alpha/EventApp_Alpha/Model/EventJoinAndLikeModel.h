@@ -17,10 +17,14 @@ typedef void (^SucceeHandleBlock)(id message);
 @property NSDictionary* json; //RSVPCount,likeCount;
 -(void)rsvpEvent:(NSDictionary*)event succeed:(SucceeHandleBlock)succeedBlock failed:(FailureHandleBlock)failedBlock;
 -(void)quitEvent:(NSDictionary*)event :(EventDetailViewController*)sender;
--(void)likeEvent:(NSDictionary*)event :(EventDetailViewController*)sender;
+-(void)likeEvent:(NSDictionary*)event succeed:(SucceeHandleBlock)succeedBlock failed:(FailureHandleBlock)failedBlock;
 -(void)dislikeEvent:(NSDictionary*)event :(EventDetailViewController*)sender;
 -(void)getRSVPList:(NSDictionary*)event;
 -(void)getLikeList:(NSDictionary*)event;
+
+-(BOOL)isCurrentUserinRSVPList;
+-(BOOL)isCurrentUserinLikeList;
+
 
 //class methods
 +(NSMutableArray*)RSVPList;

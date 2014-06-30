@@ -50,6 +50,7 @@ bool isUpdated,isBasedOnTime;
     
     self.segmentController.selectedSegmentIndex=0;
     
+    
     // Uncomment the following line to preserve selection between presentations.
 //    self.clearsSelectionOnViewWillAppear = YES;
  
@@ -86,10 +87,9 @@ bool isUpdated,isBasedOnTime;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:animated];
-    [self fetchNewDataFromServer:@"time"];
-//    [self.tableView reloadData];
     [super viewWillAppear:animated];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:animated];
+    self.tabBarController.tabBar.hidden=NO;
 }
 
 

@@ -47,6 +47,7 @@ bool isUpdated;
     eventList=nil;
     
     self.segmentController.selectedSegmentIndex=1;
+    self.tabBarController.tabBar.hidden=NO;
     
     // Uncomment the following line to preserve selection between presentations.
 //    self.clearsSelectionOnViewWillAppear = YES;
@@ -104,7 +105,9 @@ bool isUpdated;
 }
 
 -(void) viewWillAppear:(BOOL)animated{
-    [self fetchNewDataFromServer:@"hot"];
+    [super viewWillAppear:animated];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:animated];
+    self.tabBarController.tabBar.hidden=NO;
 }
 
 -(void) removeFromNSNotificationCenter{

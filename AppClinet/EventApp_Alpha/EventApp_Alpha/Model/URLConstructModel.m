@@ -7,6 +7,7 @@
 //
 
 #import "URLConstructModel.h"
+#import "UserModel.h"
 
 @implementation URLConstructModel
 
@@ -36,6 +37,19 @@
 +(NSURL*)constructURLHeader{
     NSString* header=[NSString stringWithFormat:@"%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME];
     return [NSURL URLWithString:header];
+}
+
++(AFHTTPRequestOperationManager*)jsonManger{
+    AFHTTPRequestOperationManager* manager=[AFHTTPRequestOperationManager manager];
+    manager.requestSerializer=[AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    return manager;
+}
+
++(AFHTTPRequestOperationManager*)authorizedJsonManger{
+    AFHTTPRequestOperationManager* manager=[URLConstructModel jsonManger];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"ApiKey %@:%@", [UserModel username], [UserModel userAPIKey]] forHTTPHeaderField:@"Authorization"];
+    return manager;
 }
 
 @end

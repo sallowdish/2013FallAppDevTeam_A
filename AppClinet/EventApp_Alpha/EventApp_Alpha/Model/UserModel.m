@@ -39,19 +39,11 @@ static bool isLogin,isDevelopment;
     isDevelopment=false;
 }
 
-+(UIImage*)getProfileImage{
-    if (isLogin) {
-        return[self getProfileImageWithUser:current_user];
-    }else{
-        return [UIImage imageNamed:@"default_profile_5_bigger.png"];;
-    }
-    
-}
-+(UIImage*)getProfileImageWithUser:(NSDictionary*)user Sender:(UIImageView*)sender{
++(void)getProfileImageWithUser:(NSDictionary*)user Sender:(UIImageView*)sender{
     if (![[user objectForKey:@"fk_user_image"] isEqual:[NSNull null]]) {
-        return [ImageModel downloadImageViaPath:[[user objectForKey:@"fk_user_image"] objectForKey:@"path"] For:@"user" WithPrefix:@"" :sender];
+        [ImageModel downloadImageViaPath:[[user objectForKey:@"fk_user_image"] objectForKey:@"path"] For:@"user" WithPrefix:@"" :sender];
     }else{
-        return [UIImage imageNamed:@"152_152icon.png"];
+        sender.image=[UIImage imageNamed:@"152_152icon.png"];
     }
 }
 

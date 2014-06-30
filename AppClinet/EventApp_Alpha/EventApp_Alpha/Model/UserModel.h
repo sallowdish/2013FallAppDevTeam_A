@@ -20,8 +20,7 @@
 
 
 
-+(UIImage*)getProfileImage;
-+(UIImage*)getProfileImageWithUser:(NSDictionary*)user;
++(void)getProfileImageWithUser:(NSDictionary*)user Sender:(UIImageView*)sender;
 +(void)popupLoginViewToViewController:(UIViewController*) viewController;
 
 
