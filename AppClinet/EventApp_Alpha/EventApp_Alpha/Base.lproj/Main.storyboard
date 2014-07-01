@@ -962,9 +962,6 @@
                                                                 <state key="normal">
                                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </state>
-                                                                <connections>
-                                                                    <action selector="hostInfoTapped" destination="Fec-tY-Qmi" eventType="touchUpInside" id="6PO-CD-Fig"/>
-                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ldH-5e-gGm" userLabel="LocationInfo">
                                                                 <rect key="frame" x="20" y="94" width="130" height="21"/>
@@ -972,9 +969,6 @@
                                                                 <state key="normal">
                                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </state>
-                                                                <connections>
-                                                                    <action selector="locationInfoTapped" destination="Fec-tY-Qmi" eventType="touchUpInside" id="PAQ-fX-Iqk"/>
-                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -2600,7 +2594,7 @@ XX日發佈了XXXX活動 .
         <image name="profileImage.png" width="300" height="300"/>
         <image name="redheart.png" width="64" height="64"/>
         <image name="setting.png" width="30" height="30"/>
-        <image name="shopping.png" width="30" height="30"/>
+        <image name="shopping.png" width="32" height="32"/>
         <image name="ticket.png" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

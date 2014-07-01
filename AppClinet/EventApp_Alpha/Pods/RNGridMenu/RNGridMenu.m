@@ -92,7 +92,7 @@ CGPoint RNCentroidOfTouchesInView(NSSet *touches, UIView *view) {
 
         // create grayscale image to mask context
         CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
-        CGContextRef context = CGBitmapContextCreate(nil, maskLayer.bounds.size.width, maskLayer.bounds.size.height, 8, 0, colorSpace, kCGImageAlphaNone);
+        CGContextRef context = CGBitmapContextCreate(nil, maskLayer.bounds.size.width, maskLayer.bounds.size.height, 8, 0, colorSpace,  kCGImageAlphaNone);
         CGContextTranslateCTM(context, 0, maskLayer.bounds.size.height);
         CGContextScaleCTM(context, 1.f, -1.f);
         [maskLayer renderInContext:context];
@@ -340,7 +340,7 @@ static RNGridMenu *rn_visibleGridMenu;
         _cornerRadius = 8.f;
         _blurLevel = kRNGridMenuDefaultBlur;
         _animationDuration = kRNGridMenuDefaultDuration;
-        _itemTextColor = [UIColor whiteColor];
+        _itemTextColor = [UIColor blackColor];
         _itemFont = [UIFont boldSystemFontOfSize:14.f];
         _highlightColor = [UIColor colorWithRed:.02f green:.549f blue:.961f alpha:1.f];
         _menuStyle = RNGridMenuStyleGrid;
@@ -545,7 +545,8 @@ static RNGridMenu *rn_visibleGridMenu;
         NSInteger rowLength = ceilf(itemCount / (CGFloat)rowCount);
         NSInteger rowStartIndex = i * rowLength;
 
-        NSInteger offset = 0;
+        NSInteger offset;
+        offset=0;
         if ((i + 1) * rowLength > itemCount) {
             rowLength = itemCount - i * rowLength;
         }

@@ -18,11 +18,12 @@
 #import "AddressInfoPageViewController.h"
 #import "ImageModel.h"
 #import "UIImageView+AFNetworking.h"
+#import "RNGridMenu.h"
+
 #undef MAXTAG
 #define MAXTAG 104
+
 @interface EventDetailViewController (){
-    dispatch_queue_t queue;
-    dispatch_semaphore_t semeaphore;
     
 }
 @property (strong,nonatomic) NSDictionary* event;
@@ -37,7 +38,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *commentsTab;
 @property (weak, nonatomic) IBOutlet UIView *detailSpanArea;
 @property UITextField* noComments;
-@property (weak, nonatomic) IBOutlet UIButton *RSVPbutton;
+@property (nonatomic) IBOutlet UIButton *RSVPbutton;
+@property (nonatomic) IBOutlet UIBarButtonItem *moreOptionButton;
 @end
 
 @implementation EventDetailViewController
@@ -60,29 +62,11 @@ NSString* state;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.scrollView.hidden=YES;
-    [self.scrollView setScrollEnabled:YES];
-    float para=[[UIScreen mainScreen] bounds].size.height== 480?1.3:1.16;
-    CGSize contentsize=CGSizeMake(320,self.containerView.frame.size.height*para+self.navigationController.navigationBar.frame.size.height);
-    [self.scrollView setContentSize:contentsize];
-    [self cleanUpRSVPSpanArea];
     
-    self.RSVPList=[NSMutableArray arrayWithCapacity:0];
-    self.likeList=[NSMutableArray arrayWithCapacity:0];
-    self.RSVPProfileIcons=[NSMutableArray arrayWithCapacity:0];
-    self.descriptionTab.enabled=NO;
-    model=[[EventFetchModel alloc]init];
-    jlmodel=[[EventJoinAndLikeModel alloc]init];
+    [self visualSetup];
+    [self dataSourceSetup];
 
  
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-//    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-//    set the view frame to round conner
-    for (int i=100; i<MAXTAG+1; i++) {
-        UIView* subview=[self.view viewWithTag:i];
-        subview.layer.cornerRadius=6;
-        subview.layer.masksToBounds=YES;
-    }
     [ProgressHUD show:@"Loading"];
 
 }
@@ -92,6 +76,66 @@ NSString* state;
     self.tabBarController.tabBar.hidden=YES;
     [self drawRSVPnLikeFloatButton];
     [self fetchEvent];
+}
+
+-(void)dataSourceSetup{
+    self.RSVPList=[NSMutableArray arrayWithCapacity:0];
+    self.likeList=[NSMutableArray arrayWithCapacity:0];
+    self.RSVPProfileIcons=[NSMutableArray arrayWithCapacity:0];
+    self.descriptionTab.enabled=NO;
+    model=[[EventFetchModel alloc]init];
+    jlmodel=[[EventJoinAndLikeModel alloc]init];
+}
+
+-(void)visualSetup{
+    self.scrollView.hidden=YES;
+    [self.scrollView setScrollEnabled:YES];
+    float para=[[UIScreen mainScreen] bounds].size.height== 480?1.3:1.16;
+    CGSize contentsize=CGSizeMake(320,self.containerView.frame.size.height*para+self.navigationController.navigationBar.frame.size.height);
+    [self.scrollView setContentSize:contentsize];
+    [self cleanUpRSVPSpanArea];
+    
+    for (int i=100; i<MAXTAG+1; i++) {
+        UIView* subview=[self.view viewWithTag:i];
+        subview.layer.cornerRadius=6;
+        subview.layer.masksToBounds=YES;
+    }
+
+    self.moreOptionButton=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showMoreOptionMenu)];
+    self.navigationItem.rightBarButtonItem=self.moreOptionButton;
+}
+
+-(void)showMoreOptionMenu{
+    RNGridMenuItem* posterInfoItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"user.png"] title:@"Poster Info" action:^{
+        [self showPosterInfo];
+            }];
+    RNGridMenuItem* addressInfoItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"map.png"] title:@"Poster Info" action:^{
+        [self showAddressInfo];
+    }];
+    RNGridMenu* popupMenu=[[RNGridMenu alloc] initWithItems:@[posterInfoItem,addressInfoItem]];
+    popupMenu.backgroundColor=[UIColor whiteColor];
+    [popupMenu showInViewController:self center:CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2)];
+}
+
+-(void)showPosterInfo{
+    ProfilePageViewController* vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
+    vc.userID=[[event valueForKey:@"fk_event_poster_user_id"] integerValue];
+    [self.navigationController pushViewController:vc animated:YES];
+
+}
+
+-(void)showAddressInfo{
+    AddressInfoPageViewController* vc= [self.storyboard instantiateViewControllerWithIdentifier:@"AddressInfoPage"];
+    NSMutableDictionary* address=[NSMutableDictionary dictionaryWithCapacity:0];
+    address[@"address_title"]=[event objectForKey:@"address_title"];
+    address[@"address_region"]=[event objectForKey:@"address_region"];
+    address[@"address_city"]=[event objectForKey:@"address_city"];
+    address[@"address_country"]=[event objectForKey:@"address_country"];
+    address[@"address_detail"]=[event objectForKey:@"address_detail"];
+    address[@"address_postal_code"]=[event objectForKey:@"address_postal_code"];
+    vc.address=address;
+    [self.navigationController pushViewController:vc animated:NO];
+
 }
 
 -(void)fetchEvent{
@@ -136,18 +180,11 @@ NSString* state;
 
 
 -(void)getRSVPList{
-    if (!queue) {
-        queue=dispatch_queue_create("com.EventApp.EventDetailFetchModel", NULL);
-    }
-    //    if (!semeaphore) {
-    //        semeaphore=dispatch_semaphore_create(0);
-    //    }
-    dispatch_async(queue, ^{
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetRSVPList) name:@"didGetRSVPList" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailGetRSVPList) name:@"didFailGetRSVPList" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetRSVPList) name:@"didGetRSVPList" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailGetRSVPList) name:@"didFailGetRSVPList" object:nil];
 
-        [jlmodel getRSVPList:event];
-    });
+    [jlmodel getRSVPList:event];
+
 }
 -(void)didGetRSVPList{
     self.RSVPList=[EventJoinAndLikeModel RSVPList];
@@ -291,23 +328,6 @@ NSString* state;
     ProfilePageViewController* vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
     vc.userID=[[[self.RSVPList[i] valueForKey:@"fk_user"] valueForKey:@"id"] intValue];
     [self.navigationController pushViewController:vc animated:YES];
-}
--(IBAction)hostInfoTapped{
-//    ProfilePageViewController* vc= [self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
-//    vc.targetUser=[event objectForKey:@"fk_event_poster_user"];
-//    [self.navigationController pushViewController:vc animated:YES];
-}
--(IBAction)locationInfoTapped{
-    AddressInfoPageViewController* vc= [self.storyboard instantiateViewControllerWithIdentifier:@"AddressInfoPage"];
-    NSMutableDictionary* address=[NSMutableDictionary dictionaryWithCapacity:0];
-    address[@"address_title"]=[event objectForKey:@"address_title"];
-    address[@"address_region"]=[event objectForKey:@"address_region"];
-    address[@"address_city"]=[event objectForKey:@"address_city"];
-    address[@"address_country"]=[event objectForKey:@"address_country"];
-    address[@"address_detail"]=[event objectForKey:@"address_detail"];
-    address[@"address_postal_code"]=[event objectForKey:@"address_postal_code"];
-    vc.address=address;
-    [self.navigationController pushViewController:vc animated:NO];
 }
 
 
