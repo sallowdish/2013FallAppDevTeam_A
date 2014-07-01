@@ -59,7 +59,7 @@ bool isUpdated,isBasedOnTime;
     
     
     //get the latest event list online
-    
+
     model=[[EventListFetchModel alloc] init];
     [model fetchEventListFromFile];
     eventList=[EventListFetchModel eventsList];
@@ -90,6 +90,11 @@ bool isUpdated,isBasedOnTime;
     [super viewWillAppear:animated];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:animated];
     self.tabBarController.tabBar.hidden=NO;
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self refreshEventList:self];
 }
 
 
@@ -212,12 +217,14 @@ bool isUpdated,isBasedOnTime;
 
 -(IBAction)loadNextPage:(id)sender{
     [ProgressHUD show:@"Loading..."];
-    dispatch_queue_t queue;
-//    dispatch_group_t group;
-    queue = dispatch_queue_create("com.EventApp.EventListFetchModel.Model", DISPATCH_QUEUE_SERIAL);
-    dispatch_async(queue, ^{
-        [model fetchNextPage:self];
-    });
+
+    [model fetchNextPage:nil complete:^{
+        eventList=[EventListFetchModel eventsList];
+        [self.tableView reloadData];
+        [ProgressHUD showSuccess:@"Loading Finish."];
+    } fail:^(NSError *error) {
+        [ProgressHUD showError:[error localizedDescription]];
+    }];
 }
 
 -(IBAction)segementationButtonPressed:(id)sender{

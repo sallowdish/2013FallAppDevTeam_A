@@ -109,10 +109,16 @@ NSString* state;
     RNGridMenuItem* posterInfoItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"user.png"] title:@"Poster Info" action:^{
         [self showPosterInfo];
             }];
-    RNGridMenuItem* addressInfoItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"map.png"] title:@"Poster Info" action:^{
+    RNGridMenuItem* addressInfoItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"map.png"] title:@"Address Info" action:^{
         [self showAddressInfo];
     }];
-    RNGridMenu* popupMenu=[[RNGridMenu alloc] initWithItems:@[posterInfoItem,addressInfoItem]];
+    RNGridMenuItem* RSVPEventItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"t-shirt.png"] title:@"Dis/RSVP Event" action:^{
+        [self RSVPEvent];
+    }];
+    RNGridMenuItem* likeEventItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"heart.png"] title:@"Dis/Like Event" action:^{
+        [self likeEvent];
+    }];
+    RNGridMenu* popupMenu=[[RNGridMenu alloc] initWithItems:@[posterInfoItem,addressInfoItem,RSVPEventItem,likeEventItem]];
     popupMenu.backgroundColor=[UIColor whiteColor];
     [popupMenu showInViewController:self center:CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2)];
 }
@@ -176,6 +182,7 @@ NSString* state;
         [ProgressHUD showSuccess:@"Liking this event succeed."];
     }
     [self getRSVPList];
+    [self getLikeList];
 }
 
 
@@ -186,12 +193,26 @@ NSString* state;
     [jlmodel getRSVPList:event];
 
 }
+
+-(void)getLikeList{
+    [jlmodel getLikeList:event complete:^{
+        if ([jlmodel isCurrentUserinLikeList]) {
+            [self.likeButton removeFromSuperview];
+//            self.likeButton.enabled=NO;
+//            self.likeButton.backgroundColor=[UIColor lightGrayColor];
+        }
+    } fail:^(NSError *error) {
+        [ProgressHUD showError:[error localizedDescription]];
+    }];
+}
+
 -(void)didGetRSVPList{
     self.RSVPList=[EventJoinAndLikeModel RSVPList];
     [self updateRSVPProfileIcon];
     if ([jlmodel isCurrentUserinRSVPList]) {
-        self.RSVPbutton.enabled=NO;
-        self.RSVPbutton.backgroundColor=[UIColor lightGrayColor];
+        [self.RSVPbutton removeFromSuperview];
+//        self.RSVPbutton.enabled=NO;
+//        self.RSVPbutton.backgroundColor=[UIColor lightGrayColor];
     }
     
 }
@@ -247,11 +268,15 @@ NSString* state;
 }
 
 -(IBAction)RSVPEvent{
-    [jlmodel rsvpEvent:event succeed:^(id message) {
-        [self didRSVPEvent];
-    } failed:^(id error) {
-        [self didFailRSVPEvent:error];
-    }];
+    if (![jlmodel isCurrentUserinRSVPList]){
+        [jlmodel rsvpEvent:event succeed:^(id message) {
+            [self didRSVPEvent];
+        } failed:^(id error) {
+            [self didFailRSVPEvent:error];
+        }];
+    }else{
+        [ProgressHUD showError:@"You have RSVPed this event alread."];
+    }
 }
 
 -(void)didRSVPEvent{
@@ -265,11 +290,15 @@ NSString* state;
 }
 
 -(IBAction)likeEvent{
-    [jlmodel likeEvent:event succeed:^(id message) {
-        [self didLikeEvent];
-    } failed:^(id error) {
-        [self didFailLikeEvent:error];
+    if ([jlmodel isCurrentUserinRSVPList]){
+        [jlmodel likeEvent:event succeed:^(id message) {
+            [self didLikeEvent];
+        } failed:^(id error) {
+            [self didFailLikeEvent:error];
     }];
+    }else{
+        [ProgressHUD showError:@"You have RSVPed this event alread."];
+    }
 }
 
 -(void)didLikeEvent{

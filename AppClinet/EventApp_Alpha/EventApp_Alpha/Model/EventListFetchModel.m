@@ -50,7 +50,7 @@ static NSString* nextPage;
     }
 }
 
--(void) fetchNextPage:(id)table{
+-(void) fetchNextPage:(id)blank complete:(void(^)(void))completeBlock fail:(void(^)(NSError* error))failBlock{
     if (![nextPage isEqual:[NSNull null]]) {
         AFHTTPRequestOperationManager* manager=[AFHTTPRequestOperationManager manager];
         NSString* targetURL=[[[URLConstructModel constructURLHeader] absoluteString] stringByAppendingString:nextPage];
@@ -59,20 +59,16 @@ static NSString* nextPage;
             nextPage=[[jsonDict valueForKey:@"meta"] valueForKey:@"next"];
             [eventList addObjectsFromArray:[jsonDict valueForKey:@"objects"]];
             NSLog(@"Downloaded/");
-            dispatch_async(dispatch_get_main_queue(), ^{
-                EventListViewController* vc=table;
-                vc.eventList=eventList;
-                [vc.tableView reloadData];
-                [ProgressHUD dismiss];
-                NSLog(@"Updated;");
-            });
+            completeBlock();
+            
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"AFFAIL:%@",error);
         }];
     }else{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [ProgressHUD showError:@"No more events"];
-        });
+        NSMutableDictionary* detail=[NSMutableDictionary dictionaryWithCapacity:0];
+        [detail setValue:@"No more events" forKey:NSLocalizedDescriptionKey];
+        NSError* error=[[NSError alloc] initWithDomain:@"Event Fetching" code:200 userInfo:detail];
+        failBlock(error);
     }
 }
 

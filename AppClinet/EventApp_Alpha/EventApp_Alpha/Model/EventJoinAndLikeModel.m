@@ -53,7 +53,17 @@ static  NSMutableArray* LikeList;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"didFailGetRSVPList" object:nil];
     }];
 }
--(void)getLikeList:(NSDictionary*)event{}
+-(void)getLikeList:(NSDictionary*)event complete:(void (^)(void))completeBlock fail:(void (^)(NSError* error))failBlock{
+    AFHTTPRequestOperationManager* manager=[AFHTTPRequestOperationManager manager];
+    NSString *targetURL=[[[[self class] constructURLHeader] absoluteString] stringByAppendingFormat:@"%@%@%@%@%@",API,@"/eventlike/?",JSONFORMAT,@"&fk_event=",[event valueForKey:@"id"]];
+    [manager GET:targetURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        LikeList=[responseObject valueForKey:@"objects"];
+        completeBlock();
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        failBlock(error);
+    }];
+}
+
 -(void)rsvpEvent:(NSDictionary*)event succeed:(SucceeHandleBlock)succeedBlock failed:(FailureHandleBlock)failedBlock{
     NSString* targetURL=[[[URLConstructModel constructURLHeader] absoluteString] stringByAppendingFormat:@"%@%@",API,@"/eventrsvp/"];
     
