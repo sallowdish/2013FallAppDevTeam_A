@@ -51,7 +51,13 @@ static NSString* nextPage;
 }
 
 -(void) fetchNextPage:(id)blank complete:(void(^)(void))completeBlock fail:(void(^)(NSError* error))failBlock{
-    if (![nextPage isEqual:[NSNull null]]) {
+    if (!nextPage) {
+        NSMutableDictionary* detail=[NSMutableDictionary dictionaryWithCapacity:0];
+        [detail setValue:@"Network Issue, Plz check." forKey:NSLocalizedDescriptionKey];
+        NSError* error=[[NSError alloc] initWithDomain:@"Event Fetching" code:200 userInfo:detail];
+        failBlock(error);
+    }
+    else if (![nextPage isEqual:[NSNull null]]) {
         AFHTTPRequestOperationManager* manager=[AFHTTPRequestOperationManager manager];
         NSString* targetURL=[[[URLConstructModel constructURLHeader] absoluteString] stringByAppendingString:nextPage];
         [manager GET:targetURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -85,6 +91,9 @@ static NSString* nextPage;
     }
 }
 
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"didFailFetchEventListWithMode" object:error];
+}
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     [super connectionDidFinishLoading:connection];

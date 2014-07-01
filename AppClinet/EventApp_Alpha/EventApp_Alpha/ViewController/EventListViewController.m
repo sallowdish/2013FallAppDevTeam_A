@@ -120,9 +120,9 @@ bool isUpdated,isBasedOnTime;
 }
 
 -(void)didFailFetchNewDataFromServer:(id)notif{
-    [ProgressHUD showError:@"Network issue, plz try later."];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
+    NSError* error=[notif object];
+    [ProgressHUD showError:[error localizedDescription]];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];}
 
 
 -(void) removeFromNSNotificationCenter{
@@ -162,12 +162,6 @@ bool isUpdated,isBasedOnTime;
     [self.refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:2];
     //HUD dismiss
     [self.refreshControl performSelector:@selector(setAttributedTitle:) withObject:[[NSAttributedString alloc]initWithString:@"再多一點點...(灬ºωº灬)"] afterDelay:2.2];
-//    [[ProgressHUD class] performSelector:@selector(showSuccess:) withObject:@"Loading Finish" afterDelay:3];
-//    [self.createButton performSelector:@selector(setEnabled:) withObject:[NSNumber numberWithBool:YES] afterDelay:5];
-    
-    
-    //    [self performSelector:@selector(showHubwithMessage:) withObject:@"Loading Finsih" afterDelay:2];
-//    [self performSelector:@selector(dismissHub) withObject:nil afterDelay:3];
 }
 
 - (void)didReceiveMemoryWarning

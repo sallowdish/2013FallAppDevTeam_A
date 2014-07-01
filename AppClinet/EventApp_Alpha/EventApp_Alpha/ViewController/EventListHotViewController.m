@@ -100,7 +100,8 @@ bool isUpdated;
 }
 
 -(void)didFailFetchNewDataFromServer:(id)notif{
-    [ProgressHUD showError:@"Network issue, plz try later."];
+    NSError* error=[notif object];
+    [ProgressHUD showError:[error localizedDescription]];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
