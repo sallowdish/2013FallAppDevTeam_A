@@ -133,6 +133,7 @@
 		71DD20D6196275C700DE3976 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 71DD20A4196275C700DE3976 /* twitter.png */; };
 		71DD20D7196275C700DE3976 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 71DD20A5196275C700DE3976 /* user.png */; };
 		71DD20D8196275C700DE3976 /* wallet.png in Resources */ = {isa = PBXBuildFile; fileRef = 71DD20A6196275C700DE3976 /* wallet.png */; };
+		71DD20DA1963A17400DE3976 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DD20D91963A17400DE3976 /* MessageUI.framework */; };
 		71DFFA43182104C900269E3E /* SettingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DFFA42182104C900269E3E /* SettingPageViewController.m */; };
 		71DFFA4518210FAA00269E3E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4418210FAA00269E3E /* CFNetwork.framework */; };
 		71DFFA4718210FB200269E3E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4618210FB200269E3E /* Security.framework */; };
@@ -337,6 +338,7 @@
 		71DD20A4196275C700DE3976 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
 		71DD20A5196275C700DE3976 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		71DD20A6196275C700DE3976 /* wallet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallet.png; sourceTree = "<group>"; };
+		71DD20D91963A17400DE3976 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		71DFFA41182104C900269E3E /* SettingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingPageViewController.h; path = ViewController/SettingPageViewController.h; sourceTree = "<group>"; };
 		71DFFA42182104C900269E3E /* SettingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingPageViewController.m; path = ViewController/SettingPageViewController.m; sourceTree = "<group>"; };
 		71DFFA4418210FAA00269E3E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -371,6 +373,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71DD20DA1963A17400DE3976 /* MessageUI.framework in Frameworks */,
 				711DA0DE19504F3A001A4F28 /* UbertestersSDK.framework in Frameworks */,
 				711DA0DD19504F15001A4F28 /* AdSupport.framework in Frameworks */,
 				71C883BD193AD66700E5E63C /* CoreMotion.framework in Frameworks */,
@@ -730,6 +733,7 @@
 		71F3218917F830D700FFFB95 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71DD20D91963A17400DE3976 /* MessageUI.framework */,
 				71C883BC193AD66700E5E63C /* CoreMotion.framework */,
 				71C883BA193AD65B00E5E63C /* OpenGLES.framework */,
 				71C883B8193AD65300E5E63C /* AudioToolbox.framework */,

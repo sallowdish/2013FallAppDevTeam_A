@@ -19,11 +19,12 @@
 #import "ImageModel.h"
 #import "UIImageView+AFNetworking.h"
 #import "RNGridMenu.h"
+#import <MessageUI/MessageUI.h>
 
 #undef MAXTAG
 #define MAXTAG 104
 
-@interface EventDetailViewController (){
+@interface EventDetailViewController ()<MFMailComposeViewControllerDelegate>{
     
 }
 @property (strong,nonatomic) NSDictionary* event;
@@ -106,21 +107,26 @@ NSString* state;
 }
 
 -(void)showMoreOptionMenu{
-    RNGridMenuItem* posterInfoItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"user.png"] title:@"Poster Info" action:^{
-        [self showPosterInfo];
-            }];
-    RNGridMenuItem* addressInfoItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"map.png"] title:@"Address Info" action:^{
-        [self showAddressInfo];
-    }];
-    RNGridMenuItem* RSVPEventItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"t-shirt.png"] title:@"Dis/RSVP Event" action:^{
-        [self RSVPEvent];
-    }];
-    RNGridMenuItem* likeEventItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"heart.png"] title:@"Dis/Like Event" action:^{
-        [self likeEvent];
-    }];
-    RNGridMenu* popupMenu=[[RNGridMenu alloc] initWithItems:@[posterInfoItem,addressInfoItem,RSVPEventItem,likeEventItem]];
-    popupMenu.backgroundColor=[UIColor whiteColor];
-    [popupMenu showInViewController:self center:CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2)];
+    if (event) {
+        RNGridMenuItem* posterInfoItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"user.png"] title:@"Poster Info" action:^{
+            [self showPosterInfo];
+        }];
+        RNGridMenuItem* addressInfoItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"map.png"] title:@"Address Info" action:^{
+            [self showAddressInfo];
+        }];
+        RNGridMenuItem* RSVPEventItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"t-shirt.png"] title:@"Dis/RSVP Event" action:^{
+            [self RSVPEvent];
+        }];
+        RNGridMenuItem* likeEventItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"heart.png"] title:@"Dis/Like Event" action:^{
+            [self likeEvent];
+        }];
+        RNGridMenuItem* reportUserItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"mail.png"] title:@"Report User" action:^{
+            [self reportPoster];
+        }];
+        RNGridMenu* popupMenu=[[RNGridMenu alloc] initWithItems:@[posterInfoItem,addressInfoItem,RSVPEventItem,likeEventItem,reportUserItem]];
+        popupMenu.backgroundColor=[UIColor whiteColor];
+        [popupMenu showInViewController:self center:CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2)];
+    }
 }
 
 -(void)showPosterInfo{
@@ -140,8 +146,45 @@ NSString* state;
     address[@"address_detail"]=[event objectForKey:@"address_detail"];
     address[@"address_postal_code"]=[event objectForKey:@"address_postal_code"];
     vc.address=address;
-    [self.navigationController pushViewController:vc animated:NO];
+    [self.navigationController pushViewController:vc animated:YES];
 
+}
+
+-(void)reportPoster{
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *appDisplayName = [infoDictionary objectForKey:@"CFBundleDisplayName"];
+    NSString *majorVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    NSString *minorVersion = [infoDictionary objectForKey:@"CFBundleVersion"];
+    
+    NSString *iOSVersion = [[UIDevice currentDevice] systemVersion];
+    
+    NSString *model = [[UIDevice currentDevice] model];
+    
+    MFMailComposeViewController* mailComposer=[[MFMailComposeViewController alloc] init];
+    mailComposer.mailComposeDelegate = self;
+    
+    [mailComposer setToRecipients:[NSArray arrayWithObjects: @"zettack.it.errorreport@gmail.com",nil]];
+    
+    [mailComposer setSubject:[NSString stringWithFormat: @"[Report] %@ V%@ (build %@) Support",appDisplayName,majorVersion,minorVersion]];
+    
+    NSString *supportText = [NSString stringWithFormat:@"Device: %@\niOS Version:%@\n",model,iOSVersion];
+    
+    NSString *collectedInfo=[NSString stringWithFormat:@"EventID:%@, Event_Poster_ID=%@",[event valueForKey:@"id"],[event valueForKey:@"fk_event_poster_user_id"]];
+    
+    
+    
+    supportText = [[supportText stringByAppendingString: collectedInfo] stringByAppendingString: @"\n-------------------------------------------\nPlease don't change any info above.\n-------------------------------------------\n\nPlease describe your problem or reason of this report."];
+    
+    [mailComposer setMessageBody:supportText isHTML:NO];
+    
+    [self presentViewController:mailComposer animated:YES completion:nil];
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 -(void)fetchEvent{
