@@ -133,7 +133,9 @@
         [self performSegueWithIdentifier:@"myEventListSegue" sender:self];
     }
     else{
-        [UserModel popupLoginViewToViewController:self];
+        LoginViewController* loginView=[[self.navigationController storyboard] instantiateViewControllerWithIdentifier:@"LoginPage"];
+//        [self.navigationController pushViewController:loginView animated:YES];
+        [self presentViewController:loginView animated:YES completion:nil];
     }
 
 }
@@ -141,7 +143,9 @@
 -(void)popOver
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTopCell) name:@"loginProcessFinish" object:nil];
-    [UserModel popupLoginViewToViewController:self];
+    LoginViewController* loginView=[[self.navigationController storyboard] instantiateViewControllerWithIdentifier:@"LoginPage"];
+//    [self.navigationController pushViewController:loginView animated:YES];
+    [self presentViewController:loginView animated:YES completion:nil];
 }
 
 //- (void)loadLoginView

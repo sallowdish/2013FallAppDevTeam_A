@@ -266,9 +266,10 @@ bool isUpdated,isBasedOnTime;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else{
-        [UserModel popupLoginViewToViewController:self];
+        LoginViewController* loginView=[[self.navigationController storyboard] instantiateViewControllerWithIdentifier:@"LoginPage"];
+//        [self.navigationController pushViewController:loginView animated:YES];
+    [self presentViewController:loginView animated:YES completion:nil];
     }
-    
 }
 /*
 // Override to support conditional editing of the table view.

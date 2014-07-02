@@ -222,7 +222,9 @@ bool isUpdated;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else{
-        [UserModel popupLoginViewToViewController:self];
+        LoginViewController* loginView=[[self.navigationController storyboard] instantiateViewControllerWithIdentifier:@"LoginPage"];
+//        [self.navigationController pushViewController:loginView animated:YES];
+        [self presentViewController:loginView animated:YES completion:nil];
     }
     
 }

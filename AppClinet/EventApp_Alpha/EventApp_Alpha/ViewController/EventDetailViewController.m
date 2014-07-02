@@ -24,7 +24,7 @@
 #undef MAXTAG
 #define MAXTAG 104
 
-@interface EventDetailViewController ()<MFMailComposeViewControllerDelegate>{
+@interface EventDetailViewController ()<MFMailComposeViewControllerDelegate,RNGridMenuDelegate>{
     
 }
 @property (strong,nonatomic) NSDictionary* event;
@@ -41,14 +41,17 @@
 @property UITextField* noComments;
 @property (nonatomic) IBOutlet UIButton *RSVPbutton;
 @property (nonatomic) IBOutlet UIBarButtonItem *moreOptionButton;
+
+@property EventFetchModel* model;
+@property EventJoinAndLikeModel* jlmodel;
 @end
 
 @implementation EventDetailViewController
-@synthesize eventID,event;
+@synthesize eventID,event,model,jlmodel;
 
 bool isJoined,isLiked;
-EventFetchModel* model;
-EventJoinAndLikeModel* jlmodel;
+
+
 NSString* state;
 
 - (id)init{
@@ -101,9 +104,22 @@ NSString* state;
         subview.layer.cornerRadius=6;
         subview.layer.masksToBounds=YES;
     }
+    
+    UITapGestureRecognizer* tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(eventImageTapped)];
+    tap.numberOfTapsRequired=1;
+    self.images.userInteractionEnabled=YES;
+    [self.images addGestureRecognizer:tap];
 
-    self.moreOptionButton=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showMoreOptionMenu)];
+//    self.moreOptionButton=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showMoreOptionMenu)];
+    self.moreOptionButton=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"tools.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(showMoreOptionMenu)];
     self.navigationItem.rightBarButtonItem=self.moreOptionButton;
+
+}
+
+-(void)eventImageTapped{
+    FullScreenImageController* fvc=[[self.navigationController storyboard] instantiateViewControllerWithIdentifier:@"FullScreenImagePage"];
+    fvc.image=self.images.image;
+    [self.navigationController pushViewController:fvc animated:YES];
 }
 
 -(void)showMoreOptionMenu{
@@ -311,14 +327,24 @@ NSString* state;
 }
 
 -(IBAction)RSVPEvent{
-    if (![jlmodel isCurrentUserinRSVPList]){
-        [jlmodel rsvpEvent:event succeed:^(id message) {
-            [self didRSVPEvent];
-        } failed:^(id error) {
-            [self didFailRSVPEvent:error];
-        }];
+    if ([UserModel isLogin]) {
+        if (![jlmodel isCurrentUserinRSVPList]){
+            [jlmodel rsvpEvent:event succeed:^(id message) {
+                [self didRSVPEvent];
+            } failed:^(id error) {
+                [self didFailRSVPEvent:error];
+            }];
+        }else{
+            [ProgressHUD showError:@"You have RSVPed this event alread."];
+        }
+
     }else{
-        [ProgressHUD showError:@"You have RSVPed this event alread."];
+        LoginViewController* loginView=[[self.navigationController storyboard] instantiateViewControllerWithIdentifier:@"LoginPage"];
+//        [self.navigationController pushViewController:loginView animated:YES];
+        [self presentViewController:loginView animated:YES completion:nil];
+//        [UserModel popupLoginViewToViewController:self complete:^(LoginViewController *loginview) {
+//            [self.navigationController pushViewController:loginview animated:YES];
+//        }];
     }
 }
 
@@ -333,14 +359,21 @@ NSString* state;
 }
 
 -(IBAction)likeEvent{
-    if ([jlmodel isCurrentUserinRSVPList]){
-        [jlmodel likeEvent:event succeed:^(id message) {
-            [self didLikeEvent];
-        } failed:^(id error) {
-            [self didFailLikeEvent:error];
-    }];
+    if ([UserModel isLogin]) {
+        if ([jlmodel isCurrentUserinRSVPList]){
+            [jlmodel likeEvent:event succeed:^(id message) {
+                [self didLikeEvent];
+            } failed:^(id error) {
+                [self didFailLikeEvent:error];
+            }];
+        }else{
+            [ProgressHUD showError:@"You have RSVPed this event alread."];
+        }
+
     }else{
-        [ProgressHUD showError:@"You have RSVPed this event alread."];
+        LoginViewController* loginView=[[self.navigationController storyboard] instantiateViewControllerWithIdentifier:@"LoginPage"];
+//        [self.navigationController pushViewController:loginView animated:YES];
+        [self presentViewController:loginView animated:YES completion:nil];
     }
 }
 
@@ -458,6 +491,11 @@ NSString* state;
         des.image=self.images.image;
     }
 }
+
+- (void)gridMenu:(RNGridMenu *)gridMenu willDismissWithSelectedItem:(RNGridMenuItem *)item atIndex:(NSInteger)itemIndex{
+    [gridMenu dismissAnimated:YES];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -93,8 +93,7 @@ UserModel* model;
 
 - (IBAction)cancelButtonPressed:(id)sende
 {
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"loginProcessFinish" object:nil];
-//    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)touchOutside:(id)sender {
@@ -112,6 +111,7 @@ UserModel* model;
     [model loginWithUsername:self.usernameField.text AndPassword:self.passwordField.text];
 }
 
+
 -(void) didLogin{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 //    [model updataUserInfo];
@@ -121,7 +121,7 @@ UserModel* model;
     self.loginButton.enabled=NO;
     [popoverAlterModel alterWithTitle:@"Login Succeed" Message:[NSString stringWithFormat:@"Hi,%@",[UserModel username]]];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"loginProcessFinish" object:nil];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void) didFailToLogin{

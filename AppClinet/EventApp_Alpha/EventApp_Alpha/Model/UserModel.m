@@ -119,10 +119,11 @@ static bool isLogin,isDevelopment;
     return  isLogin;
 }
 
-+(void)popupLoginViewToViewController:(UIViewController*) viewController{
++(void)popupLoginViewToViewController:(UIViewController*) viewController complete:(void (^)(LoginViewController* loginview))completeBlock{
     LoginViewController* loginview=[viewController.storyboard instantiateViewControllerWithIdentifier:@"LoginPage"];
     //    UIViewController* loginview=[[UIViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-    [viewController.navigationController pushViewController:loginview animated:YES];
+//    [viewController.navigationController pushViewController:loginview animated:YES];
+    completeBlock(loginview);
 }
 
 +(UIViewController*)getCurrentViewController
