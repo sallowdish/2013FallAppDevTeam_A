@@ -155,14 +155,7 @@
                             <outlet property="delegate" destination="Weq-5w-scL" id="iOa-xu-eLp"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Events" image="first" id="qb7-tY-xFp"/>
-                    <toolbarItems>
-                        <barButtonItem systemItem="refresh" id="Vi7-DZ-4dz">
-                            <connections>
-                                <action selector="refreshEventList:" destination="Weq-5w-scL" id="opZ-Zc-cpg"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Events List" id="3RB-d0-Tqn">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="mOi-j9-hC6">
                             <connections>
@@ -1934,7 +1927,7 @@
                                 <rect key="frame" x="0.0" y="107" width="320" height="361"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
-                                    <fragment content=" App Achitect">
+                                    <fragment content=" App Achitect">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="16" name="HelveticaNeue-Bold"/>
@@ -1943,7 +1936,7 @@
                                             <integer key="NSUnderline" value="1"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" ">
+                                    <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="16" name="HelveticaNeue"/>
@@ -1951,7 +1944,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="Rui Zheng ">
+                                    <fragment content="Rui Zheng ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
@@ -1959,7 +1952,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" ">
+                                    <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="16" name="HelveticaNeue"/>
@@ -1976,7 +1969,7 @@
                                             <integer key="NSUnderline" value="1"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" ">
+                                    <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="16" name="HelveticaNeue"/>
@@ -1984,7 +1977,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="Rui Zheng ">
+                                    <fragment content="Rui Zheng ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
@@ -1992,7 +1985,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" ">
+                                    <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="16" name="HelveticaNeue"/>
@@ -2009,7 +2002,7 @@
                                             <integer key="NSUnderline" value="1"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" ">
+                                    <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="16" name="HelveticaNeue"/>
@@ -2017,7 +2010,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="Lili Xie Jason Li ">
+                                    <fragment content="Lili Xie Jason Li ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
@@ -2025,7 +2018,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" ">
+                                    <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="16" name="HelveticaNeue"/>
@@ -2042,7 +2035,7 @@
                                             <integer key="NSUnderline" value="1"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" ">
+                                    <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="16" name="HelveticaNeue"/>
@@ -2050,7 +2043,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="Zongwei Na ">
+                                    <fragment content="Zongwei Na ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
@@ -2058,7 +2051,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" ">
+                                    <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="16" name="HelveticaNeue"/>
@@ -2075,7 +2068,7 @@
                                             <integer key="NSUnderline" value="1"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" ">
+                                    <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="16" name="HelveticaNeue"/>
@@ -2083,7 +2076,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="Wenbo Li ">
+                                    <fragment content="Wenbo Li ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
@@ -2091,7 +2084,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" ">
+                                    <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="16" name="HelveticaNeue"/>
@@ -2108,7 +2101,7 @@
                                             <integer key="NSUnderline" value="1"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" ">
+                                    <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="16" name="HelveticaNeue"/>
@@ -2116,7 +2109,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="Lili Xie Jason Li  ">
+                                    <fragment content="Lili Xie Jason Li  ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
@@ -2133,7 +2126,7 @@
                                             <integer key="NSUnderline" value="1"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" Miao Chen ">
+                                    <fragment content=" Miao Chen ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
@@ -2141,7 +2134,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" ">
+                                    <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="16" name="HelveticaNeue"/>
@@ -2158,7 +2151,7 @@
                                             <integer key="NSUnderline" value="1"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" ">
+                                    <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="16" name="HelveticaNeue"/>
@@ -2166,7 +2159,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="Weitong Su ">
+                                    <fragment content="Weitong Su ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
@@ -2174,7 +2167,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" ">
+                                    <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="16" name="HelveticaNeue"/>
@@ -2191,7 +2184,7 @@
                                             <integer key="NSUnderline" value="1"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" ">
+                                    <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="16" name="HelveticaNeue"/>
@@ -2199,7 +2192,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="Weitong Su Ziyi Ding  ">
+                                    <fragment content="Weitong Su Ziyi Ding  ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
@@ -2207,7 +2200,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" ">
+                                    <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="16" name="HelveticaNeue"/>
@@ -2306,7 +2299,8 @@
                                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <string key="text">XX日參與了 XXXX
 XX日喜歡了XXXXXX
-XX日發佈了XXXX活動 .
+XX日發佈了XXXX活動
+.
 .
 .</string>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2571,7 +2565,6 @@ XX日發佈了XXXX活動 .
         <image name="backgroundImage.png" width="1280" height="800"/>
         <image name="event1.jpg" width="225" height="225"/>
         <image name="event4.jpg" width="252" height="200"/>
-        <image name="first" width="30" height="30"/>
         <image name="greyheart_done.png" width="69" height="65"/>
         <image name="greytick_done.png" width="70" height="70"/>
         <image name="locationIcon_done.png" width="50" height="50"/>
