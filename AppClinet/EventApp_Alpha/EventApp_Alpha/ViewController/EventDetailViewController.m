@@ -11,8 +11,6 @@
 #import "ProgressHUD.h"
 #import "EventFetchModel.h"
 #import "FormatingModel.h"
-<<<<<<< HEAD
-=======
 #import "popoverAlterModel.h"
 #import "UserModel.h"
 #import "FullScreenImageController.h"
@@ -25,21 +23,10 @@
 
 #undef MAXTAG
 #define MAXTAG 104
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> Developing-Base-on-WS
-@interface EventDetailViewController ()
-=======
-@interface EventDetailViewController (){
-    dispatch_queue_t queue;
-    dispatch_semaphore_t semeaphore;
-=======
 
 @interface EventDetailViewController ()<MFMailComposeViewControllerDelegate,RNGridMenuDelegate>{
->>>>>>> Redo-EventDetailPage
     
 }
->>>>>>> Redo-EventDetailPage
 @property (strong,nonatomic) NSDictionary* event;
 @property (strong,nonatomic) NSMutableArray* RSVPList;
 @property (strong,nonatomic) NSMutableArray* likeList;
@@ -62,21 +49,10 @@
 @implementation EventDetailViewController
 @synthesize eventID,event,model,jlmodel;
 
-<<<<<<< HEAD
-=======
 bool isJoined,isLiked;
-<<<<<<< HEAD
-EventFetchModel* model;
-EventJoinAndLikeModel* jlmodel;
-<<<<<<< HEAD
->>>>>>> Developing-Base-on-WS
-=======
-=======
 
 
->>>>>>> Redo-EventDetailPage
 NSString* state;
->>>>>>> Redo-EventDetailPage
 
 - (id)init{
     self=[super init];
@@ -115,13 +91,6 @@ NSString* state;
     jlmodel=[[EventJoinAndLikeModel alloc]init];
 }
 
-<<<<<<< HEAD
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-//    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-//    set the view frame to round conner
-    for (int i=100; i<105; i++) {
-=======
 -(void)visualSetup{
     self.scrollView.hidden=YES;
     [self.scrollView setScrollEnabled:YES];
@@ -131,7 +100,6 @@ NSString* state;
     [self cleanUpRSVPSpanArea];
     
     for (int i=100; i<MAXTAG+1; i++) {
->>>>>>> Redo-EventDetailPage
         UIView* subview=[self.view viewWithTag:i];
         subview.layer.cornerRadius=6;
         subview.layer.masksToBounds=YES;
@@ -146,24 +114,6 @@ NSString* state;
     self.moreOptionButton=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"tools.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(showMoreOptionMenu)];
     self.navigationItem.rightBarButtonItem=self.moreOptionButton;
 
-<<<<<<< HEAD
-//    NSError* err;
-    
-<<<<<<< HEAD
-//    NSString *filepath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/EventDetails.json"];
-    NSData* rawData=[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://127.0.0.1:8000/eventApp/api/v01/event/%ld/",(long)eventID]]];
-    
-    NSArray* jsonData=[NSJSONSerialization JSONObjectWithData:rawData options:NSJSONReadingAllowFragments error:&err];
-    
-    if(err)
-        NSLog(@"%@",[err localizedDescription]);
-    else{
-        event=[jsonData[0] objectForKey:@"fields"];
-        [self modelToViewMatch];
-    }
-=======
-    [ProgressHUD show:@"Loading event info..."];
-=======
 }
 
 -(void)eventImageTapped{
@@ -255,7 +205,6 @@ NSString* state;
 
 -(void)fetchEvent{
 //    [ProgressHUD show:@"Loading event info..."];
->>>>>>> Redo-EventDetailPage
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchEvent) name:@"didFetchDataWithEventID" object:nil];
     @try {
         
@@ -265,14 +214,6 @@ NSString* state;
         [popoverAlterModel alterWithTitle:@"Failed" Message:@"Fetching event detail failed."];
         [self.navigationController popViewControllerAnimated:YES];
     }
-<<<<<<< HEAD
-    
-    
->>>>>>> Developing-Base-on-WS
-    //matching
-//    event=(NSDictionary*)[event objectForKey:@"fields"];
-=======
->>>>>>> Redo-EventDetailPage
 }
 
 -(void)didFetchEvent{
@@ -448,16 +389,6 @@ NSString* state;
 
 -(void)modelToViewMatch
 {
-<<<<<<< HEAD
-    self.eventName.text=[NSString stringWithFormat:@"- %@ -",[event objectForKey:@"Event_Title"]];
-    self.hoster.text=[[event objectForKey:@"EventPoster_Account_ID"] objectForKey:@"username"];
-    NSArray* timeInfo=[[[FormatingModel alloc]init]pythonDateTimeToStringArray:[event objectForKey:@"Event_Time"]];
-    self.dateTime.text=[NSString stringWithFormat:@"%@|%@",timeInfo[0],timeInfo[1]];
-    self.location.text=[[event objectForKey:@"Address_ID"] objectForKey:@"address"];
-    self.like.text=[NSString stringWithFormat:@"%@",[event objectForKey:@"Event_Like"]];
-    self.RSVP.text=[NSString stringWithFormat:@"%@/%@",[event objectForKey:@"Event_RSVP"],[event objectForKey:@"Event_Capacity"]];
-    self.images.image=[ UIImage imageNamed:@"Beach.png"];
-=======
     self.eventName.text=[NSString stringWithFormat:@"- %@ -",[event objectForKey:@"event_title"]];
     self.hoster.text=[event objectForKey:@"fk_event_poster_user_name"];
 //    NSArray* timeInfo=[FormatingModel pythonDateTimeToStringArray:[event objectForKey:@"event_time"]];
@@ -492,7 +423,6 @@ NSString* state;
     else{
         self.images.image=[UIImage imageNamed:@"event3.jpg"];
     }
->>>>>>> Developing-Base-on-WS
 
 }
 
@@ -505,99 +435,6 @@ NSString* state;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-<<<<<<< HEAD
-- (IBAction)RSVPButtonTapped:(id)sender {
-    if (![UserModel isLogin]) {
-        [UserModel popupLoginViewToViewController:self];
-    }else{
-        if (![self hasRSVP]) {
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRSVPEvent) name:@"didRSVPEvent" object:nil];
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRSVPEventFailed) name:@"didRSVPEventFailed" object:nil];
-            [ProgressHUD show:@"trying to RSVP the event..."];
-            [jlmodel rsvpEvent:event];
-        }
-        else{
-            self.joinButton.enabled=NO;
-            [popoverAlterModel alterWithTitle:@"Warning" Message:@"You have RSVPed this event already."];
-        }
-    }
-}
-
-
--(void)didRSVPEvent{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [ProgressHUD dismiss];
-//    [self.view setNeedsDisplay];
-    [self getRSVPInfo];
-    [popoverAlterModel alterWithTitle:@"Succeed" Message:@"You have RSVP this event."];
-    self.joinButton.enabled=NO;
-}
-
--(void)didRSVPEventFailed{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [ProgressHUD dismiss];
-    [popoverAlterModel alterWithTitle:@"Failed" Message:@"Please try again later."];
-}
-
-- (IBAction)likeButtonTapped:(id)sender {
-    if (![UserModel isLogin]) {
-        [UserModel popupLoginViewToViewController:self];
-    }else{
-        if (![self hasLiked]) {
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLikeEvent) name:@"didLikeEvent" object:nil];
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLikeEventFailed) name:@"didLikeEventFailed" object:nil];
-            [ProgressHUD show:@"trying to like the event..."];
-            [jlmodel likeEvent:event];
-        }
-        else{
-            self.likeButton.enabled=NO;
-            [popoverAlterModel alterWithTitle:@"Warning" Message:@"You have liked this event already."];
-        }
-    }
-}
-
-
--(void)didLikeEvent{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [ProgressHUD dismiss];
-    //    [self.view setNeedsDisplay];
-    [self getLikeInfo];
-    [popoverAlterModel alterWithTitle:@"Succeed" Message:@"You have liked this event."];
-    self.likeButton.enabled=NO;
-}
-
-<<<<<<< HEAD
-=======
--(void)didLikeEventFailed{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [ProgressHUD dismiss];
-    [popoverAlterModel alterWithTitle:@"Failed" Message:@"Please try again later."];
-}
-
--(BOOL)hasRSVP{
-    NSInteger current_id=[[[UserModel current_user] objectForKey:@"id"] integerValue];
-    for (NSDictionary* user in self.RSVPList) {
-        NSInteger RSVP_id=[[user objectForKey:@"id"] integerValue];
-        if (RSVP_id == current_id) {
-            return YES;
-        };
-    }
-    return  false;
-}
->>>>>>> Developing-Base-on-WS
-
--(BOOL)hasLiked{
-    NSInteger current_id=[[[UserModel current_user] objectForKey:@"id"] integerValue];
-    for (NSDictionary* user in self.likeList) {
-        NSInteger RSVP_id=[[user objectForKey:@"id"] integerValue];
-        if (RSVP_id == current_id) {
-            return YES;
-        };
-    }
-    return  false;
-}
-=======
->>>>>>> Redo-EventDetailPage
 
 
 -(IBAction)commentTabTapped:(id)sender{

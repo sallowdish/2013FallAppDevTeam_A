@@ -140,20 +140,7 @@
 
 -(void)popOver
 {
-<<<<<<< HEAD
-    LoginViewController* loginview=[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-//    UIViewController* loginview=[[UIViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-    CQMFloatingController *floatingController = [CQMFloatingController sharedFloatingController];
-//    [floatingController setFrameColor:[UIColor orangeColor]];
-    [floatingController setLandscapeFrameSize:loginview.view.bounds.size];
-    [floatingController setPortraitFrameSize:loginview.view.bounds.size];
-    [floatingController showInView:self.view withContentViewController:loginview animated:YES];
-=======
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTopCell) name:@"loginProcessFinish" object:nil];
-<<<<<<< HEAD
-    [UserModel popupLoginViewToViewController:self];
->>>>>>> Developing-Base-on-WS
-=======
 //    LoginViewController* loginView=[[self.navigationController storyboard] instantiateViewControllerWithIdentifier:@"LoginPage"];
 //    [self.navigationController pushViewController:loginView animated:YES];
 //    [self presentViewController:loginView animated:YES completion:nil]
@@ -163,7 +150,6 @@
     }];
 
     
->>>>>>> Redo-EventDetailPage
 }
 
 //- (void)loadLoginView

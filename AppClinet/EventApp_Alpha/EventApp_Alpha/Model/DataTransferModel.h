@@ -8,12 +8,6 @@
 
 #import "URLConstructModel.h"
 
-<<<<<<< HEAD
-@interface DataTransferModel : URLConstructModel <NSURLConnectionDataDelegate>
-@property NSData* data;
-
--(void)fetchDataWithUrl:(NSURL*)url;
-=======
 @interface DataTransferModel : URLConstructModel<NSURLConnectionDataDelegate>
 @property (strong, nonatomic) NSData* data;
 @property (strong, nonatomic) NSMutableData* receivedData;
@@ -27,5 +21,4 @@
 -(NSMutableURLRequest*)configPostRequest:(NSMutableURLRequest*)request withData:(NSData*)data;
 -(NSMutableURLRequest*)configPatchRequest:(NSMutableURLRequest*)request withData:(NSData*)data;
 -(NSMutableURLRequest*)configGetRequest:(NSMutableURLRequest*)request;
->>>>>>> Developing-Base-on-WS
 @end

@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<<<<<<< HEAD
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A3028" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8YX-ce-x5E">
-=======
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8YX-ce-x5E">
->>>>>>> Developing-Base-on-WS
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -159,25 +155,9 @@
                             <outlet property="delegate" destination="Weq-5w-scL" id="iOa-xu-eLp"/>
                         </connections>
                     </tableView>
-<<<<<<< HEAD
-                    <tabBarItem key="tabBarItem" title="Events" image="first" id="qb7-tY-xFp"/>
-<<<<<<< HEAD
-                    <navigationItem key="navigationItem" title="Events" id="3RB-d0-Tqn">
-                        <barButtonItem key="leftBarButtonItem" systemItem="compose" id="mOi-j9-hC6">
-=======
-                    <toolbarItems>
-                        <barButtonItem systemItem="refresh" id="Vi7-DZ-4dz">
-                            <connections>
-                                <action selector="refreshEventList:" destination="Weq-5w-scL" id="opZ-Zc-cpg"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
-=======
                     <toolbarItems/>
->>>>>>> Redo-EventDetailPage
                     <navigationItem key="navigationItem" title="Events List" id="3RB-d0-Tqn">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="mOi-j9-hC6">
->>>>>>> Developing-Base-on-WS
                             <connections>
                                 <action selector="createButtonTapped:" destination="Weq-5w-scL" id="11U-Pf-hiF"/>
                             </connections>
@@ -196,11 +176,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
             </objects>
-<<<<<<< HEAD
-            <point key="canvasLocation" x="567" y="-646"/>
-=======
             <point key="canvasLocation" x="1095" y="-668"/>
->>>>>>> Developing-Base-on-WS
         </scene>
         <!--Event Editting View Controller-->
         <scene sceneID="0eD-3I-6VS">
@@ -860,146 +836,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QxB-zM-qGR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< HEAD
-            <point key="canvasLocation" x="556" y="-1338"/>
-        </scene>
-        <!--Event Detail Table View Controller-->
-        <scene sceneID="f0A-cC-0uc">
-            <objects>
-                <tableViewController id="mSg-u1-qKF" customClass="EventDetailTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RrP-Nr-Uew">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <sections>
-                            <tableViewSection id="sqL-uz-ehS">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="tqf-1f-pK8">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tqf-1f-pK8" id="1dY-xE-xeq">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ayq-Y5-Vae">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="iUC-cF-7st">
-                                        <rect key="frame" x="0.0" y="44" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iUC-cF-7st" id="Tb2-85-U8Z">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hoster:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Pjh-C8-1gf">
-                                                    <rect key="frame" x="20" y="11" width="56" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="znP-Vy-BB1">
-                                                    <rect key="frame" x="150" y="5" width="150" height="40"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="j0O-qY-O2b">
-                                        <rect key="frame" x="0.0" y="88" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j0O-qY-O2b" id="cYD-uk-dF2">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Up3-aO-opa">
-                                                    <rect key="frame" x="20" y="9" width="48" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SJF-Br-CeT">
-                                                    <rect key="frame" x="150" y="0.0" width="150" height="40"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="8Zf-F1-yaG">
-                                        <rect key="frame" x="0.0" y="132" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Zf-F1-yaG" id="aHU-2L-7B1">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="urm-5i-iM0">
-                                                    <rect key="frame" x="20" y="11" width="41" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vuf-Gi-gEf">
-                                                    <rect key="frame" x="150" y="2" width="150" height="40"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="GtC-BR-vGV">
-                                        <rect key="frame" x="0.0" y="176" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GtC-BR-vGV" id="fDf-Jq-Wu8">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capcity:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g1u-fS-p3e">
-                                                    <rect key="frame" x="20" y="11" width="64" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mAd-7j-VlT">
-                                                    <rect key="frame" x="150" y="2" width="150" height="40"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="mSg-u1-qKF" id="nMa-gC-Ie5"/>
-                            <outlet property="delegate" destination="mSg-u1-qKF" id="1nH-aR-I7n"/>
-                        </connections>
-                    </tableView>
-                    <connections>
-                        <outlet property="eventCapcity" destination="mAd-7j-VlT" id="OkN-JF-0Sx"/>
-                        <outlet property="eventDate" destination="Vuf-Gi-gEf" id="FdG-AK-dli"/>
-                        <outlet property="eventHoster" destination="znP-Vy-BB1" id="fbH-SX-UdG"/>
-                        <outlet property="eventName" destination="Ayq-Y5-Vae" id="iVV-Dd-TKN"/>
-                        <outlet property="eventPlace" destination="SJF-Br-CeT" id="FDX-zz-cF5"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xzd-hB-kGj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1065" y="-1330"/>
-=======
             <point key="canvasLocation" x="2133" y="-1493"/>
->>>>>>> Developing-Base-on-WS
         </scene>
         <!--Event Detail View Controller - Event Details-->
         <scene sceneID="kog-To-4lZ">
@@ -1085,30 +922,6 @@
                                                                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-<<<<<<< HEAD
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rmS-Tp-eAj">
-<<<<<<< HEAD
-                                                                        <rect key="frame" x="40" y="4" width="40" height="32"/>
-=======
-                                                                        <rect key="frame" x="37" y="0.0" width="49" height="32"/>
->>>>>>> Developing-Base-on-WS
-                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                        <state key="normal" title="RSVP">
-                                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                                        </state>
-<<<<<<< HEAD
-                                                                    </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yX7-4V-JzY">
-                                                                        <rect key="frame" x="129" y="5" width="30" height="30"/>
-=======
-                                                                        <connections>
-                                                                            <action selector="RSVPButtonTapped:" destination="Fec-tY-Qmi" eventType="touchUpInside" id="rS1-Gv-gcu"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yX7-4V-JzY">
-                                                                        <rect key="frame" x="118" y="1" width="47" height="30"/>
->>>>>>> Developing-Base-on-WS
-=======
                                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSVP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yh4-WT-fU1">
                                                                         <rect key="frame" x="0.0" y="1" width="90" height="21"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1118,7 +931,6 @@
                                                                     </label>
                                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Like" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e8e-Wb-ryJ">
                                                                         <rect key="frame" x="90" y="1" width="90" height="21"/>
->>>>>>> Redo-EventDetailPage
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1240,24 +1052,12 @@
                         <outlet property="commentsTab" destination="CWx-zO-gz8" id="KZE-0A-0E1"/>
                         <outlet property="containerView" destination="YZQ-rO-Ab1" id="UdZ-0s-pN5"/>
                         <outlet property="dateTime" destination="dXw-M4-vBq" id="7i1-Ey-qPG"/>
-<<<<<<< HEAD
-                        <outlet property="eventName" destination="mzh-6e-b07" id="FX9-6k-pdS"/>
-                        <outlet property="hoster" destination="vi5-jL-Whu" id="Ijq-9u-Nmg"/>
-                        <outlet property="images" destination="PpP-PB-3Ba" id="oyn-DK-6BP"/>
-=======
                         <outlet property="description" destination="4cw-FZ-ilY" id="9XV-eF-IPn"/>
                         <outlet property="descriptionTab" destination="Zwh-zs-7Oz" id="LJj-XU-9q8"/>
                         <outlet property="detailSpanArea" destination="Afz-yz-1my" id="OeN-9m-Pbv"/>
                         <outlet property="eventName" destination="mzh-6e-b07" id="FX9-6k-pdS"/>
                         <outlet property="hoster" destination="vi5-jL-Whu" id="Ijq-9u-Nmg"/>
                         <outlet property="images" destination="PpP-PB-3Ba" id="oyn-DK-6BP"/>
-<<<<<<< HEAD
-                        <outlet property="joinButton" destination="rmS-Tp-eAj" id="i3b-PO-pK3"/>
-                        <outlet property="joinedPeopleLabel" destination="dkr-SX-85n" id="caL-MR-j3h"/>
-                        <outlet property="joinedPeopleSpanArea" destination="VBs-Uo-q3v" id="Kfh-BW-6Tq"/>
->>>>>>> Developing-Base-on-WS
-=======
->>>>>>> Redo-EventDetailPage
                         <outlet property="like" destination="myK-V1-9wo" id="reF-bh-16V"/>
                         <outlet property="location" destination="O0n-VW-VFH" id="JXB-u5-Pzf"/>
                         <outlet property="scrollView" destination="3hS-ke-OIA" id="r2q-V4-jhQ"/>
@@ -1265,9 +1065,6 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hD-ke-25h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< HEAD
-            <point key="canvasLocation" x="1074" y="-646"/>
-=======
             <point key="canvasLocation" x="1696" y="-654"/>
         </scene>
         <!--Full Screen Image Controller-->
@@ -1302,7 +1099,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fo3-xt-dcA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2437" y="-674"/>
->>>>>>> Developing-Base-on-WS
         </scene>
         <!--Navigation Controller - Events-->
         <scene sceneID="NLS-3Z-Hsz">
@@ -1315,11 +1111,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-<<<<<<< HEAD
-                        <segue destination="Weq-5w-scL" kind="relationship" relationship="rootViewController" id="95G-pU-rln"/>
-=======
                         <segue destination="Weq-5w-scL" kind="relationship" relationship="rootViewController" id="Xas-EL-Zjv"/>
->>>>>>> Developing-Base-on-WS
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKr-NB-bMc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1329,17 +1121,11 @@
         <!--Navigation Controller - Recommend-->
         <scene sceneID="r3f-5Q-9jp">
             <objects>
-<<<<<<< HEAD
-                <navigationController definesPresentationContext="YES" id="Fi8-rs-FVR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="Setting" id="2sR-aW-4fR"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pQa-zw-QWV">
-=======
                 <navigationController definesPresentationContext="YES" id="93Q-yd-GsA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Recommend" image="shopping.png" id="30I-1N-fc2"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="5e0-PH-c1v">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
->>>>>>> Developing-Base-on-WS
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1353,65 +1139,11 @@
         <!--Page View Controller-->
         <scene sceneID="Cmc-8g-aUs">
             <objects>
-<<<<<<< HEAD
-                <viewController id="fjy-3j-6tS" customClass="SettingPageViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1Wk-qL-cvZ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Setting" id="yHa-vO-P3B">
-                        <barButtonItem key="rightBarButtonItem" title="Login" id="IJf-hb-jBO">
-                            <connections>
-                                <action selector="loginClicked:" destination="fjy-3j-6tS" id="6O3-Tr-7dN"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EIy-rM-x8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
-=======
                 <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="jUs-vR-EpV" customClass="PageViewController" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DHt-Qo-Kmx" userLabel="First Responder" sceneMemberID="firstResponder"/>
->>>>>>> Developing-Base-on-WS
             </objects>
             <point key="canvasLocation" x="2233" y="531"/>
         </scene>
-<<<<<<< HEAD
-        <!--View Controller - My Tickets-->
-        <scene sceneID="CfP-EL-xCs">
-            <objects>
-                <viewController id="Xma-vz-yPb" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Dmn-St-wMq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="My Tickets" image="Photos" id="giT-Ph-JkG"/>
-                    <navigationItem key="navigationItem" id="4ch-jI-FuO"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oGq-gb-jck" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="75" y="1022"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="Vex-rW-GRa">
-            <objects>
-                <tabBarController id="8YX-ce-x5E" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="JQR-rB-NYL">
-                        <rect key="frame" x="0.0" y="431" width="320" height="49"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="aVg-TB-R8J" kind="relationship" relationship="viewControllers" id="uh7-OQ-9BM"/>
-                        <segue destination="QUy-BD-bpt" kind="relationship" relationship="viewControllers" id="M8t-EP-wfW"/>
-                        <segue destination="Xma-vz-yPb" kind="relationship" relationship="viewControllers" id="m4o-vz-bhX"/>
-                        <segue destination="Fi8-rs-FVR" kind="relationship" relationship="viewControllers" id="GK1-Fl-1vX"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
-=======
         <!--Page Content View Controller-->
         <scene sceneID="zkt-UW-JEs">
             <objects>
@@ -1547,19 +1279,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8QZ-bG-Tai" userLabel="First Responder" sceneMemberID="firstResponder"/>
->>>>>>> Developing-Base-on-WS
             </objects>
             <point key="canvasLocation" x="2233" y="1224"/>
         </scene>
-<<<<<<< HEAD
-    </scenes>
-    <resources>
-        <image name="Calender" width="204" height="204"/>
-        <image name="Photos" width="30" height="30"/>
-        <image name="Setting" width="30" height="30"/>
-        <image name="first" width="30" height="30"/>
-        <image name="shopping" width="30" height="30"/>
-=======
         <!--Login Page-->
         <scene sceneID="zi8-eE-FQc">
             <objects>
@@ -2853,15 +2575,10 @@ XX日發佈了XXXX活動
         <image name="setting.png" width="30" height="30"/>
         <image name="shopping.png" width="32" height="32"/>
         <image name="ticket.png" width="30" height="30"/>
->>>>>>> Developing-Base-on-WS
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-<<<<<<< HEAD
 </document>
-=======
-</document>
->>>>>>> Developing-Base-on-WS

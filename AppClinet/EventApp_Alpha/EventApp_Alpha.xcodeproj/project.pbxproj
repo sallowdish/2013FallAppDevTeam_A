@@ -45,11 +45,10 @@
 		7185DF9B18B9AF4F00C3DE90 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7185DF9818B9AF4F00C3DE90 /* ProgressHUD.bundle */; };
 		7185DF9C18B9AF4F00C3DE90 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7185DF9A18B9AF4F00C3DE90 /* ProgressHUD.m */; };
 		718C9011185DA0A300D86EA1 /* TemplateTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 718C9010185DA0A300D86EA1 /* TemplateTableCell.m */; };
-		71910215185EC10E00B81F77 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71910214185EC10E00B81F77 /* LoginViewController.xib */; };
-		71910222185ECE7E00B81F77 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71910220185ECE7E00B81F77 /* LoginViewController.m */; };
 		71910225185EE0F300B81F77 /* Localrecord.json in Resources */ = {isa = PBXBuildFile; fileRef = 71910224185EE0F300B81F77 /* Localrecord.json */; };
 		7191C6371808024100E86482 /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7191C6361808024100E86482 /* EventDetailViewController.m */; };
 		7191C63D18080A4E00E86482 /* MainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7191C63C18080A4E00E86482 /* MainTabViewController.m */; };
+		719664651879BB1900D8BC7B /* popoverAlterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 719664641879BB1900D8BC7B /* popoverAlterModel.m */; };
 		71974BB41869A618004493DC /* CQMFloatingContentOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BA81869A618004493DC /* CQMFloatingContentOverlayView.m */; };
 		71974BB51869A618004493DC /* CQMFloatingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BAA1869A618004493DC /* CQMFloatingController.m */; };
 		71974BB61869A618004493DC /* CQMFloatingFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BAC1869A618004493DC /* CQMFloatingFrameView.m */; };
@@ -60,13 +59,6 @@
 		719AF7D918EF8A3300075313 /* SegmentControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 719AF7D818EF8A3300075313 /* SegmentControllerCell.m */; };
 		719AF7DB18F324C900075313 /* default_profile_5_bigger.png in Resources */ = {isa = PBXBuildFile; fileRef = 719AF7DA18F324C900075313 /* default_profile_5_bigger.png */; };
 		719CE1DA1874627500D2F058 /* FormatingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 719CE1D91874627500D2F058 /* FormatingModel.m */; };
-<<<<<<< HEAD
-		71AF5EF9182503D70013ABB3 /* EventDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF5EF8182503D70013ABB3 /* EventDetailTableViewController.m */; };
-		71AF5EFC18250D660013ABB3 /* EventFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF5EFB18250D660013ABB3 /* EventFetchModel.m */; };
-		71B763C11807830A00717D67 /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B763C01807830A00717D67 /* EventListViewController.m */; };
-		71C0C0A918815CA3008DB5D9 /* URLConstructModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C0C0A818815CA3008DB5D9 /* URLConstructModel.m */; };
-		71C0C0AC18815D55008DB5D9 /* DataTransferModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C0C0AB18815D55008DB5D9 /* DataTransferModel.m */; };
-=======
 		71A6D0DE18CC234E005A0F6E /* redheart.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A6D0DD18CC234E005A0F6E /* redheart.png */; };
 		71AF5EFC18250D660013ABB3 /* EventFetchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF5EFB18250D660013ABB3 /* EventFetchModel.m */; };
 		71B763C11807830A00717D67 /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B763C01807830A00717D67 /* EventListViewController.m */; };
@@ -91,9 +83,6 @@
 		71D830BE18EBA3EE00485B1B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D830BD18EBA3EE00485B1B /* LoginViewController.m */; };
 		71D830C118EBF02100485B1B /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D830C018EBF02100485B1B /* UserModel.m */; };
 		71D830C418EC2EA700485B1B /* AddressInfoPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D830C318EC2EA700485B1B /* AddressInfoPageViewController.m */; };
-<<<<<<< HEAD
->>>>>>> Developing-Base-on-WS
-=======
 		71DD20A7196275C700DE3976 /* bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 71DD2075196275C700DE3976 /* bookmark.png */; };
 		71DD20A8196275C700DE3976 /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = 71DD2076196275C700DE3976 /* box.png */; };
 		71DD20A9196275C700DE3976 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 71DD2077196275C700DE3976 /* calendar.png */; };
@@ -145,17 +134,13 @@
 		71DD20D7196275C700DE3976 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 71DD20A5196275C700DE3976 /* user.png */; };
 		71DD20D8196275C700DE3976 /* wallet.png in Resources */ = {isa = PBXBuildFile; fileRef = 71DD20A6196275C700DE3976 /* wallet.png */; };
 		71DD20DA1963A17400DE3976 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DD20D91963A17400DE3976 /* MessageUI.framework */; };
->>>>>>> Redo-EventDetailPage
 		71DFFA43182104C900269E3E /* SettingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DFFA42182104C900269E3E /* SettingPageViewController.m */; };
 		71DFFA4518210FAA00269E3E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4418210FAA00269E3E /* CFNetwork.framework */; };
 		71DFFA4718210FB200269E3E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4618210FB200269E3E /* Security.framework */; };
 		71DFFA48182115A900269E3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F3219C17F830D700FFFB95 /* Main.storyboard */; };
-<<<<<<< HEAD
-=======
 		71EE867818784D63007FD900 /* backgroundImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 71EE867618784D63007FD900 /* backgroundImage.png */; };
 		71EE867918784D63007FD900 /* profileImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 71EE867718784D63007FD900 /* profileImage.png */; };
 		71EE8685187854B6007FD900 /* ProfilePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EE8684187854B6007FD900 /* ProfilePageViewController.m */; };
->>>>>>> Developing-Base-on-WS
 		71F3218B17F830D700FFFB95 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F3218A17F830D700FFFB95 /* Foundation.framework */; };
 		71F3218D17F830D700FFFB95 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F3218C17F830D700FFFB95 /* CoreGraphics.framework */; };
 		71F3218F17F830D700FFFB95 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F3218E17F830D700FFFB95 /* UIKit.framework */; };
@@ -241,14 +226,13 @@
 		7185DF9A18B9AF4F00C3DE90 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		718C900F185DA0A300D86EA1 /* TemplateTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplateTableCell.h; path = ViewController/TemplateTableCell.h; sourceTree = "<group>"; };
 		718C9010185DA0A300D86EA1 /* TemplateTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemplateTableCell.m; path = ViewController/TemplateTableCell.m; sourceTree = "<group>"; };
-		71910214185EC10E00B81F77 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = UIResource/LoginViewController.xib; sourceTree = "<group>"; };
-		7191021F185ECE7E00B81F77 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = UIResource/LoginViewController.h; sourceTree = "<group>"; };
-		71910220185ECE7E00B81F77 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = UIResource/LoginViewController.m; sourceTree = "<group>"; };
 		71910224185EE0F300B81F77 /* Localrecord.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Localrecord.json; sourceTree = "<group>"; };
 		7191C6351808024100E86482 /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventDetailViewController.h; path = ViewController/EventDetailViewController.h; sourceTree = "<group>"; };
 		7191C6361808024100E86482 /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventDetailViewController.m; path = ViewController/EventDetailViewController.m; sourceTree = "<group>"; };
 		7191C63B18080A4E00E86482 /* MainTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTabViewController.h; path = ViewController/MainTabViewController.h; sourceTree = "<group>"; };
 		7191C63C18080A4E00E86482 /* MainTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainTabViewController.m; path = ViewController/MainTabViewController.m; sourceTree = "<group>"; };
+		719664631879BB1900D8BC7B /* popoverAlterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = popoverAlterModel.h; path = Model/popoverAlterModel.h; sourceTree = "<group>"; };
+		719664641879BB1900D8BC7B /* popoverAlterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = popoverAlterModel.m; path = Model/popoverAlterModel.m; sourceTree = "<group>"; };
 		71974BA71869A618004493DC /* CQMFloatingContentOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMFloatingContentOverlayView.h; sourceTree = "<group>"; };
 		71974BA81869A618004493DC /* CQMFloatingContentOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMFloatingContentOverlayView.m; sourceTree = "<group>"; };
 		71974BA91869A618004493DC /* CQMFloatingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMFloatingController.h; sourceTree = "<group>"; };
@@ -269,22 +253,11 @@
 		719AF7DA18F324C900075313 /* default_profile_5_bigger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_profile_5_bigger.png; sourceTree = "<group>"; };
 		719CE1D81874627500D2F058 /* FormatingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormatingModel.h; path = Model/FormatingModel.h; sourceTree = "<group>"; };
 		719CE1D91874627500D2F058 /* FormatingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FormatingModel.m; path = Model/FormatingModel.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		71AF5EF7182503D70013ABB3 /* EventDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventDetailTableViewController.h; path = ViewController/EventDetailTableViewController.h; sourceTree = "<group>"; };
-		71AF5EF8182503D70013ABB3 /* EventDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventDetailTableViewController.m; path = ViewController/EventDetailTableViewController.m; sourceTree = "<group>"; };
-=======
 		71A6D0DD18CC234E005A0F6E /* redheart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redheart.png; path = Images/redheart.png; sourceTree = "<group>"; };
->>>>>>> Developing-Base-on-WS
 		71AF5EFA18250D660013ABB3 /* EventFetchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventFetchModel.h; path = Model/EventFetchModel.h; sourceTree = "<group>"; };
 		71AF5EFB18250D660013ABB3 /* EventFetchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventFetchModel.m; path = Model/EventFetchModel.m; sourceTree = "<group>"; };
 		71B763BF1807830A00717D67 /* EventListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventListViewController.h; path = ViewController/EventListViewController.h; sourceTree = "<group>"; };
 		71B763C01807830A00717D67 /* EventListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventListViewController.m; path = ViewController/EventListViewController.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		71C0C0A718815CA3008DB5D9 /* URLConstructModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLConstructModel.h; path = Model/URLConstructModel.h; sourceTree = "<group>"; };
-		71C0C0A818815CA3008DB5D9 /* URLConstructModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLConstructModel.m; path = Model/URLConstructModel.m; sourceTree = "<group>"; };
-		71C0C0AA18815D55008DB5D9 /* DataTransferModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataTransferModel.h; path = Model/DataTransferModel.h; sourceTree = "<group>"; };
-		71C0C0AB18815D55008DB5D9 /* DataTransferModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataTransferModel.m; path = Model/DataTransferModel.m; sourceTree = "<group>"; };
-=======
 		71C883AC193AD61A00E5E63C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		71C883AE193AD62C00E5E63C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		71C883B0193AD63300E5E63C /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
@@ -315,9 +288,6 @@
 		71D830C018EBF02100485B1B /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserModel.m; path = Model/UserModel.m; sourceTree = "<group>"; };
 		71D830C218EC2EA700485B1B /* AddressInfoPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddressInfoPageViewController.h; path = ViewController/AddressInfoPageViewController.h; sourceTree = "<group>"; };
 		71D830C318EC2EA700485B1B /* AddressInfoPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddressInfoPageViewController.m; path = ViewController/AddressInfoPageViewController.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
->>>>>>> Developing-Base-on-WS
-=======
 		71DD2075196275C700DE3976 /* bookmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookmark.png; sourceTree = "<group>"; };
 		71DD2076196275C700DE3976 /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box.png; sourceTree = "<group>"; };
 		71DD2077196275C700DE3976 /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
@@ -369,20 +339,15 @@
 		71DD20A5196275C700DE3976 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		71DD20A6196275C700DE3976 /* wallet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallet.png; sourceTree = "<group>"; };
 		71DD20D91963A17400DE3976 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
->>>>>>> Redo-EventDetailPage
 		71DFFA41182104C900269E3E /* SettingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingPageViewController.h; path = ViewController/SettingPageViewController.h; sourceTree = "<group>"; };
 		71DFFA42182104C900269E3E /* SettingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingPageViewController.m; path = ViewController/SettingPageViewController.m; sourceTree = "<group>"; };
 		71DFFA4418210FAA00269E3E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		71DFFA4618210FB200269E3E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-<<<<<<< HEAD
-		71F3218717F830D700FFFB95 /* EventApp_Alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventApp_Alpha.app; sourceTree = BUILT_PRODUCTS_DIR; };
-=======
 		71EE867618784D63007FD900 /* backgroundImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundImage.png; sourceTree = "<group>"; };
 		71EE867718784D63007FD900 /* profileImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileImage.png; sourceTree = "<group>"; };
 		71EE8683187854B6007FD900 /* ProfilePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfilePageViewController.h; path = ViewController/ProfilePageViewController.h; sourceTree = "<group>"; };
 		71EE8684187854B6007FD900 /* ProfilePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfilePageViewController.m; path = ViewController/ProfilePageViewController.m; sourceTree = "<group>"; };
 		71F3218717F830D700FFFB95 /* Seeker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seeker.app; sourceTree = BUILT_PRODUCTS_DIR; };
->>>>>>> Developing-Base-on-WS
 		71F3218A17F830D700FFFB95 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		71F3218C17F830D700FFFB95 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		71F3218E17F830D700FFFB95 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -506,15 +471,9 @@
 		7185DF9718B9AF4F00C3DE90 /* ProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				71910214185EC10E00B81F77 /* LoginViewController.xib */,
-				7191021F185ECE7E00B81F77 /* LoginViewController.h */,
-				71910220185ECE7E00B81F77 /* LoginViewController.m */,
-=======
 				7185DF9818B9AF4F00C3DE90 /* ProgressHUD.bundle */,
 				7185DF9918B9AF4F00C3DE90 /* ProgressHUD.h */,
 				7185DF9A18B9AF4F00C3DE90 /* ProgressHUD.m */,
->>>>>>> Developing-Base-on-WS
 			);
 			name = ProgressHUD;
 			path = UIXIB/ProgressHUD;
@@ -531,8 +490,6 @@
 			name = CustomizeCell;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
-=======
 		719664621879BAE200D8BC7B /* HUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -543,7 +500,6 @@
 			name = HUD;
 			sourceTree = "<group>";
 		};
->>>>>>> Developing-Base-on-WS
 		71974BA61869A618004493DC /* CQMFloatingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -568,23 +524,10 @@
 		719CE1D61874621B00D2F058 /* DataCommunicationModels */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				7104A79E1824D1B500EB3AD5 /* EventListFetchModel.h */,
-				7104A79F1824D1B500EB3AD5 /* EventListFetchModel.m */,
-				71AF5EFA18250D660013ABB3 /* EventFetchModel.h */,
-				71AF5EFB18250D660013ABB3 /* EventFetchModel.m */,
-				718BAD44183E2B1800411B1E /* EventPostModel.h */,
-				718BAD45183E2B1800411B1E /* EventPostModel.m */,
-				71C0C0A718815CA3008DB5D9 /* URLConstructModel.h */,
-				71C0C0A818815CA3008DB5D9 /* URLConstructModel.m */,
-				71C0C0AA18815D55008DB5D9 /* DataTransferModel.h */,
-				71C0C0AB18815D55008DB5D9 /* DataTransferModel.m */,
-=======
 				7101D32C18ECD041002B9592 /* Upload */,
 				71D830B818EB957800485B1B /* User */,
 				71D830B418EAAE4600485B1B /* Base */,
 				71D830B318EAAE3C00485B1B /* Event */,
->>>>>>> Developing-Base-on-WS
 			);
 			name = DataCommunicationModels;
 			sourceTree = "<group>";
@@ -610,8 +553,6 @@
 			name = ViewController;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
-=======
 		71C883BE193ADD1B00E5E63C /* SDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -768,7 +709,6 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
->>>>>>> Developing-Base-on-WS
 		71F3217E17F830D700FFFB95 = {
 			isa = PBXGroup;
 			children = (
@@ -832,13 +772,9 @@
 		71F3219117F830D700FFFB95 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-=======
 				71D7AF5418A1D0CA0082A6AA /* Icons */,
 				71EE867518784D63007FD900 /* Images */,
->>>>>>> Developing-Base-on-WS
 				71910224185EE0F300B81F77 /* Localrecord.json */,
-				71910216185EC40200B81F77 /* UI */,
 				71F3219217F830D700FFFB95 /* EventApp_Alpha-Info.plist */,
 				71F3219317F830D700FFFB95 /* InfoPlist.strings */,
 				71F3219617F830D700FFFB95 /* main.m */,
@@ -915,13 +851,10 @@
 			children = (
 				71DFFA41182104C900269E3E /* SettingPageViewController.h */,
 				71DFFA42182104C900269E3E /* SettingPageViewController.m */,
-<<<<<<< HEAD
-=======
 				71EE8683187854B6007FD900 /* ProfilePageViewController.h */,
 				71EE8684187854B6007FD900 /* ProfilePageViewController.m */,
 				71C9B733191C3256004631D0 /* MyEventTableViewController.h */,
 				71C9B734191C3256004631D0 /* MyEventTableViewController.m */,
->>>>>>> Developing-Base-on-WS
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -1018,8 +951,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
-=======
 				71C883C3193ADD2C00E5E63C /* UbertestersSDKResources.bundle in Resources */,
 				71DD20D5196275C700DE3976 /* trophy.png in Resources */,
 				71DD20D2196275C700DE3976 /* t-shirt.png in Resources */,
@@ -1039,12 +970,8 @@
 				71094D73190EEDAE0098751A /* Blank-Profile-Image.png in Resources */,
 				71DD20B3196275C700DE3976 /* dashboard.png in Resources */,
 				711DA0DC194EE0DB001A4F28 /* Default-568h@2x.png in Resources */,
-<<<<<<< HEAD
->>>>>>> Developing-Base-on-WS
-=======
 				71DD20CA196275C700DE3976 /* piechart.png in Resources */,
 				71DD20AA196275C700DE3976 /* camera.png in Resources */,
->>>>>>> Redo-EventDetailPage
 				71DFFA48182115A900269E3E /* Main.storyboard in Resources */,
 				7103FE9218A1ED6A0047EFAD /* peopleIcon_done.png in Resources */,
 				71DD20C4196275C700DE3976 /* map.png in Resources */,
@@ -1059,10 +986,6 @@
 				71DD20C2196275C700DE3976 /* lock.png in Resources */,
 				71D7AF52189DF3E70082A6AA /* event3.jpg in Resources */,
 				71F321A617F830D700FFFB95 /* Images.xcassets in Resources */,
-<<<<<<< HEAD
-				71910225185EE0F300B81F77 /* Localrecord.json in Resources */,
-				71910215185EC10E00B81F77 /* LoginViewController.xib in Resources */,
-=======
 				711DA0D8194EDFD9001A4F28 /* moon_and_star.png in Resources */,
 				71DD20BA196275C700DE3976 /* home.png in Resources */,
 				71094D75190EEFB90098751A /* addprofileimage.JPG in Resources */,
@@ -1097,13 +1020,9 @@
 				71DD20CD196275C700DE3976 /* rubbishbin.png in Resources */,
 				71DD20D0196275C700DE3976 /* shield.png in Resources */,
 				71EE867818784D63007FD900 /* backgroundImage.png in Resources */,
-<<<<<<< HEAD
->>>>>>> Developing-Base-on-WS
-=======
 				71DD20C3196275C700DE3976 /* mail.png in Resources */,
 				71DD20B0196275C700DE3976 /* compass.png in Resources */,
 				71DD20AD196275C700DE3976 /* cloud.png in Resources */,
->>>>>>> Redo-EventDetailPage
 				71F3219517F830D700FFFB95 /* InfoPlist.strings in Resources */,
 				71DD20A8196275C700DE3976 /* box.png in Resources */,
 				71DD20CF196275C700DE3976 /* settings.png in Resources */,
@@ -1161,49 +1080,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				71974BB61869A618004493DC /* CQMFloatingFrameView.m in Sources */,
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-				711DA106195053AD001A4F28 /* SDWebImageManager.m in Sources */,
-=======
->>>>>>> Redo-EventDetailPage
 				719AF7D618EF7BAA00075313 /* EventListHotViewController.m in Sources */,
 				71094D6B190D63800098751A /* GKImageCropView.m in Sources */,
 				719664651879BB1900D8BC7B /* popoverAlterModel.m in Sources */,
-<<<<<<< HEAD
-				711DA0FF195053AD001A4F28 /* MKAnnotationView+WebCache.m in Sources */,
->>>>>>> Developing-Base-on-WS
-=======
->>>>>>> Redo-EventDetailPage
 				71B763C11807830A00717D67 /* EventListViewController.m in Sources */,
 				71D830B718EAAE6D00485B1B /* EventJoinAndLikeModel.m in Sources */,
 				71974BB81869A618004493DC /* CQMFloatingNavigationBar.m in Sources */,
-<<<<<<< HEAD
-=======
 				71EE8685187854B6007FD900 /* ProfilePageViewController.m in Sources */,
 				7101D32F18ECD068002B9592 /* ImageUploadModel.m in Sources */,
-<<<<<<< HEAD
-				711DA104195053AD001A4F28 /* SDWebImageDownloader.m in Sources */,
-				711DA105195053AD001A4F28 /* SDWebImageDownloaderOperation.m in Sources */,
-				711DA109195053AD001A4F28 /* UIImage+GIF.m in Sources */,
->>>>>>> Developing-Base-on-WS
-=======
->>>>>>> Redo-EventDetailPage
 				71F8A91F183C7CAB001AEF6A /* EventEdittingViewController.m in Sources */,
 				71094D6A190D63800098751A /* GKImageCropOverlayView.m in Sources */,
 				718C9011185DA0A300D86EA1 /* TemplateTableCell.m in Sources */,
 				7185DF9618B9609A00C3DE90 /* EventPostModel.m in Sources */,
 				711DA0CC194EC05F001A4F28 /* UIdataPickerWithDone.m in Sources */,
 				7104A7A01824D1B500EB3AD5 /* EventListFetchModel.m in Sources */,
-<<<<<<< HEAD
-				71910222185ECE7E00B81F77 /* LoginViewController.m in Sources */,
-=======
 				7103FE9A18A9C2820047EFAD /* PageContentViewController.m in Sources */,
-<<<<<<< HEAD
-				711DA102195053AD001A4F28 /* SDWebImageCompat.m in Sources */,
->>>>>>> Developing-Base-on-WS
-=======
->>>>>>> Redo-EventDetailPage
 				71974BB41869A618004493DC /* CQMFloatingContentOverlayView.m in Sources */,
 				71974BB71869A618004493DC /* CQMFloatingMaskControl.m in Sources */,
 				7103FE9718A9C1A30047EFAD /* PageViewController.m in Sources */,
@@ -1225,13 +1116,6 @@
 				7103FEA118AA1A220047EFAD /* CommentViewController.m in Sources */,
 				71C9B738191F34AE004631D0 /* EventDeleteModel.m in Sources */,
 				71974BB91869A618004493DC /* CQMPathUtilities.m in Sources */,
-<<<<<<< HEAD
-				71C0C0AC18815D55008DB5D9 /* DataTransferModel.m in Sources */,
-				718BAD46183E2B1800411B1E /* EventPostModel.m in Sources */,
-				71C0C0A918815CA3008DB5D9 /* URLConstructModel.m in Sources */,
-				719CE1DA1874627500D2F058 /* FormatingModel.m in Sources */,
-				71AF5EF9182503D70013ABB3 /* EventDetailTableViewController.m in Sources */,
-=======
 				719CE1DA1874627500D2F058 /* FormatingModel.m in Sources */,
 				71094D69190D63800098751A /* GKCropBorderView.m in Sources */,
 				71094D6C190D63800098751A /* GKImageCropViewController.m in Sources */,
@@ -1241,7 +1125,6 @@
 				71094D6D190D63800098751A /* GKImagePicker.m in Sources */,
 				7103FEA418AAE99E0047EFAD /* FullScreenImageController.m in Sources */,
 				71094D58190D28D90098751A /* SignUpModel.m in Sources */,
->>>>>>> Developing-Base-on-WS
 				71DFFA43182104C900269E3E /* SettingPageViewController.m in Sources */,
 				71D830BE18EBA3EE00485B1B /* LoginViewController.m in Sources */,
 			);

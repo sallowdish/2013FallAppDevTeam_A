@@ -7,10 +7,7 @@
 //
 
 #import "AppDelegate.h"
-<<<<<<< HEAD
-=======
 #import "UserModel.h"
->>>>>>> Developing-Base-on-WS
 //#import "WebServiceCommunicationModel.h"
 
 #define defaultLogin 0

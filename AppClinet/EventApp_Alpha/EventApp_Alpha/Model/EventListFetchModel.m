@@ -8,13 +8,10 @@
 
 #import "EventListFetchModel.h"
 #import "DataTransferModel.h"
-<<<<<<< HEAD
-=======
 #import "UserModel.h"
 #import "AFNetworking.h"
 #import "ProgressHUD.h"
 
->>>>>>> Developing-Base-on-WS
 
 
 @implementation EventListFetchModel
@@ -36,41 +33,6 @@ static NSString* nextPage;
 -(void) fetchEventListWithMode:(NSString *)mode
 {
     @try {
-<<<<<<< HEAD
-        NSError* error=nil;
-        NSData* buffer=nil;
-        DataTransferModel* transfer=[[DataTransferModel alloc]init];
-        //get the json of eventlist from webservice
-//        NSData* buffer=[NSData dataWithContentsOfURL:[URLConstructModel constructFetchRequestWithResource:@"/event/" WithConstrain:NOCONSTRAIN WithFormat:JSONFORMAT] options:NSDataReadingMappedIfSafe error:&error];
-        [transfer fetchDataWithUrl:[DataTransferModel constructFetchRequestWithResource:@"/event/" WithConstrain:NOCONSTRAIN WithFormat:JSONFORMAT]];
-        if(!transfer.data)
-        {
-            @throw [NSException exceptionWithName:@"Fetching Failed" reason:error.localizedDescription userInfo:nil];
-        }else
-        {
-            buffer=transfer.data;
-        }
-        //NSString* temp=[[NSString alloc]initWithData:buffer encoding:NSUTF8StringEncoding];
-        //Pharse the data
-        NSArray* rawData=[NSJSONSerialization JSONObjectWithData:buffer options:NSJSONReadingMutableContainers error:&error] ;
-        if(error)
-        {
-            @throw [NSException exceptionWithName:@"Pharse Failed" reason:error.localizedDescription userInfo:nil];
-        }
-        eventList=[NSArray arrayWithArray:rawData];
-        // TODO: write into local file
-        if ([NSJSONSerialization isValidJSONObject:eventList]) {
-            NSString *jsonContent=[[NSString alloc]initWithData:[NSJSONSerialization dataWithJSONObject:eventList options:NSJSONWritingPrettyPrinted error:&error] encoding:NSUTF8StringEncoding];
-            NSString *filepath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Events.json"];
-            
-            [jsonContent writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:&error];
-            if(error)
-            {
-                @throw [NSException exceptionWithName:@"Write into file Failed" reason:error.localizedDescription userInfo:nil];
-            }
-            else
-                NSLog(@"%@",jsonContent);
-=======
         NSURL* targeturl=[DataTransferModel constructFetchRequestWithResource:@"/event/" WithConstrain:NOCONSTRAIN WithFormat:JSONFORMAT];
         if ([mode isEqualToString:@"time"]) {
             targeturl=[NSURL URLWithString:[[targeturl absoluteString] stringByAppendingString:@"&order_by=-event_create_time"]];
@@ -81,12 +43,6 @@ static NSString* nextPage;
         NSLog(@"%@",[targeturl absoluteString]);
         [self fetchDataWithUrl:targeturl];
         
-<<<<<<< HEAD
->>>>>>> Developing-Base-on-WS
-
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchEventListWithMode:) name:@"didFinishLoadingData" object:nil];        
-=======
->>>>>>> Redo-EventDetailPage
         
     }
     @catch (NSException *exception) {
