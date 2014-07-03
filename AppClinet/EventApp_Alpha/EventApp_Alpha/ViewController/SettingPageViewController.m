@@ -133,7 +133,7 @@
         [self performSegueWithIdentifier:@"myEventListSegue" sender:self];
     }
     else{
-        [UserModel popupLoginViewToViewController:self];
+        [self loginTapped];
     }
 
 }
@@ -150,8 +150,20 @@
     [floatingController showInView:self.view withContentViewController:loginview animated:YES];
 =======
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTopCell) name:@"loginProcessFinish" object:nil];
+<<<<<<< HEAD
     [UserModel popupLoginViewToViewController:self];
 >>>>>>> Developing-Base-on-WS
+=======
+//    LoginViewController* loginView=[[self.navigationController storyboard] instantiateViewControllerWithIdentifier:@"LoginPage"];
+//    [self.navigationController pushViewController:loginView animated:YES];
+//    [self presentViewController:loginView animated:YES completion:nil]
+    
+    [UserModel popupLoginViewToViewController:self complete:^(LoginViewController *loginview) {
+        [self.navigationController pushViewController:loginview animated:YES];
+    }];
+
+    
+>>>>>>> Redo-EventDetailPage
 }
 
 //- (void)loadLoginView

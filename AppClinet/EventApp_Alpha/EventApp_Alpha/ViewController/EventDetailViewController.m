@@ -20,8 +20,12 @@
 #import "AddressInfoPageViewController.h"
 #import "ImageModel.h"
 #import "UIImageView+AFNetworking.h"
+#import "RNGridMenu.h"
+#import <MessageUI/MessageUI.h>
+
 #undef MAXTAG
 #define MAXTAG 104
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Developing-Base-on-WS
 @interface EventDetailViewController ()
@@ -29,6 +33,10 @@
 @interface EventDetailViewController (){
     dispatch_queue_t queue;
     dispatch_semaphore_t semeaphore;
+=======
+
+@interface EventDetailViewController ()<MFMailComposeViewControllerDelegate,RNGridMenuDelegate>{
+>>>>>>> Redo-EventDetailPage
     
 }
 >>>>>>> Redo-EventDetailPage
@@ -44,20 +52,29 @@
 @property (weak, nonatomic) IBOutlet UIButton *commentsTab;
 @property (weak, nonatomic) IBOutlet UIView *detailSpanArea;
 @property UITextField* noComments;
-@property (weak, nonatomic) IBOutlet UIButton *RSVPbutton;
+@property (nonatomic) IBOutlet UIButton *RSVPbutton;
+@property (nonatomic) IBOutlet UIBarButtonItem *moreOptionButton;
+
+@property EventFetchModel* model;
+@property EventJoinAndLikeModel* jlmodel;
 @end
 
 @implementation EventDetailViewController
-@synthesize eventID,event;
+@synthesize eventID,event,model,jlmodel;
 
 <<<<<<< HEAD
 =======
 bool isJoined,isLiked;
+<<<<<<< HEAD
 EventFetchModel* model;
 EventJoinAndLikeModel* jlmodel;
 <<<<<<< HEAD
 >>>>>>> Developing-Base-on-WS
 =======
+=======
+
+
+>>>>>>> Redo-EventDetailPage
 NSString* state;
 >>>>>>> Redo-EventDetailPage
 
@@ -73,6 +90,39 @@ NSString* state;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self visualSetup];
+    [self dataSourceSetup];
+
+ 
+    [ProgressHUD show:@"Loading"];
+
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    state=nil;
+    self.tabBarController.tabBar.hidden=YES;
+    [self drawRSVPnLikeFloatButton];
+    [self fetchEvent];
+}
+
+-(void)dataSourceSetup{
+    self.RSVPList=[NSMutableArray arrayWithCapacity:0];
+    self.likeList=[NSMutableArray arrayWithCapacity:0];
+    self.RSVPProfileIcons=[NSMutableArray arrayWithCapacity:0];
+    self.descriptionTab.enabled=NO;
+    model=[[EventFetchModel alloc]init];
+    jlmodel=[[EventJoinAndLikeModel alloc]init];
+}
+
+<<<<<<< HEAD
+ 
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+//    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+//    set the view frame to round conner
+    for (int i=100; i<105; i++) {
+=======
+-(void)visualSetup{
     self.scrollView.hidden=YES;
     [self.scrollView setScrollEnabled:YES];
     float para=[[UIScreen mainScreen] bounds].size.height== 480?1.3:1.16;
@@ -80,23 +130,21 @@ NSString* state;
     [self.scrollView setContentSize:contentsize];
     [self cleanUpRSVPSpanArea];
     
-    self.RSVPList=[NSMutableArray arrayWithCapacity:0];
-    self.likeList=[NSMutableArray arrayWithCapacity:0];
-    self.RSVPProfileIcons=[NSMutableArray arrayWithCapacity:0];
-    self.descriptionTab.enabled=NO;
-    model=[[EventFetchModel alloc]init];
-    jlmodel=[[EventJoinAndLikeModel alloc]init];
-
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-//    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-//    set the view frame to round conner
-    for (int i=100; i<105; i++) {
+    for (int i=100; i<MAXTAG+1; i++) {
+>>>>>>> Redo-EventDetailPage
         UIView* subview=[self.view viewWithTag:i];
         subview.layer.cornerRadius=6;
         subview.layer.masksToBounds=YES;
     }
-    [ProgressHUD show:@"Loading"];
+    
+    UITapGestureRecognizer* tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(eventImageTapped)];
+    tap.numberOfTapsRequired=1;
+    self.images.userInteractionEnabled=YES;
+    [self.images addGestureRecognizer:tap];
+
+//    self.moreOptionButton=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showMoreOptionMenu)];
+    self.moreOptionButton=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"tools.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(showMoreOptionMenu)];
+    self.navigationItem.rightBarButtonItem=self.moreOptionButton;
 
 <<<<<<< HEAD
 //    NSError* err;
@@ -118,11 +166,91 @@ NSString* state;
 =======
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    state=nil;
-    self.tabBarController.tabBar.hidden=YES;
-    [self drawRSVPnLikeFloatButton];
-    [self fetchEvent];
+-(void)eventImageTapped{
+    FullScreenImageController* fvc=[[self.navigationController storyboard] instantiateViewControllerWithIdentifier:@"FullScreenImagePage"];
+    fvc.image=self.images.image;
+    [self.navigationController pushViewController:fvc animated:YES];
+}
+
+-(void)showMoreOptionMenu{
+    if (event) {
+        RNGridMenuItem* posterInfoItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"user.png"] title:@"Poster Info" action:^{
+            [self showPosterInfo];
+        }];
+        RNGridMenuItem* addressInfoItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"map.png"] title:@"Address Info" action:^{
+            [self showAddressInfo];
+        }];
+        RNGridMenuItem* RSVPEventItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"t-shirt.png"] title:@"Dis/RSVP Event" action:^{
+            [self RSVPEvent];
+        }];
+        RNGridMenuItem* likeEventItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"heart.png"] title:@"Dis/Like Event" action:^{
+            [self likeEvent];
+        }];
+        RNGridMenuItem* reportUserItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"mail.png"] title:@"Report User" action:^{
+            [self reportPoster];
+        }];
+        RNGridMenu* popupMenu=[[RNGridMenu alloc] initWithItems:@[posterInfoItem,addressInfoItem,RSVPEventItem,likeEventItem,reportUserItem]];
+        popupMenu.backgroundColor=[UIColor whiteColor];
+        [popupMenu showInViewController:self center:CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2)];
+    }
+}
+
+-(void)showPosterInfo{
+    ProfilePageViewController* vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
+    vc.userID=[[event valueForKey:@"fk_event_poster_user_id"] integerValue];
+    [self.navigationController pushViewController:vc animated:YES];
+
+}
+
+-(void)showAddressInfo{
+    AddressInfoPageViewController* vc= [self.storyboard instantiateViewControllerWithIdentifier:@"AddressInfoPage"];
+    NSMutableDictionary* address=[NSMutableDictionary dictionaryWithCapacity:0];
+    address[@"address_title"]=[event objectForKey:@"address_title"];
+    address[@"address_region"]=[event objectForKey:@"address_region"];
+    address[@"address_city"]=[event objectForKey:@"address_city"];
+    address[@"address_country"]=[event objectForKey:@"address_country"];
+    address[@"address_detail"]=[event objectForKey:@"address_detail"];
+    address[@"address_postal_code"]=[event objectForKey:@"address_postal_code"];
+    vc.address=address;
+    [self.navigationController pushViewController:vc animated:YES];
+
+}
+
+-(void)reportPoster{
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *appDisplayName = [infoDictionary objectForKey:@"CFBundleDisplayName"];
+    NSString *majorVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    NSString *minorVersion = [infoDictionary objectForKey:@"CFBundleVersion"];
+    
+    NSString *iOSVersion = [[UIDevice currentDevice] systemVersion];
+    
+    NSString *modelNumber = [[UIDevice currentDevice] model];
+    
+    MFMailComposeViewController* mailComposer=[[MFMailComposeViewController alloc] init];
+    mailComposer.mailComposeDelegate = self;
+    
+    [mailComposer setToRecipients:[NSArray arrayWithObjects: @"zettack.it.errorreport@gmail.com",nil]];
+    
+    [mailComposer setSubject:[NSString stringWithFormat: @"[Report] %@ V%@ (build %@) Support",appDisplayName,majorVersion,minorVersion]];
+    
+    NSString *supportText = [NSString stringWithFormat:@"Device: %@\niOS Version:%@\n",modelNumber,iOSVersion];
+    
+    NSString *collectedInfo=[NSString stringWithFormat:@"EventID:%@, Event_Poster_ID=%@",[event valueForKey:@"id"],[event valueForKey:@"fk_event_poster_user_id"]];
+    
+    
+    
+    supportText = [[supportText stringByAppendingString: collectedInfo] stringByAppendingString: @"\n-------------------------------------------\nPlease don't change any info above.\n-------------------------------------------\n\nPlease describe your problem or reason of this report."];
+    
+    [mailComposer setMessageBody:supportText isHTML:NO];
+    
+    [self presentViewController:mailComposer animated:YES completion:nil];
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 -(void)fetchEvent{
@@ -172,29 +300,37 @@ NSString* state;
         [ProgressHUD showSuccess:@"Liking this event succeed."];
     }
     [self getRSVPList];
+    [self getLikeList];
 }
 
 
 -(void)getRSVPList{
-    if (!queue) {
-        queue=dispatch_queue_create("com.EventApp.EventDetailFetchModel", NULL);
-    }
-    //    if (!semeaphore) {
-    //        semeaphore=dispatch_semaphore_create(0);
-    //    }
-    dispatch_async(queue, ^{
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetRSVPList) name:@"didGetRSVPList" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailGetRSVPList) name:@"didFailGetRSVPList" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetRSVPList) name:@"didGetRSVPList" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailGetRSVPList) name:@"didFailGetRSVPList" object:nil];
 
-        [jlmodel getRSVPList:event];
-    });
+    [jlmodel getRSVPList:event];
+
 }
+
+-(void)getLikeList{
+    [jlmodel getLikeList:event complete:^{
+        if ([jlmodel isCurrentUserinLikeList]) {
+            [self.likeButton removeFromSuperview];
+//            self.likeButton.enabled=NO;
+//            self.likeButton.backgroundColor=[UIColor lightGrayColor];
+        }
+    } fail:^(NSError *error) {
+        [ProgressHUD showError:[error localizedDescription]];
+    }];
+}
+
 -(void)didGetRSVPList{
     self.RSVPList=[EventJoinAndLikeModel RSVPList];
     [self updateRSVPProfileIcon];
     if ([jlmodel isCurrentUserinRSVPList]) {
-        self.RSVPbutton.enabled=NO;
-        self.RSVPbutton.backgroundColor=[UIColor lightGrayColor];
+        [self.RSVPbutton removeFromSuperview];
+//        self.RSVPbutton.enabled=NO;
+//        self.RSVPbutton.backgroundColor=[UIColor lightGrayColor];
     }
     
 }
@@ -250,11 +386,25 @@ NSString* state;
 }
 
 -(IBAction)RSVPEvent{
-    [jlmodel rsvpEvent:event succeed:^(id message) {
-        [self didRSVPEvent];
-    } failed:^(id error) {
-        [self didFailRSVPEvent:error];
-    }];
+    if ([UserModel isLogin]) {
+        if (![jlmodel isCurrentUserinRSVPList]){
+            [jlmodel rsvpEvent:event succeed:^(id message) {
+                [self didRSVPEvent];
+            } failed:^(id error) {
+                [self didFailRSVPEvent:error];
+            }];
+        }else{
+            [ProgressHUD showError:@"You have RSVPed this event alread."];
+        }
+
+    }else{
+        LoginViewController* loginView=[[self.navigationController storyboard] instantiateViewControllerWithIdentifier:@"LoginPage"];
+//        [self.navigationController pushViewController:loginView animated:YES];
+        [self presentViewController:loginView animated:YES completion:nil];
+//        [UserModel popupLoginViewToViewController:self complete:^(LoginViewController *loginview) {
+//            [self.navigationController pushViewController:loginview animated:YES];
+//        }];
+    }
 }
 
 -(void)didRSVPEvent{
@@ -268,11 +418,22 @@ NSString* state;
 }
 
 -(IBAction)likeEvent{
-    [jlmodel likeEvent:event succeed:^(id message) {
-        [self didLikeEvent];
-    } failed:^(id error) {
-        [self didFailLikeEvent:error];
-    }];
+    if ([UserModel isLogin]) {
+        if ([jlmodel isCurrentUserinRSVPList]){
+            [jlmodel likeEvent:event succeed:^(id message) {
+                [self didLikeEvent];
+            } failed:^(id error) {
+                [self didFailLikeEvent:error];
+            }];
+        }else{
+            [ProgressHUD showError:@"You have RSVPed this event alread."];
+        }
+
+    }else{
+        LoginViewController* loginView=[[self.navigationController storyboard] instantiateViewControllerWithIdentifier:@"LoginPage"];
+//        [self.navigationController pushViewController:loginView animated:YES];
+        [self presentViewController:loginView animated:YES completion:nil];
+    }
 }
 
 -(void)didLikeEvent{
@@ -342,23 +503,6 @@ NSString* state;
     ProfilePageViewController* vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
     vc.userID=[[[self.RSVPList[i] valueForKey:@"fk_user"] valueForKey:@"id"] intValue];
     [self.navigationController pushViewController:vc animated:YES];
-}
--(IBAction)hostInfoTapped{
-//    ProfilePageViewController* vc= [self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
-//    vc.targetUser=[event objectForKey:@"fk_event_poster_user"];
-//    [self.navigationController pushViewController:vc animated:YES];
-}
--(IBAction)locationInfoTapped{
-    AddressInfoPageViewController* vc= [self.storyboard instantiateViewControllerWithIdentifier:@"AddressInfoPage"];
-    NSMutableDictionary* address=[NSMutableDictionary dictionaryWithCapacity:0];
-    address[@"address_title"]=[event objectForKey:@"address_title"];
-    address[@"address_region"]=[event objectForKey:@"address_region"];
-    address[@"address_city"]=[event objectForKey:@"address_city"];
-    address[@"address_country"]=[event objectForKey:@"address_country"];
-    address[@"address_detail"]=[event objectForKey:@"address_detail"];
-    address[@"address_postal_code"]=[event objectForKey:@"address_postal_code"];
-    vc.address=address;
-    [self.navigationController pushViewController:vc animated:NO];
 }
 
 <<<<<<< HEAD
@@ -510,6 +654,11 @@ NSString* state;
         des.image=self.images.image;
     }
 }
+
+- (void)gridMenu:(RNGridMenu *)gridMenu willDismissWithSelectedItem:(RNGridMenuItem *)item atIndex:(NSInteger)itemIndex{
+    [gridMenu dismissAnimated:YES];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

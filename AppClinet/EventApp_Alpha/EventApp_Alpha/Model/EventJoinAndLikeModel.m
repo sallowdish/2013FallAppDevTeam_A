@@ -53,39 +53,52 @@ static  NSMutableArray* LikeList;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"didFailGetRSVPList" object:nil];
     }];
 }
--(void)getLikeList:(NSDictionary*)event{}
--(void)rsvpEvent:(NSDictionary*)event succeed:(SucceeHandleBlock)succeedBlock failed:(FailureHandleBlock)failedBlock{
-    NSString* targetURL=[[[URLConstructModel constructURLHeader] absoluteString] stringByAppendingFormat:@"%@%@",API,@"/eventrsvp/"];
-    
-    NSDictionary* para=@{@"fk_user":[UserModel userResourceURL], @"fk_event":[event valueForKey:@"resource_uri"]};
-    AFHTTPRequestOperationManager* manager=[URLConstructModel authorizedJsonManger];
-    [manager POST:targetURL parameters:para success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            succeedBlock(nil);
-        });
+-(void)getLikeList:(NSDictionary*)event complete:(void (^)(void))completeBlock fail:(void (^)(NSError* error))failBlock{
+    AFHTTPRequestOperationManager* manager=[AFHTTPRequestOperationManager manager];
+    NSString *targetURL=[[[[self class] constructURLHeader] absoluteString] stringByAppendingFormat:@"%@%@%@%@%@",API,@"/eventlike/?",JSONFORMAT,@"&fk_event=",[event valueForKey:@"id"]];
+    [manager GET:targetURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        LikeList=[responseObject valueForKey:@"objects"];
+        completeBlock();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            failedBlock(error);
-        });
+        failBlock(error);
     }];
+}
+
+-(void)rsvpEvent:(NSDictionary*)event succeed:(SucceeHandleBlock)succeedBlock failed:(FailureHandleBlock)failedBlock{
+    if ([UserModel isLogin]) {
+        NSString* targetURL=[[[URLConstructModel constructURLHeader] absoluteString] stringByAppendingFormat:@"%@%@",API,@"/eventrsvp/"];
+        
+        NSDictionary* para=@{@"fk_user":[UserModel userResourceURL], @"fk_event":[event valueForKey:@"resource_uri"]};
+        AFHTTPRequestOperationManager* manager=[URLConstructModel authorizedJsonManger];
+        [manager POST:targetURL parameters:para success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                succeedBlock(nil);
+            });
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                failedBlock(error);
+            });
+        }];
+
+    }
 }
 -(void)quitEvent:(NSDictionary*)event :(EventDetailViewController*)sender{}
 -(void)likeEvent:(NSDictionary*)event succeed:(SucceeHandleBlock)succeedBlock failed:(FailureHandleBlock)failedBlock{
-    NSString* targetURL=[[[URLConstructModel constructURLHeader] absoluteString] stringByAppendingFormat:@"%@%@",API,@"/eventlike/"];
-    
-    NSDictionary* para=@{@"fk_user":[UserModel userResourceURL], @"fk_event":[event valueForKey:@"resource_uri"]};
-    AFHTTPRequestOperationManager* manager=[URLConstructModel authorizedJsonManger];
-    [manager POST:targetURL parameters:para success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            succeedBlock(nil);
-        });
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            failedBlock(error);
-        });
-    }];
-
-    
+    if ([UserModel isLogin]) {
+        NSString* targetURL=[[[URLConstructModel constructURLHeader] absoluteString] stringByAppendingFormat:@"%@%@",API,@"/eventlike/"];
+        
+        NSDictionary* para=@{@"fk_user":[UserModel userResourceURL], @"fk_event":[event valueForKey:@"resource_uri"]};
+        AFHTTPRequestOperationManager* manager=[URLConstructModel authorizedJsonManger];
+        [manager POST:targetURL parameters:para success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                succeedBlock(nil);
+            });
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                failedBlock(error);
+            });
+        }];
+    }
 }
 -(void)dislikeEvent:(NSDictionary*)event :(EventDetailViewController*)sender{
 

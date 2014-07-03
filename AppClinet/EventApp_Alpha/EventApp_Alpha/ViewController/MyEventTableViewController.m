@@ -44,7 +44,7 @@ EventListFetchModel* model;
     model=[[EventListFetchModel alloc] init];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchMyEventList) name:@"didFetchEventListWithMode" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailFetchMyEventList) name:@"didFailFetchEventListWithMode" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailFetchMyEventList:) name:@"didFailFetchEventListWithMode" object:nil];
 
     [model fetchEventListWithUser];
 }
@@ -57,10 +57,10 @@ EventListFetchModel* model;
 
 }
 
--(void)didFailFetchMyEventList{
-    [ProgressHUD showError:@"Network issue, plz try later."];
+-(void)didFailFetchMyEventList:(NSNotification*)notif{
+    NSError* error=[notif object];
+    [ProgressHUD showError:[error localizedDescription]];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-
 }
 
 - (void)didReceiveMemoryWarning

@@ -59,7 +59,7 @@ bool isUpdated,isBasedOnTime;
     
     
     //get the latest event list online
-    
+
     model=[[EventListFetchModel alloc] init];
     [model fetchEventListFromFile];
     eventList=[EventListFetchModel eventsList];
@@ -92,6 +92,11 @@ bool isUpdated,isBasedOnTime;
     self.tabBarController.tabBar.hidden=NO;
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self refreshEventList:self];
+}
+
 
 -(void)fetchNewDataFromServer:(NSString*)mode{
     [ProgressHUD show:@"Loading new events list..."];
@@ -115,9 +120,9 @@ bool isUpdated,isBasedOnTime;
 }
 
 -(void)didFailFetchNewDataFromServer:(id)notif{
-    [ProgressHUD showError:@"Network issue, plz try later."];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
+    NSError* error=[notif object];
+    [ProgressHUD showError:[error localizedDescription]];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];}
 
 
 -(void) removeFromNSNotificationCenter{
@@ -157,12 +162,6 @@ bool isUpdated,isBasedOnTime;
     [self.refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:2];
     //HUD dismiss
     [self.refreshControl performSelector:@selector(setAttributedTitle:) withObject:[[NSAttributedString alloc]initWithString:@"再多一點點...(灬ºωº灬)"] afterDelay:2.2];
-//    [[ProgressHUD class] performSelector:@selector(showSuccess:) withObject:@"Loading Finish" afterDelay:3];
-//    [self.createButton performSelector:@selector(setEnabled:) withObject:[NSNumber numberWithBool:YES] afterDelay:5];
-    
-    
-    //    [self performSelector:@selector(showHubwithMessage:) withObject:@"Loading Finsih" afterDelay:2];
-//    [self performSelector:@selector(dismissHub) withObject:nil afterDelay:3];
 }
 
 - (void)didReceiveMemoryWarning
@@ -212,12 +211,14 @@ bool isUpdated,isBasedOnTime;
 
 -(IBAction)loadNextPage:(id)sender{
     [ProgressHUD show:@"Loading..."];
-    dispatch_queue_t queue;
-//    dispatch_group_t group;
-    queue = dispatch_queue_create("com.EventApp.EventListFetchModel.Model", DISPATCH_QUEUE_SERIAL);
-    dispatch_async(queue, ^{
-        [model fetchNextPage:self];
-    });
+
+    [model fetchNextPage:nil complete:^{
+        eventList=[EventListFetchModel eventsList];
+        [self.tableView reloadData];
+        [ProgressHUD showSuccess:@"Loading Finish."];
+    } fail:^(NSError *error) {
+        [ProgressHUD showError:[error localizedDescription]];
+    }];
 }
 
 -(IBAction)segementationButtonPressed:(id)sender{
@@ -278,9 +279,10 @@ bool isUpdated,isBasedOnTime;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else{
-        [UserModel popupLoginViewToViewController:self];
+        LoginViewController* loginView=[[self.navigationController storyboard] instantiateViewControllerWithIdentifier:@"LoginPage"];
+//        [self.navigationController pushViewController:loginView animated:YES];
+    [self presentViewController:loginView animated:YES completion:nil];
     }
-    
 }
 /*
 // Override to support conditional editing of the table view.

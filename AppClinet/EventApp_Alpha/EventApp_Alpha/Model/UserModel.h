@@ -18,10 +18,9 @@
 +(NSDictionary*)current_user;
 +(BOOL)isLogin;
 
-
++(void)popupLoginViewToViewController:(UIViewController*) viewController complete:(void (^)(LoginViewController* loginview))completeBlock;
 
 +(void)getProfileImageWithUser:(NSDictionary*)user Sender:(UIImageView*)sender;
-+(void)popupLoginViewToViewController:(UIViewController*) viewController;
 
 +(void)getUserInfoofID:(NSInteger)userId complete:(void (^)(NSDictionary* userInfo))completeBlcok fail:(void(^)(NSError *error))failBlock;
 

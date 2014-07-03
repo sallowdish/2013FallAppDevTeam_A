@@ -13,8 +13,8 @@
 >>>>>>> Developing-Base-on-WS
 //#import "WebServiceCommunicationModel.h"
 
-#define defaultLogin 1
-#define betaTestLoadUberSDK 0
+#define defaultLogin 0
+#define betaTestLoadUberSDK 1
 
 @implementation AppDelegate
 

@@ -20,7 +20,8 @@ typedef void (^SucceeHandleBlock)(id message);
 -(void)likeEvent:(NSDictionary*)event succeed:(SucceeHandleBlock)succeedBlock failed:(FailureHandleBlock)failedBlock;
 -(void)dislikeEvent:(NSDictionary*)event :(EventDetailViewController*)sender;
 -(void)getRSVPList:(NSDictionary*)event;
--(void)getLikeList:(NSDictionary*)event;
+-(void)getLikeList:(NSDictionary*)event complete:(void (^)(void))completeBlock fail:(void (^)(NSError* error))failBlock;
+
 
 -(BOOL)isCurrentUserinRSVPList;
 -(BOOL)isCurrentUserinLikeList;
