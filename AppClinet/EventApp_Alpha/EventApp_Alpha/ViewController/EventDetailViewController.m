@@ -174,7 +174,7 @@ NSString* state;
     
     NSString *iOSVersion = [[UIDevice currentDevice] systemVersion];
     
-    NSString *model = [[UIDevice currentDevice] model];
+    NSString *modelNumber = [[UIDevice currentDevice] model];
     
     MFMailComposeViewController* mailComposer=[[MFMailComposeViewController alloc] init];
     mailComposer.mailComposeDelegate = self;
@@ -183,7 +183,7 @@ NSString* state;
     
     [mailComposer setSubject:[NSString stringWithFormat: @"[Report] %@ V%@ (build %@) Support",appDisplayName,majorVersion,minorVersion]];
     
-    NSString *supportText = [NSString stringWithFormat:@"Device: %@\niOS Version:%@\n",model,iOSVersion];
+    NSString *supportText = [NSString stringWithFormat:@"Device: %@\niOS Version:%@\n",modelNumber,iOSVersion];
     
     NSString *collectedInfo=[NSString stringWithFormat:@"EventID:%@, Event_Poster_ID=%@",[event valueForKey:@"id"],[event valueForKey:@"fk_event_poster_user_id"]];
     

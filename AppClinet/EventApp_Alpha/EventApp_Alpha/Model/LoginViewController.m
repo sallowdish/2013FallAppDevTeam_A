@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *user_profile_image;
 @property (weak, nonatomic) IBOutlet UIButton *signupButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 @end
 
@@ -61,10 +62,13 @@ UserModel* model;
     [self.view addGestureRecognizer:dismissKeyBoardTap];
     
     //Visual Setup
-    self.scrollview.contentSize=CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)*1.0);
-    [self.scrollview removeFromSuperview];
-    self.scrollview.frame=CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
-    [self.view addSubview:self.scrollview];
+    self.scrollview.hidden=YES;
+    CGRect containerFrame=self.containerView.frame;
+    self.scrollview.contentSize=CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.containerView.frame)*1.1);
+//    [self.scrollview removeFromSuperview];
+    self.scrollview.frame=CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds));
+    self.containerView.frame=containerFrame;
+    self.scrollview.hidden=NO;
     
     NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
     self.forgetLabel.attributedText = [[NSAttributedString alloc] initWithString:@"Forget your password?" attributes:underlineAttribute];
