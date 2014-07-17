@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  EventApp_Alpha_1.1
+//  EventApp_Alpha_1.04
 //
 //  Created by Rui Zheng on 2013-10-10.
 //  Copyright (c) 2013 2013_Fall_Dev_Team_A. All rights reserved.
@@ -11,7 +11,7 @@
 //#import "WebServiceCommunicationModel.h"
 
 #define defaultLogin 0
-#define betaTestLoadUberSDK 1
+#define betaTestLoadUberSDK 0
 
 @implementation AppDelegate
 
