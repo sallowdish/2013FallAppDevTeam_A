@@ -40,6 +40,13 @@ bool isUpdated,isBasedOnTime;
     return self;
 }
 
+-(void)awakeFromNib{
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0x00/255 green:0xbf/255 blue:0xff/255 alpha:0.5]];
+    [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:0x00/255 green:0xbf/255 blue:0xff/255 alpha:0.5]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+
+}
 
 - (void)viewDidLoad
 {
@@ -267,8 +274,8 @@ bool isUpdated,isBasedOnTime;
     }
     else{
         LoginViewController* loginView=[[self.navigationController storyboard] instantiateViewControllerWithIdentifier:@"LoginPage"];
-//        [self.navigationController pushViewController:loginView animated:YES];
-    [self presentViewController:loginView animated:YES completion:nil];
+        [self.navigationController pushViewController:loginView animated:YES];
+//    [self presentViewController:loginView animated:YES completion:nil];
     }
 }
 /*

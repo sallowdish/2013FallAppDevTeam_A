@@ -223,8 +223,8 @@ bool isUpdated;
     }
     else{
         LoginViewController* loginView=[[self.navigationController storyboard] instantiateViewControllerWithIdentifier:@"LoginPage"];
-//        [self.navigationController pushViewController:loginView animated:YES];
-        [self presentViewController:loginView animated:YES completion:nil];
+        [self.navigationController pushViewController:loginView animated:YES];
+//        [self presentViewController:loginView animated:YES completion:nil];
     }
     
 }

@@ -341,7 +341,7 @@ NSString* state;
     }else{
         LoginViewController* loginView=[[self.navigationController storyboard] instantiateViewControllerWithIdentifier:@"LoginPage"];
 //        [self.navigationController pushViewController:loginView animated:YES];
-        [self presentViewController:loginView animated:YES completion:nil];
+        [self.navigationController pushViewController:loginView animated:YES];
 //        [UserModel popupLoginViewToViewController:self complete:^(LoginViewController *loginview) {
 //            [self.navigationController pushViewController:loginview animated:YES];
 //        }];
@@ -372,8 +372,8 @@ NSString* state;
 
     }else{
         LoginViewController* loginView=[[self.navigationController storyboard] instantiateViewControllerWithIdentifier:@"LoginPage"];
-//        [self.navigationController pushViewController:loginView animated:YES];
-        [self presentViewController:loginView animated:YES completion:nil];
+        [self.navigationController pushViewController:loginView animated:YES];
+//        [self presentViewController:loginView animated:YES completion:nil];
     }
 }
 
