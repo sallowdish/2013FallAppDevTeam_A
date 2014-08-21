@@ -31,4 +31,7 @@
 #define PUBLICAUTHENUSER @"tester"
 #define PUBLICAUTHENPASSWORD @"1"
 
+typedef void (^FailureHandleBlock)(id error);
+typedef void (^SucceeHandleBlock)(id message);
+
 #endif

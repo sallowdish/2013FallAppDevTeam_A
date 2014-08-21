@@ -17,14 +17,15 @@
                             <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="BKz-Ok-Ywf">
+                                <segmentedControl opaque="NO" alpha="0.49999999999999961" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="BKz-Ok-Ywf">
                                     <rect key="frame" x="20" y="9" width="280" height="29"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <segments>
                                         <segment title="New"/>
                                         <segment title="Hot"/>
                                     </segments>
-                                    <color key="tintColor" red="0.086149804294109344" green="0.6928640604019165" blue="0.99864166975021362" alpha="0.5" colorSpace="calibratedRGB"/>
+                                    <color key="tintColor" red="0.086149804294109344" green="0.6928640604019165" blue="0.99864166975021362" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
                                         <action selector="segementationButtonPressed:" destination="Weq-5w-scL" eventType="valueChanged" id="6r5-bN-9t5"/>
                                     </connections>
@@ -983,6 +984,14 @@
                                                 <rect key="frame" x="10" y="190" width="300" height="400"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
+                                                    <containerView contentMode="scaleToFill" id="NVS-El-cF1" userLabel="CommentContainer">
+                                                        <rect key="frame" x="10" y="125" width="280" height="281"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                        <connections>
+                                                            <segue destination="lVd-40-p6t" kind="embed" identifier="segueToComments" id="4uJ-QF-DI1"/>
+                                                        </connections>
+                                                    </containerView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="4cw-FZ-ilY">
                                                         <rect key="frame" x="10" y="125" width="280" height="281"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1051,12 +1060,13 @@
                         <outlet property="RSVPProfileIconTemplate" destination="Jba-u4-UG9" id="oul-Ep-RXp"/>
                         <outlet property="RSVPProfileStateLabel" destination="dkr-SX-85n" id="acF-Tl-ZxR"/>
                         <outlet property="RSVPSpanArea" destination="VBs-Uo-q3v" id="BZV-8V-4Iv"/>
+                        <outlet property="commentsSpanArea" destination="NVS-El-cF1" id="pKa-3D-ZVK"/>
                         <outlet property="commentsTab" destination="CWx-zO-gz8" id="KZE-0A-0E1"/>
                         <outlet property="containerView" destination="YZQ-rO-Ab1" id="UdZ-0s-pN5"/>
                         <outlet property="dateTime" destination="dXw-M4-vBq" id="7i1-Ey-qPG"/>
                         <outlet property="description" destination="4cw-FZ-ilY" id="9XV-eF-IPn"/>
+                        <outlet property="descriptionSpanArea" destination="4cw-FZ-ilY" id="zSZ-ps-Hpu"/>
                         <outlet property="descriptionTab" destination="Zwh-zs-7Oz" id="LJj-XU-9q8"/>
-                        <outlet property="detailSpanArea" destination="Afz-yz-1my" id="OeN-9m-Pbv"/>
                         <outlet property="eventName" destination="mzh-6e-b07" id="FX9-6k-pdS"/>
                         <outlet property="hoster" destination="vi5-jL-Whu" id="Ijq-9u-Nmg"/>
                         <outlet property="images" destination="PpP-PB-3Ba" id="oyn-DK-6BP"/>
@@ -1068,6 +1078,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hD-ke-25h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1696" y="-654"/>
+        </scene>
+        <!--Comments-->
+        <scene sceneID="sUU-ag-cyz">
+            <objects>
+                <tableViewController id="lVd-40-p6t" userLabel="Comments" customClass="CommentsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="xVt-SL-ARE">
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="281"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommentCell" rowHeight="50" id="88C-4e-jn1" customClass="CommentsCellTableViewCell">
+                                <rect key="frame" x="0.0" y="22" width="280" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="88C-4e-jn1" id="0AE-nn-Fgu">
+                                    <rect key="frame" x="0.0" y="0.0" width="280" height="49"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IlF-d6-Ltm">
+                                            <rect key="frame" x="75" y="15" width="185" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="JHm-PH-YjB">
+                                            <rect key="frame" x="20" y="5" width="40" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="commentLabel" destination="IlF-d6-Ltm" id="fIP-yV-ygp"/>
+                                    <outlet property="commentPosterProfile" destination="JHm-PH-YjB" id="Eeh-u9-wfY"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="lVd-40-p6t" id="xe7-qX-zaj"/>
+                            <outlet property="delegate" destination="lVd-40-p6t" id="TGT-IQ-hqC"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="anf-5f-P4Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2260" y="-556"/>
         </scene>
         <!--Full Screen Image Controller-->
         <scene sceneID="JaW-Vn-806">
@@ -1100,7 +1154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fo3-xt-dcA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2437" y="-674"/>
+            <point key="canvasLocation" x="1696" y="34"/>
         </scene>
         <!--Navigation Controller - EventList-->
         <scene sceneID="NLS-3Z-Hsz">

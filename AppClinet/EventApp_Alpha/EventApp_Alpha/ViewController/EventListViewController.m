@@ -41,8 +41,8 @@ bool isUpdated,isBasedOnTime;
 }
 
 -(void)awakeFromNib{
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0x00/255 green:0xbf/255 blue:0xff/255 alpha:0.5]];
-    [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:0x00/255 green:0xbf/255 blue:0xff/255 alpha:0.5]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithHue:(float)200/360 saturation:0.91 brightness:1 alpha:0.5]];
+    [[UITabBar appearance] setBarTintColor:[UIColor colorWithHue:(float)200/360 saturation:0.91 brightness:1 alpha:0.5]];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
 

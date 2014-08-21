@@ -18,8 +18,10 @@
 #import "AddressInfoPageViewController.h"
 #import "ImageModel.h"
 #import "UIImageView+AFNetworking.h"
+#import "AFNetworking.h"
 #import "RNGridMenu.h"
 #import <MessageUI/MessageUI.h>
+#import "CommentsTableViewController.h"
 
 #undef MAXTAG
 #define MAXTAG 104
@@ -27,6 +29,7 @@
 @interface EventDetailViewController ()<MFMailComposeViewControllerDelegate,RNGridMenuDelegate>{
     
 }
+
 @property (strong,nonatomic) NSDictionary* event;
 @property (strong,nonatomic) NSMutableArray* RSVPList;
 @property (strong,nonatomic) NSMutableArray* likeList;
@@ -35,12 +38,17 @@
 @property (weak, nonatomic) IBOutlet UIView *RSVPSpanArea;
 @property (strong, nonatomic) IBOutlet UIImageView *RSVPProfileIconTemplate;
 @property (strong, nonatomic) IBOutlet UILabel *RSVPProfileStateLabel;
+
+//Comment&Description tab
 @property (weak, nonatomic) IBOutlet UIButton *descriptionTab;
 @property (weak, nonatomic) IBOutlet UIButton *commentsTab;
-@property (weak, nonatomic) IBOutlet UIView *detailSpanArea;
-@property UITextField* noComments;
+@property (weak, nonatomic) IBOutlet UIView *descriptionSpanArea;
+@property (weak, nonatomic) IBOutlet UIView *commentsSpanArea;
 @property (nonatomic) IBOutlet UIButton *RSVPbutton;
 @property (nonatomic) IBOutlet UIBarButtonItem *moreOptionButton;
+
+
+
 
 @property EventFetchModel* model;
 @property EventJoinAndLikeModel* jlmodel;
@@ -110,9 +118,15 @@ NSString* state;
     self.images.userInteractionEnabled=YES;
     [self.images addGestureRecognizer:tap];
 
-//    self.moreOptionButton=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showMoreOptionMenu)];
+
+    //add the more button to Nav bar
     self.moreOptionButton=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"tools.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(showMoreOptionMenu)];
     self.navigationItem.rightBarButtonItem=self.moreOptionButton;
+    
+    
+    //Default show description, hide comment
+    self.descriptionSpanArea.hidden=NO;
+    self.commentsSpanArea.hidden=YES;
 
 }
 
@@ -235,6 +249,10 @@ NSString* state;
 //    [ProgressHUD dismiss];
     if (!state) {
         [ProgressHUD showSuccess:@"Loading finish."];
+        NSArray* childVCs=self.childViewControllers;
+        CommentsTableViewController* vc=childVCs[0];
+        vc.comments=event[@"event_comment"];
+        [vc.tableView reloadData];
     }else if ([state isEqualToString:@"RSVP"]){
         [ProgressHUD showSuccess:@"RSVP this event succeed."];
     }else{
@@ -437,6 +455,8 @@ NSString* state;
 
 
 
+//Comments & Description area reaction
+
 -(IBAction)commentTabTapped:(id)sender{
     
 
@@ -445,8 +465,8 @@ NSString* state;
     self.descriptionTab.backgroundColor=[UIColor colorWithRed:0xCC/255.0 green:0xCC/255.0 blue:0xFF/255.0 alpha:1];
 //    self.descriptionTab.layer.cornerRadius=3;
     self.commentsTab.backgroundColor=[UIColor clearColor];
-    self.description.text=@"Comments feature will be added in next reversion.";
-    
+    self.descriptionSpanArea.hidden=YES;
+    self.commentsSpanArea.hidden=NO;
     //disable self&enable the other one
     self.commentsTab.enabled=NO;
     self.descriptionTab.enabled=YES;
@@ -462,10 +482,18 @@ NSString* state;
     }else{
         self.description.text=description;
     }
+    
+    self.commentsSpanArea.hidden=YES;
+    self.descriptionSpanArea.hidden=NO;
     //disable self&enable the other one
     self.descriptionTab.enabled=NO;
     self.commentsTab.enabled=YES;
 }
+
+
+
+
+//Floating Buttons for Like and RSVP
 
 -(void)drawRSVPnLikeFloatButton{
     CGRect frame=CGRectMake([[UIScreen mainScreen] bounds].size.width/2,[[UIScreen mainScreen] bounds].size.height-self.tabBarController.tabBar.frame.size.height, 100, self.tabBarController.tabBar.frame.size.height);
@@ -484,12 +512,17 @@ NSString* state;
     self.likeButton=likeButton;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sende
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"toFullScreen"]) {
         FullScreenImageController* des=(FullScreenImageController*)segue.destinationViewController;
         des.image=self.images.image;
     }
+    else if ([segue.identifier isEqualToString:@"segueToComments"]) {
+//        CommentsTableViewController* vc=(CommentsTableViewController*)[segue destinationViewController];
+//        vc.comments=event[@"event_comment"];
+    }
+
 }
 
 - (void)gridMenu:(RNGridMenu *)gridMenu willDismissWithSelectedItem:(RNGridMenuItem *)item atIndex:(NSInteger)itemIndex{
