@@ -9,8 +9,10 @@
 #import "CommentsSpanArea.h"
 #import "CommentsTableViewController.h"
 #import "NewCommentTableViewCell.h"
+#import "UserModel.h"
+#import "ProgressHUD.h"
 
-@interface CommentsSpanArea ()
+@interface CommentsSpanArea ()<UITextFieldDelegate>
 
 @end
 
@@ -42,9 +44,52 @@
 -(void)passCommentsToDisplay{
     CommentsTableViewController* vc=self.childViewControllers[0];
     vc.comments=self.comments;
-    vc.event=self.event;
     [vc.tableView reloadData];
     
+}
+
+
+-(void)insertLocalTable:(NSMutableDictionary*)comment{
+//make up the profile image for local usage
+    comment[@"fk_comment_poster_user_profile_image"]=[UserModel current_user][@"fk_user_image"][@"path"];
+    
+    NSMutableArray *newList=[NSMutableArray arrayWithObject:comment];
+    [newList addObjectsFromArray:self.comments];
+    self.comments=newList;
+
+    CommentsTableViewController* vc=self.childViewControllers[0];
+    vc.comments=self.comments;
+    [vc.tableView reloadData];
+}
+
+-(void)postToServer:(NSDictionary*)comment{
+    AFHTTPRequestOperationManager* mgr=[URLConstructModel authorizedJsonManger];
+    NSString* commentListURL=[NSString stringWithFormat:@"%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,API,@"eventcomment/"];
+    [mgr POST:[NSURL URLWithString:commentListURL] parameters:comment success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [ProgressHUD showSuccess:@"Your comment has been posted."];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [ProgressHUD showError:[NSString stringWithFormat:@"Fail to post new comment, %@",[error localizedDescription]]];
+    }];
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    if (![UserModel isLogin]) {
+        [UserModel popupLoginViewToViewController:self complete:^(UIViewController* vc){
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+    }
+    return YES;
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    NSMutableDictionary* comment=[NSMutableDictionary dictionaryWithDictionary:@{@"comment_detail":textField.text,@"fk_event":self.event[@"resource_uri"],@"fk_comment_poster_user":[UserModel userResourceURL]}];
+    
+    [self insertLocalTable:comment];
+    
+    [self postToServer:comment];
+    return TRUE;
 }
 
 - (void)didReceiveMemoryWarning

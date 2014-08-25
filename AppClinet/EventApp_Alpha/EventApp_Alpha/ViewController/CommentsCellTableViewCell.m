@@ -57,12 +57,18 @@
 
     
     //load data
-    [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,comment[@"fk_comment_poster_user_profile_image"]]]]; placeholderImage:[UIImage imageNamed:@"152_152icon.png"];
+    if (comment[@"fk_comment_poster_user_profile_image"]) {
+        [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,comment[@"fk_comment_poster_user_profile_image"]]]]; placeholderImage:[UIImage imageNamed:@"152_152icon.png"];
+    }else{
+        [imageView setImage:[UIImage imageNamed:@"152_152icon.png"]];
+    }
+    
     
     label.text=comment[@"comment_detail"];
     
     NSInteger numLine=label.text.length*16/185;
     
+    numLine=numLine==0?1:numLine;
     NSInteger height=numLine*COMMENTLABELLINEHEIGHT;
     if (label.frame.size.height!=height) {
         label.frame=CGRectMake(label.frame.origin.x, label.frame.origin.y, label.frame.size.width, height);

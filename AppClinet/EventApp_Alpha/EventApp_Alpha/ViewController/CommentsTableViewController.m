@@ -8,9 +8,8 @@
 
 #import "CommentsTableViewController.h"
 #import "CommentsCellTableViewCell.h"
-#import "UserModel.h"
 
-@interface CommentsTableViewController ()<UITextFieldDelegate>
+@interface CommentsTableViewController ()
 @end
 
 @implementation CommentsTableViewController
@@ -81,27 +80,7 @@
     return cell;
 }
 
--(void)insertLocalTable:(NSDictionary*)comment{
-    [self.tableView reloadData];
-    
-}
 
--(void)postToServer:(NSDictionary*)comment{
-    
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [textField resignFirstResponder];
-    NSDictionary* comment=@{@"comment_detail":textField.text,@"fk_event":self.event,@"fk_comment_poster_user":[UserModel username]};
-    NSMutableArray *newList=[NSMutableArray arrayWithObject:comment];
-    [newList addObjectsFromArray:self.comments];
-    self.comments=newList;
-    
-    [self insertLocalTable:comment];
-    
-    [self postToServer:comment];
-    return TRUE;
-}
 
 /*
 // Override to support conditional editing of the table view.

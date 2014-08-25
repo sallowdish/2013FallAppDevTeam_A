@@ -10,5 +10,4 @@
 
 @interface CommentsTableViewController : UITableViewController
 @property (nonatomic,strong)NSArray* comments;
-@property (weak,nonatomic) NSDictionary* event;
 @end
