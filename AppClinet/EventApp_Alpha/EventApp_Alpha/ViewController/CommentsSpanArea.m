@@ -44,6 +44,7 @@
 -(void)passCommentsToDisplay{
     CommentsTableViewController* vc=self.childViewControllers[0];
     vc.comments=self.comments;
+    [self.tableView reloadData];
     [vc.tableView reloadData];
     
 }
@@ -92,6 +93,17 @@
     [self postToServer:comment];
     return TRUE;
 }
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"%ld--%ld",(long)indexPath.section,(long)indexPath.row);
+    if (indexPath.row==0) {
+        return 60*self.comments.count;
+    }
+    else{
+        return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {

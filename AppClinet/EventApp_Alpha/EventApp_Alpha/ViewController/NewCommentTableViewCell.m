@@ -7,7 +7,8 @@
 //
 
 #import "NewCommentTableViewCell.h"
-#import "AFHTTPRequestOperationManager.h"
+#import "UIImageView+AFNetworking.h"
+#import "UserModel.h"
 
 @interface NewCommentTableViewCell(){
 }
@@ -30,6 +31,10 @@
     // Initialization code
     self.myProfile.layer.cornerRadius=self.myProfile.frame.size.height/2;
     self.myProfile.layer.masksToBounds=YES;
+    
+    if ([UserModel isLogin]) {
+        <#statements#>
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

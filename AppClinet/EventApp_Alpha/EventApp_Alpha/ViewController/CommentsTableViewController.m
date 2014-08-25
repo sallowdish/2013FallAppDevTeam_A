@@ -34,6 +34,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.delegate=self;
 }
 
 - (void)didReceiveMemoryWarning
