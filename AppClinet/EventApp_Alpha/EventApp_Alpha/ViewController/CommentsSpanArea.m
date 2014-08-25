@@ -64,8 +64,9 @@
 
 -(void)postToServer:(NSDictionary*)comment{
     AFHTTPRequestOperationManager* mgr=[URLConstructModel authorizedJsonManger];
-    NSString* commentListURL=[NSString stringWithFormat:@"%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,API,@"eventcomment/"];
-    [mgr POST:[NSURL URLWithString:commentListURL] parameters:comment success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSString* commentListURL=[NSString stringWithFormat:@"%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,API,@"/eventcomment/?format=json"];
+    
+    [mgr POST:commentListURL parameters:comment success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [ProgressHUD showSuccess:@"Your comment has been posted."];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [ProgressHUD showError:[NSString stringWithFormat:@"Fail to post new comment, %@",[error localizedDescription]]];
