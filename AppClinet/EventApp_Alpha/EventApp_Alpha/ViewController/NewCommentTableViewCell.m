@@ -33,7 +33,9 @@
     self.myProfile.layer.masksToBounds=YES;
     
     if ([UserModel isLogin]) {
-        <#statements#>
+        NSString* profileImagePath=[UserModel current_user][@"fk_user_image"][@"path"];
+        NSString* fullPath=[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,profileImagePath];
+        [self.myProfile setImageWithURL:[NSURL URLWithString:fullPath] placeholderImage:[UIImage imageNamed:@"152_152icon.png"]];
     }
 }
 
