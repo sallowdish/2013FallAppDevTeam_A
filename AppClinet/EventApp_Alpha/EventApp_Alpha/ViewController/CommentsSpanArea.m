@@ -1,19 +1,20 @@
 //
-//  CommentsTableViewController.m
+//  CommentsSpanArea.m
 //  EventApp_Alpha
 //
-//  Created by Rui Zheng on 2014-08-19.
+//  Created by Rui Zheng on 2014-08-22.
 //  Copyright (c) 2014 2013_Fall_Dev_Team_A. All rights reserved.
 //
 
+#import "CommentsSpanArea.h"
 #import "CommentsTableViewController.h"
-#import "CommentsCellTableViewCell.h"
-#import "UserModel.h"
+#import "NewCommentTableViewCell.h"
 
-@interface CommentsTableViewController ()<UITextFieldDelegate>
+@interface CommentsSpanArea ()
+
 @end
 
-@implementation CommentsTableViewController
+@implementation CommentsSpanArea
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -33,8 +34,17 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
+    
+}
+
+-(void)passCommentsToDisplay{
+    CommentsTableViewController* vc=self.childViewControllers[0];
+    vc.comments=self.comments;
+    vc.event=self.event;
+    [vc.tableView reloadData];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,65 +53,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return [self.comments count];
-}
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [self prepareCommentCell:self.comments[indexPath.row]];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSDictionary* comment=self.comments[indexPath.row];
-    NSString* commentDetail=comment[@"comment_detail"];
-    NSInteger numLine=commentDetail.length*16/185;
-    CGFloat height=50+15*numLine;
-    return height;
-}
-
--(UITableViewCell*)prepareCommentCell:(NSDictionary*)comment{
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"CommentCell" ];
-    
-    [(CommentsCellTableViewCell*)cell fillCommentContent:comment];
-    
-    return cell;
-}
-
--(void)insertLocalTable:(NSDictionary*)comment{
-    [self.tableView reloadData];
-    
-}
-
--(void)postToServer:(NSDictionary*)comment{
-    
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [textField resignFirstResponder];
-    NSDictionary* comment=@{@"comment_detail":textField.text,@"fk_event":self.event,@"fk_comment_poster_user":[UserModel username]};
-    NSMutableArray *newList=[NSMutableArray arrayWithObject:comment];
-    [newList addObjectsFromArray:self.comments];
-    self.comments=newList;
-    
-    [self insertLocalTable:comment];
-    
-    [self postToServer:comment];
-    return TRUE;
-}
 
 /*
 // Override to support conditional editing of the table view.

@@ -850,11 +850,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" id="3hS-ke-OIA">
-                                <rect key="frame" x="0.0" y="65" width="320" height="600"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="800"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <subviews>
                                     <view tag="99" contentMode="scaleToFill" id="YZQ-rO-Ab1" userLabel="Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="598"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="798"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="pXL-20-qbC" userLabel="Top">
@@ -981,19 +981,19 @@
                                                 </subviews>
                                             </view>
                                             <view tag="103" contentMode="scaleToFill" id="Afz-yz-1my" userLabel="Detail">
-                                                <rect key="frame" x="10" y="190" width="300" height="400"/>
+                                                <rect key="frame" x="10" y="190" width="300" height="600"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <containerView contentMode="scaleToFill" id="NVS-El-cF1" userLabel="CommentContainer">
-                                                        <rect key="frame" x="10" y="125" width="280" height="281"/>
+                                                        <rect key="frame" x="10" y="125" width="280" height="481"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                         <connections>
-                                                            <segue destination="lVd-40-p6t" kind="embed" identifier="segueToComments" id="4uJ-QF-DI1"/>
+                                                            <segue destination="M35-Qz-A8Z" kind="embed" id="PIr-Dm-Jzl"/>
                                                         </connections>
                                                     </containerView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="4cw-FZ-ilY">
-                                                        <rect key="frame" x="10" y="125" width="280" height="281"/>
+                                                        <rect key="frame" x="10" y="125" width="280" height="481"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1084,7 +1084,7 @@
             <objects>
                 <tableViewController id="lVd-40-p6t" userLabel="Comments" customClass="CommentsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="xVt-SL-ARE">
-                        <rect key="frame" x="0.0" y="0.0" width="280" height="281"/>
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="299"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1121,7 +1121,77 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="anf-5f-P4Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2260" y="-556"/>
+            <point key="canvasLocation" x="2588" y="-654"/>
+        </scene>
+        <!--Comments Span Area-->
+        <scene sceneID="GJ0-dR-Pmh">
+            <objects>
+                <tableViewController id="M35-Qz-A8Z" customClass="CommentsSpanArea" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="OfZ-sS-diA">
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="481"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection headerTitle="" id="kJa-Ca-O2k">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OthersCommentsCell" rowHeight="300" id="3Wk-1g-fxh">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="300"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Wk-1g-fxh" id="vPi-s5-hL1">
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="299"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <containerView contentMode="scaleToFill" id="URW-gV-iWk">
+                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="299"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    <connections>
+                                                        <segue destination="lVd-40-p6t" kind="embed" id="dcM-h2-d5g"/>
+                                                    </connections>
+                                                </containerView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="New Comment" id="vJT-zT-UAo">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyCommentCell" rowHeight="50" id="0ex-ip-fee" customClass="NewCommentTableViewCell">
+                                        <rect key="frame" x="0.0" y="322" width="280" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0ex-ip-fee" id="1Td-8X-d7P">
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="49"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="..." minimumFontSize="17" id="ac2-DI-T2N">
+                                                    <rect key="frame" x="55" y="10" width="205" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="152_152icon.png" id="uCf-96-1bL">
+                                                    <rect key="frame" x="7" y="5" width="40" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="myComment" destination="ac2-DI-T2N" id="P40-eC-IFB"/>
+                                            <outlet property="myProfile" destination="uCf-96-1bL" id="Q02-FK-RG5"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="M35-Qz-A8Z" id="r5c-gz-ITE"/>
+                            <outlet property="delegate" destination="M35-Qz-A8Z" id="lAu-vd-afU"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oae-ZO-y28" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2167" y="-654"/>
         </scene>
         <!--Full Screen Image Controller-->
         <scene sceneID="JaW-Vn-806">
@@ -2552,6 +2622,7 @@ XX日發佈了XXXX活動
         </scene>
     </scenes>
     <resources>
+        <image name="152_152icon.png" width="153" height="153"/>
         <image name="Blank-Profile-Image.png" width="128" height="128"/>
         <image name="TimeIcon_done.png" width="50" height="50"/>
         <image name="addprofileimage.JPG" width="134" height="133"/>

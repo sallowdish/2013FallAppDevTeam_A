@@ -21,7 +21,7 @@
 #import "AFNetworking.h"
 #import "RNGridMenu.h"
 #import <MessageUI/MessageUI.h>
-#import "CommentsTableViewController.h"
+#import "CommentsSpanArea.h"
 
 #undef MAXTAG
 #define MAXTAG 104
@@ -102,7 +102,7 @@ NSString* state;
 -(void)visualSetup{
     self.scrollView.hidden=YES;
     [self.scrollView setScrollEnabled:YES];
-    float para=[[UIScreen mainScreen] bounds].size.height== 480?1.3:1.16;
+    float para=[[UIScreen mainScreen] bounds].size.height== 480?1.52:1.36;
     CGSize contentsize=CGSizeMake(320,self.containerView.frame.size.height*para+self.navigationController.navigationBar.frame.size.height);
     [self.scrollView setContentSize:contentsize];
     [self cleanUpRSVPSpanArea];
@@ -250,9 +250,11 @@ NSString* state;
     if (!state) {
         [ProgressHUD showSuccess:@"Loading finish."];
         NSArray* childVCs=self.childViewControllers;
-        CommentsTableViewController* vc=childVCs[0];
+        CommentsSpanArea* vc=childVCs[0];
         vc.comments=event[@"event_comment"];
-        [vc.tableView reloadData];
+        vc.event=self.event;
+        [vc passCommentsToDisplay];
+        
     }else if ([state isEqualToString:@"RSVP"]){
         [ProgressHUD showSuccess:@"RSVP this event succeed."];
     }else{
@@ -535,5 +537,12 @@ NSString* state;
     // Dispose of any resources that can be recreated.
 }
 
-
+//-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+//    return 1;
+//}
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    return cell;
+//}
 @end

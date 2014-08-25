@@ -42,6 +42,8 @@
 		712A2C6B1884FBBF00BF3AC6 /* RecommandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C6A1884FBBF00BF3AC6 /* RecommandViewController.m */; };
 		714F545719A42B4400CA08F4 /* CommentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 714F545619A42B4400CA08F4 /* CommentsTableViewController.m */; };
 		714F545D19A4534200CA08F4 /* CommentsCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 714F545C19A4534200CA08F4 /* CommentsCellTableViewCell.m */; };
+		714F546319A8108F00CA08F4 /* CommentsSpanArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 714F546219A8108F00CA08F4 /* CommentsSpanArea.m */; };
+		714F546719A81D3500CA08F4 /* NewCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 714F546619A81D3500CA08F4 /* NewCommentTableViewCell.m */; };
 		7185DF9618B9609A00C3DE90 /* EventPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7185DF9518B9609A00C3DE90 /* EventPostModel.m */; };
 		7185DF9B18B9AF4F00C3DE90 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7185DF9818B9AF4F00C3DE90 /* ProgressHUD.bundle */; };
 		7185DF9C18B9AF4F00C3DE90 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7185DF9A18B9AF4F00C3DE90 /* ProgressHUD.m */; };
@@ -222,6 +224,10 @@
 		714F545619A42B4400CA08F4 /* CommentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsTableViewController.m; path = ViewController/CommentsTableViewController.m; sourceTree = "<group>"; };
 		714F545B19A4534200CA08F4 /* CommentsCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsCellTableViewCell.h; path = ViewController/CommentsCellTableViewCell.h; sourceTree = "<group>"; };
 		714F545C19A4534200CA08F4 /* CommentsCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsCellTableViewCell.m; path = ViewController/CommentsCellTableViewCell.m; sourceTree = "<group>"; };
+		714F546119A8108F00CA08F4 /* CommentsSpanArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsSpanArea.h; path = ViewController/CommentsSpanArea.h; sourceTree = "<group>"; };
+		714F546219A8108F00CA08F4 /* CommentsSpanArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsSpanArea.m; path = ViewController/CommentsSpanArea.m; sourceTree = "<group>"; };
+		714F546519A81D3500CA08F4 /* NewCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewCommentTableViewCell.h; path = ViewController/NewCommentTableViewCell.h; sourceTree = "<group>"; };
+		714F546619A81D3500CA08F4 /* NewCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewCommentTableViewCell.m; path = ViewController/NewCommentTableViewCell.m; sourceTree = "<group>"; };
 		7185DF9418B9609A00C3DE90 /* EventPostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventPostModel.h; path = Model/EventPostModel.h; sourceTree = "<group>"; };
 		7185DF9518B9609A00C3DE90 /* EventPostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventPostModel.m; path = Model/EventPostModel.m; sourceTree = "<group>"; };
 		7185DF9818B9AF4F00C3DE90 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
@@ -471,6 +477,17 @@
 			name = CustomizedUI;
 			sourceTree = "<group>";
 		};
+		714F546419A81CB400CA08F4 /* EventComment */ = {
+			isa = PBXGroup;
+			children = (
+				714F546119A8108F00CA08F4 /* CommentsSpanArea.h */,
+				714F546219A8108F00CA08F4 /* CommentsSpanArea.m */,
+				714F545519A42B4400CA08F4 /* CommentsTableViewController.h */,
+				714F545619A42B4400CA08F4 /* CommentsTableViewController.m */,
+			);
+			name = EventComment;
+			sourceTree = "<group>";
+		};
 		7185DF9718B9AF4F00C3DE90 /* ProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -491,6 +508,8 @@
 				718C9010185DA0A300D86EA1 /* TemplateTableCell.m */,
 				719AF7D718EF8A3300075313 /* SegmentControllerCell.h */,
 				719AF7D818EF8A3300075313 /* SegmentControllerCell.m */,
+				714F546519A81D3500CA08F4 /* NewCommentTableViewCell.h */,
+				714F546619A81D3500CA08F4 /* NewCommentTableViewCell.m */,
 			);
 			name = CustomizeCell;
 			sourceTree = "<group>";
@@ -809,6 +828,8 @@
 		71F8A914183C7AB8001AEF6A /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				718C900E185DA03E00D86EA1 /* CustomizeCell */,
+				714F546419A81CB400CA08F4 /* EventComment */,
 				7103FE9418A9C16B0047EFAD /* EventRecommend */,
 				71F8A919183C7BA5001AEF6A /* EventCreating */,
 				71F8A916183C7AEA001AEF6A /* EventDetail */,
@@ -820,7 +841,6 @@
 		71F8A915183C7AD5001AEF6A /* EventList */ = {
 			isa = PBXGroup;
 			children = (
-				718C900E185DA03E00D86EA1 /* CustomizeCell */,
 				71B763BF1807830A00717D67 /* EventListViewController.h */,
 				71B763C01807830A00717D67 /* EventListViewController.m */,
 				719AF7D418EF7BAA00075313 /* EventListHotViewController.h */,
@@ -832,8 +852,6 @@
 		71F8A916183C7AEA001AEF6A /* EventDetail */ = {
 			isa = PBXGroup;
 			children = (
-				714F545519A42B4400CA08F4 /* CommentsTableViewController.h */,
-				714F545619A42B4400CA08F4 /* CommentsTableViewController.m */,
 				7191C6351808024100E86482 /* EventDetailViewController.h */,
 				7191C6361808024100E86482 /* EventDetailViewController.m */,
 				7103FEA218AAE99E0047EFAD /* FullScreenImageController.h */,
@@ -878,9 +896,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		71F3218617F830D700FFFB95 /* Seeker */ = {
+		71F3218617F830D700FFFB95 /* MegaEvent */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 71F321BC17F830D700FFFB95 /* Build configuration list for PBXNativeTarget "Seeker" */;
+			buildConfigurationList = 71F321BC17F830D700FFFB95 /* Build configuration list for PBXNativeTarget "MegaEvent" */;
 			buildPhases = (
 				134F847A7E2547F7ACF09EEF /* Check Pods Manifest.lock */,
 				71F3218317F830D700FFFB95 /* Sources */,
@@ -892,7 +910,7 @@
 			);
 			dependencies = (
 			);
-			name = Seeker;
+			name = MegaEvent;
 			productName = EventApp_Alpha;
 			productReference = 71F3218717F830D700FFFB95 /* Seeker.app */;
 			productType = "com.apple.product-type.application";
@@ -945,7 +963,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				71F3218617F830D700FFFB95 /* Seeker */,
+				71F3218617F830D700FFFB95 /* MegaEvent */,
 				71F321AA17F830D700FFFB95 /* EventApp_AlphaTests */,
 			);
 		};
@@ -1102,9 +1120,11 @@
 				711DA0CC194EC05F001A4F28 /* UIdataPickerWithDone.m in Sources */,
 				7104A7A01824D1B500EB3AD5 /* EventListFetchModel.m in Sources */,
 				7103FE9A18A9C2820047EFAD /* PageContentViewController.m in Sources */,
+				714F546719A81D3500CA08F4 /* NewCommentTableViewCell.m in Sources */,
 				71974BB41869A618004493DC /* CQMFloatingContentOverlayView.m in Sources */,
 				71974BB71869A618004493DC /* CQMFloatingMaskControl.m in Sources */,
 				7103FE9718A9C1A30047EFAD /* PageViewController.m in Sources */,
+				714F546319A8108F00CA08F4 /* CommentsSpanArea.m in Sources */,
 				7191C63D18080A4E00E86482 /* MainTabViewController.m in Sources */,
 				7191C6371808024100E86482 /* EventDetailViewController.m in Sources */,
 				71F3219B17F830D700FFFB95 /* AppDelegate.m in Sources */,
@@ -1149,7 +1169,7 @@
 /* Begin PBXTargetDependency section */
 		71F321B117F830D700FFFB95 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 71F3218617F830D700FFFB95 /* Seeker */;
+			target = 71F3218617F830D700FFFB95 /* MegaEvent */;
 			targetProxy = 71F321B017F830D700FFFB95 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1352,7 +1372,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		71F321BC17F830D700FFFB95 /* Build configuration list for PBXNativeTarget "Seeker" */ = {
+		71F321BC17F830D700FFFB95 /* Build configuration list for PBXNativeTarget "MegaEvent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				71F321BD17F830D700FFFB95 /* Debug */,
