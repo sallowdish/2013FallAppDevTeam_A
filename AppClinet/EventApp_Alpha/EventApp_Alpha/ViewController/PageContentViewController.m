@@ -91,10 +91,21 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"RecToDetailPushSegue"]) {
         EventDetailViewController* vc=(EventDetailViewController*)segue.destinationViewController;
-        vc.eventID=(NSInteger)self.event[@"id"];
+        [vc setValue:self.event[@"id"] forKey:@"eventID"];
     }else{
         [super prepareForSegue:segue sender:sender];
     }
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden=NO;
+    self.tabBarController.tabBar.hidden=NO;
+    
+    
+    //adjust the position of initial vc
+    self.scrollView.contentInset=UIEdgeInsetsMake(64, 0, 49, 0);
+    self.scrollView.contentOffset=CGPointMake(0, -50);
 }
 
 @end

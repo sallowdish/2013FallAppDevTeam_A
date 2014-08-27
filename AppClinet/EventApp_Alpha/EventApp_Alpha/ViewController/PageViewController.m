@@ -60,9 +60,7 @@
         [self setViewControllers:@[] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     }
     
-    //adjust the position of initial vc
-    ((PageContentViewController*)initialViewController).scrollView.contentInset=UIEdgeInsetsMake(64, 0, 49, 0);
-    ((PageContentViewController*)initialViewController).scrollView.contentOffset=CGPointMake(0, -50);
+
     
     [ProgressHUD dismiss];
 
