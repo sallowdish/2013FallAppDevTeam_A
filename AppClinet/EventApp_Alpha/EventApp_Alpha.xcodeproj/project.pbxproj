@@ -503,7 +503,7 @@
 		71EE867718784D63007FD900 /* profileImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileImage.png; sourceTree = "<group>"; };
 		71EE8683187854B6007FD900 /* ProfilePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfilePageViewController.h; path = ViewController/ProfilePageViewController.h; sourceTree = "<group>"; };
 		71EE8684187854B6007FD900 /* ProfilePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfilePageViewController.m; path = ViewController/ProfilePageViewController.m; sourceTree = "<group>"; };
-		71F3218717F830D700FFFB95 /* Seeker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Seeker.app; path = MegaEvent.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		71F3218717F830D700FFFB95 /* MegaEvent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MegaEvent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F3218A17F830D700FFFB95 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		71F3218C17F830D700FFFB95 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		71F3218E17F830D700FFFB95 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -921,7 +921,7 @@
 		71F3218817F830D700FFFB95 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				71F3218717F830D700FFFB95 /* Seeker.app */,
+				71F3218717F830D700FFFB95 /* MegaEvent.app */,
 				71F321AB17F830D700FFFB95 /* EventApp_AlphaTests.xctest */,
 				71CA84D119AD859A00904B5D /* MegaEvent copy.app */,
 			);
@@ -1106,7 +1106,7 @@
 			);
 			name = MegaEvent;
 			productName = EventApp_Alpha;
-			productReference = 71F3218717F830D700FFFB95 /* Seeker.app */;
+			productReference = 71F3218717F830D700FFFB95 /* MegaEvent.app */;
 			productType = "com.apple.product-type.application";
 		};
 		71F321AA17F830D700FFFB95 /* EventApp_AlphaTests */ = {
@@ -1743,7 +1743,7 @@
 				INFOPLIST_FILE = "EventApp_Alpha/EventApp_Alpha-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C37A702E-3B95-4C0D-A68F-F0728CAFFDF2";
+				PROVISIONING_PROFILE = "31AA8BF5-1BFD-485D-A4AE-F74FA4C853ED";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

@@ -380,14 +380,14 @@ NSString* state;
 
 -(IBAction)likeEvent{
     if ([UserModel isLogin]) {
-        if ([jlmodel isCurrentUserinRSVPList]){
+        if (![jlmodel isCurrentUserinLikeList]){
             [jlmodel likeEvent:event succeed:^(id message) {
                 [self didLikeEvent];
             } failed:^(id error) {
                 [self didFailLikeEvent:error];
             }];
         }else{
-            [ProgressHUD showError:@"You have RSVPed this event alread."];
+            [ProgressHUD showError:@"You have liked this event alread."];
         }
 
     }else{
