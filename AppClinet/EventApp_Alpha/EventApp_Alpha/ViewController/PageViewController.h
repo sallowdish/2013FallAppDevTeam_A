@@ -9,4 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface PageViewController : UIPageViewController
+@property (strong, nonatomic) NSArray *eventList;
 @end

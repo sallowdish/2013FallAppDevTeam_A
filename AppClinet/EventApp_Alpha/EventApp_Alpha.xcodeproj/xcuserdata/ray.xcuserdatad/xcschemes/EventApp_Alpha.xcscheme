@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "71F3218617F830D700FFFB95"
-               BuildableName = "Seeker.app"
+               BuildableName = "MegaEvent.app"
                BlueprintName = "MegaEvent"
                ReferencedContainer = "container:EventApp_Alpha.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "71F3218617F830D700FFFB95"
-            BuildableName = "Seeker.app"
+            BuildableName = "MegaEvent.app"
             BlueprintName = "MegaEvent"
             ReferencedContainer = "container:EventApp_Alpha.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "71F3218617F830D700FFFB95"
-            BuildableName = "Seeker.app"
+            BuildableName = "MegaEvent.app"
             BlueprintName = "MegaEvent"
             ReferencedContainer = "container:EventApp_Alpha.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "71F3218617F830D700FFFB95"
-            BuildableName = "Seeker.app"
+            BuildableName = "MegaEvent.app"
             BlueprintName = "MegaEvent"
             ReferencedContainer = "container:EventApp_Alpha.xcodeproj">
          </BuildableReference>
