@@ -1,18 +1,18 @@
 //
-//  CommentViewController.m
+//  CommentsTableViewController.m
 //  EventApp_Alpha
 //
-//  Created by Rui Zheng on 2/11/2014.
+//  Created by Rui Zheng on 2014-08-19.
 //  Copyright (c) 2014 2013_Fall_Dev_Team_A. All rights reserved.
 //
 
-#import "CommentViewController.h"
+#import "CommentsTableViewController.h"
+#import "CommentsCellTableViewCell.h"
 
-@interface CommentViewController ()
-
+@interface CommentsTableViewController ()
 @end
 
-@implementation CommentViewController
+@implementation CommentsTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -26,12 +26,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.delegate=self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,25 +47,41 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 10;
+    return [self.comments count];
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"commentCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    return [self prepareCommentCell:self.comments[indexPath.row]];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary* comment=self.comments[indexPath.row];
+    NSString* commentDetail=comment[@"comment_detail"];
+    NSInteger numLine=commentDetail.length*16/185;
+    CGFloat height=50+15*numLine;
+    return height;
+}
+
+-(UITableViewCell*)prepareCommentCell:(NSDictionary*)comment{
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"CommentCell" ];
     
-    // Configure the cell...
+    [(CommentsCellTableViewCell*)cell fillCommentContent:comment];
     
     return cell;
 }
+
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -80,8 +99,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
@@ -106,13 +124,12 @@
 /*
 #pragma mark - Navigation
 
-// In a story board-based application, you will often want to do a little preparation before navigation
+// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-
- */
+*/
 
 @end

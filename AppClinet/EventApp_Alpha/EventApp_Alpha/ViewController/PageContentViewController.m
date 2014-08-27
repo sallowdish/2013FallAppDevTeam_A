@@ -8,6 +8,7 @@
 
 #import "PageContentViewController.h"
 #import "ImageModel.h"
+#import "EventDetailViewController.h"
 
 #define MAXTAG 100
 
@@ -79,6 +80,15 @@
         subview.layer.masksToBounds=YES;
     }
     
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"RecToDetailPushSegue"]) {
+        EventDetailViewController* vc=(EventDetailViewController*)segue.destinationViewController;
+        vc.eventID=(NSInteger)self.event[@"id"];
+    }else{
+        [super prepareForSegue:segue sender:sender];
+    }
 }
 
 @end
