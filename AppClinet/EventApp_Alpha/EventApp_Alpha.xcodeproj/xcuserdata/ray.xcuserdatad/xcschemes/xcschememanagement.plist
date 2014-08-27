@@ -9,9 +9,29 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>MegaEvent copy 2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>MegaEvent copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>71CA839519AD827000904B5D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>71CA843619AD859A00904B5D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>71F3218617F830D700FFFB95</key>
 		<dict>
 			<key>primary</key>
