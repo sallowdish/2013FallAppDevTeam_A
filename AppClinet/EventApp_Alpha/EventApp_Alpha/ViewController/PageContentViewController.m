@@ -14,6 +14,7 @@
 
 @interface PageContentViewController ()
 @property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageController;
 
 @end
 
@@ -35,17 +36,19 @@
 //    UIScrollView* draftScrollView=self.scrollView;
     [self.scrollView removeFromSuperview];
     [self.scrollView setScrollEnabled:YES];
-    NSLog(@"%f",[[UIScreen mainScreen] bounds].size.height);
+    
+//    NSLog(@"%f",[[UIScreen mainScreen] bounds].size.height);
     if ([[UIScreen mainScreen] bounds].size.height==568) {
-        CGSize size=CGSizeMake(self.scrollView.frame.size.width, [[UIScreen mainScreen] bounds].size.height-50);
+        CGSize size=CGSizeMake(self.scrollView.frame.size.width, [[UIScreen mainScreen] bounds].size.height-64-49);
         [self.scrollView setContentSize:size];
     }else{
-        CGSize size=CGSizeMake(self.scrollView.frame.size.width, [[UIScreen mainScreen] bounds].size.height+110);
+        CGSize size=CGSizeMake(self.scrollView.frame.size.width, [[UIScreen mainScreen] bounds].size.height);
         [self.scrollView setContentSize:size];
     }
     
     //autoresize
     [self.contentView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
+    self.scrollView.contentOffset=CGPointMake(0, -50);
     
     //model to view matching
     self.eventTitleLabel.text=self.eventTitle;
@@ -65,6 +68,9 @@
     
 //    self.view.frame=CGRectMake(0, self.navigationController.navigationBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:self.scrollView];
+    
+    self.pageController.currentPage=self.pageIndex;
+    self.pageController.numberOfPages=self.pageTotalCount;
 }
 
 - (void)didReceiveMemoryWarning

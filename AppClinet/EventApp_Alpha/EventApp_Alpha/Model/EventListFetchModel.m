@@ -30,6 +30,19 @@ static NSString* nextPage;
     eventList=[value copy];
 }
 
+-(void) fetchEventListByUsername:(NSString*)username complete:(void(^)(void))completeBlock
+{
+    AFHTTPRequestOperationManager* mgr=[AFHTTPRequestOperationManager manager];
+    NSString* targetURL=[NSString stringWithFormat:@"%@%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,API,@"/event/?format=json&fk_event_poster_user__username=",username];
+    [mgr GET:targetURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary* jsonDict=responseObject;
+        eventList =[jsonDict valueForKey:@"objects"];
+        completeBlock();
+    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [ProgressHUD showError:[error localizedDescription]];
+    } ];
+}
+
 -(void) fetchEventListWithMode:(NSString *)mode
 {
     @try {

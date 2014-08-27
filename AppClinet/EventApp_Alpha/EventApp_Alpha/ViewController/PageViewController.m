@@ -30,18 +30,27 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     EventListFetchModel* model=[[EventListFetchModel alloc] init];
-    [model fetchEventListWithMode:@"hot"];
-    self.eventList=[EventListFetchModel eventsList];
+    [model fetchEventListByUsername:@"Vivio" complete:^(void){
+        [self setupInitialPage];
+
+    }];
+    self.view.backgroundColor=[UIColor whiteColor];
+    [ProgressHUD show:@"Loading Recommand Event.."];
     
     
     
 //    self.pageViewController=[self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
-#warning waring
-//    self.dataSource=self;
-    UIViewController* initialViewController=self;
+}
+
+-(void) setupInitialPage{
+    self.eventList=[EventListFetchModel eventsList];
+    self.dataSource=self;
+    UIViewController* initialViewController=[self viewControllerAtIndex:0];
     if (initialViewController) {
-//        [self.pageViewController setViewControllers:@[initialViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-        //        [self addChildViewController:initialViewController];
+        
+        [self setViewControllers:@[initialViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+        //        [self.view addSubview:initialViewController.view];
+        
     }else{
         UIViewController* alternativeViewController=[[UIViewController alloc]init];
         UILabel* msg=[[UILabel alloc] init];
@@ -51,16 +60,11 @@
         [self setViewControllers:@[] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     }
     
+    //adjust the position of initial vc
+    ((PageContentViewController*)initialViewController).scrollView.contentInset=UIEdgeInsetsMake(64, 0, 49, 0);
+    ((PageContentViewController*)initialViewController).scrollView.contentOffset=CGPointMake(0, -50);
     
-    //add page view controller to main page
-    //    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    
-    //    [self addChildViewController:_pageViewController];
-//    [self.view addSubview:_pageViewController.view];
-    //    [self.navigationController pushViewController:self.pageViewController animated:YES];
-//    [self.pageViewController didMoveToParentViewController:self];
-
-    
+    [ProgressHUD dismiss];
 
 }
 
@@ -116,15 +120,17 @@
         pageContentViewController.eventImage=nil;
     }
     
+    pageContentViewController.pageTotalCount=self.eventList.count;
     pageContentViewController.pageIndex = index;
     
     //    pageContentViewController.view.frame = CGRectMake(0, self.navigationController.navigationBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
     return pageContentViewController;
 }
 
+
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
 {
-    return [self.eventList count];
+    return self.eventList.count;
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController

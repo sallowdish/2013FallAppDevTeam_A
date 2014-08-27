@@ -1265,11 +1265,11 @@
             </objects>
             <point key="canvasLocation" x="146" y="646"/>
         </scene>
-        <!--Page View Controller-->
+        <!--Page View Controller - Recommand-->
         <scene sceneID="Cmc-8g-aUs">
             <objects>
                 <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="jUs-vR-EpV" customClass="PageViewController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="NAh-lK-gaZ"/>
+                    <navigationItem key="navigationItem" title="Recommand" id="NAh-lK-gaZ"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DHt-Qo-Kmx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1279,12 +1279,12 @@
         <scene sceneID="zkt-UW-JEs">
             <objects>
                 <viewController storyboardIdentifier="PageContentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2Gh-cD-cDc" customClass="PageContentViewController" sceneMemberID="viewController">
-                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="38y-vV-AxW">
+                    <view key="view" contentMode="scaleToFill" id="38y-vV-AxW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="Zuq-D1-DZp">
-                                <rect key="frame" x="0.0" y="50" width="320" height="497"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view tag="100" contentMode="scaleToFill" id="4z2-DX-Reg">
@@ -1409,11 +1409,20 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" defersCurrentPageDisplay="YES" numberOfPages="15" id="5OZ-ey-82K">
+                                        <rect key="frame" x="141" y="445" width="39" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="pageIndicatorTintColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="currentPageIndicatorTintColor" red="0.086149804290000007" green="0.69286406040000004" blue="0.99864166980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </pageControl>
                                 </subviews>
+                                <inset key="contentInset" minX="0.0" minY="64" maxX="0.0" maxY="49"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="64" maxX="0.0" maxY="49"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <size key="freeformSize" width="320" height="463"/>
                     <connections>
                         <outlet property="contentView" destination="4z2-DX-Reg" id="NPQ-f6-hcp"/>
                         <outlet property="eventDateLabel" destination="mSx-Dq-9bI" id="AeS-1f-f97"/>
@@ -1423,12 +1432,13 @@
                         <outlet property="eventLocationLabel" destination="uhw-3S-hD9" id="F56-lE-exE"/>
                         <outlet property="eventRSVPLabel" destination="56h-ha-cbW" id="AAa-Y2-nhL"/>
                         <outlet property="eventTitleLabel" destination="gN6-eg-GOH" id="hj2-FN-DLx"/>
+                        <outlet property="pageController" destination="5OZ-ey-82K" id="iuR-lq-Ydr"/>
                         <outlet property="scrollView" destination="Zuq-D1-DZp" id="3Uv-vO-mty"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8QZ-bG-Tai" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1641" y="646"/>
+            <point key="canvasLocation" x="1638" y="646"/>
         </scene>
         <!--Login Page-->
         <scene sceneID="zi8-eE-FQc">

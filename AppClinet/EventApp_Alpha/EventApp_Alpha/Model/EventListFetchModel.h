@@ -18,5 +18,6 @@
 -(void) fetchEventListFromFile;
 -(void) fetchEventListWithUser;
 -(void) fetchNextPage:(id)blank complete:(void(^)(void))completeBlock fail:(void(^)(NSError* error))failBlock;
+-(void) fetchEventListByUsername:(NSString*)username complete:(void(^)(void))completeBlock;
 //-(UIImage*)fetchProfileImageForUser:(NSDictionary*) user;
 @end

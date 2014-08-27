@@ -22,10 +22,10 @@
     
     [self quickLogin];
     //setup options
-    UIPageControl *pageControl = [UIPageControl appearance];
-    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
-    pageControl.backgroundColor = [UIColor whiteColor];
+//    UIPageControl *pageControl = [UIPageControl appearance];
+//    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+//    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+//    pageControl.backgroundColor = [UIColor blueColor];
     
     if (betaTestLoadUberSDK) {
         [[Ubertesters shared] initializeWithOptions:UTOptionsSlider |UTOptionsLockingModeDisableUbertestersIfBuildNotExist];
