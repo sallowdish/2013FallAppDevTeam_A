@@ -12,6 +12,7 @@
 -(void)fillCommentContent:(NSDictionary*) comment;
 @property (weak, nonatomic) IBOutlet UILabel *commentLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *commentPosterProfile;
+@property NSInteger numofLines;
 
 
 @end

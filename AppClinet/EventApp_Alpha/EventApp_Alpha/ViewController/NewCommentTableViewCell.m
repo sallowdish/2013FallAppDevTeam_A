@@ -9,6 +9,7 @@
 #import "NewCommentTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "UserModel.h"
+#import "IQUIView+IQKeyboardToolbar.h"
 
 @interface NewCommentTableViewCell(){
 }
@@ -36,6 +37,21 @@
         NSString* profileImagePath=[UserModel current_user][@"fk_user_image"][@"path"];
         NSString* fullPath=[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,profileImagePath];
         [self.myProfile setImageWithURL:[NSURL URLWithString:fullPath] placeholderImage:[UIImage imageNamed:@"152_152icon.png"]];
+    }
+    
+    [self.myComment addCancelDoneOnKeyboardWithTarget:self cancelAction:@selector(cancelAction:) doneAction:@selector(doneAction:)];
+}
+
+- (IBAction)cancelAction:(id)sender{
+//    self.myComment.text=nil;
+    [self.myComment resignFirstResponder];
+    [[self.myComment delegate] textFieldShouldClear:self.myComment];
+}
+
+- (IBAction)doneAction:(id)sender{
+    [self.myComment resignFirstResponder];
+    if ([self.myComment.text length]>0) {
+        [[self.myComment delegate] textFieldShouldReturn:self.myComment];
     }
 }
 

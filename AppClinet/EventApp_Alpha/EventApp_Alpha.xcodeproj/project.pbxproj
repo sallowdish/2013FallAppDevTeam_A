@@ -39,7 +39,6 @@
 		711DA0DE19504F3A001A4F28 /* UbertestersSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C883C0193ADD2C00E5E63C /* UbertestersSDK.framework */; };
 		712A2C5B1883A4EA00BF3AC6 /* DataTransferModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C581883A4EA00BF3AC6 /* DataTransferModel.m */; };
 		712A2C5C1883A4EA00BF3AC6 /* URLConstructModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C5A1883A4EA00BF3AC6 /* URLConstructModel.m */; };
-		714F545719A42B4400CA08F4 /* CommentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 714F545619A42B4400CA08F4 /* CommentsTableViewController.m */; };
 		714F545D19A4534200CA08F4 /* CommentsCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 714F545C19A4534200CA08F4 /* CommentsCellTableViewCell.m */; };
 		714F546319A8108F00CA08F4 /* CommentsSpanArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 714F546219A8108F00CA08F4 /* CommentsSpanArea.m */; };
 		714F546719A81D3500CA08F4 /* NewCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 714F546619A81D3500CA08F4 /* NewCommentTableViewCell.m */; };
@@ -81,7 +80,6 @@
 		71CA843C19AD859A00904B5D /* CommentsCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 714F545C19A4534200CA08F4 /* CommentsCellTableViewCell.m */; };
 		71CA843D19AD859A00904B5D /* popoverAlterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 719664641879BB1900D8BC7B /* popoverAlterModel.m */; };
 		71CA843E19AD859A00904B5D /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B763C01807830A00717D67 /* EventListViewController.m */; };
-		71CA843F19AD859A00904B5D /* CommentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 714F545619A42B4400CA08F4 /* CommentsTableViewController.m */; };
 		71CA844019AD859A00904B5D /* EventJoinAndLikeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D830B618EAAE6D00485B1B /* EventJoinAndLikeModel.m */; };
 		71CA844119AD859A00904B5D /* CQMFloatingNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 71974BB11869A618004493DC /* CQMFloatingNavigationBar.m */; };
 		71CA844219AD859A00904B5D /* ProfilePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EE8684187854B6007FD900 /* ProfilePageViewController.m */; };
@@ -365,8 +363,6 @@
 		712A2C581883A4EA00BF3AC6 /* DataTransferModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataTransferModel.m; path = Model/DataTransferModel.m; sourceTree = "<group>"; };
 		712A2C591883A4EA00BF3AC6 /* URLConstructModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLConstructModel.h; path = Model/URLConstructModel.h; sourceTree = "<group>"; };
 		712A2C5A1883A4EA00BF3AC6 /* URLConstructModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLConstructModel.m; path = Model/URLConstructModel.m; sourceTree = "<group>"; };
-		714F545519A42B4400CA08F4 /* CommentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsTableViewController.h; path = ViewController/CommentsTableViewController.h; sourceTree = "<group>"; };
-		714F545619A42B4400CA08F4 /* CommentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsTableViewController.m; path = ViewController/CommentsTableViewController.m; sourceTree = "<group>"; };
 		714F545B19A4534200CA08F4 /* CommentsCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsCellTableViewCell.h; path = ViewController/CommentsCellTableViewCell.h; sourceTree = "<group>"; };
 		714F545C19A4534200CA08F4 /* CommentsCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsCellTableViewCell.m; path = ViewController/CommentsCellTableViewCell.m; sourceTree = "<group>"; };
 		714F546119A8108F00CA08F4 /* CommentsSpanArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsSpanArea.h; path = ViewController/CommentsSpanArea.h; sourceTree = "<group>"; };
@@ -657,8 +653,6 @@
 			children = (
 				714F546119A8108F00CA08F4 /* CommentsSpanArea.h */,
 				714F546219A8108F00CA08F4 /* CommentsSpanArea.m */,
-				714F545519A42B4400CA08F4 /* CommentsTableViewController.h */,
-				714F545619A42B4400CA08F4 /* CommentsTableViewController.m */,
 			);
 			name = EventComment;
 			sourceTree = "<group>";
@@ -1425,7 +1419,6 @@
 				71CA843C19AD859A00904B5D /* CommentsCellTableViewCell.m in Sources */,
 				71CA843D19AD859A00904B5D /* popoverAlterModel.m in Sources */,
 				71CA843E19AD859A00904B5D /* EventListViewController.m in Sources */,
-				71CA843F19AD859A00904B5D /* CommentsTableViewController.m in Sources */,
 				71CA844019AD859A00904B5D /* EventJoinAndLikeModel.m in Sources */,
 				71CA844119AD859A00904B5D /* CQMFloatingNavigationBar.m in Sources */,
 				71CA844219AD859A00904B5D /* ProfilePageViewController.m in Sources */,
@@ -1482,7 +1475,6 @@
 				714F545D19A4534200CA08F4 /* CommentsCellTableViewCell.m in Sources */,
 				719664651879BB1900D8BC7B /* popoverAlterModel.m in Sources */,
 				71B763C11807830A00717D67 /* EventListViewController.m in Sources */,
-				714F545719A42B4400CA08F4 /* CommentsTableViewController.m in Sources */,
 				71D830B718EAAE6D00485B1B /* EventJoinAndLikeModel.m in Sources */,
 				71974BB81869A618004493DC /* CQMFloatingNavigationBar.m in Sources */,
 				71EE8685187854B6007FD900 /* ProfilePageViewController.m in Sources */,

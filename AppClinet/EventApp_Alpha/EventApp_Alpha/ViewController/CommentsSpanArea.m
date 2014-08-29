@@ -7,12 +7,12 @@
 //
 
 #import "CommentsSpanArea.h"
-#import "CommentsTableViewController.h"
 #import "NewCommentTableViewCell.h"
 #import "UserModel.h"
 #import "ProgressHUD.h"
-#import "CommentsCellTableViewCell.h"
 #import "EventDetailViewController.h"
+#import "CommentsCellTableViewCell.h"
+
 
 @interface CommentsSpanArea ()<UITextFieldDelegate>
 
@@ -39,7 +39,6 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-
     
 }
 
@@ -83,14 +82,23 @@
         }];
     }
     EventDetailViewController* vc= (EventDetailViewController*)self.parentViewController;
+//    cgp=[textField convertPoint:textField.center toView:nil];
+    
     [vc.scrollView setContentOffset:CGPointMake(0, 180)];
     return YES;
+}
+
+-(BOOL)textFieldShouldClear:(UITextField *)textField{
+    textField.text=nil;
+    return true;
 }
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     NSMutableDictionary* comment=[NSMutableDictionary dictionaryWithDictionary:@{@"comment_detail":textField.text,@"fk_event":self.event[@"resource_uri"],@"fk_comment_poster_user":[UserModel userResourceURL]}];
+    
+    textField.text=nil;
     
     [self insertLocalTable:comment];
     
@@ -146,10 +154,18 @@
 }
 
 -(CGFloat)calculateDynamicCellHeight:(NSIndexPath*)indexPath{
-    NSDictionary* comment=self.comments[indexPath.row-1];
-    NSString* commentDetail=comment[@"comment_detail"];
-    NSInteger numLine=commentDetail.length*16/185;
-    CGFloat height=50+15*numLine;
+    NSString* comment_detail=self.comments[indexPath.row-1][@"comment_detail"];
+    
+    UIFont *font = [UIFont fontWithName:@"Helvetica" size:16];
+    NSDictionary *userAttributes = @{NSFontAttributeName: font,
+                                     NSForegroundColorAttributeName: [UIColor blackColor]};
+    CGSize stringSize=[comment_detail sizeWithAttributes:userAttributes];
+    
+    
+    double numLine=(double)stringSize.width/185;
+    
+    numLine=ceil(numLine);
+    CGFloat height=50+20*(numLine-1);
     return height;
 }
 
@@ -160,6 +176,10 @@
     
     return cell;
 }
+
+
+
+
 
 /*
 // Override to support conditional editing of the table view.

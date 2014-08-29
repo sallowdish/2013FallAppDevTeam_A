@@ -66,9 +66,18 @@
     
     label.text=comment[@"comment_detail"];
     
-    NSInteger numLine=label.text.length*16/185;
+    UIFont *font = [UIFont fontWithName:@"Helvetica" size:16];
+    NSDictionary *userAttributes = @{NSFontAttributeName: font,
+                                     NSForegroundColorAttributeName: [UIColor blackColor]};
+    CGSize stringSize=[label.text sizeWithAttributes:userAttributes];
     
-    numLine=numLine==0?1:numLine;
+    
+    double numLine=(double)stringSize.width/185;
+    
+    numLine=ceil(numLine);
+    
+    self.numofLines=numLine;
+    
     NSInteger height=numLine*COMMENTLABELLINEHEIGHT;
     if (label.frame.size.height!=height) {
         label.frame=CGRectMake(label.frame.origin.x, label.frame.origin.y, label.frame.size.width, height);
