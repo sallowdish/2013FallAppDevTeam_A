@@ -46,9 +46,9 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOSTER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F73-J9-as2">
-                                                    <rect key="frame" x="20" y="14" width="137" height="21"/>
+                                                    <rect key="frame" x="30" y="16" width="137" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -100,6 +100,10 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="bqJ-Tc-1yw">
+                                                    <rect key="frame" x="10" y="16" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         </view>
@@ -114,8 +118,8 @@
                                                         <fragment content="EventName">
                                                             <attributes>
                                                                 <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <font key="NSFont" size="17" name="HelveticaNeue-Medium"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                                <font key="NSFont" size="15" name="HelveticaNeue-Medium"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
@@ -132,6 +136,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
+                                    <outlet property="EventPosterGenderSignImageView" destination="bqJ-Tc-1yw" id="WH7-mY-0z8"/>
                                     <outlet property="RSVPLabel" destination="5k4-Z6-gIv" id="8xj-AW-Jjj"/>
                                     <outlet property="dataLabel" destination="NVD-BH-bbw" id="3aQ-aq-aVK"/>
                                     <outlet property="eventNameLabel" destination="jsj-bc-9z1" id="iKn-CO-UD4"/>
@@ -1251,7 +1256,7 @@
         <scene sceneID="r3f-5Q-9jp">
             <objects>
                 <navigationController definesPresentationContext="YES" id="93Q-yd-GsA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Recommend" image="shopping.png" id="30I-1N-fc2"/>
+                    <tabBarItem key="tabBarItem" title="Recommend" image="thumbup.png" id="30I-1N-fc2"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="5e0-PH-c1v">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
@@ -1263,7 +1268,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3TA-8B-ktS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="146" y="646"/>
+            <point key="canvasLocation" x="477" y="486"/>
         </scene>
         <!--Page View Controller - Recommand-->
         <scene sceneID="Cmc-8g-aUs">
@@ -1312,24 +1317,24 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TimeIcon_done.png" id="0HN-zd-9KX">
-                                                        <rect key="frame" x="11" y="22" width="25" height="25"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationIcon_done.png" id="8wi-pB-rJo">
                                                         <rect key="frame" x="11" y="44" width="25" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationIcon_done.png" id="8wi-pB-rJo">
+                                                        <rect key="frame" x="11" y="22" width="25" height="25"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    </imageView>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2014-5-14" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mSx-Dq-9bI">
-                                                        <rect key="frame" x="33" y="21" width="81" height="21"/>
+                                                        <rect key="frame" x="35" y="46" width="81" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ray's Home" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uhw-3S-hD9">
-                                                        <rect key="frame" x="33" y="46" width="94" height="21"/>
+                                                        <rect key="frame" x="35" y="24" width="239" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greyheart_done.png" id="RBY-5Q-GLS">
@@ -1372,31 +1377,39 @@
                                                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posted by: Ray" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Q03-TV-qeL">
-                                                        <rect key="frame" x="11" y="82" width="117" height="21"/>
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ray" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Q03-TV-qeL">
+                                                        <rect key="frame" x="44" y="82" width="88" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[ PS3 Night ]" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gN6-eg-GOH">
-                                                        <rect key="frame" x="11" y="0.0" width="216" height="21"/>
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gN6-eg-GOH">
+                                                        <rect key="frame" x="11" y="0.0" width="261" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="[ PS3 Night ]">
+                                                                <attributes>
+                                                                    <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <font key="NSFont" size="15" name="HelveticaNeue-Bold"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" id="LPb-I1-XmS">
-                                                        <rect key="frame" x="230" y="0.0" width="45" height="20"/>
+                                                        <rect key="frame" x="227" y="52" width="45" height="20"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <subviews>
-                                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vDP-1I-BnM">
+                                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vDP-1I-BnM">
                                                                 <rect key="frame" x="0.0" y="0.0" width="45" height="20"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" red="0.086149804290000007" green="0.69286406040000004" blue="0.99864166980000002" alpha="0.75" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Wzt-3J-CMI">
-                                                                <rect key="frame" x="-1" y="-5" width="46" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="20"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <state key="normal">
                                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1406,8 +1419,11 @@
                                                                 </connections>
                                                             </button>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     </view>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="cuC-pV-W5e">
+                                                        <rect key="frame" x="11" y="75" width="30" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                             </view>
@@ -1437,6 +1453,7 @@
                         <outlet property="eventLocationLabel" destination="uhw-3S-hD9" id="F56-lE-exE"/>
                         <outlet property="eventRSVPLabel" destination="56h-ha-cbW" id="AAa-Y2-nhL"/>
                         <outlet property="eventTitleLabel" destination="gN6-eg-GOH" id="hj2-FN-DLx"/>
+                        <outlet property="genderSignImageView" destination="cuC-pV-W5e" id="cex-Bh-61k"/>
                         <outlet property="pageController" destination="5OZ-ey-82K" id="iuR-lq-Ydr"/>
                         <outlet property="scrollView" destination="Zuq-D1-DZp" id="3Uv-vO-mty"/>
                     </connections>
@@ -1444,7 +1461,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8QZ-bG-Tai" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="P9H-HK-RVS">
                     <connections>
-                        <segue destination="Fec-tY-Qmi" kind="push" identifier="RecToDetailPushSegue" id="P11-mC-Lnk"/>
+                        <action selector="evetImageTapped:" destination="2Gh-cD-cDc" id="HDo-3Q-lLA"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -2637,7 +2654,7 @@ XX日發佈了XXXX活動
         <image name="profileImage.png" width="300" height="300"/>
         <image name="redheart.png" width="64" height="64"/>
         <image name="setting.png" width="30" height="30"/>
-        <image name="shopping.png" width="32" height="32"/>
+        <image name="thumbup.png" width="32" height="32"/>
         <image name="ticket.png" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -2646,6 +2663,6 @@ XX日發佈了XXXX活動
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="P11-mC-Lnk"/>
+        <segue reference="DEQ-Le-LkT"/>
     </inferredMetricsTieBreakers>
 </document>

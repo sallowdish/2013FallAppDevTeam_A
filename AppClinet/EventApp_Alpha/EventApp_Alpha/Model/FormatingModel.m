@@ -38,11 +38,10 @@
     }
     //    [cell.profileImage.layer setBorderColor: [[UIColor grayColor] CGColor]];
     //    [cell.profileImage.layer setBorderWidth: 2.0];
-    cell.eventNameLabel.text=[event objectForKey:@"event_title"];
+    cell.eventNameLabel.text=[NSString stringWithFormat:@" %@",[event objectForKey:@"event_title"]];
     
-//    cell.hosterLabel.text=[[event objectForKey:@"fk_event_poster_user"] objectForKey:@"username"];
     cell.dataLabel.text=[NSString stringWithFormat:@"%@ | %@",[event objectForKey:@"event_date"],[event objectForKey:@"event_time"]];
-//    cell.locationLabel.text=[FormatingModel addressDictionaryToStringL:[event objectForKey:@"fk_address"]];
+
     cell.likeLabel.text=[NSString stringWithFormat: @"%@",[event objectForKey:@"event_like_count"] ];
     cell.RSVPLabel.text=[NSString stringWithFormat: @"%@",[event objectForKey:@"event_rsvp_count"] ];;
     
@@ -53,7 +52,13 @@
     
 //    UIImage* img=[ImageModel downloadImageViaPath:[event objectForKey:@"fk_event_poster_user_fk_user_image"] For:@"user" WithPrefix:MEDIAPREFIX];
 //    NSURL* targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,MEDIAPREFIX,]];
-
+    if ([event[@"fk_event_poster_user_gender"] isEqualToString:@"male"]) {
+        cell.EventPosterGenderSignImageView.image=[UIImage imageNamed:@"MaleSign.png"];
+    }else{
+        cell.EventPosterGenderSignImageView.image=[UIImage imageNamed:@"FemaleSign.png"];
+    }
+    
+    
     [ImageModel downloadImageViaPath:[event valueForKey:@"fk_event_poster_user_fk_user_image"] For:@"user" WithPrefix:MEDIAPREFIX :cell.profileImage];
 //    [cell.profileImage setImageWithURL:targetURL  placeholderImage:[UIImage imageNamed:@"152_152icon.png"]];
     return cell;

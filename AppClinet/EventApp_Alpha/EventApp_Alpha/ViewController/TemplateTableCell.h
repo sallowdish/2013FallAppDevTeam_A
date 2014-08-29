@@ -18,5 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UILabel *likeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *RSVPLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *EventPosterGenderSignImageView;
 
 @end

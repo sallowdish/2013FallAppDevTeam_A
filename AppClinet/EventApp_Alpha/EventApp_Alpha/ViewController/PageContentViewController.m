@@ -15,6 +15,7 @@
 @interface PageContentViewController ()
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageController;
+@property (weak, nonatomic) IBOutlet UIImageView *genderSignImageView;
 
 @end
 
@@ -56,12 +57,14 @@
     self.eventLocationLabel.text=self.eventLocation;
     self.eventLikeLabel.text=[NSString stringWithFormat:@"%lu",(unsigned long)self.eventLike];
     self.eventRSVPLabel.text=[NSString stringWithFormat:@"%lu",(unsigned long)self.eventRSVP];
-    self.eventHosterLabel.text=[NSString stringWithFormat:@"Hosted by %@",self.eventHoster];
+    self.eventHosterLabel.text=[NSString stringWithFormat:@"%@",self.eventHoster];
     if (self.eventImage) {
         [ImageModel downloadImageViaPath:self.eventImage For:@"event" WithPrefix:@"" :self.eventImageView];
     }else{
         self.eventImageView.image=[UIImage imageNamed:@"event1.jpg"];
     }
+    
+    self.genderSignImageView.image=[self.event[@"fk_event_poster_user_gender"] isEqualToString:@"male"]?[UIImage imageNamed:@"MaleSign.png"]:[UIImage imageNamed:@"FemaleSign.png"];
     
     //polish
     [self setRoundConnerForViewWithMaxTag:MAXTAG];
@@ -86,6 +89,9 @@
         subview.layer.masksToBounds=YES;
     }
     
+}
+- (IBAction)evetImageTapped:(id)sender {
+    [self performSegueWithIdentifier:@"RecToDetailPushSegue" sender:self];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

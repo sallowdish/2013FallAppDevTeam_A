@@ -22,6 +22,7 @@
 @property (strong,nonatomic)EventListFetchModel* model;
 
 
+
 @end
 
 @implementation EventListViewController
