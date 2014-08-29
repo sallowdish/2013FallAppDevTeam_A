@@ -47,7 +47,7 @@
     imageView.layer.masksToBounds = YES;
     
     //move to the middle of the line
-    imageView.center=CGPointMake(imageView.center.x, self.frame.size.height/2);
+    imageView.center=CGPointMake(imageView.center.x, 10+imageView.frame.size.height/2);
     
     //set up for label
     //set multiple line

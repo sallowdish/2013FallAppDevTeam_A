@@ -139,7 +139,7 @@ NSString* state;
 -(void)showMoreOptionMenu{
     if (event) {
         RNGridMenuItem* posterInfoItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"user.png"] title:@"Poster Info" action:^{
-            [self showPosterInfo];
+            [self showPosterInfo:self];
         }];
         RNGridMenuItem* addressInfoItem=[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"map.png"] title:@"Address Info" action:^{
             [self showAddressInfo];
@@ -159,14 +159,14 @@ NSString* state;
     }
 }
 
--(void)showPosterInfo{
+-(IBAction)showPosterInfo:(id)sender{
     ProfilePageViewController* vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
     vc.userID=[[event valueForKey:@"fk_event_poster_user_id"] integerValue];
     [self.navigationController pushViewController:vc animated:YES];
 
 }
 
--(void)showAddressInfo{
+-(IBAction)showAddressInfo{
     AddressInfoPageViewController* vc= [self.storyboard instantiateViewControllerWithIdentifier:@"AddressInfoPage"];
     NSMutableDictionary* address=[NSMutableDictionary dictionaryWithCapacity:0];
     address[@"address_title"]=[event objectForKey:@"address_title"];

@@ -11,6 +11,8 @@
 #import "NewCommentTableViewCell.h"
 #import "UserModel.h"
 #import "ProgressHUD.h"
+#import "CommentsCellTableViewCell.h"
+#import "EventDetailViewController.h"
 
 @interface CommentsSpanArea ()<UITextFieldDelegate>
 
@@ -42,10 +44,10 @@
 }
 
 -(void)passCommentsToDisplay{
-    CommentsTableViewController* vc=self.childViewControllers[0];
-    vc.comments=self.comments;
+//    CommentsTableViewController* vc=self.childViewControllers[0];
+//    vc.comments=self.comments;
     [self.tableView reloadData];
-    [vc.tableView reloadData];
+//    [vc.tableView reloadData];
     
 }
 
@@ -58,9 +60,9 @@
     [newList addObjectsFromArray:self.comments];
     self.comments=newList;
 
-    CommentsTableViewController* vc=self.childViewControllers[0];
-    vc.comments=self.comments;
-    [vc.tableView reloadData];
+//    CommentsTableViewController* vc=self.childViewControllers[0];
+//    vc.comments=self.comments;
+    [self.tableView reloadData];
 }
 
 -(void)postToServer:(NSDictionary*)comment{
@@ -80,6 +82,8 @@
             [self.navigationController pushViewController:vc animated:YES];
         }];
     }
+    EventDetailViewController* vc= (EventDetailViewController*)self.parentViewController;
+    [vc.scrollView setContentOffset:CGPointMake(0, 180)];
     return YES;
 }
 
@@ -95,9 +99,12 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%ld--%ld",(long)indexPath.section,(long)indexPath.row);
-    if (indexPath.row==0) {
-        return 60*self.comments.count;
+    if (indexPath.row==0)
+    {
+        return 50;
+    }
+    else if (indexPath.row>0) {
+        return [self calculateDynamicCellHeight:indexPath];
     }
     else{
         return [super tableView:tableView heightForRowAtIndexPath:indexPath];
@@ -111,8 +118,48 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+//#warning Potentially incomplete method implementation.
+    // Return the number of sections.
+    return 1;
+}
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+//#warning Incomplete method implementation.
+    // Return the number of rows in the section.
+    
+    return [self.comments count]+1;
+}
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell* cell;
+    if (indexPath.row>0) {
+        cell= [self prepareCommentCell:self.comments[indexPath.row-1]];
+    }
+    else{
+        cell= [self.tableView dequeueReusableCellWithIdentifier:@"MyCommentCell"];
+    }
+    return cell;
+}
+
+-(CGFloat)calculateDynamicCellHeight:(NSIndexPath*)indexPath{
+    NSDictionary* comment=self.comments[indexPath.row-1];
+    NSString* commentDetail=comment[@"comment_detail"];
+    NSInteger numLine=commentDetail.length*16/185;
+    CGFloat height=50+15*numLine;
+    return height;
+}
+
+-(UITableViewCell*)prepareCommentCell:(NSDictionary*)comment{
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"CommentCell" ];
+    
+    [(CommentsCellTableViewCell*)cell fillCommentContent:comment];
+    
+    return cell;
+}
 
 /*
 // Override to support conditional editing of the table view.

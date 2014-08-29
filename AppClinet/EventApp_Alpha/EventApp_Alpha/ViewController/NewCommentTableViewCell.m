@@ -46,6 +46,8 @@
     // Configure the view for the selected state
 }
 
-
+-(IBAction)touchOutside{
+    [self.myComment resignFirstResponder];
+}
 
 @end
