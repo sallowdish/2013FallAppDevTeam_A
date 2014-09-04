@@ -1161,12 +1161,24 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="JHm-PH-YjB">
                                             <rect key="frame" x="20" y="5" width="40" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <gestureRecognizers/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dyd-9O-WPe">
+                                            <rect key="frame" x="25" y="10" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <segue destination="i4G-Cf-69o" kind="push" identifier="CommentToProfile" id="oPM-qj-0pt"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="commentLabel" destination="IlF-d6-Ltm" id="fIP-yV-ygp"/>
                                     <outlet property="commentPosterProfile" destination="JHm-PH-YjB" id="Eeh-u9-wfY"/>
+                                    <outlet property="commentProfileJumpButton" destination="dyd-9O-WPe" id="HL6-eA-L3M"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1864,6 +1876,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="i4G-Cf-69o" kind="push" identifier="SettingToProfile" id="sQD-kC-gWu"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -2077,7 +2092,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YOs-Qm-3op" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1056" y="1576"/>
+            <point key="canvasLocation" x="1056" y="1288"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="bOA-Sd-eHE">
@@ -2323,18 +2338,18 @@ IAo
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kfx-g1-Y2D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1367" y="2481"/>
+            <point key="canvasLocation" x="1056" y="2669"/>
         </scene>
         <!--Profile Page View Controller-->
         <scene sceneID="kaU-dT-CJh">
             <objects>
                 <viewController storyboardIdentifier="ProfilePage" automaticallyAdjustsScrollViewInsets="NO" id="i4G-Cf-69o" customClass="ProfilePageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WO8-Hh-Kg5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="381"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="FDX-s5-dgU">
-                                <rect key="frame" x="0.0" y="48" width="320" height="505"/>
+                                <rect key="frame" x="0.0" y="-139" width="320" height="505"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="A6G-hi-2dY" userLabel="BackgroundContainer">
@@ -2427,10 +2442,10 @@ XX日發佈了XXXX活動
                                                         <rect key="frame" x="0.0" y="0.0" width="199" height="35"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
-                                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暱稱" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="28r-QS-1gA">
-                                                                <rect key="frame" x="6" y="7" width="34" height="21"/>
+                                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nick Name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="28r-QS-1gA">
+                                                                <rect key="frame" x="6" y="7" width="80" height="21"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sheldon Cooper" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pdT-nU-9AG">
@@ -2504,8 +2519,8 @@ XX日發佈了XXXX活動
                                                         <rect key="frame" x="0.0" y="0.0" width="298" height="90"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
-                                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="標簽Tag" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9wm-Qo-g17">
-                                                                <rect key="frame" x="6" y="12" width="61" height="21"/>
+                                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9wm-Qo-g17">
+                                                                <rect key="frame" x="6" y="12" width="32" height="21"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="highlightedColor"/>
@@ -2530,8 +2545,8 @@ XX日發佈了XXXX活動
                                                         <rect key="frame" x="0.0" y="0.0" width="298" height="158"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
-                                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="簡介" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RRT-AD-EV7">
-                                                                <rect key="frame" x="10" y="10" width="34" height="21"/>
+                                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RRT-AD-EV7">
+                                                                <rect key="frame" x="10" y="10" width="88" height="21"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="highlightedColor"/>
@@ -2558,6 +2573,9 @@ XX日發佈了XXXX活動
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="L4C-gT-ojY"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="scrollView" destination="FDX-s5-dgU" id="D30-er-nld"/>
                         <outlet property="updateProfilImageButton" destination="nS5-gP-snw" id="zIi-3b-xkb"/>
@@ -2598,7 +2616,7 @@ XX日發佈了XXXX活動
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LqO-z8-I6E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1738" y="2482"/>
+            <point key="canvasLocation" x="1738" y="1939"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
@@ -2647,5 +2665,6 @@ XX日發佈了XXXX活動
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="DEQ-Le-LkT"/>
+        <segue reference="oPM-qj-0pt"/>
     </inferredMetricsTieBreakers>
 </document>

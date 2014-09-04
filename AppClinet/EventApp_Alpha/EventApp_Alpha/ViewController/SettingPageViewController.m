@@ -61,9 +61,9 @@
         [self.loginCell addGestureRecognizer:tap];
     }
     
-    tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileTapped)];
-    tap.numberOfTapsRequired=1;
-    [self.profileCell addGestureRecognizer:tap];
+//    tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileTapped)];
+//    tap.numberOfTapsRequired=1;
+//    [self.profileCell addGestureRecognizer:tap];
     
     tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(logoutTapped)];
     tap.numberOfTapsRequired=1;
@@ -102,11 +102,14 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
--(void)profileTapped{
+-(IBAction)profileTapped:(ProfilePageViewController*)vc
+{
     if ([UserModel isLogin]) {
-        ProfilePageViewController* vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
+        if (!vc) {
+            vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
+        }
         vc.targetUser=[UserModel current_user];
-        [self.navigationController pushViewController:vc animated:YES];
+//        [self.navigationController pushViewController:vc animated:YES];
 
     }else{
         [self loginTapped];
@@ -152,6 +155,14 @@
     
 }
 
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([[segue identifier] isEqualToString:@"SettingToProfile"]) {
+        [self profileTapped:[segue destinationViewController]];
+    }else{
+        [super prepareForSegue:segue sender:sender];
+    }
+}
 //- (void)loadLoginView
 //{
 ////    [[self view] addSubview:[[LoginViewController alloc] init]];

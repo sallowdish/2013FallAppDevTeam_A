@@ -54,8 +54,10 @@
 -(void)dataSourceSetup{
     //Data Setup
     if (self.targetUser) {
-    }else if (self.userID){
-        [UserModel getUserInfoofID:self.userID complete:^(NSDictionary *userInfo) {
+        
+    }
+    else if (self.userID){
+        [UserModel getUserInfo:self.userID complete:^(NSDictionary *userInfo) {
             self.targetUser=[userInfo valueForKey:@"objects"][0];
             [self dateSourceToViewMatch];
         } fail:^(NSError *error) {
@@ -70,7 +72,7 @@
 
 -(void)visualSetup{
     // Visual Setup
-    [self navigationController].automaticallyAdjustsScrollViewInsets=YES;
+//    [self navigationController].automaticallyAdjustsScrollViewInsets=YES;
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height*1.35)];
     
     //Set transparent background

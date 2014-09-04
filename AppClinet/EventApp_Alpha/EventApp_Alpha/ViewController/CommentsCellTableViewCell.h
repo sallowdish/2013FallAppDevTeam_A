@@ -10,9 +10,11 @@
 
 @interface CommentsCellTableViewCell : UITableViewCell
 -(void)fillCommentContent:(NSDictionary*) comment;
+@property (weak, nonatomic) IBOutlet UIButton *commentProfileJumpButton;
 @property (weak, nonatomic) IBOutlet UILabel *commentLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *commentPosterProfile;
 @property NSInteger numofLines;
+@property NSInteger commentPosterID;
 
 
 @end

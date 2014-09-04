@@ -22,7 +22,7 @@
 
 +(void)getProfileImageWithUser:(NSDictionary*)user Sender:(UIImageView*)sender;
 
-+(void)getUserInfoofID:(NSInteger)userId complete:(void (^)(NSDictionary* userInfo))completeBlcok fail:(void(^)(NSError *error))failBlock;
++(void)getUserInfo:(NSInteger)userId complete:(void (^)(NSDictionary* userInfo))completeBlcok fail:(void(^)(NSError *error))failBlock;
 
 +(void)turnOnDevelopmentMode;
 +(void)turnOffDevelopmentMode;

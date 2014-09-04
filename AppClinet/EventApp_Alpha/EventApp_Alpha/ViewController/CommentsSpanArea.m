@@ -12,6 +12,8 @@
 #import "ProgressHUD.h"
 #import "EventDetailViewController.h"
 #import "CommentsCellTableViewCell.h"
+#import "IQKeyboardManager.h"
+#import "ProfilePageViewController.h"
 
 
 @interface CommentsSpanArea ()<UITextFieldDelegate>
@@ -39,6 +41,8 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside=YES;
     
 }
 
@@ -170,15 +174,11 @@
 }
 
 -(UITableViewCell*)prepareCommentCell:(NSDictionary*)comment{
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"CommentCell" ];
+    CommentsCellTableViewCell *cell = (CommentsCellTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"CommentCell" ];
     
-    [(CommentsCellTableViewCell*)cell fillCommentContent:comment];
-    
+    [cell fillCommentContent:comment];
     return cell;
 }
-
-
-
 
 
 /*
@@ -219,7 +219,7 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -227,7 +227,21 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"CommentToProfile"]) {
+        ProfilePageViewController* vc=(ProfilePageViewController*)[segue destinationViewController];
+        UIView *parent = [sender superview];
+        while (parent && ![parent isKindOfClass:[UITableViewCell class]]) {
+            parent = parent.superview;
+        }
+        
+        CommentsCellTableViewCell *cell = (CommentsCellTableViewCell *)parent;
+        
+        
+        vc.userID=cell.commentPosterID;
+    }else{
+        [super prepareForSegue:segue sender:sender];
+    }
 }
-*/
+
 
 @end

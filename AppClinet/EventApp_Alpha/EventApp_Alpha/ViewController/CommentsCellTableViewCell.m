@@ -29,17 +29,19 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
+//- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+//{
+//    [super setSelected:selected animated:animated];
+//
+//    // Configure the view for the selected state
+//}
 
 -(void)fillCommentContent:(NSDictionary*) comment{
     UILabel* label=self.commentLabel;
     
     UIImageView* imageView=self.commentPosterProfile;
+    
+    self.commentPosterID=[comment[@"fk_comment_poster_user_id"] intValue];
     
     //set up for image view
     //set round conner
@@ -84,5 +86,7 @@
     }
     
 }
+
+
 
 @end
