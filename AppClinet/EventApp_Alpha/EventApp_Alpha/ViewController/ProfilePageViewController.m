@@ -11,17 +11,21 @@
 #import "ImageModel.h"
 #import "ProgressHUD.h"
 #import "popoverAlterModel.h"
+#import "RNGridMenu.h"
+#import "UpdateProfileTableViewController.h"
+
 #undef MAXTAG
 #define MAXTAG 103
 
 @interface ProfilePageViewController ()
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *needBorder;
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray * needTransparent;
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *needRoundCorner;
 @property (weak, nonatomic) IBOutlet UIButton *updateProfilImageButton;
 @property (strong,nonatomic) GKImagePicker* imagePicker;
 @property (strong,nonatomic) NSMutableArray* selectedPhoto;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *updateButton;
 
 @end
 
@@ -43,11 +47,6 @@
 {
 
     [super viewDidLoad];
-    
-
-    
-	[self visualSetup];
-    [self dataSourceSetup];
     
 }
 
@@ -116,15 +115,21 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    
+    [self visualSetup];
+    [self dataSourceSetup];
+    
     [self.scrollView removeFromSuperview];
     self.scrollView.frame=CGRectMake(0, self.navigationController.navigationBar.frame.size.height, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
     [self.view addSubview:self.scrollView];
     self.updateProfilImageButton.enabled=NO;
     self.updateProfilImageButton.alpha=0.4f;
+    self.updateButton.enabled=NO;
     if ([UserModel isLogin]) {
         if ([[self.targetUser objectForKey:@"username"] isEqualToString:[UserModel username]]) {
             self.updateProfilImageButton.enabled=YES;
             self.updateProfilImageButton.alpha=1;
+            self.updateButton.enabled=YES;
         }
     }
 }
@@ -187,6 +192,21 @@
     [popoverAlterModel alterWithTitle:@"Failed" Message:@"Updating failed. Please try again later."];
     [self.navigationController popViewControllerAnimated:YES];
     [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
+
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+//    if ([[segue identifier] isEqualToString:@"ProfileToUpdate"]) {
+//        UpdateProfileTableViewController* vc=(UpdateProfileTableViewController*)[segue destinationViewController];
+//        vc.current_user=self.targetUser;
+//    }else{
+//        [super prepareForSegue:segue sender:sender];
+//    }
+//}
+
+-(IBAction)updateBarButtonTapped:(id)sender{
+    UpdateProfileTableViewController* vc=[[self.navigationController storyboard] instantiateViewControllerWithIdentifier:@"UpdatePage"];
+    vc.current_user=self.targetUser;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

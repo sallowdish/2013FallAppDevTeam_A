@@ -121,9 +121,10 @@ static bool isLogin,isDevelopment;
 
 +(void)popupLoginViewToViewController:(UIViewController*) viewController complete:(void (^)(LoginViewController* loginview))completeBlock{
     LoginViewController* loginview=[viewController.storyboard instantiateViewControllerWithIdentifier:@"LoginPage"];
-    //    UIViewController* loginview=[[UIViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-//    [viewController.navigationController pushViewController:loginview animated:YES];
-    completeBlock(loginview);
+    [viewController.navigationController pushViewController:loginview animated:NO];
+    if (completeBlock) {
+        completeBlock(loginview);
+    }
 }
 
 +(UIViewController*)getCurrentViewController
@@ -132,7 +133,16 @@ static bool isLogin,isDevelopment;
 }
 
 
--(void)updateUserInfo{
-    
++(void)updateUserInfo{
+    AFHTTPRequestOperationManager* manager=[URLConstructModel authorizedJsonManger];
+    NSString* targetURL=[[[URLConstructModel constructURLHeader] absoluteString] stringByAppendingFormat:@"%@%@%@%@%@",API,@"/user/",@"?format=json",@"&id=",[UserModel current_user][@"id"]];
+    [manager GET:targetURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary* user=responseObject[@"objects"];
+        current_user=user;
+        [ProgressHUD showSuccess:@"User Info Updated."];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [ProgressHUD showError:[NSString stringWithFormat:@"Fail to update user info.%@",[error localizedDescription]]];
+    }];
+
 }
 @end

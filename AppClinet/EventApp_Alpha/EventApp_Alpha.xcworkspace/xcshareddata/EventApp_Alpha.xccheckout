@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>1321E58E-B1A9-4364-BD63-4583FA3AFCF2</string>
+	<string>33F3F9D6-FB38-470C-96EA-3140A77CDF6C</string>
 	<key>IDESourceControlProjectName</key>
 	<string>EventApp_Alpha</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>8E3687FC-43B0-48F0-A3CA-5EEFF6767D3D</key>
+		<key>EBBFA76F8A97AE1538D1A82FD3F0EEC62D27BC08</key>
 		<string>https://github.com/sallowdish/2013FallAppDevTeam_A.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>AppClinet/EventApp_Alpha/EventApp_Alpha.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>8E3687FC-43B0-48F0-A3CA-5EEFF6767D3D</key>
+		<key>EBBFA76F8A97AE1538D1A82FD3F0EEC62D27BC08</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/sallowdish/2013FallAppDevTeam_A.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>8E3687FC-43B0-48F0-A3CA-5EEFF6767D3D</string>
+	<string>EBBFA76F8A97AE1538D1A82FD3F0EEC62D27BC08</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>8E3687FC-43B0-48F0-A3CA-5EEFF6767D3D</string>
+			<string>EBBFA76F8A97AE1538D1A82FD3F0EEC62D27BC08</string>
 			<key>IDESourceControlWCCName</key>
 			<string>2013FallAppDevTeam_A</string>
 		</dict>

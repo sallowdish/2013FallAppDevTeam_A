@@ -42,6 +42,8 @@
 		714F545D19A4534200CA08F4 /* CommentsCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 714F545C19A4534200CA08F4 /* CommentsCellTableViewCell.m */; };
 		714F546319A8108F00CA08F4 /* CommentsSpanArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 714F546219A8108F00CA08F4 /* CommentsSpanArea.m */; };
 		714F546719A81D3500CA08F4 /* NewCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 714F546619A81D3500CA08F4 /* NewCommentTableViewCell.m */; };
+		7173BE4A19BE76FB00975A1F /* UpdateProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7173BE4919BE76FB00975A1F /* UpdateProfileTableViewController.m */; };
+		7173BE4B19BE76FB00975A1F /* UpdateProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7173BE4919BE76FB00975A1F /* UpdateProfileTableViewController.m */; };
 		7185DF9618B9609A00C3DE90 /* EventPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7185DF9518B9609A00C3DE90 /* EventPostModel.m */; };
 		7185DF9B18B9AF4F00C3DE90 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7185DF9818B9AF4F00C3DE90 /* ProgressHUD.bundle */; };
 		7185DF9C18B9AF4F00C3DE90 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7185DF9A18B9AF4F00C3DE90 /* ProgressHUD.m */; };
@@ -369,6 +371,8 @@
 		714F546219A8108F00CA08F4 /* CommentsSpanArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsSpanArea.m; path = ViewController/CommentsSpanArea.m; sourceTree = "<group>"; };
 		714F546519A81D3500CA08F4 /* NewCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewCommentTableViewCell.h; path = ViewController/NewCommentTableViewCell.h; sourceTree = "<group>"; };
 		714F546619A81D3500CA08F4 /* NewCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewCommentTableViewCell.m; path = ViewController/NewCommentTableViewCell.m; sourceTree = "<group>"; };
+		7173BE4819BE76FB00975A1F /* UpdateProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UpdateProfileTableViewController.h; path = ViewController/UpdateProfileTableViewController.h; sourceTree = "<group>"; };
+		7173BE4919BE76FB00975A1F /* UpdateProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UpdateProfileTableViewController.m; path = ViewController/UpdateProfileTableViewController.m; sourceTree = "<group>"; };
 		7185DF9418B9609A00C3DE90 /* EventPostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventPostModel.h; path = Model/EventPostModel.h; sourceTree = "<group>"; };
 		7185DF9518B9609A00C3DE90 /* EventPostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventPostModel.m; path = Model/EventPostModel.m; sourceTree = "<group>"; };
 		7185DF9818B9AF4F00C3DE90 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
@@ -1053,6 +1057,8 @@
 				71EE8684187854B6007FD900 /* ProfilePageViewController.m */,
 				71C9B733191C3256004631D0 /* MyEventTableViewController.h */,
 				71C9B734191C3256004631D0 /* MyEventTableViewController.m */,
+				7173BE4819BE76FB00975A1F /* UpdateProfileTableViewController.h */,
+				7173BE4919BE76FB00975A1F /* UpdateProfileTableViewController.m */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -1429,6 +1435,7 @@
 				71CA844719AD859A00904B5D /* EventPostModel.m in Sources */,
 				71CA844819AD859A00904B5D /* UIdataPickerWithDone.m in Sources */,
 				71CA844919AD859A00904B5D /* EventListFetchModel.m in Sources */,
+				7173BE4B19BE76FB00975A1F /* UpdateProfileTableViewController.m in Sources */,
 				71CA844A19AD859A00904B5D /* PageContentViewController.m in Sources */,
 				71CA844B19AD859A00904B5D /* NewCommentTableViewCell.m in Sources */,
 				71CA844C19AD859A00904B5D /* CQMFloatingContentOverlayView.m in Sources */,
@@ -1485,6 +1492,7 @@
 				7185DF9618B9609A00C3DE90 /* EventPostModel.m in Sources */,
 				711DA0CC194EC05F001A4F28 /* UIdataPickerWithDone.m in Sources */,
 				7104A7A01824D1B500EB3AD5 /* EventListFetchModel.m in Sources */,
+				7173BE4A19BE76FB00975A1F /* UpdateProfileTableViewController.m in Sources */,
 				7103FE9A18A9C2820047EFAD /* PageContentViewController.m in Sources */,
 				714F546719A81D3500CA08F4 /* NewCommentTableViewCell.m in Sources */,
 				71974BB41869A618004493DC /* CQMFloatingContentOverlayView.m in Sources */,

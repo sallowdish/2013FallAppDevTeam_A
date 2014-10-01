@@ -42,8 +42,8 @@ UIImage* selectedImage;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    dict=nil;
-    selectedImage=nil;
+        dict=nil;
+        selectedImage=nil;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -56,6 +56,7 @@ UIImage* selectedImage;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 -(IBAction)cancelButtonPressed{
     [self.navigationController popViewControllerAnimated:YES];

@@ -11,4 +11,6 @@
 
 @interface SignUpPageTableViewController : UITableViewController<GKImagePickerDelegate>
 
+//@property (atomic,strong) NSDictionary* current_user;
+
 @end

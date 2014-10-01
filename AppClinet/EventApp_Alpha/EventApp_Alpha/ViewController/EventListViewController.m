@@ -9,6 +9,7 @@
 #import "EventListViewController.h"
 #import "EventListFetchModel.h"
 #import "EventEdittingViewController.h"
+#import "EventDetailViewController.h"
 #import "TemplateTableCell.h"
 #import "SegmentControllerCell.h"
 #import "FormatingModel.h"
@@ -258,11 +259,11 @@ bool isUpdated,isBasedOnTime;
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([[segue identifier] isEqualToString:@"selectedSegue"]) {
-        UIViewController *destination=[segue destinationViewController];
+    if ([[segue identifier] isEqualToString:@"EventLIstToEventDetail"]) {
+        EventDetailViewController *destination=[segue destinationViewController];
         UITableViewCell* cell=sender;
         id obj=[eventList objectAtIndex:[[self.tableView indexPathForCell:cell] row]];
-        [destination setValue:[obj valueForKey:@"id"] forKey:@"eventID"];
+        destination.eventID=[[obj valueForKey:@"id"] integerValue];
     }
 }
 

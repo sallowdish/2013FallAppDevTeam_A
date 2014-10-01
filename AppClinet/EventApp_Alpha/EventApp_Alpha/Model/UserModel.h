@@ -28,5 +28,5 @@
 +(void)turnOffDevelopmentMode;
 
 -(void)logoutCurrentUser;
--(void)updateUserInfo;
++(void)updateUserInfo;
 @end

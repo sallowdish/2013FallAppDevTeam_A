@@ -42,7 +42,7 @@
 //Comment&Description tab
 @property (weak, nonatomic) IBOutlet UIButton *descriptionTab;
 @property (weak, nonatomic) IBOutlet UIButton *commentsTab;
-@property (weak, nonatomic) IBOutlet UIView *descriptionSpanArea;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionSpanArea;
 @property (weak, nonatomic) IBOutlet UIView *commentsSpanArea;
 @property (nonatomic) IBOutlet UIButton *RSVPbutton;
 @property (nonatomic) IBOutlet UIBarButtonItem *moreOptionButton;
@@ -424,11 +424,11 @@ NSString* state;
     }
     NSString *description=[event objectForKey:@"event_detail"];
     if ([description isEqualToString:@""]) {
-        self.description.text=@"This guy is really lazy. He didn't write anything in detail.";
-        self.description.selectable=NO;
+        self.descriptionSpanArea.text=@"This guy is really lazy. He didn't write anything in detail.";
+        self.descriptionSpanArea.selectable=NO;
     }
     else{
-        self.description.text=description;
+        self.descriptionSpanArea.text=description;
         
     }
     if (isLiked) {
@@ -480,9 +480,9 @@ NSString* state;
     self.descriptionTab.backgroundColor=[UIColor clearColor];
     NSString *description=[event objectForKey:@"event_detail"];
     if ([description isEqualToString:@""]) {
-        self.description.text=@"This guy is really lazy. He didn't write anything in detail.";
+        self.descriptionSpanArea.text=@"This guy is really lazy. He didn't write anything in detail.";
     }else{
-        self.description.text=description;
+        self.descriptionSpanArea.text=description;
     }
     
     self.commentsSpanArea.hidden=YES;

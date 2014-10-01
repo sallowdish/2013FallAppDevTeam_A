@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *topCell;
 @property (weak, nonatomic) IBOutlet UILabel *prompt;
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
-@property (weak, nonatomic) IBOutlet UIView *profileCell;
+//@property (weak, nonatomic) IBOutlet UIView *profileCell;
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *myEventListCell;
 
@@ -61,9 +61,6 @@
         [self.loginCell addGestureRecognizer:tap];
     }
     
-//    tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileTapped)];
-//    tap.numberOfTapsRequired=1;
-//    [self.profileCell addGestureRecognizer:tap];
     
     tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(logoutTapped)];
     tap.numberOfTapsRequired=1;
@@ -102,20 +99,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
--(IBAction)profileTapped:(ProfilePageViewController*)vc
-{
-    if ([UserModel isLogin]) {
-        if (!vc) {
-            vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilePage"];
-        }
-        vc.targetUser=[UserModel current_user];
-//        [self.navigationController pushViewController:vc animated:YES];
-
-    }else{
-        [self loginTapped];
-    }
-}
-
 -(void)logoutTapped{
     if ([UserModel isLogin]) {
         UserModel* model=[[UserModel alloc] init];
@@ -143,33 +126,35 @@
 
 -(void)popOver
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTopCell) name:@"loginProcessFinish" object:nil];
-//    LoginViewController* loginView=[[self.navigationController storyboard] instantiateViewControllerWithIdentifier:@"LoginPage"];
-//    [self.navigationController pushViewController:loginView animated:YES];
-//    [self presentViewController:loginView animated:YES completion:nil]
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTopCell) name:@"loginProcessFinish" object:nil];
     
-    [UserModel popupLoginViewToViewController:self complete:^(LoginViewController *loginview) {
-        [self.navigationController pushViewController:loginview animated:YES];
-    }];
+    [UserModel popupLoginViewToViewController:self complete:nil];
 
-    
 }
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([[segue identifier] isEqualToString:@"SettingToProfile"]) {
-        [self profileTapped:[segue destinationViewController]];
+        ProfilePageViewController* vc=(ProfilePageViewController*)[segue destinationViewController];
+        vc.targetUser=[UserModel current_user];
     }else{
         [super prepareForSegue:segue sender:sender];
     }
 }
-//- (void)loadLoginView
-//{
-////    [[self view] addSubview:[[LoginViewController alloc] init]];
-//    LoginViewController* loginview=[[LoginViewController alloc] initWithNibName:@"LoginViewController.xib" bundle:self.nibBundle];
-//    UIPopoverController* pop=[[UIPopoverController alloc] initWithContentViewController:loginview];
-//    [pop presentPopoverFromRect:CGRectMake(0, 0, 640, 960) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-//}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section==1 && indexPath.row==0) {
+        if (![UserModel isLogin]) {
+            [self loginTapped];
+        }
+        else{
+            [self performSegueWithIdentifier:@"SettingToProfile" sender:self];
+        }
+    }
+//    else{
+//        [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+//    }
+}
 
 - (void)didReceiveMemoryWarning
 {
