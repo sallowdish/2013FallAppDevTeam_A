@@ -1,5 +1,5 @@
 //
-//  UIWindow+Hierarchy.h
+//  KeyboardManager.h
 // https://github.com/hackiftekhar/IQKeyboardManager
 // Copyright (c) 2013-14 Iftekhar Qurashi.
 //
@@ -21,25 +21,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIWindow.h>
 
-@class UIViewController;
+#ifndef KeyboardManager_h
+#define KeyboardManager_h
 
-@interface UIWindow (IQ_UIWindow_Hierarchy)
+#import "IQBarButtonItem.h"
+#import "IQKeyboardManager.h"
+#import "IQKeyboardManagerConstants.h"
+#import "IQKeyboardReturnKeyHandler.h"
+#import "IQSegmentedNextPrevious.h"
+#import "IQTextView.h"
+#import "IQTitleBarButtonItem.h"
+#import "IQToolbar.h"
+#import "IQUIView+Hierarchy.h"
+#import "IQUIView+IQKeyboardToolbar.h"
+#import "IQUIWindow+Hierarchy.h"
 
-/*!
-    @method topMostController
- 
-    @return Returns the current Top Most ViewController in hierarchy.
- */
-- (UIViewController*) topMostController;
-
-/*!
-    @method currentViewController
- 
-    @return Returns the topViewController in stack of topMostController.
- */
-- (UIViewController*)currentViewController;
-
-
-@end
+#endif

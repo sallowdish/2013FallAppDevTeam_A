@@ -137,7 +137,7 @@ static bool isLogin,isDevelopment;
     AFHTTPRequestOperationManager* manager=[URLConstructModel authorizedJsonManger];
     NSString* targetURL=[[[URLConstructModel constructURLHeader] absoluteString] stringByAppendingFormat:@"%@%@%@%@%@",API,@"/user/",@"?format=json",@"&id=",[UserModel current_user][@"id"]];
     [manager GET:targetURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSDictionary* user=responseObject[@"objects"];
+        NSDictionary* user=responseObject[@"objects"][0];
         current_user=user;
         [ProgressHUD showSuccess:@"User Info Updated."];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -42,7 +42,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside=YES;
+//    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside=YES;
     
 }
 

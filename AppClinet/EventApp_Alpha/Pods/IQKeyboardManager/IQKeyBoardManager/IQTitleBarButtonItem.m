@@ -1,5 +1,5 @@
 //
-//  IQTitleBarButtonItem.h
+//  IQTitleBarButtonItem.m
 // https://github.com/hackiftekhar/IQKeyboardManager
 // Copyright (c) 2013-14 Iftekhar Qurashi.
 //
@@ -21,12 +21,41 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIBarButtonItem.h>
+#import <UIKit/UILabel.h>
 
-@interface IQTitleBarButtonItem : UIBarButtonItem
+#import "IQTitleBarButtonItem.h"
+#import "IQKeyboardManagerConstants.h"
 
-@property(nonatomic, strong) UIFont *font;  //Default is (system font 12.0 bold)
 
--(id)initWithFrame:(CGRect)frame Title:(NSString *)title;
+@implementation IQTitleBarButtonItem
+{
+    UILabel *_titleLabel;
+}
+@synthesize font = _font;
+
+-(instancetype)initWithFrame:(CGRect)frame title:(NSString *)title
+{
+    self = [super initWithTitle:nil style:UIBarButtonItemStylePlain target:nil action:nil];
+    if (self)
+    {
+        _titleLabel = [[UILabel alloc] initWithFrame:frame];
+        [_titleLabel setBackgroundColor:[UIColor clearColor]];
+        [_titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [_titleLabel setText:title];
+        [_titleLabel setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+        
+        [self setFont:[UIFont boldSystemFontOfSize:12.0]];
+
+        self.customView = _titleLabel;
+        self.enabled = NO;
+    }
+    return self;
+}
+
+-(void)setFont:(UIFont *)font
+{
+    _font = font;
+    [_titleLabel setFont:font];
+}
 
 @end

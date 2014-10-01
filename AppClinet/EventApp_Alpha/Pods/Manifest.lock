@@ -1,36 +1,36 @@
 PODS:
-  - AFNetworking (2.3.1):
+  - AFNetworking (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.3.1):
+  - AFNetworking/NSURLConnection (2.4.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.3.1):
+  - AFNetworking/NSURLSession (2.4.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.3.1)
-  - AFNetworking/Security (2.3.1)
-  - AFNetworking/Serialization (2.3.1)
-  - AFNetworking/UIKit (2.3.1):
+  - AFNetworking/Reachability (2.4.1)
+  - AFNetworking/Security (2.4.1)
+  - AFNetworking/Serialization (2.4.1)
+  - AFNetworking/UIKit (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - IQKeyboardManager (3.0.8)
+  - IQKeyboardManager (3.2.0)
   - RNGridMenu (0.1.3)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.2)
-  - IQKeyboardManager (~> 3.0.5)
+  - IQKeyboardManager (~> 3.2.0)
   - RNGridMenu (~> 0.1.3)
 
 SPEC CHECKSUMS:
-  AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
-  IQKeyboardManager: 0bf193c2d8a4d9c2063b39d6bc9d4e45a381a02a
+  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
+  IQKeyboardManager: 79e80782b444784b224bb6bc7ddaf57918cd29e7
   RNGridMenu: 7a5c2c0ad78d254d047c43efe502eee2b16fbcbc
 
 COCOAPODS: 0.33.1

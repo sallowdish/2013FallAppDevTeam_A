@@ -1,1 +1,1 @@
-../../IQKeyboardManager/KeyboardTextFieldDemo/IQKeyBoardManager/IQBarButtonItem.h
+../../IQKeyboardManager/IQKeyBoardManager/IQBarButtonItem.h

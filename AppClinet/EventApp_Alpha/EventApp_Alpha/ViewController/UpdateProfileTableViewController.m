@@ -67,18 +67,14 @@ UIImage* selectedImage;
 -(IBAction)submitButtonPressed{
     if ([self validateInfo]) {
         dict=[NSMutableDictionary dictionaryWithCapacity:0];
-//        [dict setValue:self.usernameField.text forKey:@"username"];
-//        [dict setValue:self.passwordField.text forKey:@"password"];
-//        [dict setValue:self.emailField.text forKey:@"email"];
         [dict setValue:self.nicknameField.text forKey:@"user_nickname"];
-//        
-//        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didSignUp) name:@"didSignUp" object:nil];
-//        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didFailSignUp:) name:@"didFailSignUp" object:nil];
-        [ProgressHUD show:@"Creating new account..."];
+
+        [ProgressHUD show:@"Updating Profle Info..."];
         AFHTTPRequestOperationManager* mgr=[URLConstructModel authorizedJsonManger];
         [mgr PUT:[NSString stringWithFormat:@"%@%@%@%@%@%@/?username=%@&api_key=%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,API,@"/user/",self.current_user[@"id"],[UserModel username],[UserModel userAPIKey]] parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [ProgressHUD showSuccess:@"Update Your Profile Info Successfully."];
-            [UserModel updateUserInfo];
+            [[UserModel class] updateUserInfo];
+//            [self.navigationController popToRootViewControllerAnimated:YES];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [ProgressHUD showError:[NSString stringWithFormat:@"Oops, something goes wrong,%@",[error localizedDescription]]];
         }];
@@ -90,57 +86,27 @@ UIImage* selectedImage;
 
 
 -(BOOL)validateInfo{
-    //check required field
-//    for (UITextField* field in self.fillupCheckSet) {
-//        if ([field.text isEqualToString:@""]) {
-//            [popoverAlterModel alterWithTitle:@"Warning!" Message:@"Please fill up all blanks."];
-//            return NO;
-//        }
-//    }
-//    //check if username is valid
-//    NSCharacterSet *s = [NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_"];
-//    s=[s invertedSet];
-//    NSRange range=[self.usernameField.text rangeOfCharacterFromSet:s];
-//    if (range.location!=NSNotFound) {
-//        [popoverAlterModel alterWithTitle:@"Warning!" Message:@"Please use [a-z],[0-9] and '_' in username only."];
-//        return NO;
-//        
-//    }
-//    //check if email if valid
-//    BOOL res=[self isValidEmail:self.emailField.text];
-//    if (!res) {
-//        [popoverAlterModel alterWithTitle:@"Warning!" Message:@"Please submit a valid email address."];
-//        return NO;
-//        
-//    }
-//    //check if passwords are consistent
-//    if (![self.passwordField.text isEqualToString:self.confirmPasswordField.text]) {
-//        self.passwordField.text=@"";
-//        self.confirmPasswordField.text=@"";
-//        [popoverAlterModel alterWithTitle:@"Warning!" Message:@"Passwords are not consist!"];
-//        return NO;
-//    }
     if (self.nicknameField.text.length>10) {
-        return NO;
         [ProgressHUD showError:@"Nickname cannot exceed 10 letters."];
+        return NO;
     }
     return YES;
 }
 
 
--(BOOL)isValidEmail:(NSString*)email{
-    NSString *emailRegEx =
-    @"(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"
-    @"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"
-    @"x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-"
-    @"z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5"
-    @"]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-"
-    @"9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21"
-    @"-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
-    
-    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES[c] %@", emailRegEx];
-    return [emailTest evaluateWithObject:email];
-}
+//-(BOOL)isValidEmail:(NSString*)email{
+//    NSString *emailRegEx =
+//    @"(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"
+//    @"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"
+//    @"x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-"
+//    @"z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5"
+//    @"]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-"
+//    @"9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21"
+//    @"-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
+//    
+//    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES[c] %@", emailRegEx];
+//    return [emailTest evaluateWithObject:email];
+//}
 
 -(IBAction)imagePickerPopup:(id)sender{
     self.imagePicker = [[GKImagePicker alloc] init];

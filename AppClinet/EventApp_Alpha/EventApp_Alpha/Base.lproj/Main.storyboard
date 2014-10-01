@@ -2328,11 +2328,11 @@ IAo
             <objects>
                 <viewController storyboardIdentifier="ProfilePage" automaticallyAdjustsScrollViewInsets="NO" id="i4G-Cf-69o" customClass="ProfilePageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WO8-Hh-Kg5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="381"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="FDX-s5-dgU">
-                                <rect key="frame" x="0.0" y="60" width="320" height="505"/>
+                                <rect key="frame" x="0.0" y="-127" width="320" height="505"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="A6G-hi-2dY" userLabel="BackgroundContainer">
@@ -2813,6 +2813,6 @@ XX日發佈了XXXX活動
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="PMc-e5-KdT"/>
-        <segue reference="udk-Iq-8tN"/>
+        <segue reference="oPM-qj-0pt"/>
     </inferredMetricsTieBreakers>
 </document>
