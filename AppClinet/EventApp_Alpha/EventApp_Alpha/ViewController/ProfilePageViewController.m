@@ -45,7 +45,6 @@
 
 - (void)viewDidLoad
 {
-
     [super viewDidLoad];
     
 }
@@ -53,9 +52,9 @@
 -(void)dataSourceSetup{
     //Data Setup
     if (self.targetUser) {
-        
+        self.userID=[self.targetUser[@"id"] integerValue];
     }
-    else if (self.userID){
+    if(self.userID){
         [UserModel getUserInfo:self.userID complete:^(NSDictionary *userInfo) {
             self.targetUser=[userInfo valueForKey:@"objects"][0];
             [self dateSourceToViewMatch];

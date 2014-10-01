@@ -29,4 +29,5 @@
 
 -(void)logoutCurrentUser;
 +(void)updateUserInfo;
++(void)updateUserInfo:(void (^) (void))completeBlock;
 @end

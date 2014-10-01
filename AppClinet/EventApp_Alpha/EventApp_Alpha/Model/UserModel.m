@@ -134,12 +134,19 @@ static bool isLogin,isDevelopment;
 
 
 +(void)updateUserInfo{
+    [UserModel updateUserInfo:nil];
+}
++(void)updateUserInfo:(void (^) (void))completeBlock{
     AFHTTPRequestOperationManager* manager=[URLConstructModel authorizedJsonManger];
     NSString* targetURL=[[[URLConstructModel constructURLHeader] absoluteString] stringByAppendingFormat:@"%@%@%@%@%@",API,@"/user/",@"?format=json",@"&id=",[UserModel current_user][@"id"]];
     [manager GET:targetURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary* user=responseObject[@"objects"][0];
         current_user=user;
         [ProgressHUD showSuccess:@"User Info Updated."];
+        if (completeBlock) {
+            completeBlock();
+        }
+
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [ProgressHUD showError:[NSString stringWithFormat:@"Fail to update user info.%@",[error localizedDescription]]];
     }];
