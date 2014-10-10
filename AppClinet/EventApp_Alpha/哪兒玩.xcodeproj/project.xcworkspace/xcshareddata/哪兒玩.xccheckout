@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3132FA62-4AAA-4309-AEE8-D2FD90A21829</string>
+	<key>IDESourceControlProjectName</key>
+	<string>哪兒玩</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EBBFA76F8A97AE1538D1A82FD3F0EEC62D27BC08</key>
+		<string>https://github.com/sallowdish/2013FallAppDevTeam_A.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>AppClinet/EventApp_Alpha/哪兒玩.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EBBFA76F8A97AE1538D1A82FD3F0EEC62D27BC08</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/sallowdish/2013FallAppDevTeam_A.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EBBFA76F8A97AE1538D1A82FD3F0EEC62D27BC08</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EBBFA76F8A97AE1538D1A82FD3F0EEC62D27BC08</string>
+			<key>IDESourceControlWCCName</key>
+			<string>2013FallAppDevTeam_A</string>
+		</dict>
+	</array>
+</dict>
+</plist>

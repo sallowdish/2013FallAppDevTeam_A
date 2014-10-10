@@ -13,6 +13,8 @@
 #import "UserModel.h"
 
 @interface UpdateProfileTableViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *descriptionField;
+@property (weak, nonatomic) IBOutlet UITextField *locationField;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (strong, nonatomic) IBOutletCollection(UITextField) NSArray *fillupCheckSet;
 @property (weak, nonatomic) IBOutlet UITextField *nicknameField;
@@ -39,10 +41,13 @@ UIImage* selectedImage;
     dict=nil;
     selectedImage=nil;
     if (self.current_user) {
-        self.nicknameField.text=self.current_user[@"user_nickname"];
+        self.nicknameField.text=[self.current_user[@"user_nickname"] isEqualToString:@""]?self.current_user[@"user_nickname"]:nil;
+        self.locationField.text=![self.current_user[@"user_location"] isEqualToString:@""]?self.current_user[@"user_location"]:nil;
+        self.descriptionField.text=![self.current_user[@"user_description"] isEqualToString:@""]?self.current_user[@"user_description"]:nil;
         NSString *targetURL=[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,self.current_user[@"fk_user_image"][@"path"]];
         [self.profileImageView setImageWithURL:[NSURL URLWithString:targetURL] placeholderImage:[UIImage imageNamed:@"152_152icon.png"]];
     }else{
+        [self.navigationController popViewControllerAnimated:YES];
         [ProgressHUD showError:@"Cannot load current user's info."];
     }
 
@@ -68,6 +73,8 @@ UIImage* selectedImage;
     if ([self validateInfo]) {
         dict=[NSMutableDictionary dictionaryWithCapacity:0];
         [dict setValue:self.nicknameField.text forKey:@"user_nickname"];
+        [dict setValue:self.descriptionField.text forKey:@"user_description"];
+        [dict setValue:self.locationField.text forKey:@"user_location"];
 
         [ProgressHUD show:@"Updating Profle Info..."];
         AFHTTPRequestOperationManager* mgr=[URLConstructModel authorizedJsonManger];
@@ -91,19 +98,23 @@ UIImage* selectedImage;
         [ProgressHUD showError:@"Nickname cannot exceed 10 letters."];
         return NO;
     }
+    if (self.locationField.text.length>15) {
+        [ProgressHUD showError:@"Location cannot exceed 15 letters."];
+        return NO;
+    }
     return YES;
 }
 
 
 -(IBAction)imagePickerPopup:(id)sender{
-    self.imagePicker = [[GKImagePicker alloc] init];
-    self.imagePicker.cropSize = CGSizeMake(320, 320);
-    self.imagePicker.delegate = self;
-    self.imagePicker.resizeableCropArea = YES;
-    
-    //    [self presentModalViewController:self.imagePicker.imagePickerController animated:YES];
-    
-    [self presentViewController:self.imagePicker.imagePickerController animated:YES completion:nil];
+//    self.imagePicker = [[GKImagePicker alloc] init];
+//    self.imagePicker.cropSize = CGSizeMake(320, 320);
+//    self.imagePicker.delegate = self;
+//    self.imagePicker.resizeableCropArea = YES;
+//    
+//    //    [self presentModalViewController:self.imagePicker.imagePickerController animated:YES];
+//    
+//    [self presentViewController:self.imagePicker.imagePickerController animated:YES completion:nil];
 }
 
 -(void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
@@ -137,5 +148,29 @@ UIImage* selectedImage;
 //    [self dismissViewControllerAnimated:YES completion:nil];
 //}
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *sectionName;
+    switch (section)
+    {
+        case 2:
+            sectionName = [NSString localizedStringWithFormat:@"%@%@",@"User: ",[self.current_user[@"username"] capitalizedString]];
+            break;
+            // ...
+        case 4:
+            sectionName=[NSString localizedStringWithFormat:@"Nickname"];
+            break;
+        case 5:
+            sectionName=[NSString localizedStringWithFormat:@"Location"];
+            break;
+        case 6:
+            sectionName=[NSString localizedStringWithFormat:@"Description"];
+            break;
+        default:
+            sectionName = [super tableView:tableView titleForHeaderInSection:section];
+            break;
+    }
+    return sectionName;
+}
 
 @end

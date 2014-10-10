@@ -52,10 +52,11 @@
     
 //    UIImage* img=[ImageModel downloadImageViaPath:[event objectForKey:@"fk_event_poster_user_fk_user_image"] For:@"user" WithPrefix:MEDIAPREFIX];
 //    NSURL* targetURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,MEDIAPREFIX,]];
-    if ([event[@"fk_event_poster_user_gender"] isEqualToString:@"male"]) {
-        cell.EventPosterGenderSignImageView.image=[UIImage imageNamed:@"MaleSign.png"];
-    }else{
+    if ([event[@"fk_event_poster_user_gender"] isEqual:[NSNull null]]||([event[@"fk_event_poster_user_gender"] isEqualToString:@"female"]))
+    {
         cell.EventPosterGenderSignImageView.image=[UIImage imageNamed:@"FemaleSign.png"];
+    }else{
+        cell.EventPosterGenderSignImageView.image=[UIImage imageNamed:@"MaleSign.png"];
     }
     
     

@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:EventApp_Alpha.xcodeproj">
+      location = "group:&#x54ea;&#x5152;&#x73a9;.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

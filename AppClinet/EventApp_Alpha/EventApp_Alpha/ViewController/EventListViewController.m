@@ -213,7 +213,7 @@ bool isUpdated,isBasedOnTime;
         
         // Configure the cell...
         NSDictionary* event=[eventList objectAtIndex:indexPath.row];
-        cell=[FormatingModel modelToViewMatch:cell ForRowAtIndexPath:(NSIndexPath*)indexPath eventInstance:event];
+        cell=[FormatingModel modelToViewMatch:cell ForRowAtIndexPath:indexPath eventInstance:event];
             return cell;
     }
 }

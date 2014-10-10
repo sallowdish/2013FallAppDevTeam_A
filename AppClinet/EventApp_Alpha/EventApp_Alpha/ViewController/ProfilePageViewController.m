@@ -108,8 +108,15 @@
     self.username.text=[[self.targetUser valueForKey:@"user_nickname"] isEqualToString:@""]?[self.targetUser valueForKey:@"username"]:[self.targetUser valueForKey:@"user_nickname"];
     self.userLocation.text=[[self.targetUser valueForKey:@"user_location"] isEqualToString:@""]?@"Unknown":[self.targetUser valueForKey:@"user_location"];
     self.userLike.text=@"N/A";
-    self.userTag.text=@"";
-    self.userDescription.text=@"Top Secret";
+    if ([(NSArray*)self.targetUser[@"user_tag"] count]>0) {
+        NSArray* tags=(NSArray*)self.targetUser[@"user_tag"];
+        self.userTag.text=[[tags valueForKey:@"description"] componentsJoinedByString:@", "];
+    }
+    else{
+        self.userTag.text=@"Nothing Here";
+    }
+    
+    self.userDescription.text=![self.targetUser[@"user_description"] isEqualToString:@""]?self.targetUser[@"user_description"]:@"Nothing here";
     self.userRecentActivity.text=@"Top Secret";
 }
 

@@ -17,7 +17,7 @@
                BlueprintIdentifier = "71F3218617F830D700FFFB95"
                BuildableName = "MegaEvent.app"
                BlueprintName = "MegaEvent"
-               ReferencedContainer = "container:EventApp_Alpha.xcodeproj">
+               ReferencedContainer = "container:&#x54ea;&#x5152;&#x73a9;.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "71F321AA17F830D700FFFB95"
-               BuildableName = "EventApp_AlphaTests.xctest"
-               BlueprintName = "EventApp_AlphaTests"
-               ReferencedContainer = "container:EventApp_Alpha.xcodeproj">
+               BuildableName = "&#x54ea;&#x5152;&#x73a9;Tests.xctest"
+               BlueprintName = "&#x54ea;&#x5152;&#x73a9;Tests"
+               ReferencedContainer = "container:&#x54ea;&#x5152;&#x73a9;.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -45,7 +45,7 @@
             BlueprintIdentifier = "71F3218617F830D700FFFB95"
             BuildableName = "MegaEvent.app"
             BlueprintName = "MegaEvent"
-            ReferencedContainer = "container:EventApp_Alpha.xcodeproj">
+            ReferencedContainer = "container:&#x54ea;&#x5152;&#x73a9;.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "71F3218617F830D700FFFB95"
             BuildableName = "MegaEvent.app"
             BlueprintName = "MegaEvent"
-            ReferencedContainer = "container:EventApp_Alpha.xcodeproj">
+            ReferencedContainer = "container:&#x54ea;&#x5152;&#x73a9;.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -82,7 +82,7 @@
             BlueprintIdentifier = "71F3218617F830D700FFFB95"
             BuildableName = "MegaEvent.app"
             BlueprintName = "MegaEvent"
-            ReferencedContainer = "container:EventApp_Alpha.xcodeproj">
+            ReferencedContainer = "container:&#x54ea;&#x5152;&#x73a9;.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

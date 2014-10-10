@@ -511,16 +511,16 @@
 		71F3218A17F830D700FFFB95 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		71F3218C17F830D700FFFB95 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		71F3218E17F830D700FFFB95 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		71F3219217F830D700FFFB95 /* EventApp_Alpha-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EventApp_Alpha-Info.plist"; sourceTree = "<group>"; };
+		71F3219217F830D700FFFB95 /* 哪兒玩-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "哪兒玩-Info.plist"; sourceTree = "<group>"; };
 		71F3219417F830D700FFFB95 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		71F3219617F830D700FFFB95 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		71F3219817F830D700FFFB95 /* EventApp_Alpha-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EventApp_Alpha-Prefix.pch"; sourceTree = "<group>"; };
+		71F3219817F830D700FFFB95 /* 哪兒玩-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "哪兒玩-Prefix.pch"; sourceTree = "<group>"; };
 		71F3219917F830D700FFFB95 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		71F3219A17F830D700FFFB95 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		71F3219D17F830D700FFFB95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		71F321A517F830D700FFFB95 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		71F321AB17F830D700FFFB95 /* EventApp_AlphaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventApp_AlphaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		71F321B417F830D700FFFB95 /* EventApp_AlphaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EventApp_AlphaTests-Info.plist"; sourceTree = "<group>"; };
+		71F321AB17F830D700FFFB95 /* 哪兒玩Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "哪兒玩Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		71F321B417F830D700FFFB95 /* 哪兒玩Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "哪兒玩Tests-Info.plist"; sourceTree = "<group>"; };
 		71F321B617F830D700FFFB95 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		71F321B817F830D700FFFB95 /* EventApp_AlphaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventApp_AlphaTests.m; sourceTree = "<group>"; };
 		71F8A91D183C7CAB001AEF6A /* EventEdittingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventEdittingViewController.h; path = ViewController/EventEdittingViewController.h; sourceTree = "<group>"; };
@@ -926,7 +926,7 @@
 			isa = PBXGroup;
 			children = (
 				71F3218717F830D700FFFB95 /* MegaEvent.app */,
-				71F321AB17F830D700FFFB95 /* EventApp_AlphaTests.xctest */,
+				71F321AB17F830D700FFFB95 /* 哪兒玩Tests.xctest */,
 				71CA84D119AD859A00904B5D /* MegaEvent copy.app */,
 			);
 			name = Products;
@@ -978,10 +978,10 @@
 				71D7AF5418A1D0CA0082A6AA /* Icons */,
 				71EE867518784D63007FD900 /* Images */,
 				71910224185EE0F300B81F77 /* Localrecord.json */,
-				71F3219217F830D700FFFB95 /* EventApp_Alpha-Info.plist */,
+				71F3219217F830D700FFFB95 /* 哪兒玩-Info.plist */,
 				71F3219317F830D700FFFB95 /* InfoPlist.strings */,
 				71F3219617F830D700FFFB95 /* main.m */,
-				71F3219817F830D700FFFB95 /* EventApp_Alpha-Prefix.pch */,
+				71F3219817F830D700FFFB95 /* 哪兒玩-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -998,7 +998,7 @@
 		71F321B317F830D700FFFB95 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				71F321B417F830D700FFFB95 /* EventApp_AlphaTests-Info.plist */,
+				71F321B417F830D700FFFB95 /* 哪兒玩Tests-Info.plist */,
 				71F321B517F830D700FFFB95 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -1115,9 +1115,9 @@
 			productReference = 71F3218717F830D700FFFB95 /* MegaEvent.app */;
 			productType = "com.apple.product-type.application";
 		};
-		71F321AA17F830D700FFFB95 /* EventApp_AlphaTests */ = {
+		71F321AA17F830D700FFFB95 /* 哪兒玩Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 71F321BF17F830D700FFFB95 /* Build configuration list for PBXNativeTarget "EventApp_AlphaTests" */;
+			buildConfigurationList = 71F321BF17F830D700FFFB95 /* Build configuration list for PBXNativeTarget "哪兒玩Tests" */;
 			buildPhases = (
 				71F321A717F830D700FFFB95 /* Sources */,
 				71F321A817F830D700FFFB95 /* Frameworks */,
@@ -1128,9 +1128,9 @@
 			dependencies = (
 				71F321B117F830D700FFFB95 /* PBXTargetDependency */,
 			);
-			name = EventApp_AlphaTests;
+			name = "哪兒玩Tests";
 			productName = EventApp_AlphaTests;
-			productReference = 71F321AB17F830D700FFFB95 /* EventApp_AlphaTests.xctest */;
+			productReference = 71F321AB17F830D700FFFB95 /* 哪兒玩Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1150,7 +1150,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 71F3218217F830D700FFFB95 /* Build configuration list for PBXProject "EventApp_Alpha" */;
+			buildConfigurationList = 71F3218217F830D700FFFB95 /* Build configuration list for PBXProject "哪兒玩" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1164,7 +1164,7 @@
 			projectRoot = "";
 			targets = (
 				71F3218617F830D700FFFB95 /* MegaEvent */,
-				71F321AA17F830D700FFFB95 /* EventApp_AlphaTests */,
+				71F321AA17F830D700FFFB95 /* 哪兒玩Tests */,
 				71CA843619AD859A00904B5D /* MegaEventDebug */,
 			);
 		};
@@ -1725,8 +1725,8 @@
 					"$(PROJECT_DIR)/EventApp_Alpha/UbertestersSDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "EventApp_Alpha/EventApp_Alpha-Prefix.pch";
-				INFOPLIST_FILE = "EventApp_Alpha/EventApp_Alpha-Info.plist";
+				GCC_PREFIX_HEADER = "EventApp_Alpha/哪兒玩-Prefix.pch";
+				INFOPLIST_FILE = "EventApp_Alpha/哪兒玩-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2EE1B147-E73D-4701-8991-B05E9E93FA5E";
@@ -1747,8 +1747,8 @@
 					"$(PROJECT_DIR)/EventApp_Alpha/UbertestersSDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "EventApp_Alpha/EventApp_Alpha-Prefix.pch";
-				INFOPLIST_FILE = "EventApp_Alpha/EventApp_Alpha-Info.plist";
+				GCC_PREFIX_HEADER = "EventApp_Alpha/哪兒玩-Prefix.pch";
+				INFOPLIST_FILE = "EventApp_Alpha/哪兒玩-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "31AA8BF5-1BFD-485D-A4AE-F74FA4C853ED";
@@ -1772,8 +1772,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "EventApp_AlphaTests/EventApp_AlphaTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "EventApp_AlphaTests/哪兒玩Tests-Info.plist";
+				PRODUCT_NAME = "哪兒玩Tests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1790,8 +1790,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventApp_Alpha/EventApp_Alpha-Prefix.pch";
-				INFOPLIST_FILE = "EventApp_AlphaTests/EventApp_AlphaTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "EventApp_AlphaTests/哪兒玩Tests-Info.plist";
+				PRODUCT_NAME = "哪兒玩Tests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1809,7 +1809,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		71F3218217F830D700FFFB95 /* Build configuration list for PBXProject "EventApp_Alpha" */ = {
+		71F3218217F830D700FFFB95 /* Build configuration list for PBXProject "哪兒玩" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				71F321BA17F830D700FFFB95 /* Debug */,
@@ -1827,7 +1827,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		71F321BF17F830D700FFFB95 /* Build configuration list for PBXNativeTarget "EventApp_AlphaTests" */ = {
+		71F321BF17F830D700FFFB95 /* Build configuration list for PBXNativeTarget "哪兒玩Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				71F321C017F830D700FFFB95 /* Debug */,

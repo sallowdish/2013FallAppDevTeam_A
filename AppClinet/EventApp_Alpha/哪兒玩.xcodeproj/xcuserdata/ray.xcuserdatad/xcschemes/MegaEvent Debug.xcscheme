@@ -17,7 +17,7 @@
                BlueprintIdentifier = "71CA843619AD859A00904B5D"
                BuildableName = "MegaEvent copy.app"
                BlueprintName = "MegaEventDebug"
-               ReferencedContainer = "container:EventApp_Alpha.xcodeproj">
+               ReferencedContainer = "container:&#x54ea;&#x5152;&#x73a9;.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
             BlueprintIdentifier = "71CA843619AD859A00904B5D"
             BuildableName = "MegaEvent copy.app"
             BlueprintName = "MegaEventDebug"
-            ReferencedContainer = "container:EventApp_Alpha.xcodeproj">
+            ReferencedContainer = "container:&#x54ea;&#x5152;&#x73a9;.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -54,7 +54,7 @@
             BlueprintIdentifier = "71CA843619AD859A00904B5D"
             BuildableName = "MegaEvent copy.app"
             BlueprintName = "MegaEventDebug"
-            ReferencedContainer = "container:EventApp_Alpha.xcodeproj">
+            ReferencedContainer = "container:&#x54ea;&#x5152;&#x73a9;.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -72,7 +72,7 @@
             BlueprintIdentifier = "71CA843619AD859A00904B5D"
             BuildableName = "MegaEvent copy.app"
             BlueprintName = "MegaEventDebug"
-            ReferencedContainer = "container:EventApp_Alpha.xcodeproj">
+            ReferencedContainer = "container:&#x54ea;&#x5152;&#x73a9;.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
