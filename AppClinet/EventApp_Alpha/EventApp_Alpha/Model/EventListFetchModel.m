@@ -51,7 +51,7 @@ static NSString* nextPage;
             targeturl=[NSURL URLWithString:[[targeturl absoluteString] stringByAppendingString:@"&order_by=-event_create_time"]];
         }
         else if ([mode isEqualToString:@"hot"]){
-            targeturl=[NSURL URLWithString:[[targeturl absoluteString] stringByAppendingString:@"&order_by=-event_rsvp"]];
+            targeturl=[NSURL URLWithString:[[targeturl absoluteString] stringByAppendingString:@"&order_by=-event_rsvp_count"]];
         }
         NSLog(@"%@",[targeturl absoluteString]);
         [self fetchDataWithUrl:targeturl];

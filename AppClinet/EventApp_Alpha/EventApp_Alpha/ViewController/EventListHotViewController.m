@@ -78,6 +78,10 @@ bool isUpdated;
     //start appearing
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self refreshEventList:self];
+}
 
 -(void)fetchNewDataFromServer:(NSString*)mode{
     [ProgressHUD show:@"Loading new events list..."];
