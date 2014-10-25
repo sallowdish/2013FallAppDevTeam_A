@@ -28,6 +28,7 @@
 @synthesize eventList,model;
 
 bool isUpdated;
+NSString* placeHolder;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -111,12 +112,23 @@ bool isUpdated;
 
 -(void)didFetchNewDataFromServer:(NSNotification*) notif{
     if ([notif object]) {
-        eventList=(NSArray*)[notif object];
+        NSDictionary* result=(NSDictionary*)[notif object];
+        eventList=result[@"eventList"];
         [self removeFetchDataNotifactionObserver];
         isUpdated=true;
-        NSLog(@"%@",@"Hot List Fetched new Data");
-        self.isNeedRefresh=NO;
+        NSLog(@"%@",@"New List has fetched new data");
+        if ([result[@"nextPage"] isEqual:[NSNull null]]) {
+            placeHolder=@"No More Event";
+        }
+        if (self.isNeedRefresh) {
+            self.isNeedRefresh=NO;
+        }
+        
+        [self.tableView reloadData];
+    }else{
+        [ProgressHUD showError:@"Failed to get event list"];
     }
+    
 }
 
 -(void)didFailFetchNewDataFromServer:(id)notif{

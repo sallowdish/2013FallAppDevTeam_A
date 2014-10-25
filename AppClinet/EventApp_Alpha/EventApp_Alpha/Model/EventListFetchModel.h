@@ -14,6 +14,7 @@
 @interface EventListFetchModel : DataTransferModel
 
 +(NSArray*)eventsList;
++(NSString*)nextPage;
 -(void) fetchEventListWithMode:(NSString*) mode;
 -(void) fetchEventListFromFile;
 -(void) fetchEventListWithUser;

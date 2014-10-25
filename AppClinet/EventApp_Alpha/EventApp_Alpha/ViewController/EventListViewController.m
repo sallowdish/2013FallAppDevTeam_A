@@ -30,6 +30,7 @@
 @synthesize eventList,model;
 
 bool isUpdated,isBasedOnTime;
+NSString* placeHolder=@"Load More...";
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -58,25 +59,12 @@ bool isUpdated,isBasedOnTime;
     
     self.segmentController.selectedSegmentIndex=0;
     
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    // Uncomment the following line to preserve selection between presentations.
-//    self.clearsSelectionOnViewWillAppear = YES;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    
-    //get the latest event list online
-
     model=[[EventListFetchModel alloc] init];
     [model fetchEventListFromFile];
     eventList=[EventListFetchModel eventsList];
-//    //no network or connection fails
-//    if (eventList.count==0) {
-//        
-//        eventList=[EventListFetchModel eventsList];
-//        NSLog(@"%@",@"No Internet now.");
-//    }
+
     
     UIRefreshControl* f5=[[UIRefreshControl alloc] init];
     [f5 addTarget:self action:@selector(refreshEventList:) forControlEvents:UIControlEventValueChanged];
@@ -113,12 +101,12 @@ bool isUpdated,isBasedOnTime;
 -(void)fetchNewDataFromServer:(NSString*)mode :(void(^)(id para))completeBlock{
     [ProgressHUD show:@"Loading new events list..."];
     isUpdated=false;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchNewDataFromServer:) name:@"didFetchEventListWithMode" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailFetchNewDataFromServer:) name:@"didFailFetchEventListWithMode" object:nil];
+    [self addFetchDataNotificationObserver];
     [model fetchEventListWithMode:mode];
     [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(removeFromNSNotificationCenter) userInfo:nil repeats:NO];
     //    [self fetchNewDataFromServer];
     [[ProgressHUD class] performSelector:@selector(dismiss) withObject:nil afterDelay:0.8];
+    
     if (completeBlock) {
         completeBlock(nil);
     }
@@ -126,13 +114,24 @@ bool isUpdated,isBasedOnTime;
 
 -(void)didFetchNewDataFromServer:(NSNotification*) notif{
     if ([notif object]) {
-        eventList=(NSArray*)[notif object];
+        NSDictionary* result=(NSDictionary*)[notif object];
+        eventList=result[@"eventList"];
         [self removeFetchDataNotifactionObserver];
         isUpdated=true;
-        NSLog(@"%@",@"New List Fetched new Data");
-        self.isNeedRefresh=NO;
+        NSLog(@"%@",@"New List has fetched new data");
+        if ([result[@"nextPage"] isEqual:[NSNull null]]) {
+            placeHolder=@"No More Event";
+        }
+        if (self.isNeedRefresh) {
+            self.isNeedRefresh=NO;
+        }
+        [self.refreshControl endRefreshing];
+        [self.refreshControl setAttributedTitle:[[NSAttributedString alloc] initWithString:@"再多一點點...(灬ºωº灬)"]];
+        [self.tableView reloadData];
+    }else{
+        [ProgressHUD showError:@"Failed to get event list"];
     }
-    [self.tableView reloadData];
+    
 }
 
 -(void)didFailFetchNewDataFromServer:(id)notif{
@@ -146,6 +145,11 @@ bool isUpdated,isBasedOnTime;
     if (isUpdated==false) {
         [self removeFetchDataNotifactionObserver];
     }
+}
+
+-(void)addFetchDataNotificationObserver{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchNewDataFromServer:) name:@"didFetchEventListWithMode" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailFetchNewDataFromServer:) name:@"didFailFetchEventListWithMode" object:nil];
 }
 
 -(void)removeFetchDataNotifactionObserver{
@@ -174,16 +178,13 @@ bool isUpdated,isBasedOnTime;
     
     //HUD indication
     //Functionality
+    
     if (isBasedOnTime) {
         [self fetchNewDataFromServer:@"time" :nil];
     }
     else{
         [self fetchNewDataFromServer:@"hot" :nil];
     }
-    
-    [self.refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:2];
-    //HUD dismiss
-    [self.refreshControl performSelector:@selector(setAttributedTitle:) withObject:[[NSAttributedString alloc]initWithString:@"再多一點點...(灬ºωº灬)"] afterDelay:2.2];
 }
 
 - (void)didReceiveMemoryWarning
@@ -213,8 +214,10 @@ bool isUpdated,isBasedOnTime;
     
     if (indexPath.row==[eventList count]) {
         UITableViewCell *cell= [tableView dequeueReusableCellWithIdentifier:@"loadMoreCell"];
+        [cell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         UIButton* button=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
-        [button setTitle:@"Load More..." forState:UIControlStateNormal];
+        
+        [button setTitle:placeHolder forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(loadNextPage:) forControlEvents:UIControlEventTouchDown];
         [cell addSubview:button];
@@ -236,9 +239,12 @@ bool isUpdated,isBasedOnTime;
 
     [model fetchNextPage:nil complete:^{
         eventList=[EventListFetchModel eventsList];
+        if ([[EventListFetchModel nextPage] isEqual:[NSNull null]]) {
+            placeHolder=@"No More Event";
+        }
         [self.tableView reloadData];
         [ProgressHUD showSuccess:@"Loading Finish."];
-    } fail:^(NSError *error) {
+            } fail:^(NSError *error) {
         [ProgressHUD showError:[error localizedDescription]];
     }];
 }
@@ -249,8 +255,6 @@ bool isUpdated,isBasedOnTime;
         seg.selectedSegmentIndex=2;
         [self performSegueWithIdentifier:@"eventListToEventRecommend" sender:nil];
     }else if ([seg selectedSegmentIndex]==1) {
-//        seg.selectedSegmentIndex=1;
-//        [self performSegueWithIdentifier:@"eventListToEventListHot" sender:nil];
         isBasedOnTime=false;
         [self refreshEventList:nil];
     }else if ([seg selectedSegmentIndex]==0)
@@ -258,6 +262,7 @@ bool isUpdated,isBasedOnTime;
         isBasedOnTime=true;
         [self refreshEventList:nil];
     }
+    placeHolder=@"Load More...";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

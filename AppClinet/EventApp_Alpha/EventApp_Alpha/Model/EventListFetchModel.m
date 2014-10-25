@@ -26,6 +26,10 @@ static NSString* nextPage;
     return eventList;
 }
 
++(NSString*)nextPage{
+    return nextPage;
+}
+
 +(void)setEventsList:(NSMutableArray*)value{
     eventList=[value copy];
 }
@@ -138,8 +142,8 @@ static NSString* nextPage;
                 {
                     //NSLog(@"%@",jsonContent);
                 }
-                
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"didFetchEventListWithMode" object:eventList];
+                NSDictionary* result=@{@"eventList":eventList,@"nextPage":nextPage};
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"didFetchEventListWithMode" object:result];
             }
 
         }
