@@ -13,4 +13,5 @@
 @property (nonatomic,strong) NSArray* eventList;
 - (IBAction)refreshEventList:(id)sender;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentController;
+@property (assign, nonatomic) BOOL isNeedRefresh;
 @end

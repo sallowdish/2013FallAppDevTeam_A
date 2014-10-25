@@ -89,7 +89,7 @@ bool isUpdated;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchNewDataFromServer:) name:@"didFetchEventListWithMode" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailFetchNewDataFromServer:) name:@"didFailFetchEventListWithMode" object:nil];
     [model fetchEventListWithMode:mode];
-    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(removeFromNSNotificationCenter) userInfo:nil repeats:NO];
+//    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(removeFromNSNotificationCenter) userInfo:nil repeats:NO];
     //    [self fetchNewDataFromServer];
     [[ProgressHUD class] performSelector:@selector(dismiss) withObject:nil afterDelay:0.8];
 }
@@ -99,7 +99,7 @@ bool isUpdated;
         eventList=(NSArray*)[notif object];
         [[NSNotificationCenter defaultCenter] removeObserver:self];
         isUpdated=true;
-        NSLog(@"%@",@"UPDATED");
+        NSLog(@"%@",@"Fetch new Data");
     }
 }
 
@@ -115,11 +115,11 @@ bool isUpdated;
     self.tabBarController.tabBar.hidden=NO;
 }
 
--(void) removeFromNSNotificationCenter{
-    if (isUpdated==false) {
-        [[NSNotificationCenter defaultCenter] removeObserver:self];
-    }
-}
+//-(void) removeFromNSNotificationCenter{
+//    if (isUpdated==false) {
+//        [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    }
+//}
 
 //-(void) dismissHub{
 //    [ProgressHUD dismiss];

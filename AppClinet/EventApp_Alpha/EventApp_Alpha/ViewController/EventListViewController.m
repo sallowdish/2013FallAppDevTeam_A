@@ -22,11 +22,10 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *createButton;
 @property (strong,nonatomic)EventListFetchModel* model;
 
-
-
 @end
 
 @implementation EventListViewController
+
 
 @synthesize eventList,model;
 
@@ -86,13 +85,15 @@ bool isUpdated,isBasedOnTime;
     self.refreshControl=f5;
     
     
-//    if (isBasedOnTime) {
-//        [self fetchNewDataFromServer:@"time"];
-//
-//    }else{
-//        [self fetchNewDataFromServer:@"hot"];
-//    }
-        //start appearing
+    //to refresh the epage
+    self.isNeedRefresh=1;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(needToRefresh) name:@"needToRefreshList" object:nil];
+    
+}
+
+-(void)needToRefresh{
+    self.isNeedRefresh=YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -103,11 +104,13 @@ bool isUpdated,isBasedOnTime;
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self refreshEventList:self];
+    if (self.isNeedRefresh) {
+        [self refreshEventList:self];
+    }
 }
 
 
--(void)fetchNewDataFromServer:(NSString*)mode{
+-(void)fetchNewDataFromServer:(NSString*)mode :(void(^)(id para))completeBlock{
     [ProgressHUD show:@"Loading new events list..."];
     isUpdated=false;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchNewDataFromServer:) name:@"didFetchEventListWithMode" object:nil];
@@ -116,14 +119,18 @@ bool isUpdated,isBasedOnTime;
     [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(removeFromNSNotificationCenter) userInfo:nil repeats:NO];
     //    [self fetchNewDataFromServer];
     [[ProgressHUD class] performSelector:@selector(dismiss) withObject:nil afterDelay:0.8];
+    if (completeBlock) {
+        completeBlock(nil);
+    }
 }
 
 -(void)didFetchNewDataFromServer:(NSNotification*) notif{
     if ([notif object]) {
         eventList=(NSArray*)[notif object];
-        [[NSNotificationCenter defaultCenter] removeObserver:self];
+        [self removeFetchDataNotifactionObserver];
         isUpdated=true;
         NSLog(@"%@",@"UPDATED");
+        self.isNeedRefresh=NO;
     }
     [self.tableView reloadData];
 }
@@ -131,13 +138,19 @@ bool isUpdated,isBasedOnTime;
 -(void)didFailFetchNewDataFromServer:(id)notif{
     NSError* error=[notif object];
     [ProgressHUD showError:[error localizedDescription]];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];}
+    [self removeFetchDataNotifactionObserver];
+}
 
 
 -(void) removeFromNSNotificationCenter{
     if (isUpdated==false) {
-        [[NSNotificationCenter defaultCenter] removeObserver:self];
+        [self removeFetchDataNotifactionObserver];
     }
+}
+
+-(void)removeFetchDataNotifactionObserver{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFetchEventListWithMode" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFailFetchEventListWithMode" object:nil];
 }
 
 //-(void) dismissHub{
@@ -162,10 +175,10 @@ bool isUpdated,isBasedOnTime;
     //HUD indication
     //Functionality
     if (isBasedOnTime) {
-        [self fetchNewDataFromServer:@"time"];
+        [self fetchNewDataFromServer:@"time" :nil];
     }
     else{
-        [self fetchNewDataFromServer:@"hot"];
+        [self fetchNewDataFromServer:@"hot" :nil];
     }
     
     [self.refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:2];

@@ -208,24 +208,14 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
 
 
 -(void)didFinishUploadImage:(NSNotification*) notif{
-//    NSMutableDictionary* dic=[self packUpInfo];
-//    if (notif) {
-//        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didUploadImage" object:nil];
-//        
-//        [dic setObject:[NSString stringWithFormat:@"%@",[notif object]] forKey:@"event_image_name"];
-//    }
-//    
-//    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreateNewEvent) name:@"didCreateNewEvent" object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreateNewEventFailed) name:@"didCreateNewEventFailed" object:nil];
-//    EventPostModel* model=[[EventPostModel alloc] init];
-//    [ProgressHUD show:@"Submitting new event..."];
-//    [model postEventwithInfo:dic];
+
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [ProgressHUD dismiss];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"needToRefreshList" object:nil];
+    
     [self.navigationController popViewControllerAnimated:YES];
-    [(EventListViewController*)[self.navigationController presentedViewController] refreshEventList:nil];
+    
     [popoverAlterModel alterWithTitle:@"Succeed" Message:@"You have created a new event, please reload the event list page."];
 }
 
@@ -248,7 +238,6 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailUploadImage) name:@"didFailUploadImage" object:nil];
         ImageUploadModel* uploadModel=[[ImageUploadModel alloc] init];
         [uploadModel uploadEventImage:selectedPhoto[0] Event:fk_event];
-//        [uploadModel uploadImage:selectedPhoto[0] User:[UserModel username]];
         return;
     }
     else{

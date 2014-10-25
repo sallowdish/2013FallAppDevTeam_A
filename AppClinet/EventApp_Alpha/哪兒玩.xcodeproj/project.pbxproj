@@ -289,6 +289,7 @@
 		71DFFA4718210FB200269E3E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4618210FB200269E3E /* Security.framework */; };
 		71DFFA48182115A900269E3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F3219C17F830D700FFFB95 /* Main.storyboard */; };
 		71E3D38619FB2D0600DFAA66 /* CreditPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E3D38519FB2D0600DFAA66 /* CreditPageViewController.m */; };
+		71E3D38A19FB50BB00DFAA66 /* RootTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E3D38919FB50BB00DFAA66 /* RootTabBarViewController.m */; };
 		71EE867818784D63007FD900 /* backgroundImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 71EE867618784D63007FD900 /* backgroundImage.png */; };
 		71EE867918784D63007FD900 /* profileImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 71EE867718784D63007FD900 /* profileImage.png */; };
 		71EE8685187854B6007FD900 /* ProfilePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EE8684187854B6007FD900 /* ProfilePageViewController.m */; };
@@ -506,6 +507,8 @@
 		71DFFA4618210FB200269E3E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		71E3D38419FB2D0600DFAA66 /* CreditPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreditPageViewController.h; path = ViewController/CreditPageViewController.h; sourceTree = "<group>"; };
 		71E3D38519FB2D0600DFAA66 /* CreditPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreditPageViewController.m; path = ViewController/CreditPageViewController.m; sourceTree = "<group>"; };
+		71E3D38819FB50BB00DFAA66 /* RootTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootTabBarViewController.h; path = ViewController/RootTabBarViewController.h; sourceTree = "<group>"; };
+		71E3D38919FB50BB00DFAA66 /* RootTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootTabBarViewController.m; path = ViewController/RootTabBarViewController.m; sourceTree = "<group>"; };
 		71EE867618784D63007FD900 /* backgroundImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundImage.png; sourceTree = "<group>"; };
 		71EE867718784D63007FD900 /* profileImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileImage.png; sourceTree = "<group>"; };
 		71EE8683187854B6007FD900 /* ProfilePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfilePageViewController.h; path = ViewController/ProfilePageViewController.h; sourceTree = "<group>"; };
@@ -744,6 +747,7 @@
 		71B763C21807832100717D67 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				71E3D38719FB508800DFAA66 /* RootTab */,
 				711DA0C9194EC01E001A4F28 /* CustomizedUI */,
 				71974BA61869A618004493DC /* CQMFloatingView */,
 				71F8A914183C7AB8001AEF6A /* Event */,
@@ -889,6 +893,15 @@
 				71DD20A6196275C700DE3976 /* wallet.png */,
 			);
 			path = 32;
+			sourceTree = "<group>";
+		};
+		71E3D38719FB508800DFAA66 /* RootTab */ = {
+			isa = PBXGroup;
+			children = (
+				71E3D38819FB50BB00DFAA66 /* RootTabBarViewController.h */,
+				71E3D38919FB50BB00DFAA66 /* RootTabBarViewController.m */,
+			);
+			name = RootTab;
 			sourceTree = "<group>";
 		};
 		71EE867518784D63007FD900 /* Images */ = {
@@ -1481,6 +1494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71E3D38A19FB50BB00DFAA66 /* RootTabBarViewController.m in Sources */,
 				71974BB61869A618004493DC /* CQMFloatingFrameView.m in Sources */,
 				719AF7D618EF7BAA00075313 /* EventListHotViewController.m in Sources */,
 				71094D6B190D63800098751A /* GKImageCropView.m in Sources */,

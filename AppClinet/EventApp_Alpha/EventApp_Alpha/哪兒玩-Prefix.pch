@@ -31,7 +31,7 @@
 //for webservice
 #define NOCONSTRAIN @"?"
 #define PUBLICAUTHENUSER @"tester"
-#define PUBLICAUTHENPASSWORD @"1"
+#define PUBLICAUTHENPASSWORD @"12"
 
 typedef void (^FailureHandleBlock)(id error);
 typedef void (^SucceeHandleBlock)(id message);

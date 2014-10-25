@@ -10,7 +10,7 @@
 #import "UserModel.h"
 //#import "WebServiceCommunicationModel.h"
 
-#define defaultLogin 0
+#define defaultLogin 1
 #define betaTestLoadUberSDK 0
 
 @implementation AppDelegate

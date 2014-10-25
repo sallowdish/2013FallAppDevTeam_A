@@ -122,6 +122,7 @@ EventListFetchModel* model;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self viewDidLoad];
     [ProgressHUD dismiss];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"needToRefreshList" object:nil];
 
 }
 
