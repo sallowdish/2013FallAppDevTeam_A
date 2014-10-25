@@ -35,7 +35,7 @@
 		711DA0D8194EDFD9001A4F28 /* moon_and_star.png in Resources */ = {isa = PBXBuildFile; fileRef = 711DA0D7194EDFD9001A4F28 /* moon_and_star.png */; };
 		711DA0DA194EE02F001A4F28 /* moon_and_star_1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 711DA0D9194EE02F001A4F28 /* moon_and_star_1136.png */; };
 		711DA0DC194EE0DB001A4F28 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 711DA0DB194EE0DB001A4F28 /* Default-568h@2x.png */; };
-		711DA0DD19504F15001A4F28 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C883AC193AD61A00E5E63C /* AdSupport.framework */; };
+		711DA0DD19504F15001A4F28 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C883AC193AD61A00E5E63C /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		711DA0DE19504F3A001A4F28 /* UbertestersSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C883C0193ADD2C00E5E63C /* UbertestersSDK.framework */; };
 		712A2C5B1883A4EA00BF3AC6 /* DataTransferModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C581883A4EA00BF3AC6 /* DataTransferModel.m */; };
 		712A2C5C1883A4EA00BF3AC6 /* URLConstructModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A2C5A1883A4EA00BF3AC6 /* URLConstructModel.m */; };
@@ -1143,7 +1143,7 @@
 				ORGANIZATIONNAME = 2013_Fall_Dev_Team_A;
 				TargetAttributes = {
 					71F3218617F830D700FFFB95 = {
-						DevelopmentTeam = AT8YYZEPD2;
+						DevelopmentTeam = 398PB27FPC;
 					};
 					71F321AA17F830D700FFFB95 = {
 						TestTargetID = 71F3218617F830D700FFFB95;
@@ -1751,7 +1751,7 @@
 				INFOPLIST_FILE = "EventApp_Alpha/哪兒玩-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "31AA8BF5-1BFD-485D-A4AE-F74FA4C853ED";
+				PROVISIONING_PROFILE = "17981dac-b29c-4c1a-8133-4152db262fb1";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

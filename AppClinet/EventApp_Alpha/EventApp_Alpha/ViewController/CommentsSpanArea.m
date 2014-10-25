@@ -81,15 +81,14 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     if (![UserModel isLogin]) {
-        [UserModel popupLoginViewToViewController:self complete:^(UIViewController* vc){
-            [self.navigationController pushViewController:vc animated:YES];
-        }];
+        [UserModel popupLoginViewToViewController:self complete:nil];
+        return NO;
+    }else{
+//        EventDetailViewController* vc= (EventDetailViewController*)self.parentViewController;
+        
+//        [vc.scrollView setContentOffset:CGPointMake(0, 180)];
+        return YES;
     }
-    EventDetailViewController* vc= (EventDetailViewController*)self.parentViewController;
-//    cgp=[textField convertPoint:textField.center toView:nil];
-    
-    [vc.scrollView setContentOffset:CGPointMake(0, 180)];
-    return YES;
 }
 
 -(BOOL)textFieldShouldClear:(UITextField *)textField{
