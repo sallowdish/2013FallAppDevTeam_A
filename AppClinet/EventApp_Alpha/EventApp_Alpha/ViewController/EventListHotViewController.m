@@ -74,45 +74,66 @@ bool isUpdated;
     
     self.refreshControl=f5;
     
+    //to refresh the epage
+    self.isNeedRefresh=1;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(needToRefresh) name:@"needToRefreshList" object:nil];
+    
     
     //start appearing
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    [self refreshEventList:self];
+-(void)needToRefresh{
+    self.isNeedRefresh=YES;
 }
 
--(void)fetchNewDataFromServer:(NSString*)mode{
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if (self.isNeedRefresh) {
+        [self refreshEventList:self];
+    }
+}
+
+-(void)fetchNewDataFromServer:(NSString*)mode :(void(^)(id para))completeBlock{
     [ProgressHUD show:@"Loading new events list..."];
     isUpdated=false;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchNewDataFromServer:) name:@"didFetchEventListWithMode" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailFetchNewDataFromServer:) name:@"didFailFetchEventListWithMode" object:nil];
     [model fetchEventListWithMode:mode];
-//    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(removeFromNSNotificationCenter) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(removeFetchDataNotifactionObserver) userInfo:nil repeats:NO];
     //    [self fetchNewDataFromServer];
     [[ProgressHUD class] performSelector:@selector(dismiss) withObject:nil afterDelay:0.8];
+    if (completeBlock) {
+        completeBlock(nil);
+    }
 }
+
 
 -(void)didFetchNewDataFromServer:(NSNotification*) notif{
     if ([notif object]) {
         eventList=(NSArray*)[notif object];
-        [[NSNotificationCenter defaultCenter] removeObserver:self];
+        [self removeFetchDataNotifactionObserver];
         isUpdated=true;
-        NSLog(@"%@",@"Fetch new Data");
+        NSLog(@"%@",@"Hot List Fetched new Data");
+        self.isNeedRefresh=NO;
     }
 }
 
 -(void)didFailFetchNewDataFromServer:(id)notif{
     NSError* error=[notif object];
     [ProgressHUD showError:[error localizedDescription]];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self removeFetchDataNotifactionObserver];
 }
 
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:animated];
     self.tabBarController.tabBar.hidden=NO;
+}
+
+-(void)removeFetchDataNotifactionObserver{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFetchEventListWithMode" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFailFetchEventListWithMode" object:nil];
 }
 
 //-(void) removeFromNSNotificationCenter{
@@ -142,7 +163,7 @@ bool isUpdated;
     
     //HUD indication
     //Functionality
-    [self fetchNewDataFromServer:@"hot"];
+    [self fetchNewDataFromServer:@"hot" :nil];
     [self.tableView reloadData];
     [self.refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:2];
     //HUD dismiss

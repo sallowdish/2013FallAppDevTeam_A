@@ -13,4 +13,5 @@
 @interface EventListHotViewController : UITableViewController
 @property (nonatomic,strong) NSArray* eventList;
 @property (strong,nonatomic)EventListFetchModel* model;
+@property (assign, nonatomic) BOOL isNeedRefresh;
 @end

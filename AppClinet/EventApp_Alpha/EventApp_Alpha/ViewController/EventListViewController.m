@@ -129,7 +129,7 @@ bool isUpdated,isBasedOnTime;
         eventList=(NSArray*)[notif object];
         [self removeFetchDataNotifactionObserver];
         isUpdated=true;
-        NSLog(@"%@",@"UPDATED");
+        NSLog(@"%@",@"New List Fetched new Data");
         self.isNeedRefresh=NO;
     }
     [self.tableView reloadData];
