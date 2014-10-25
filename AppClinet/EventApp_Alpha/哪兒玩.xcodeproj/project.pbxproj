@@ -288,6 +288,7 @@
 		71DFFA4518210FAA00269E3E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4418210FAA00269E3E /* CFNetwork.framework */; };
 		71DFFA4718210FB200269E3E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DFFA4618210FB200269E3E /* Security.framework */; };
 		71DFFA48182115A900269E3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F3219C17F830D700FFFB95 /* Main.storyboard */; };
+		71E3D38619FB2D0600DFAA66 /* CreditPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E3D38519FB2D0600DFAA66 /* CreditPageViewController.m */; };
 		71EE867818784D63007FD900 /* backgroundImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 71EE867618784D63007FD900 /* backgroundImage.png */; };
 		71EE867918784D63007FD900 /* profileImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 71EE867718784D63007FD900 /* profileImage.png */; };
 		71EE8685187854B6007FD900 /* ProfilePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EE8684187854B6007FD900 /* ProfilePageViewController.m */; };
@@ -503,6 +504,8 @@
 		71DFFA42182104C900269E3E /* SettingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingPageViewController.m; path = ViewController/SettingPageViewController.m; sourceTree = "<group>"; };
 		71DFFA4418210FAA00269E3E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		71DFFA4618210FB200269E3E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		71E3D38419FB2D0600DFAA66 /* CreditPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreditPageViewController.h; path = ViewController/CreditPageViewController.h; sourceTree = "<group>"; };
+		71E3D38519FB2D0600DFAA66 /* CreditPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreditPageViewController.m; path = ViewController/CreditPageViewController.m; sourceTree = "<group>"; };
 		71EE867618784D63007FD900 /* backgroundImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundImage.png; sourceTree = "<group>"; };
 		71EE867718784D63007FD900 /* profileImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileImage.png; sourceTree = "<group>"; };
 		71EE8683187854B6007FD900 /* ProfilePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfilePageViewController.h; path = ViewController/ProfilePageViewController.h; sourceTree = "<group>"; };
@@ -1059,6 +1062,8 @@
 				71C9B734191C3256004631D0 /* MyEventTableViewController.m */,
 				7173BE4819BE76FB00975A1F /* UpdateProfileTableViewController.h */,
 				7173BE4919BE76FB00975A1F /* UpdateProfileTableViewController.m */,
+				71E3D38419FB2D0600DFAA66 /* CreditPageViewController.h */,
+				71E3D38519FB2D0600DFAA66 /* CreditPageViewController.m */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -1485,6 +1490,7 @@
 				71D830B718EAAE6D00485B1B /* EventJoinAndLikeModel.m in Sources */,
 				71974BB81869A618004493DC /* CQMFloatingNavigationBar.m in Sources */,
 				71EE8685187854B6007FD900 /* ProfilePageViewController.m in Sources */,
+				71E3D38619FB2D0600DFAA66 /* CreditPageViewController.m in Sources */,
 				7101D32F18ECD068002B9592 /* ImageUploadModel.m in Sources */,
 				71F8A91F183C7CAB001AEF6A /* EventEdittingViewController.m in Sources */,
 				71094D6A190D63800098751A /* GKImageCropOverlayView.m in Sources */,
