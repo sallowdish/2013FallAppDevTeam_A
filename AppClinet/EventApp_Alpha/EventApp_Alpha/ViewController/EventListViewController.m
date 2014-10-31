@@ -15,6 +15,7 @@
 #import "FormatingModel.h"
 #import "ProgressHUD.h"
 #import "UserModel.h"
+#import "ColorStandarlizationModel.h"
 
 
 @interface EventListViewController ()
@@ -43,10 +44,13 @@ NSString* placeHolder=@"Load More...";
 }
 
 -(void)awakeFromNib{
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithHue:(float)200/360 saturation:0.91 brightness:1 alpha:0.5]];
-    [[UITabBar appearance] setBarTintColor:[UIColor colorWithHue:(float)200/360 saturation:0.91 brightness:1 alpha:0.5]];
+    [[UINavigationBar appearance] setBarTintColor:[ColorStandarlizationModel colorWithHexString:@"1d77ef"]];
+    [[UINavigationBar appearance] setAlpha:0.9];
+    [[UITabBar appearance] setBarTintColor:[ColorStandarlizationModel colorWithHexString:@"1d77ef"]];
+    [[UITabBar appearance] setAlpha:0.9];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    
 
 }
 
@@ -58,6 +62,11 @@ NSString* placeHolder=@"Load More...";
     eventList=nil;
     
     self.segmentController.selectedSegmentIndex=0;
+    
+    if(self.segmentController){
+        self.segmentController.tintColor=[ColorStandarlizationModel colorWithHexString:@"1d77ef"];
+        self.segmentController.alpha=0.75;
+    }
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     

@@ -101,10 +101,6 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="bqJ-Tc-1yw">
-                                                    <rect key="frame" x="10" y="16" width="20" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         </view>
@@ -130,8 +126,12 @@
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                         <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Blank-Profile-Image.png" id="5lG-JW-nY5">
-                                            <rect key="frame" x="6.5" y="1" width="79" height="84"/>
+                                            <rect key="frame" x="9" y="4" width="80" height="84"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="bqJ-Tc-1yw">
+                                            <rect key="frame" x="108" y="5" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -172,7 +172,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="createButton" destination="mOi-j9-hC6" id="qoS-k5-f7p"/>
                         <outlet property="segmentController" destination="BKz-Ok-Ywf" id="KL6-He-cDj"/>
@@ -1216,7 +1215,6 @@
             <objects>
                 <navigationController title="EventList" definesPresentationContext="YES" id="aVg-TB-R8J" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Events" image="ticket.png" id="9a2-VO-zL6"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="t4X-k0-Eng">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1245,11 +1243,11 @@
             </objects>
             <point key="canvasLocation" x="477" y="486"/>
         </scene>
-        <!--Recommand-->
+        <!--Recommend-->
         <scene sceneID="Cmc-8g-aUs">
             <objects>
                 <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="jUs-vR-EpV" customClass="PageViewController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Recommand" id="NAh-lK-gaZ"/>
+                    <navigationItem key="navigationItem" title="Recommend" id="NAh-lK-gaZ"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DHt-Qo-Kmx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1600,7 +1598,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addprofileimage.JPG" id="bDB-5r-rEi">
-                                                    <rect key="frame" x="115" y="5" width="90" height="91.5"/>
+                                                    <rect key="frame" x="113" y="2" width="92" height="92"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7Vl-Rz-R4G">
@@ -1822,7 +1820,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Blank-Profile-Image.png" id="HEo-RJ-mF3">
-                                                    <rect key="frame" x="17.5" y="3.5" width="100" height="105"/>
+                                                    <rect key="frame" x="17.5" y="3.5" width="100" height="105.5"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to login" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oca-MB-gzX">
@@ -2042,7 +2040,7 @@
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                         <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket.png" id="FkC-70-OUv">
-                                            <rect key="frame" x="7.5" y="5.5" width="79.5" height="79.5"/>
+                                            <rect key="frame" x="4" y="2" width="80" height="80"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </imageView>
                                     </subviews>

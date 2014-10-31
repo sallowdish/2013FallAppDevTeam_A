@@ -41,7 +41,23 @@ static NSString* nextPage;
     [mgr GET:targetURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary* jsonDict=responseObject;
         eventList =[jsonDict valueForKey:@"objects"];
-        completeBlock();
+        if (completeBlock) {
+            completeBlock();
+        }
+    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [ProgressHUD showError:[error localizedDescription]];
+    } ];
+}
+
+-(void) fetchRecommendEvents:(void(^)(void))completeBlock{
+    AFHTTPRequestOperationManager* mgr=[AFHTTPRequestOperationManager manager];
+    NSString* targetURL=[NSString stringWithFormat:@"%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,API,@"/eventrecommend/?format=json"];
+    [mgr GET:targetURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary* jsonDict=responseObject;
+        eventList =[jsonDict valueForKey:@"objects"];
+        if (completeBlock) {
+            completeBlock();
+        }
     }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [ProgressHUD showError:[error localizedDescription]];
     } ];
@@ -52,7 +68,7 @@ static NSString* nextPage;
     @try {
         NSURL* targeturl=[DataTransferModel constructFetchRequestWithResource:@"/event/" WithConstrain:NOCONSTRAIN WithFormat:JSONFORMAT];
         if ([mode isEqualToString:@"time"]) {
-            targeturl=[NSURL URLWithString:[[targeturl absoluteString] stringByAppendingString:@"&order_by=-event_create_time"]];
+            targeturl=[NSURL URLWithString:[[targeturl absoluteString] stringByAppendingString:@""]];
         }
         else if ([mode isEqualToString:@"hot"]){
             targeturl=[NSURL URLWithString:[[targeturl absoluteString] stringByAppendingString:@"&order_by=-event_rsvp_count&event_is_hot=1"]];

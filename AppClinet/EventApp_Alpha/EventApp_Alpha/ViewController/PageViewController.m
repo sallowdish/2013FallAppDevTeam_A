@@ -30,12 +30,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     EventListFetchModel* model=[[EventListFetchModel alloc] init];
-    [model fetchEventListByUsername:@"Vivio" complete:^(void){
-        [self setupInitialPage];
-
+    [model fetchRecommendEvents:^{
+            [self setupInitialPage];
+            
     }];
     self.view.backgroundColor=[UIColor whiteColor];
-    [ProgressHUD show:@"Loading Recommand Event.."];
+    [ProgressHUD show:@"Loading Recommend Event.."];
     
     
     
@@ -54,7 +54,7 @@
     }else{
         UIViewController* alternativeViewController=[[UIViewController alloc]init];
         UILabel* msg=[[UILabel alloc] init];
-        [msg setText:@"No Recommanded Event for now."];
+        [msg setText:@"No Recommended Event for now."];
         msg.frame=CGRectMake(alternativeViewController.view.frame.size.width/2, alternativeViewController.view.frame.size.height/2, msg.frame.size.width, msg.frame.size.height);
         [alternativeViewController.view addSubview:msg];
         [self setViewControllers:@[] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
