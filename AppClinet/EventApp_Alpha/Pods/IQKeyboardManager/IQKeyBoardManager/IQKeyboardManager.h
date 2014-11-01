@@ -1,5 +1,5 @@
 //
-// KeyboardManager.h
+// IQKeyboardManager.h
 // https://github.com/hackiftekhar/IQKeyboardManager
 // Copyright (c) 2013-14 Iftekhar Qurashi.
 //
@@ -21,12 +21,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/NSObject.h>
-#import <CoreGraphics/CGBase.h>
-#import <UIKit/UITextInputTraits.h>
 #import "IQKeyboardManagerConstants.h"
 
+#import <CoreGraphics/CGBase.h>
+
+#import <Foundation/NSObject.h>
+#import <Foundation/NSObjCRuntime.h>
+
+#import <UIKit/UITextInputTraits.h>
+
+
 @class UIFont;
+
+/*  @const kIQDoneButtonToolbarTag         Default tag for toolbar with Done button            -1002.   */
+extern NSInteger const kIQDoneButtonToolbarTag;
+/*  @const kIQPreviousNextButtonToolbarTag Default tag for toolbar with Previous/Next buttons  -1005.   */
+extern NSInteger const kIQPreviousNextButtonToolbarTag;
 
 
 /*!
@@ -41,6 +51,7 @@
 @interface IQKeyboardManager : NSObject
 
 
+/*******************************************/
 
 
 //UIKeyboard handling
@@ -66,7 +77,15 @@
  */
 @property(nonatomic, assign) CGFloat keyboardDistanceFromTextField;
 
+/*!
+    @property preventShowingBottomBlankSpace
+ 
+    @abstract Prevent keyboard manager to slide up the rootView to more than keyboard height. Default is YES.
+ */
+@property(nonatomic, assign) BOOL preventShowingBottomBlankSpace;
 
+
+/*******************************************/
 
 
 //IQToolbar handling
@@ -107,6 +126,7 @@
 @property(nonatomic, strong) UIFont *placeholderFont;
 
 
+/*******************************************/
 
 
 //TextView handling
@@ -119,6 +139,7 @@
 @property(nonatomic, assign) BOOL canAdjustTextView;
 
 
+/*******************************************/
 
 
 //Keyboard appearance overriding
@@ -138,6 +159,7 @@
 @property(nonatomic, assign) UIKeyboardAppearance keyboardAppearance;
 
 
+/*******************************************/
 
 
 //Resign handling
@@ -157,6 +179,7 @@
 - (void)resignFirstResponder;
 
 
+/*******************************************/
 
 
 //Sound handling
@@ -169,6 +192,7 @@
 @property(nonatomic, assign) BOOL shouldPlayInputClicks;
 
 
+/*******************************************/
 
 
 //Animation handling
@@ -183,6 +207,7 @@
 @property(nonatomic, assign) BOOL shouldAdoptDefaultKeyboardAnimation;
 
 
+/*******************************************/
 
 
 //@final. Must not be used for subclassing.
@@ -192,7 +217,7 @@
  
     @abstract Should create only one instance of class. Should not call init.
  */
-- (instancetype)init	__attribute__((unavailable("init is not available in IQKeyboardManager, Use sharedManager")));
+- (instancetype)init	__attribute__((unavailable("init is not available in IQKeyboardManager, Use sharedManager"))) NS_DESIGNATED_INITIALIZER;
 
 /*!
     @method new
@@ -200,6 +225,10 @@
     @abstract Should create only one instance of class. Should not call new.
  */
 + (instancetype)new	__attribute__((unavailable("new is not available in IQKeyboardManager, Use sharedManager")));
+
+
+/*******************************************/
+
 
 @end
 

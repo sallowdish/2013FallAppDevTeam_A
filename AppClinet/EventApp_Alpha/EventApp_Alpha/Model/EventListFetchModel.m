@@ -51,7 +51,7 @@ static NSString* nextPage;
 
 -(void) fetchRecommendEvents:(void(^)(void))completeBlock{
     AFHTTPRequestOperationManager* mgr=[AFHTTPRequestOperationManager manager];
-    NSString* targetURL=[NSString stringWithFormat:@"%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,API,@"/eventrecommend/?format=json"];
+    NSString* targetURL=[NSString stringWithFormat:@"%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,APIv2,@"/eventrecommend/?format=json"];
     [mgr GET:targetURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary* jsonDict=responseObject;
         eventList =[jsonDict valueForKey:@"objects"];

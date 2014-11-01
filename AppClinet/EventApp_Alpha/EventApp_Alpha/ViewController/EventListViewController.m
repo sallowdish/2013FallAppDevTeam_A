@@ -70,6 +70,8 @@ NSString* placeHolder=@"Load More...";
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
+    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    
     model=[[EventListFetchModel alloc] init];
     [model fetchEventListFromFile];
     eventList=[EventListFetchModel eventsList];
@@ -226,7 +228,7 @@ NSString* placeHolder=@"Load More...";
         [cell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         UIButton* button=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
         
-        [button setTitle:placeHolder forState:UIControlStateNormal];
+        [button setTitle:[NSString stringWithFormat:@"%@",placeHolder] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(loadNextPage:) forControlEvents:UIControlEventTouchDown];
         [cell addSubview:button];

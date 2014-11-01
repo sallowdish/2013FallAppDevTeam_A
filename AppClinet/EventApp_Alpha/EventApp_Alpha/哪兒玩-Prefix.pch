@@ -24,6 +24,7 @@
 #define WEBSERVICENAME @""
 //#define WEBSERVICEDOMAIN  @"http://127.0.0.1:8000/eventApp"
 #define API @"/api/v01"
+#define APIv2 @"/api/v02"
 //for web service
 #define JSONFORMAT @"format=json"
 #define MEDIAPREFIX @"/app_project/media/"
