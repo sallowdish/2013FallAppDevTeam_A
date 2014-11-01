@@ -220,6 +220,7 @@ NSString* state;
 -(void)fetchEvent{
 //    [ProgressHUD show:@"Loading event info..."];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFetchEvent) name:@"didFetchDataWithEventID" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFailFetchEvent) name:@"didFailFetchDataWithEventID" object:nil];
     @try {
         
         [model fetchEventWithEventID:eventID];
@@ -241,7 +242,7 @@ NSString* state;
     }
     
     //stop listen to fetching event data
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFetchDataWithEventID" object:nil];
+    [self removeFetchEventObserver];
     
     self.scrollView.hidden=NO;
 //    [ProgressHUD showSuccess:@"Loading Finish."];
@@ -264,6 +265,16 @@ NSString* state;
     [self getLikeList];
 }
 
+-(void)didFailFetchEvent{
+    [ProgressHUD showError:@"Fail to get event detail."];
+    [self removeFetchEventObserver];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)removeFetchEventObserver{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFetchDataWithEventID" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didFailFetchDataWithEventID" object:nil];
+}
 
 -(void)getRSVPList{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetRSVPList) name:@"didGetRSVPList" object:nil];

@@ -22,16 +22,22 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection{
-    NSError* error;
     [super connectionDidFinishLoading:connection];
-    NSDictionary *rawData=[NSJSONSerialization JSONObjectWithData:self.data options:NSJSONReadingMutableContainers error:&error];
-    if(error||[NSJSONSerialization isValidJSONObject:rawData]==NO)
-    {
-        @throw [NSException exceptionWithName:@"Failed" reason:@"Serializtion failed!" userInfo:nil];
+    if (self.data) {
+        NSError* error;
+        [super connectionDidFinishLoading:connection];
+        NSDictionary *rawData=[NSJSONSerialization JSONObjectWithData:self.data options:NSJSONReadingMutableContainers error:&error];
+        if(error||[NSJSONSerialization isValidJSONObject:rawData]==NO)
+        {
+            @throw [NSException exceptionWithName:@"Failed" reason:@"Serializtion failed!" userInfo:nil];
+        }
+        self.event=rawData;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"didFetchDataWithEventID" object:nil];
+
+    }else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"didFailFetchDataWithEventID" object:nil];
     }
-    self.event=rawData;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"didFetchDataWithEventID" object:nil];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
 }
 
 

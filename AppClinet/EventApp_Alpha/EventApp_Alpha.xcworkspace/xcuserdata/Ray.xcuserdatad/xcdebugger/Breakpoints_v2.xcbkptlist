@@ -984,7 +984,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EventApp_Alpha/ViewController/EventDetailViewController.m"
-            timestampString = "436153429.522734"
+            timestampString = "436532631.644518"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "222"
@@ -1086,6 +1086,22 @@
             startingLineNumber = "234"
             endingLineNumber = "234"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EventApp_Alpha/Model/EventFetchModel.m"
+            timestampString = "436532750.577534"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "-connectionDidFinishLoading:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
