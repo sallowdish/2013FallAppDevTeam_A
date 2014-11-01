@@ -225,13 +225,13 @@ NSString* placeHolder=@"Load More...";
     
     if (indexPath.row==[eventList count]) {
         UITableViewCell *cell= [tableView dequeueReusableCellWithIdentifier:@"loadMoreCell"];
-        [cell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         UIButton* button=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
         
         [button setTitle:[NSString stringWithFormat:@"%@",placeHolder] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(loadNextPage:) forControlEvents:UIControlEventTouchDown];
-        [cell addSubview:button];
+        [cell.contentView addSubview:button];
         return cell;
     }
     else{
