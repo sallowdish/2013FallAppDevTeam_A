@@ -67,8 +67,8 @@ NSArray* genderArray;
                                    target:self action:@selector(genderSelectionDone)];
     UIToolbar *toolBar = [[UIToolbar alloc]initWithFrame:
                           CGRectMake(0, self.view.frame.size.height-
-                                     _genderPickerView.frame.size.height-50, 320, 50)];
-    [toolBar setBarStyle:UIBarStyleBlackOpaque];
+                                     _genderPickerView.frame.size.height-50, 320, 40)];
+    [toolBar setBarStyle:UIBarStyleDefault];
     NSArray *toolbarItems = [NSArray arrayWithObjects:
                              doneButton, nil];
     [toolBar setItems:toolbarItems];

@@ -8,6 +8,7 @@
 
 #import "FormatingModel.h"
 #import "ImageModel.h"
+#import "HexagonUIImageView.h"
 
 
 @implementation FormatingModel
@@ -58,7 +59,7 @@
     
     //set profile image to hexagon
 //    cell.profileImage.layer.cornerRadius=0;
-    [cell.profileImage prepareApprence];
+    [((HexagonUIImageView*)cell.profileImage) prepareApprence];
     
     [ImageModel downloadImageViaPath:[event valueForKey:@"fk_event_poster_user_fk_user_image"] For:@"user" WithPrefix:MEDIAPREFIX :cell.profileImage];
 //    [cell.profileImage setImageWithURL:targetURL  placeholderImage:[UIImage imageNamed:@"152_152icon.png"]];

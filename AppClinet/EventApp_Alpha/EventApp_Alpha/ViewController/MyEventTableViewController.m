@@ -89,9 +89,13 @@ EventListFetchModel* model;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellTemplate" forIndexPath:indexPath];
-    NSDictionary* currEvent=[myEventList objectAtIndex:indexPath.row];
-    cell=[FormatingModel modelToViewMatch:cell ForRowAtIndexPath:(NSIndexPath*) indexPath eventInstance:currEvent];
+    static NSString *CellIdentifier = @"cellTemplate";
+    TemplateTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    if (cell) {
+        NSDictionary* currEvent=[myEventList objectAtIndex:indexPath.row];
+        [cell prepareApprence];
+        cell=[FormatingModel modelToViewMatch:cell ForRowAtIndexPath:(NSIndexPath*) indexPath eventInstance:currEvent];
+    }
     return cell;
 }
 
