@@ -86,17 +86,18 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
 //    [self.dateInputTextField addTarget:self action:@selector(didFinishDateEditting:) forControlEvents:UIControlEventEditingDidEnd];
     
 #pragma add done button
-    UIdataPickerWithDone *datePicker=[[UIdataPickerWithDone alloc]init]
-    ,*timePicker=[[UIdataPickerWithDone alloc]init];
+    UIDatePicker *datePicker=[[UIDatePicker alloc]init]
+    ,*timePicker=[[UIDatePicker alloc]init];
     [datePicker setDatePickerMode:UIDatePickerModeDate];
     [timePicker setDatePickerMode:UIDatePickerModeTime];
     
 
     [datePicker setDatePickerMode:UIDatePickerModeDate];
-    [datePicker addTargetForDoneButton:self action:@selector(didFinishDateEditting:)];
+    
+    [datePicker addTarget:self action:@selector(didFinishDateEditting:) forControlEvents:UIControlEventValueChanged];
     
     [timePicker setDatePickerMode:UIDatePickerModeTime];
-    [timePicker addTargetForDoneButton:self action:@selector(didFinishTimeEditting:)];
+    [timePicker addTarget:self action:@selector(didFinishTimeEditting:) forControlEvents:UIControlEventValueChanged];
     
     self.dateInputTextField.inputView=datePicker;
     self.timeFromInputTextField.inputView=timePicker;
@@ -165,17 +166,19 @@ NSMutableArray* selectedPhoto,*selectedPhotoView;
 //}
 
 -(IBAction)didFinishTimeEditting:(id)sender{
+    UIDatePicker *picker=(UIDatePicker*)sender;
     NSDateFormatter* formatter=[[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH:mm"];
-    [self.timeFromInputTextField setText:[formatter stringFromDate:sender]];
-    [self.view endEditing:YES];
+    [self.timeFromInputTextField setText:[formatter stringFromDate:picker.date]];
+//    [self.view endEditing:YES];
 }
 
 -(IBAction)didFinishDateEditting:(id)sender{
+    UIDatePicker *picker=(UIDatePicker*)sender;
     NSDateFormatter* formatter=[[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
-    [self.dateInputTextField setText: [formatter stringFromDate:sender]];
-    [self.view endEditing:YES];
+    [self.dateInputTextField setText: [formatter stringFromDate:picker.date]];
+//    [self.view endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning

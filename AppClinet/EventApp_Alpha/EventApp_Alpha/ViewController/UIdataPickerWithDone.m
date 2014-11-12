@@ -37,7 +37,7 @@
         
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle: @"Done" style: UIBarButtonItemStyleBordered target: self action: @selector(donePressed)];
         UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        toolbar.items = [NSArray arrayWithObjects:flexibleSpace, doneButton, nil];
+//        toolbar.items = [NSArray arrayWithObjects:flexibleSpace, doneButton, nil];
         
         [self addSubview: toolbar];
         

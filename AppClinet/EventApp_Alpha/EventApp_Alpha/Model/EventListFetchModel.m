@@ -40,7 +40,7 @@ static NSString* nextPage;
     NSString* targetURL=[NSString stringWithFormat:@"%@%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,API,@"/event/?format=json&fk_event_poster_user__username=",username];
     [mgr GET:targetURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary* jsonDict=responseObject;
-        eventList =[jsonDict valueForKey:@"objects"];
+        eventList =[NSMutableArray arrayWithArray:[jsonDict valueForKey:@"objects"]];
         if (completeBlock) {
             completeBlock();
         }
@@ -54,7 +54,7 @@ static NSString* nextPage;
     NSString* targetURL=[NSString stringWithFormat:@"%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,APIv2,@"/eventrecommend/?format=json"];
     [mgr GET:targetURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary* jsonDict=responseObject;
-        eventList =[jsonDict valueForKey:@"objects"];
+        eventList =[NSMutableArray arrayWithArray:[jsonDict valueForKey:@"objects"]];
         if (completeBlock) {
             completeBlock();
         }
@@ -142,7 +142,7 @@ static NSString* nextPage;
             {
                 @throw [NSException exceptionWithName:@"Pharse Failed" reason:error.localizedDescription userInfo:nil];
             }
-            eventList=[jsonDict valueForKey:@"objects"];
+            eventList=[NSMutableArray arrayWithArray:[jsonDict valueForKey:@"objects"]];
             nextPage=[[jsonDict valueForKey:@"meta"] valueForKey:@"next"];
             // TODO: write into local file
             if ([NSJSONSerialization isValidJSONObject:eventList]) {

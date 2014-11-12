@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EventDetailViewController.h"
 
 @interface CommentsSpanArea : UITableViewController
 @property (weak,nonatomic) NSArray* comments;
 @property (weak,nonatomic) NSDictionary* event;
+@property (weak,nonatomic) EventDetailViewController *container;
 -(void)passCommentsToDisplay;
 @end

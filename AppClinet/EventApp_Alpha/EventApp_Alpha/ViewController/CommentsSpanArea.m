@@ -40,11 +40,16 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    
+    
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
 //    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside=YES;
     
 }
+
+-(void)viewWillAppear:(BOOL)animated{}
 
 -(void)passCommentsToDisplay{
 //    CommentsTableViewController* vc=self.childViewControllers[0];
@@ -87,6 +92,7 @@
 //        EventDetailViewController* vc= (EventDetailViewController*)self.parentViewController;
         
 //        [vc.scrollView setContentOffset:CGPointMake(0, 180)];
+//        [_container scrollUpforKeyboard];
         return YES;
     }
 }

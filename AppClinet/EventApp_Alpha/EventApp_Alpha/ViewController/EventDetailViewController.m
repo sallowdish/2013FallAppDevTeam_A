@@ -78,12 +78,18 @@ NSString* state;
     [self visualSetup];
     [self dataSourceSetup];
 
- 
+    
     [ProgressHUD show:@"Loading"];
 
+//    if (self.childViewControllers[0]) {
+//        ((CommentsSpanArea*)self.childViewControllers[0]).container=self;
+//    }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollUpforKeyboard:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollDownforKeyboard:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     state=nil;
     self.tabBarController.tabBar.hidden=YES;
     [self drawRSVPnLikeFloatButton];
@@ -548,12 +554,29 @@ NSString* state;
     // Dispose of any resources that can be recreated.
 }
 
-//-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    return 1;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    
-//    return cell;
-//}
+-(void)scrollUpforKeyboard:(NSNotification*)notification{
+    CGPoint localPosition=_commentsTab.frame.origin;
+    CGPoint toScorllViewPosition=[self.view convertPoint:localPosition fromView:_scrollView];
+    
+    NSDictionary* keyboardInfo = [notification userInfo];
+    NSValue* keyboardFrameBegin = [keyboardInfo valueForKey:UIKeyboardFrameBeginUserInfoKey];
+    CGRect keyboardFrameBeginRect = [keyboardFrameBegin CGRectValue];
+    CGFloat keyboardHeight=keyboardFrameBeginRect.size.height;
+    
+    CGFloat diff=keyboardHeight-[UIScreen mainScreen].bounds.size.height/2;
+    [_scrollView setContentOffset:CGPointMake(0, toScorllViewPosition.y+_scrollView.contentOffset.y+diff+50) animated:YES];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+}
+
+-(void)scrollDownforKeyboard:(NSNotification*)notification{
+    NSDictionary* keyboardInfo = [notification userInfo];
+    NSValue* keyboardFrameBegin = [keyboardInfo valueForKey:UIKeyboardFrameBeginUserInfoKey];
+    CGRect keyboardFrameBeginRect = [keyboardFrameBegin CGRectValue];
+    CGFloat keyboardHeight=keyboardFrameBeginRect.size.height;
+
+    CGPoint currentOffset=_scrollView.contentOffset;
+    [_scrollView setContentOffset:CGPointMake(0, currentOffset.y-(keyboardHeight/2)) animated:YES];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollUpforKeyboard:) name:UIKeyboardWillShowNotification object:nil];
+}
 @end

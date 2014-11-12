@@ -1116,7 +1116,7 @@
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
                                                 <action selector="touchOutside" destination="0ex-ip-fee" eventType="touchUpOutside" id="X03-Ps-cI8"/>
-                                                <outlet property="delegate" destination="M35-Qz-A8Z" id="ZiE-K1-hZO"/>
+                                                <outlet property="delegate" destination="M35-Qz-A8Z" id="fgz-64-gMd"/>
                                             </connections>
                                         </textField>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="152_152icon.png" id="uCf-96-1bL">
@@ -1176,9 +1176,6 @@
                     </tableView>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oae-ZO-y28" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewSection headerTitle="" id="kJa-Ca-O2k">
-                    <cells/>
-                </tableViewSection>
             </objects>
             <point key="canvasLocation" x="2167" y="-654"/>
         </scene>
@@ -1213,7 +1210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fo3-xt-dcA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2240" y="10"/>
+            <point key="canvasLocation" x="2390" y="-46"/>
         </scene>
         <!--EventList-->
         <scene sceneID="NLS-3Z-Hsz">
