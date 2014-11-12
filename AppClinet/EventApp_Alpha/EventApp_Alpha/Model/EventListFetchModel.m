@@ -66,12 +66,12 @@ static NSString* nextPage;
 -(void) fetchEventListWithMode:(NSString *)mode
 {
     @try {
-        NSURL* targeturl=[DataTransferModel constructFetchRequestWithResource:@"/event/" WithConstrain:NOCONSTRAIN WithFormat:JSONFORMAT];
+        NSURL* targeturl;
         if ([mode isEqualToString:@"time"]) {
-            targeturl=[NSURL URLWithString:[[targeturl absoluteString] stringByAppendingString:@""]];
+            targeturl=[DataTransferModel constructFetchRequestWithResourceV2:@"/eventlatest/" WithConstrain:NOCONSTRAIN WithFormat:JSONFORMAT];
         }
         else if ([mode isEqualToString:@"hot"]){
-            targeturl=[NSURL URLWithString:[[targeturl absoluteString] stringByAppendingString:@"&order_by=-event_rsvp_count&event_is_hot=1"]];
+            targeturl=[DataTransferModel constructFetchRequestWithResourceV2:@"/eventhottest/" WithConstrain:NOCONSTRAIN WithFormat:JSONFORMAT];
         }
         NSLog(@"%@",[targeturl absoluteString]);
         [self fetchDataWithUrl:targeturl];

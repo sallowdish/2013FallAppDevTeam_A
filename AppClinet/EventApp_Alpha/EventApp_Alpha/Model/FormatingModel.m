@@ -31,11 +31,7 @@
 {
     
     TemplateTableCell* cell=(TemplateTableCell*)sender;
-    for (int i=101; i<MAXTAG+1; i++) {
-        UIView* subview=[cell viewWithTag:i];
-        subview.layer.cornerRadius=6;
-        subview.layer.masksToBounds=YES;
-    }
+
     //    [cell.profileImage.layer setBorderColor: [[UIColor grayColor] CGColor]];
     //    [cell.profileImage.layer setBorderWidth: 2.0];
     cell.eventNameLabel.text=[NSString stringWithFormat:@" %@",[event objectForKey:@"event_title"]];
@@ -59,6 +55,10 @@
         cell.EventPosterGenderSignImageView.image=[UIImage imageNamed:@"MaleSign.png"];
     }
     
+    
+    //set profile image to hexagon
+//    cell.profileImage.layer.cornerRadius=0;
+    [cell.profileImage prepareApprence];
     
     [ImageModel downloadImageViaPath:[event valueForKey:@"fk_event_poster_user_fk_user_image"] For:@"user" WithPrefix:MEDIAPREFIX :cell.profileImage];
 //    [cell.profileImage setImageWithURL:targetURL  placeholderImage:[UIImage imageNamed:@"152_152icon.png"]];

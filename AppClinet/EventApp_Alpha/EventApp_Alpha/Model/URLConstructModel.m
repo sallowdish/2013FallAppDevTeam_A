@@ -22,6 +22,11 @@
 //    NSLog(@"%@",rawURL);
     return [NSURL URLWithString:rawURL];
 }
++(NSURL *)constructFetchRequestWithResourceV2:(NSString*)resource WithConstrain:(NSString*)constrain WithFormat:(NSString*)format{
+    NSString* rawURL=[NSString stringWithFormat:@"%@%@%@%@%@%@%@",HTTPPREFIX,WEBSERVICEDOMAIN,WEBSERVICENAME,APIv2,resource,constrain,format];
+    //    NSLog(@"%@",rawURL);
+    return [NSURL URLWithString:rawURL];
+}
 
 +(NSURL *)constructFetchRequest{
     return [self constructFetchRequestWithResource:@"event/" WithConstrain:@"?" WithFormat:JSONFORMAT];

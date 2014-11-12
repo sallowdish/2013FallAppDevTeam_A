@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 //@property (weak, nonatomic) CQMFloatingController *shareController;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak,nonatomic) UIViewController* hostViewController;
 @end

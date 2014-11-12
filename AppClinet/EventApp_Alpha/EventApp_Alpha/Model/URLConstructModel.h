@@ -14,6 +14,7 @@
 +(NSURL *)constructRequestWithResource: (NSString*)resource;
 //Return the URL to fetch the event w/ conditions
 +(NSURL *)constructFetchRequestWithResource:(NSString*)resource WithConstrain:(NSString*)constrain WithFormat:(NSString*)format;
++(NSURL *)constructFetchRequestWithResourceV2:(NSString*)resource WithConstrain:(NSString*)constrain WithFormat:(NSString*)format;;
 //Return the URL to fetch the event list w/o any condition
 +(NSURL *)constructFetchRequest;
 //Construct the post request using the data from view

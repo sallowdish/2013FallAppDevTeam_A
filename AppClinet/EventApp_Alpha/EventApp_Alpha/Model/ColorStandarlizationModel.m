@@ -44,4 +44,27 @@
                             blue:((float) b / 255.0f)
                            alpha:1.0f];
 }
+
++(UIColor*)colorWithRGBString:(NSString *)rgb{
+    @try {
+        NSArray* RGB=[rgb componentsSeparatedByString:@" "];
+        CGFloat R=[RGB[0] floatValue];
+        CGFloat G=[RGB[1] floatValue];
+        CGFloat B=[RGB[2] floatValue];
+        CGFloat alpha=1.0f;
+        if (RGB.count==4) {
+            alpha=[RGB[3] floatValue];
+        }
+        UIColor *color = [UIColor colorWithRed:(R/255.0) green:(G/255.0) blue:(B/255.0) alpha:(alpha)];
+        return color;
+        
+    }
+    @catch (NSException *exception) {
+        NSLog( @"NSException caught" );
+        NSLog( @"Name: %@", exception.name);
+        NSLog( @"Reason: %@", exception.reason );
+        return [UIColor clearColor];
+    }
+}
+
 @end

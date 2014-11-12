@@ -31,7 +31,7 @@
 //        [[Ubertesters shared] initializeWithOptions:UTOptionsSlider |UTOptionsLockingModeDisableUbertestersIfBuildNotExist];
 //    }
 
-//    NSLog(@"%f", [[UIScreen mainScreen] bounds].size.height);
+    NSLog(@"%f", [[UIScreen mainScreen] bounds].size.height);
     return YES;
 }
 

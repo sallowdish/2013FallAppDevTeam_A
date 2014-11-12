@@ -11,5 +11,6 @@
 @interface ColorStandarlizationModel : NSObject
 
 +(UIColor*)colorWithHexString:(NSString*)hex;
++(UIColor*)colorWithRGBString:(NSString *)rgb;
 
 @end

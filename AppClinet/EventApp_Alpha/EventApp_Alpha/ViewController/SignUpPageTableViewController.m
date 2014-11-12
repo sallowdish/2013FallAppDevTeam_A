@@ -14,7 +14,7 @@
 #import "UserModel.h"
 //#import "GKImagePicker.h"
 
-@interface SignUpPageTableViewController ()
+@interface SignUpPageTableViewController () <UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (strong, nonatomic) IBOutletCollection(UITextField) NSArray *fillupCheckSet;
 @property (weak, nonatomic) IBOutlet UITextField *nicknameField;
+@property (weak, nonatomic) IBOutlet UITextField *genderField;
+@property (strong, nonatomic) IBOutlet UIPickerView *genderPickerView;
 @property GKImagePicker* imagePicker;
 @end
 
@@ -29,6 +31,7 @@
 
 NSMutableDictionary* dict;
 UIImage* selectedImage;
+NSArray* genderArray;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -49,7 +52,51 @@ UIImage* selectedImage;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self addPickerView];
 }
+-(void)addPickerView{
+    genderArray = [[NSArray alloc]initWithObjects:@"Male",
+                   @"Femail",@"Unknown", nil];
+    _genderField.delegate = self;
+
+    _genderPickerView.dataSource = self;
+    _genderPickerView.delegate = self;
+    _genderPickerView.showsSelectionIndicator = YES;
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"Done" style:UIBarButtonItemStyleDone
+                                   target:self action:@selector(genderSelectionDone)];
+    UIToolbar *toolBar = [[UIToolbar alloc]initWithFrame:
+                          CGRectMake(0, self.view.frame.size.height-
+                                     _genderPickerView.frame.size.height-50, 320, 50)];
+    [toolBar setBarStyle:UIBarStyleBlackOpaque];
+    NSArray *toolbarItems = [NSArray arrayWithObjects:
+                             doneButton, nil];
+    [toolBar setItems:toolbarItems];
+    _genderField.inputView = _genderPickerView;
+    _genderField.inputAccessoryView = toolBar;
+    
+}
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+-(NSInteger)pickerView:(UIPickerView *)pickerView
+numberOfRowsInComponent:(NSInteger)component{
+    return [genderArray count];
+}
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:
+(NSInteger)row inComponent:(NSInteger)component{
+    [_genderField setText:[genderArray objectAtIndex:row]];
+}
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:
+(NSInteger)row forComponent:(NSInteger)component{
+    return [genderArray objectAtIndex:row];
+}
+
+-(void)genderSelectionDone{
+    [_genderField resignFirstResponder];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -69,6 +116,7 @@ UIImage* selectedImage;
         [dict setValue:self.passwordField.text forKey:@"password"];
         [dict setValue:self.emailField.text forKey:@"email"];
         [dict setValue:self.nicknameField.text forKey:@"user_nickname"];
+        [dict setValue:_genderField.text forKey:@"user_gender"];
         
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didSignUp) name:@"didSignUp" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didFailSignUp:) name:@"didFailSignUp" object:nil];

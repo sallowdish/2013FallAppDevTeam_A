@@ -230,6 +230,11 @@ NSString* placeHolder=@"Load More...";
         
         [button setTitle:[NSString stringWithFormat:@"%@",placeHolder] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        UIFont* font=[UIFont fontWithName:@"Curlz MT-" size:20.f];
+        if (font) {
+            [button.titleLabel setFont:font];
+        }
+
         [button addTarget:self action:@selector(loadNextPage:) forControlEvents:UIControlEventTouchDown];
         [cell.contentView addSubview:button];
         return cell;
@@ -238,6 +243,7 @@ NSString* placeHolder=@"Load More...";
         static NSString *CellIdentifier = @"cellTemplate";
         TemplateTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
+        [cell prepareApprence];
         // Configure the cell...
         NSDictionary* event=[eventList objectAtIndex:indexPath.row];
         cell=[FormatingModel modelToViewMatch:cell ForRowAtIndexPath:indexPath eventInstance:event];

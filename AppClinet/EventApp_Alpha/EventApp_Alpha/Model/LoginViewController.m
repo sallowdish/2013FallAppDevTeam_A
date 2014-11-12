@@ -10,8 +10,9 @@
 #import "popoverAlterModel.h"
 #import "UserModel.h"
 #import "ProgressHUD.h"
+#import "ColorStandarlizationModel.h"
 
-#define MAXTAG 100
+#define MAXTAG_SIGNUP 100
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *forgetLabel;
@@ -21,6 +22,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *signupButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
+
+@property (strong, nonatomic) IBOutletCollection(id) NSArray *needRoundBorder;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *needRoundBorderButtons;
+
 
 @end
 
@@ -62,21 +67,58 @@ UserModel* model;
     [self.view addGestureRecognizer:dismissKeyBoardTap];
     
     //Visual Setup
+    
     self.scrollview.hidden=YES;
     CGRect containerFrame=self.containerView.frame;
-    self.scrollview.contentSize=CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.containerView.frame)*1.1);
+    self.scrollview.contentSize=CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.containerView.frame));
 //    [self.scrollview removeFromSuperview];
     self.scrollview.frame=CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds));
     self.containerView.frame=containerFrame;
     self.scrollview.hidden=NO;
     
+    UIImageView* backgroundContainer;
+    for (id view in self.view.subviews) {
+        if ([view isMemberOfClass:[UIImageView class]]) {
+            backgroundContainer=view;
+            break;
+        }
+    }
+
+//    backgroundContainer.frame=CGRectFromString(NSStringFromCGRect(_containerView.frame));
+    if ([[UIScreen mainScreen] bounds].size.height==480) {
+        backgroundContainer.image=[UIImage imageNamed:@"background_4s.png"];
+    }
+
+    //profile image holder
+
+    
+    //textField decoration
+    for (UIView* field in _needRoundBorder) {
+        field.backgroundColor=[UIColor clearColor];
+        
+        field.layer.cornerRadius=((float)field.bounds.size.height)/2;
+        field.layer.borderWidth=1.0f;
+        field.layer.borderColor=[UIColor whiteColor].CGColor;
+        field.clipsToBounds=YES;
+//        field.layer.masksToBounds=YES;
+    }
+    
+    //Button
+    for (UIButton* button in _needRoundBorderButtons) {
+        button.layer.borderColor=[UIColor clearColor].CGColor;
+        button.layer.cornerRadius=((float)button.bounds.size.height)/2;
+        button.backgroundColor=[ColorStandarlizationModel colorWithHexString:@"ff8f00"];
+        [button setTintColor:[ColorStandarlizationModel colorWithRGBString:@"255 255 255"]];
+    }
+    
+    
     NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
-    self.forgetLabel.attributedText = [[NSAttributedString alloc] initWithString:@"Forget your password?" attributes:underlineAttribute];
-    self.signupLabel.attributedText = [[NSAttributedString alloc] initWithString:@"Need a new account?" attributes:underlineAttribute];
+    self.forgetLabel.attributedText = [[NSAttributedString alloc] initWithString:@"Password" attributes:underlineAttribute];
+    self.signupLabel.attributedText = [[NSAttributedString alloc] initWithString:@"Register" attributes:underlineAttribute];
     self.forgetButton.frame=self.forgetLabel.frame;
     self.signupButton.frame=self.signupLabel.frame;
     self.view.layer.cornerRadius=6;
-    for (int i=100; i<MAXTAG+1; i++) {
+    for (int i=100; i<MAXTAG_SIGNUP+1; i++) {
         UIView* subview=[self.view viewWithTag:i];
         subview.layer.cornerRadius=6;
         subview.layer.masksToBounds=YES;
@@ -97,7 +139,7 @@ UserModel* model;
 
 - (IBAction)cancelButtonPressed:(id)sende
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)touchOutside:(id)sender {
@@ -116,6 +158,8 @@ UserModel* model;
 }
 
 
+
+
 -(void) didLogin{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 //    [model updataUserInfo];
@@ -125,7 +169,7 @@ UserModel* model;
     self.loginButton.enabled=NO;
     [popoverAlterModel alterWithTitle:@"Login Succeed" Message:[NSString stringWithFormat:@"Hi,%@",[UserModel username]]];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"loginProcessFinish" object:nil];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void) didFailToLogin{
@@ -142,7 +186,7 @@ UserModel* model;
 //                                          cancelButtonTitle:@"OK"
 //                                          otherButtonTitles:nil];
 //    [alert show];
-    [popoverAlterModel alterWithTitle:@"Forget Your Password?" Message:@"Baka!\nばか!!\n馬~鹿!!!"];
+    [popoverAlterModel alterWithTitle:@"Forget Your Password?" Message:@"馬~鹿!!註冊個新的吧～\n或者請聯繫開發者sallowdish@gmail.com"];
 }
 
 
@@ -155,6 +199,29 @@ UserModel* model;
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(IBAction)secureTextField:(id)sender{
+    if ([sender isMemberOfClass:[UITextField class]]) {
+        ((UITextField*)sender).secureTextEntry=YES;
+    }
+}
+
+-(IBAction)clearTextField:(id)sender{
+    if ([sender isMemberOfClass:[UITextField class]]) {
+        ((UITextField*)sender).text=@"";
+    }
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden=YES;
+    self.navigationController.navigationBar.hidden=YES;
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.tabBarController.tabBar.hidden=NO;
+    self.navigationController.navigationBar.hidden=NO;
 }
 
 @end
