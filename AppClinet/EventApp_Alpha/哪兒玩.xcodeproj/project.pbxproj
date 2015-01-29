@@ -1128,7 +1128,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nif [ -n \"${CODE_SIGN_IDENTITY}\" ]; then\ncodesign -fs \"${CODE_SIGN_IDENTITY}\" \"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}/libReveal.dylib\"\nfi\n";
+			shellScript = "set -e\nif [ -n \"${CODE_SIGN_IDENTITY}\" ]; then\ncodesign -fs \"${CODE_SIGN_IDENTITY}\" \"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}/libReveal.dylib\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1295,7 +1295,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zettack Technology Ltd. (398PB27FPC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zettack Technology Ltd. (398PB27FPC)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1318,7 +1319,7 @@
 			baseConfigurationReference = 59A4DEB201D6F8F4F9849544 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rui Zheng (59U8E8F7HH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1326,7 +1327,7 @@
 				INFOPLIST_FILE = "EventApp_Alpha/哪兒玩-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2EE1B147-E73D-4701-8991-B05E9E93FA5E";
+				PROVISIONING_PROFILE = "17981dac-b29c-4c1a-8133-4152db262fb1";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1337,7 +1338,7 @@
 			baseConfigurationReference = 90CD99EE4BB080471E600CC3 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rui Zheng (59U8E8F7HH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zettack Technology Ltd. (398PB27FPC)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zettack Technology Ltd. (398PB27FPC)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

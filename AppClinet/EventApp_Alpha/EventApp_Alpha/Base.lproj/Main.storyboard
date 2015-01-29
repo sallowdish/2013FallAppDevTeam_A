@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8YX-ce-x5E">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--Event List View Controller - Event List-->
@@ -127,7 +127,7 @@
                                             <color key="backgroundColor" red="1" green="1" blue="0.87607246640000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Blank-Profile-Image.png" id="5lG-JW-nY5" customClass="HexagonUIImageView">
-                                            <rect key="frame" x="15" y="0.0" width="90" height="90"/>
+                                            <rect key="frame" x="15" y="0.0" width="90" height="92"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="bqJ-Tc-1yw">
@@ -1462,7 +1462,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Username" borderStyle="line" placeholder="Username" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="7yp-GH-jpW">
-                                                <rect key="frame" x="35" y="240" width="250" height="35"/>
+                                                <rect key="frame" x="35" y="220" width="250" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="textColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1472,7 +1472,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Password" borderStyle="line" placeholder="Password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="93D-aL-Vez">
-                                                <rect key="frame" x="35" y="290" width="250" height="35"/>
+                                                <rect key="frame" x="35" y="271" width="250" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1483,7 +1483,7 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Wpg-jx-4ID">
-                                                <rect key="frame" x="35" y="340" width="250" height="35"/>
+                                                <rect key="frame" x="35" y="375" width="250" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <size key="titleShadowOffset" width="1" height="1"/>
                                                 <state key="normal" title="Login"/>
@@ -1492,7 +1492,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="R3x-hg-Osr">
-                                                <rect key="frame" x="35" y="390" width="250" height="35"/>
+                                                <rect key="frame" x="35" y="425" width="250" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <size key="titleShadowOffset" width="1" height="1"/>
                                                 <state key="normal" title="Cancel"/>
@@ -1501,7 +1501,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LWJ-TA-TIT">
-                                                <rect key="frame" x="100" y="438" width="55" height="25"/>
+                                                <rect key="frame" x="100" y="473" width="55" height="25"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <state key="normal">
@@ -1512,14 +1512,14 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ve1-ud-3rH">
-                                                <rect key="frame" x="100" y="438" width="55" height="25"/>
+                                                <rect key="frame" x="100" y="473" width="55" height="25"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FDy-aH-X1T">
-                                                <rect key="frame" x="170" y="438" width="55" height="25"/>
+                                                <rect key="frame" x="170" y="473" width="55" height="25"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
@@ -1527,7 +1527,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="D4m-bR-VaM">
-                                                <rect key="frame" x="170" y="438" width="55" height="25"/>
+                                                <rect key="frame" x="170" y="473" width="55" height="25"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <state key="normal">
@@ -1552,7 +1552,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="|" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bgG-qU-Fb1">
-                                                <rect key="frame" x="155" y="440" width="25" height="21"/>
+                                                <rect key="frame" x="155" y="475" width="25" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1572,6 +1572,19 @@
                                                 </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="q3v-5Q-5hv">
+                                                <rect key="frame" x="236" y="325" width="51" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" red="1" green="1" blue="0.87607246640000003" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                                <color key="onTintColor" red="1" green="0.54509803921568623" blue="0.0" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </switch>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep me login" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VDs-dt-QgB">
+                                                <rect key="frame" x="35" y="330" width="111" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                     </view>
                                 </subviews>
@@ -1588,6 +1601,7 @@
                         <outlet property="containerView" destination="nvc-4v-4s3" id="4x6-a1-SIt"/>
                         <outlet property="forgetButton" destination="D4m-bR-VaM" id="SpH-na-XMk"/>
                         <outlet property="forgetLabel" destination="FDy-aH-X1T" id="uxR-tD-vVH"/>
+                        <outlet property="isKeepLoginSwitch" destination="q3v-5Q-5hv" id="aCI-3S-okR"/>
                         <outlet property="loginButton" destination="Wpg-jx-4ID" id="w2K-XR-hcp"/>
                         <outlet property="passwordField" destination="93D-aL-Vez" id="nNV-wQ-xMw"/>
                         <outlet property="scrollview" destination="Cfd-hA-kiD" id="ngI-vv-Gtk"/>
@@ -1665,7 +1679,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addprofileimage.JPG" id="bDB-5r-rEi">
-                                                    <rect key="frame" x="113" y="2" width="92" height="92.5"/>
+                                                    <rect key="frame" x="111" y="2" width="92" height="92"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7Vl-Rz-R4G">
@@ -1910,7 +1924,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Blank-Profile-Image.png" id="HEo-RJ-mF3">
-                                                    <rect key="frame" x="18" y="4" width="99" height="106"/>
+                                                    <rect key="frame" x="18" y="4" width="99" height="106.5"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to login" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oca-MB-gzX">
@@ -2130,7 +2144,7 @@
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                         <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket.png" id="FkC-70-OUv" customClass="HexagonUIImageView">
-                                            <rect key="frame" x="4" y="2" width="79" height="81"/>
+                                            <rect key="frame" x="3.5" y="0.5" width="78.5" height="82.5"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </imageView>
                                     </subviews>
@@ -2759,7 +2773,7 @@ XX日發佈了XXXX活動
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addprofileimage.JPG" id="08I-Ng-73b">
-                                                    <rect key="frame" x="110" y="-1" width="92" height="93"/>
+                                                    <rect key="frame" x="110" y="-1" width="92" height="93.5"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Uc3-W3-Ryn">

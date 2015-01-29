@@ -165,8 +165,18 @@ UserModel* model;
 //    [model updataUserInfo];
     [[ProgressHUD class] dismiss];
     
+    
+    //record user login info
     [UserModel getProfileImageWithUser:[UserModel current_user] Sender:self.user_profile_image];
     self.loginButton.enabled=NO;
+    
+    
+    NSUserDefaults* stdDefault=[NSUserDefaults standardUserDefaults];
+    [stdDefault setBool:self.isKeepLoginSwitch.on forKey:@"RemainLogin"];
+    if (self.isKeepLoginSwitch.on==1) {
+        
+    }
+    
     [popoverAlterModel alterWithTitle:@"Login Succeed" Message:[NSString stringWithFormat:@"Hi,%@",[UserModel username]]];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"loginProcessFinish" object:nil];
     [self.navigationController popViewControllerAnimated:YES];
